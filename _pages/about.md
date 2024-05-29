@@ -25,7 +25,7 @@ Education
 * **Tsinghua University**, Beijing, China
     * Master in Control Science and Engineering, 🗓️ *September 2021 - June 2024*
 
-* **Oxford University**, London, UK
+* **University of Oxford**, London, UK
     * Spent a Machine Learning Summer School with focus on application to the Health sector. 🗓️ *June 2022 - August 2022*
 
 * **Beijing University of Aeronautics and Astronautics**, Beijing, China
@@ -40,8 +40,12 @@ Education
 * **Nazi Boni University**, Bobo Dioulasso, Burkina Faso
     * First Year of Mathematics, Physics and Computer Science (MPI) program. 🗓️ *September 2015 - June 2016*
 
-* **College Notre Dame de L'Espérance High School**, Ouagadougou, Burkina Faso
-    * Middle School Diploma, with first class honours. Scientific Baccalaureat, A level. 🗓️ *September 2012 - June 2015*
+* **Notre Dame de L'Espérance Middle and High School**, Ouagadougou, Burkina Faso
+    * Middle School Diploma, with first class honours. 🗓️ *September 2009 - June 2012*
+    * High School Scientific Baccalaureat, A level. 🗓️ *September 2012 - June 2015*
+
+* **Sainte Therese de l'Enfant Jesus, Elementary School**, Ouagadougou, Burkina Faso
+    * Elementary School, Elementary Studies Certificate with first class honours. 🗓️ *September 2004 - June 2009*
 
 Experience
 =====
