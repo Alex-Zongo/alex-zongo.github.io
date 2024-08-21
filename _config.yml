@@ -24,11 +24,11 @@ author:
   avatar           : "visa_photo.JPG"
   name             : "Alex B. Zongo"
   pronouns         : # example: "she/her"
-  bio              : "Aerospace Engineer and AI Enthusiast"
-  location         : "Beijing, China"
-  employer         : "Tsinghua University"
+  bio              : "Aerospace Engineer, Researcher and AI Enthusiast"
+  location         : "Washington, DC, US"
+  employer         : "The George Washington University"
   uri              : # URL
-  email            : "zongoa10@mails.tsinghua.edu.cn"
+  email            : "a.zongo@gwu.edu"
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
