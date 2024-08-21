@@ -9,11 +9,11 @@ redirect_from:
 
 ![](/images/futuristic_scene_depicting_the_intersection_of_aerospace_engineering_robotics_and_safe_multi_agent_reinforcement_learning2.webp){: .align-right width="300px"}
 
-📚 I am a final year Master student at Tsinghua University and an Upcoming PhD student in Mechanical and Aerospace Engineering at George Washington University.
+📚 I am a PhD student in Mechanical and Aerospace Engineering at George Washington University.
 
-🔬 My research interests are in bringing safe and reliable artificial intelligence in the aviation industry.
+🔬 My research interest revolves around in bringing safe and reliable artificial intelligence in the aviation industry.
 
-🌍 I am also interested in leardership and community services for commun welfare. Moreover I am into music (Quite a Piano lover 🎙️🎹)
+🌍 I am also interested in leardership and community services for a commun welfare. Moreover I am into music (Quite a Piano lover 🎙️🎹)
 
 <!-- This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the respository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. You can fork [this repository](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and markdown files, add your own PDFs and other content, and have your own site for free, with no ads! An older version of this template powers my own personal website at [stuartgeiger.com](http://stuartgeiger.com), which uses [this Github repository](https://github.com/staeiou/staeiou.github.io). -->
 
@@ -49,6 +49,8 @@ Education
 
 Experience
 =====
+* **Research Assistant**, Intelligent Aerospace Systems Lab (IASL), The Georges Washington University.  🗓️ *September 2024 - Now*
+
 * **Research Assistant**, Navigation and Control Lab, Tsinghua University. 🗓️ *September 2021 - June 2024*
     * Contributed in various lab projects including a Trajectory Based Optimization (TBO) Performance Graphical Simulation
     * Master research was focused on applying AI to Flight Control: Fault-tolerant Flight Control
