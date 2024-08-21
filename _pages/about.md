@@ -49,7 +49,7 @@ Education
 
 Experience
 =====
-* **Research Assistant**, Intelligent Aerospace Systems Lab (IASL), The Georges Washington University.  🗓️ *September 2024 - Now*
+* **Research Assistant**, Intelligent Aerospace Systems Lab (IASL), The George Washington University (GWU).  🗓️ *September 2024 - Now*
 
 * **Research Assistant**, Navigation and Control Lab, Tsinghua University. 🗓️ *September 2021 - June 2024*
     * Contributed in various lab projects including a Trajectory Based Optimization (TBO) Performance Graphical Simulation
