@@ -51,11 +51,15 @@ Experience
 =====
 * **Research Assistant**, Intelligent Aerospace Systems Lab (IASL), The George Washington University (GWU).  🗓️ *September 2024 - Now*
 
+* **Teaching Assistant**, The George Washington University (GWU)
+  * *Linear System Dynamics (MAE 3134)*, 🗓️ *January 2025 - May 2025*: Grading, and Recitations.
+
+
 * **Research Assistant**, Navigation and Control Lab, Tsinghua University. 🗓️ *September 2021 - June 2024*
     * Contributed in various lab projects including a Trajectory Based Optimization (TBO) Performance Graphical Simulation
     * Master research was focused on applying AI to Flight Control: Fault-tolerant Flight Control
     * I published a paper to the International Conference on Guidance Navigation and Control (ICGNC 2024)
-    * I reviewed submissions to the ICGNC 2024
+    * Reviewer for the International Conference on Guidance Navigation and Control (ICGNC 2024)
 
 * **Secretary General**, Tsinghua University African Student Association. 🗓️ *May 2022 - May 2024
     * A student association established by students with the aim of cultural exchanges, learning and leadership skill development among students and peers.
