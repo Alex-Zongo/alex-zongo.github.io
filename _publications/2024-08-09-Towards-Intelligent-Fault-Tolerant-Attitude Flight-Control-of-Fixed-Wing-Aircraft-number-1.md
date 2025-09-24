@@ -7,9 +7,6 @@ date: 2024-08-09
 venue: 'Lecture Notes in Electrical Engineering, Springer Nature, International Conference in Navigation Guidance and Control (ICGNC)'
 paperurl:  'https://doi.org/10.1007/978-981-96-2264-1_15' #'http://academicpages.github.io/files/paper1.pdf'
 
-
-[Download the paper here](https://alex-zongo.github.io/files/Towards_Intel_Fault_Tol_Att_Flight_ctrl.pdf)
-
 citation: 'Zongo, A.B., Qing, L. (2025). &quot;Towards Intelligent Fault-Tolerant Attitude Control of Fixed-Wing Aircraft.&quot; In: Yan, L., Duan, H., Deng, Y. (eds) <.>Advances in Guidance, Navigation and Control. ICGNC 2024. Lecture Notes in Electrical Engineering, vol 1353. Springer, Singapore. <https://doi.org/10.1007/978-981-96-2264-1_15.></i>'
 ---
 
@@ -24,6 +21,8 @@ demonstrate unique traits in terms of trade-offs between trajectory tracking
 and control smoothness. Our approach that results in state-of-the-art
 performance with respect to benchmarks, presents a leap forward in autonomous
 aviation safety.
+
+[Download the paper here](https://alex-zongo.github.io/files/Towards_Intel_Fault_Tol_Att_Flight_ctrl.pdf)
 
 **keywords**: flight control, fault-tolerance, robustness, reinforcement learning,
 evolutionary strategies, stability, control smoothness
