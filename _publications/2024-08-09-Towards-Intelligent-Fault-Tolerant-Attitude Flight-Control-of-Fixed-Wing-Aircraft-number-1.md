@@ -6,7 +6,7 @@ excerpt: 'This paper was submitted as part of my master thesis. It delves into t
 date: 2024-08-09
 venue: 'Lecture Notes in Electrical Engineering, Springer Nature, International Conference in Navigation Guidance and Control (ICGNC)'
 paperurl: 'https://alex-zongo.github.io/files/Towards_Intel_Fault_Tol_Att_Flight_ctrl.pdf' #'https://doi.org/10.1007/978-981-96-2264-1_15' #'http://academicpages.github.io/files/paper1.pdf'
-citation: 'Zongo, A.B., Qing, L. (2025). &quot;Towards Intelligent Fault-Tolerant Attitude Control of Fixed-Wing Aircraft.&quot; In: Yan, L., Duan, H., Deng, Y. (eds) <i>Advances in Guidance, Navigation and Control. ICGNC 2024. Lecture Notes in Electrical Engineering, vol 1353. Springer, Singapore. <https://doi.org/10.1007/978-981-96-2264-1_15> </i>. 1(1).'
+citation: 'Zongo, A.B., Qing, L. (2025). &quot;Towards Intelligent Fault-Tolerant Attitude Control of Fixed-Wing Aircraft.&quot; In: Yan, L., Duan, H., Deng, Y. (eds) <.>Advances in Guidance, Navigation and Control. ICGNC 2024. Lecture Notes in Electrical Engineering, vol 1353. Springer, Singapore. https://doi.org/10.1007/978-981-96-2264-1_15.'
 ---
 
 This study advances flight control systems by integrating
