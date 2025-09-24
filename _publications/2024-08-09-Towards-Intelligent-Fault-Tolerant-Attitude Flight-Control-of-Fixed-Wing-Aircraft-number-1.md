@@ -22,7 +22,7 @@ and control smoothness. Our approach that results in state-of-the-art
 performance with respect to benchmarks, presents a leap forward in autonomous
 aviation safety.
 
-[Download the paper here](https://alex-zongo.github.io/files/Towards_Intel_Fault_Tol_Att_Flight_ctrl.pdf)
+[Download the paper here](https://alex-zongo.github.io/files/Towards_Intelligent_Fault_Tolerant_Attitude_Flight_Control_of_Fixed_Wing_Aircraft.pdf)
 
 **keywords**: flight control, fault-tolerance, robustness, reinforcement learning,
 evolutionary strategies, stability, control smoothness
