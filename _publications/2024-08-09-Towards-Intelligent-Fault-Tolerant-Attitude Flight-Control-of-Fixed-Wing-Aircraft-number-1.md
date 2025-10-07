@@ -2,7 +2,7 @@
 title: "Towards Intelligent Fault-Tolerant Attitude Flight Control of Fixed-Wing Aircraft"
 collection: publications
 permalink: /publication/2024-08-09-Towards-Intelligent-Fault-Tolerant-Attitude Flight-Control-of-Fixed-Wing-Aircraft-number-1
-excerpt: 'This paper was submitted as part of my master thesis. It delves into the use of Reinforcement Learning to enhance fault-tolerance in fixed-wing aircraft flight control'
+excerpt: 'This paper was submitted as part of my master thesis. It delves into the use of Reinforcement Learning to enhance fault-tolerance in fixed-wing aircraft attitude flight control'
 date: 2024-08-09
 venue: 'Lecture Notes in Electrical Engineering, Springer Nature, International Conference in Navigation Guidance and Control (ICGNC)'
 paperurl:  'https://doi.org/10.1007/978-981-96-2264-1_15' #'http://academicpages.github.io/files/paper1.pdf'
@@ -22,7 +22,7 @@ and control smoothness. Our approach that results in state-of-the-art
 performance with respect to benchmarks, presents a leap forward in autonomous
 aviation safety.
 
-<!-- [Download the paper here](https://alex-zongo.github.io/files/Towards_Intelligent_Fault_Tolerant_Attitude_Flight_Control_of_Fixed_Wing_Aircraft.pdf) -->
+[Find a draft of the paper here](https://alex-zongo.github.io/files/icgnc2024_paper_draft3.pdf)
 
 **keywords**: flight control, fault-tolerance, robustness, reinforcement learning,
 evolutionary strategies, stability, control smoothness
