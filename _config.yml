@@ -12,8 +12,8 @@ title                    : "Alex B. Zongo"
 title_separator          : "-"
 name                     : &name "Alex Baowend Soom M. A. Zongo"
 description              : &description "Personal website of Alex B. Zongo — Aerospace Engineer, Researcher, and AI Enthusiast. Showcasing research, publications, projects, and teaching at George Washington University."
-url                      : https://alex-zongo.github.io/ # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "" # the subpath of your site, e.g. "/blog"
+url                      : https://alex-zongo.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+baseurl                  :  # the subpath of your site, e.g. "/blog"
 repository               : "Alex-Zongo/alex-zongo.github.io"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
@@ -27,7 +27,7 @@ author:
   bio              : "Aerospace Engineer, Researcher and PhD @ GWU"
   location         : "Washington, DC, USA"
   employer         : "GWU"
-  uri              : "https://alex-zongo.github.io/"
+  uri              : "https://alex-zongo.github.io"
   email            : "a.zongo@gwu.edu"
 
   # Academic websites
