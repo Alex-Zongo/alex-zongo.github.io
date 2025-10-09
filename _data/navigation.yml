@@ -11,14 +11,16 @@ main:
 
   # - title: "Blog Posts"
   #   url: /year-archive/
-  - title: "Misc"
-    url: /miscellaneous/
+  
 
   # - title: "Talks"
   #   url: /talks/
 
   - title: "Teaching"
     url: /teaching/
+  
+  - title: "Misc"
+    url: /miscellaneous/
 
   # - title: "Guide"
   #   url: /markdown/

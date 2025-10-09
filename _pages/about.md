@@ -1,44 +1,62 @@
 ---
 permalink: /
-title: "👋🏽 Hi! Welcome. I am Alex!"
+title: "👋🏽 Hi! Welcome!"
 author_profile: true
 redirect_from:
   - /about/
   - /about.html
 ---
 
-![](/images/futuristic_scene_depicting_the_intersection_of_aerospace_engineering_robotics_and_safe_multi_agent_reinforcement_learning2.webp){: .align-right width="300px"}
+![](/images/about_image_br.png){: .align-right width="250px"}
+📚 Hi, this is Alex. I am a PhD student within the [Department of Mechanical and Aerospace Engineering](https://mae.engineering.gwu.edu/) at the [George Washington University](https://www.gwu.edu/) under the supervision of [Professor Wei Peng](https://web.seas.gwu.edu/pwei/) in the Intelligent Aerospace Systems Lab. 
+My research interests center around solvign complex sequential decision making problems via robust artificial learning algorithm with key applications in the aviation industry. More specifically, my research focuses on advancing safe **multi-agent reinforcement learning** and its applications in **aerospace systems**. 
+I hold a strong academic background in control science, engineering, and aircraft design from institutions including Tsinghua University and Beijing University of Aeronautics and Astronautics.
 
-📚 I am a PhD student in Mechanical and Aerospace Engineering at George Washington University.
+Beyond my academic pursuits, I am commited to leadership development and community service, and I have a strong interest in music. 
+
+For a comprehensive overview of my education, experience, and skills, visit my [CV](/files/cv_updated.pdf) page.
+
+
+----
+## 🚨 Recent News
+
+- **September 2025:** Submitted a paper titled *"Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing"* to the *American Control Conference (ACC 2026)*
+- **January 2025:** Began serving as a Teaching Assistant for MAE 3134 - Linear Systems Dynamics at George Washington University.
+- **September 2024:** Hosted and organized the *Safe and Responsible AI workshop* with the participation of agencies such as FAA, HASS COE, John Hopkins APL, and MIT Lincoln Labs as well as institutes such as TRAILS, NIST AI, RAIUK. 
+- **August 2024:** Started a PhD and research assistanship in Mechanical and Aerospace Engineering at George Washington University
+- **August 2024:** Presented my research on *Fault-Tolerant Flight Control at the International Conference on Guidance Navigation and Control (ICGN 2024)
+- **May 2024:** Graduated with a Master's in Control Science and Engineering from Tsinghua University 
+
+<!-- 📚 Hi, this is Alex. I am a PhD student in Mechanical and Aerospace Engineering at George Washington University.
 
 🔬 My research interest revolves around in bringing safe and reliable artificial intelligence in the aviation industry.
 
-🌍 I am also interested in leardership and community services for a commun welfare. Moreover I am into music (Quite a Piano lover 🎙️🎹)
+🌍 I am also interested in leardership and community services for a commun welfare. Moreover I am into music (Quite a Piano lover 🎙️🎹) -->
 
-<!-- This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the respository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. You can fork [this repository](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and markdown files, add your own PDFs and other content, and have your own site for free, with no ads! An older version of this template powers my own personal website at [stuartgeiger.com](http://stuartgeiger.com), which uses [this Github repository](https://github.com/staeiou/staeiou.github.io). -->
 
-Education
+
+<!-- Education
 =====
-* **George Washington University**, Washington DC, US
-    * PhD in Mechanical and Aerospace Engineering, 🗓️ *August 2024 - Onwards*
+* **George Washington University**, Washington DC, USA
+    * PhD in Mechanical and Aerospace Engineering, 🗓️ *August 2024 - Present*
 
 * **Tsinghua University**, Beijing, China
     * Master in Control Science and Engineering, 🗓️ *September 2021 - June 2024*
 
 * **University of Oxford**, London, UK
-    * Spent a Machine Learning Summer School with focus on application to the Health sector. 🗓️ *June 2022 - August 2022*
+    * Machine Learning Summer School with focus on application to the Health sector. 🗓️ *June 2022 - August 2022*
 
 * **Beijing University of Aeronautics and Astronautics**, Beijing, China
     * Bachelor of Engineering in Aircraft Design, 🗓️ *September 2018 - July 2021*
 
 * **National Cheng Kung University**, Tainan, Taiwan
-    * Freshman Year of Bachelor of Engineering in Aeronautics and Astronautics, 🗓️ *September 2017 - July 2018*
+    * Freshman Year in Aeronautics and Astronautics, 🗓️ *September 2017 - July 2018*
 
 * **Fu Jen Catholic University**, Taipei, Taiwan
-    * Traditional Chinese Language One-year study program, 🗓️ *September 2016 - August 2017*
+    * Traditional Chinese Language program, 🗓️ *September 2016 - August 2017*
 
 * **Nazi Boni University**, Bobo Dioulasso, Burkina Faso
-    * First Year of Mathematics, Physics and Computer Science (MPI) program. 🗓️ *September 2015 - June 2016*
+    * Freshman Year in Mathematics, Physics and Computer Science (MPI) program. 🗓️ *September 2015 - June 2016*
 
 * **Notre Dame de L'Espérance Middle and High School**, Ouagadougou, Burkina Faso
     * Middle School Diploma, with first class honours. 🗓️ *September 2009 - June 2012*
@@ -56,19 +74,19 @@ Experience
 
 
 * **Research Assistant**, Navigation and Control Lab, Tsinghua University. 🗓️ *September 2021 - June 2024*
-    * Contributed in various lab projects including a Trajectory Based Optimization (TBO) Performance Graphical Simulation
-    * Master research was focused on applying AI to Flight Control: Fault-tolerant Flight Control
-    * I published a paper to the International Conference on Guidance Navigation and Control (ICGNC 2024)
-    * Reviewer for the International Conference on Guidance Navigation and Control (ICGNC 2024)
+    * Contributed in various lab projects including a Trajectory Based Optimization (TBO) Performance Graphical Simulation.
+    * Master research was focused on applying AI to Flight Control: Fault-tolerant Flight Control.
+    * I published a paper to the International Conference on Guidance Navigation and Control (ICGNC 2024).
+    * Reviewer for the International Conference on Guidance Navigation and Control (ICGNC 2024).
 
 * **Secretary General**, Tsinghua University African Student Association. 🗓️ *May 2022 - May 2024
     * A student association established by students with the aim of cultural exchanges, learning and leadership skill development among students and peers.
-    * I have taken Lead in several cultural activities planning and organization
+    * I have taken Lead in several cultural activities planning and organization.
     * I have been a team leader and active member working to promote leadership, and engagement in community service and problem solving.
 
 * **R&D Engineer**, Tsinghua University Artificial Intelligence International Student Association club. 🗓️ *September 2022 - May 2023*
     * A graduate level AI club established by students with the aim of learning and professional skill development among students and peers.
-    * Active member working to develop AI solutions for societal problems
+    * Active member working to develop AI solutions for societal problems.
 
 * **Robotics Software Engineer Intern**, Popular Robotics, Beijing, China. 🗓️ *June-November 2022*
     * I worked on a biped simulation in Gazebo with ROS/ROS2
@@ -76,49 +94,12 @@ Experience
 
 Skills And Interests
 =====
-* **Interests**: Artificial Intelligence, Flight Control, Reinforcement Learning, Explainable AI Optimization, Mechanics, Robotics, Modeling and Simulation
+* **Interests**: Artificial Intelligence, Flight Control, Reinforcement Learning, Explainable AI Optimization, Mechanics, Robotics, Modeling and Simulation.
 
-* **Software and Frameworks**:  MATLAB, SIMULINK, Arduino, ROS/ROS2 (Robotic Operation System), Python, C/C++, SQL/NoSQL, JavaScript, Solidity, Scikit-learn, OpenCV, PyTorch
+* **Software and Frameworks**:  MATLAB, SIMULINK, ROS/ROS2 (Robotic Operation System), Python, C/C++, Scikit-learn, OpenCV, PyTorch.
 
 * **Soft Skills**: Self-learning, Initiative, Team Work, technical writing, presentation and communication.
 
-* **Languages**: French(native), English(C2), Chinese(B1)
+* **Languages**: French(native), English(C2), Chinese(B1). -->
 
-<!-- A data-driven personal website
-======
-Like many other Jekyll-based GitHub Pages templates, Academic Pages makes you separate the website's content from its form. The content & metadata of your website are in structured markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
 
-Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over -- just be sure to save the markdown files! Finally, you can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
-
-Getting started
-======
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Fork [this repository](https://github.com/academicpages/academicpages.github.io) by clicking the "fork" button in the top right.
-1. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and create content & metadata (see below -- also see [this set of diffs](http://archive.is/3TPas) showing what files were changed to set up [an example site](https://getorg-testacct.github.io) for a user with the username "getorg-testacct")
-1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.
-1. Check status by going to the repository settings, in the "GitHub pages" section
-
-Site-wide configuration
-------
-The main configuration file for the site is in the base directory in [_config.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_config.yml), which defines the content in the sidebars and other site-wide features. You will need to replace the default variables with ones about yourself and your site's github repository. The configuration file for the top menu is in [_data/navigation.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_data/navigation.yml). For example, if you don't have a portfolio or blog posts, you can remove those items from that navigation.yml file to remove them from the header.
-
-Create content & metadata
-------
-For site content, there is one markdown file for each type of content, which are stored in directories like _publications, _talks, _posts, _teaching, or _pages. For example, each talk is a markdown file in the [_talks directory](https://github.com/academicpages/academicpages.github.io/tree/master/_talks). At the top of each markdown file is structured data in YAML about the talk, which the theme will parse to do lots of cool stuff. The same structured data about a talk is used to generate the list of talks on the [Talks page](https://academicpages.github.io/talks), each [individual page](https://academicpages.github.io/talks/2012-03-01-talk-1) for specific talks, the talks section for the [CV page](https://academicpages.github.io/cv), and the [map of places you've given a talk](https://academicpages.github.io/talkmap.html) (if you run this [python file](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.py) or [Jupyter notebook](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb), which creates the HTML for the map based on the contents of the _talks directory).
-
-**Markdown generator**
-
-I have also created [a set of Jupyter notebooks](https://github.com/academicpages/academicpages.github.io/tree/master/markdown_generator
-) that converts a CSV containing structured data about talks or presentations into individual markdown files that will be properly formatted for the Academic Pages template. The sample CSVs in that directory are the ones I used to create my own personal website at stuartgeiger.com. My usual workflow is that I keep a spreadsheet of my publications and talks, then run the code in these notebooks to generate the markdown files, then commit and push them to the GitHub repository.
-
-How to edit your site's GitHub repository
-------
-Many people use a git client to create files on their local computer and then push them to GitHub's servers. If you are not familiar with git, you can directly edit these configuration and markdown files directly in the github.com interface. Navigate to a file (like [this one](https://github.com/academicpages/academicpages.github.io/blob/master/_talks/2012-03-01-talk-1.md) and click the pencil icon in the top right of the content preview (to the right of the "Raw | Blame | History" buttons). You can delete a file by clicking the trashcan icon to the right of the pencil icon. You can also create new files or upload files by navigating to a directory and clicking the "Create new file" or "Upload files" buttons.
-
-Example: editing a markdown file for a talk
-![Editing a markdown file for a talk](/images/editing-talk.png)
-
-For more info
-------
-More info about configuring Academic Pages can be found in [the guide](https://academicpages.github.io/markdown/). The [guides for the Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/docs/configuration/) (which this theme was forked from) might also be helpful. -->

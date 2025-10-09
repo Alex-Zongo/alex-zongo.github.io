@@ -39,3 +39,29 @@
 @import "vendor/font-awesome/brands";
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
+
+.pub-type-badge {
+  display: inline-block;
+  padding: 0.25em 0.6em;
+  margin: 0.3em 0;
+  font-size: 0.8em;
+  font-weight: 600;
+  border-radius: 0.25em;
+  color: white;
+}
+
+.badge-conference {
+  background-color: #ff9800; /* orange */
+}
+
+.badge-journal {
+  background-color: #2196f3; /* blue */
+}
+
+.badge-preprint {
+  background-color: #9c27b0; /* purple */
+}
+
+.badge-underreview {
+  background-color: #9e9e9e; /* gray */
+}
