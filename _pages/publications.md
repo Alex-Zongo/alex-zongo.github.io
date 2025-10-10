@@ -1,10 +1,10 @@
 ---
 layout: archive
-title: "📑 Publications"
+title: "📑 Publications Overview"
 permalink: /publications/
 author_profile: true
 ---
-<h2 style="margin-top:1em;">Publications Overview</h2>
+<!-- <h2 style="margin-top:1em;">Publications Overview</h2> -->
 <p style="margin-bottom: 2em;">Below is a selection of my academic publications and research outputs.  
 You can explore the full list on my <a href="{{site.author.googlescholar}}" target="_blank">Google Scholar</a> profile.</p>
 <hr style="border-top:1px solid #ddd; margin:2em 0;">
