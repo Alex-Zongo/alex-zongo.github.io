@@ -7,7 +7,14 @@ redirect_from:
   - /about.html
 ---
 
-![](/images/about_image_br.png){: .align-right width="250px"}
+<!-- ![](/images/about_image_br.png){: .align-right width="250px"} -->
+<div style="float: right; margin: 0 0 1em 1em; width: 250px;" >
+    <video autoplay loop muted playsinline style="width: 250px; border-radius:10px;" >
+        <source src="{{ '/images/media.mp4' | relative_url }}" type="video/mp4" >
+    </video>
+</div>
+
+<!-- ![](/images/media.mp4) -->
 📚 Hi, this is Alex. I am a PhD student within the [Department of Mechanical and Aerospace Engineering](https://mae.engineering.gwu.edu/) at the [George Washington University](https://www.gwu.edu/) under the supervision of [Professor Wei Peng](https://web.seas.gwu.edu/pwei/) in the Intelligent Aerospace Systems Lab. 
 My research interests center around solvign complex sequential decision making problems via robust artificial learning algorithm with key applications in the aviation industry. More specifically, my research focuses on advancing safe **multi-agent reinforcement learning** and its applications in **aerospace systems**. 
 I hold a strong academic background in control science, engineering, and aircraft design from institutions including Tsinghua University and Beijing University of Aeronautics and Astronautics.
