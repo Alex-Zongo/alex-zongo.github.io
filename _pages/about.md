@@ -30,7 +30,7 @@ For a comprehensive overview of my education, experience, and skills, visit my [
 - **September 2025:** Submitted a paper titled *"Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing"* to the *American Control Conference (ACC 2026)*
 - **January 2025:** Began serving as a Teaching Assistant for MAE 3134 - Linear Systems Dynamics at George Washington University
 - **September 2024:** Hosted and organized the *Safe and Responsible AI workshop* with the participation of agencies such as FAA, HASS COE, John Hopkins APL, and MIT Lincoln Labs as well as institutes such as TRAILS, NIST AI, RAIUK
-- **August 2024:** Started a PhD and research assistanship in Mechanical and Aerospace Engineering at George Washington University
+- **August 2024:** Started a PhD and research assistantship in Mechanical and Aerospace Engineering at George Washington University
 - **August 2024:** Presented my research on *Fault-Tolerant Flight Control* at the *International Conference on Guidance Navigation and Control (ICGN 2024)*
 - **May 2024:** Graduated with a Master's in Control Science and Engineering from [Tsinghua University](https://www.tsinghua.edu.cn/en/) 
 

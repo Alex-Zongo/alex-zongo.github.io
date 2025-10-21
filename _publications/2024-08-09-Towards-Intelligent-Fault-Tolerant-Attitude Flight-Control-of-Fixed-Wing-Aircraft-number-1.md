@@ -23,7 +23,21 @@ and control smoothness. Our approach that results in state-of-the-art
 performance with respect to benchmarks, presents a leap forward in autonomous
 aviation safety.
 
-[Find a draft of the paper here](https://alex-zongo.github.io/files/icgnc2024_paper_draft3.pdf)
+<!-- [Find a draft of the paper here](https://alex-zongo.github.io/files/icgnc2024_paper_draft3.pdf) [</>Code](https://github.com/Alex-Zongo/rl_for_ftc.git) -->
 
-**keywords**: flight control, fault-tolerance, robustness, reinforcement learning,
-evolutionary strategies, stability, control smoothness
+<p>
+  <a href="https://alex-zongo.github.io/files/icgnc2024_paper_draft3.pdf"
+     target="_blank" rel="noopener noreferrer"
+     style="display:inline-block;padding:0.45rem 0.9rem;margin-right:0.6rem;border-radius:6px;background: #1f6feb;color: #fff;text-decoration:none;font-weight:600">
+    ⇱PDF
+  </a>
+
+  <a href="https://github.com/Alex-Zongo/rl_for_ftc.git"
+     target="_blank" rel="noopener noreferrer"
+     style="display:inline-block;padding:0.45rem 0.9rem;border-radius:6px;background:transparent;border:2px solid #1f6feb;color: #1f6feb;text-decoration:none;font-weight:600">
+    </>Code
+  </a>
+</p>
+
+
+**keywords**: flight control, fault-tolerance, robustness, reinforcement learning, evolutionary strategies, stability, control smoothness
