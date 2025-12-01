@@ -9,8 +9,9 @@ redirect_from:
 ---
 
 <!-- ![](/images/about_image_br.png){: .align-right width="250px"} -->
-<div style="float: right; margin: 0 0 1em 1em; width: 250px;" >
-    <video autoplay loop muted playsinline style="width: 250px; border-radius:10px;" >
+
+<div style="float: right; margin: 0 0 1em 1em; width: 150px;" >
+    <video autoplay loop muted playsinline style="width: 150px; border-radius:10px;" >
         <source src="{{ '/images/media.mp4' | relative_url }}" type="video/mp4" >
     </video>
 </div>
