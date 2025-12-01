@@ -1,6 +1,7 @@
 ---
 permalink: /
-title: "👋🏽 Hi! Welcome!"
+title: "Safe Autonomy & Aerospace Systems" #"👋🏽 Hi! Welcome!"
+excerpt: "About me"
 author_profile: true
 redirect_from:
   - /about/
@@ -15,13 +16,17 @@ redirect_from:
 </div>
 
 <!-- ![](/images/media.mp4) -->
-📚 Hi, this is Alex. I am a PhD student within the [Department of Mechanical and Aerospace Engineering](https://mae.engineering.gwu.edu/) at the [George Washington University](https://www.gwu.edu/) under the supervision of [Professor Wei Peng](https://web.seas.gwu.edu/pwei/) in the Intelligent Aerospace Systems Lab. 
-My research interests center around solvign complex sequential decision making problems via robust artificial learning algorithm with key applications in the aviation industry. More specifically, my research focuses on advancing safe **multi-agent reinforcement learning** and its applications in **aerospace systems**. 
-I hold a strong academic background in control science, engineering, and aircraft design from institutions including Tsinghua University and Beijing University of Aeronautics and Astronautics.
+📚 Hi, I am Alex.
 
-Beyond my academic pursuits, I am commited to leadership development and community service, and I have a strong interest in music. 
+I am a PhD student in the [**Department of Mechanical and Aerospace Engineering**](https://mae.engineering.gwu.edu/) at  [**The George Washington University**](https://www.gwu.edu/), working under the supervision of Prof. [**Wei Peng**](https://web.seas.gwu.edu/pwei/) in the Intelligent Aerospace Systems Lab. 
 
-For a comprehensive overview of my education, experience, and skills, visit my [CV](/files/cv_updated.pdf) page.
+My research interests center around solving complex sequential decision making problems via robust **Machine Learning (ML)** and **Artificial Intelligence (AI)** algorithms, with key applications in the aviation industry. Specifically, I focus on advancing safe **multi-agent reinforcement learning (MARL)** for **aerospace systems**.
+
+I hold a strong academic background in control science, engineering, and aircraft design from institutions including [**Tsinghua University**](https://www.tsinghua.edu.cn/en/) and [**Beijing University of Aeronautics and Astronautics**](https://ev.buaa.edu.cn/).
+
+Beyond my academic pursuits, I am committed to leadership development and community service, and I have a strong interest in music. 
+
+For a comprehensive overview of my education, experience, and skills, visit my [CV page](/files/cv_updated.pdf).
 
 
 ----
@@ -29,8 +34,8 @@ For a comprehensive overview of my education, experience, and skills, visit my [
 
 - **September 2025:** Submitted a paper titled *"Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing"* to the *American Control Conference (ACC 2026)*
 - **January 2025:** Began serving as a Teaching Assistant for MAE 3134 - Linear Systems Dynamics at George Washington University
-- **September 2024:** Hosted and organized the *Safe and Responsible AI workshop* with the participation of agencies such as FAA, HASS COE, John Hopkins APL, and MIT Lincoln Labs as well as institutes such as TRAILS, NIST AI, RAIUK
-- **August 2024:** Started a PhD and research assistantship in Mechanical and Aerospace Engineering at George Washington University
+- **September 2024:** Hosted and organized the *Safe and Responsible AI workshop* featuring the participation of agencies such as FAA, HASS COE, John Hopkins APL, and MIT Lincoln Labs as well as institutes such as TRAILS, NIST AI, RAIUK
+- **August 2024:** Started my PhD and research assistantship in Mechanical and Aerospace Engineering at George Washington University
 - **August 2024:** Presented my research on *Fault-Tolerant Flight Control* at the *International Conference on Guidance Navigation and Control (ICGN 2024)*
 - **May 2024:** Graduated with a Master's in Control Science and Engineering from [Tsinghua University](https://www.tsinghua.edu.cn/en/) 
 
