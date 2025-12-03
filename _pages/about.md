@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Safe Autonomy & Aerospace Systems" #"👋🏽 Hi! Welcome!"
+title: "Alex B. Zongo" #"Safe Autonomy & Aerospace Systems" #"👋🏽 Hi! Welcome!"
 excerpt: "About me"
 author_profile: true
 redirect_from:
@@ -17,7 +17,7 @@ redirect_from:
 </div>
 
 <!-- ![](/images/media.mp4) -->
-📚 Hi, I am Alex.
+📚 Hi!!
 
 I am a PhD student in the [**Department of Mechanical and Aerospace Engineering**](https://mae.engineering.gwu.edu/) at  [**The George Washington University**](https://www.gwu.edu/), working under the supervision of Prof. [**Wei Peng**](https://web.seas.gwu.edu/pwei/) in the Intelligent Aerospace Systems Lab. 
 
