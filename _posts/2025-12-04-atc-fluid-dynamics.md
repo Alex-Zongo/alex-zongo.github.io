@@ -1,6 +1,6 @@
 ---
 title: 'Fluid Dynamics Meets Air Traffic Control: A Novel Approach to Conflict Resolution'
-date: 2025-12-02
+date: 2025-12-10
 permalink: /posts/2025/12/atc-fluid-dynamics/
 tags:
   - air-traffic-control

@@ -1,7 +1,7 @@
 ---
 title: 'Future Blog Post'
-date: 2024-06-01
-permalink: /posts/2024/06/blog-post-4/
+date: 2025-12-5
+permalink: /posts/2025/12/future-blog-post/
 tags:
   - cool posts
   - category1
