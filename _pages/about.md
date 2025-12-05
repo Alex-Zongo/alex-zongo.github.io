@@ -19,9 +19,9 @@ redirect_from:
 <!-- ![](/images/media.mp4) -->
 📚 Hi!!
 
-I am a PhD student in the [**Department of Mechanical and Aerospace Engineering**](https://mae.engineering.gwu.edu/) at  [**The George Washington University**](https://www.gwu.edu/), working under the supervision of Prof. [**Wei Peng**](https://web.seas.gwu.edu/pwei/) in the Intelligent Aerospace Systems Lab. 
+I am a PhD student in the [**Department of Mechanical and Aerospace Engineering**](https://mae.engineering.gwu.edu/) at  [**The George Washington University**](https://www.gwu.edu/), working under the supervision of Prof. [**Wei Peng**](https://web.seas.gwu.edu/pwei/) in the **Intelligent Aerospace Systems Lab (IASL)**. 
 
-My research interests center around solving complex sequential decision making problems via robust **Machine Learning (ML)** and **Artificial Intelligence (AI)** algorithms, with key applications in the aviation industry. Specifically, I focus on advancing safe **multi-agent reinforcement learning (MARL)** for **aerospace systems**.
+My research interests center around solving complex sequential decision making problems via robust **Machine Learning (ML)** and **Artificial Intelligence (AI)** algorithms, with key applications in the aviation industry such **airspace management and control**, **advanced air mobility**, and **flight control**. Specifically, I focus on advancing safe **multi-agent reinforcement learning (MARL)** for **aerospace systems**. My current work is funded by **NASA** under the **University Leadership Initiative (ULI)**.
 
 I hold a strong academic background in control science, engineering, and aircraft design from institutions including [**Tsinghua University**](https://www.tsinghua.edu.cn/en/) and [**Beijing University of Aeronautics and Astronautics**](https://ev.buaa.edu.cn/).
 
@@ -29,6 +29,22 @@ Beyond my academic pursuits, I am committed to leadership development and commun
 
 For a comprehensive overview of my education, experience, and skills, visit my [CV page](/files/cv_updated.pdf).
 
+----
+# Opportunites
+
+I am **actively seeking research internship opportunities** for summer-2026 related to **AI**, **autonomous systems**, **reinforcement learning** and/or **flight control** in academia, research labs or industry.
+If you are interested in collaboration or potential internship opportunities, feel free to reach out by [email](a.zongo@gwu.edu).
+
+----
+# 📚 Research Interests
+
+ - Multi-Agent Systems
+ - Reinforcement Learning
+ - Airspace Management and Control
+ - Advanced Air Mobility
+ - Flight Control, Guidance and Navigation
+ - Safe Generative AI for critical systems
+ - Aircraft Design and Simulation
 
 ----
 ## 🚨 Recent News

@@ -1,5 +1,6 @@
-# Ignore the contents of the _site directory
+# Ignore the contents of the _site directory and other cache directories
 _site/
+.sass-cache/
 
 # Ignore the directory for local files during development
 local/
@@ -13,4 +14,6 @@ package-lock.json
 
 .bundle/
 .jekyll-metadata
-vendor/
+/vendor/
+.vscode
+.DS_Store

@@ -10,6 +10,7 @@ source "https://rubygems.org"
 # Happy Jekylling!
 
 gem "github-pages", group: :jekyll_plugins
+gem "connection_pool", "~> 2.5.0"
 
 # If you want to use Jekyll native, uncomment the line below.
 # To upgrade, run `bundle update`.
@@ -21,8 +22,11 @@ gem "wdm", "~> 0.1.0" if Gem.win_platform?
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   # gem "jekyll-archives"
+  gem "jekyll"
   gem "jekyll-feed"
   gem 'jekyll-sitemap'
+  gem 'jekyll-redirect-from'
+  gem 'jemoji'
   gem 'hawkins'
   gem "webrick", "~> 1.8"
 end
