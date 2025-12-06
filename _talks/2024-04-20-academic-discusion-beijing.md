@@ -15,13 +15,13 @@ This academic discussion took place on April 20, 2024 in Beijing, China. I prese
 
 <div style="display:flex; justify-content:center; gap:20px;">
   <figure style="margin:0;">
-    <img src="/images/academic_discussion_beijing.jpg" alt="Academic Discussion 2024 — Beijing, China" style="width:300px; border-radius:8px;">
+    <img src="/images/academic_discussion_beijing.JPG" alt="Academic Discussion 2024 — Beijing, China" style="width:300px; border-radius:8px;">
     <figcaption style="text-align:center; font-style:italic; color:gray; margin-top:8px;">
         Academic Discussion 2024 — Beijing, China
     </figcaption>
   </figure>
   <figure style="margin:0;">
-    <img src="/images/IMG_8866.jpg" alt="Academic Discussion 2024 — Beijing, China" style="width:300px; border-radius:8px;">
+    <img src="/images/IMG_8866.JPG" alt="Academic Discussion 2024 — Beijing, China" style="width:300px; border-radius:8px;">
     <figcaption style="text-align:center; font-style:italic; color:gray; margin-top:8px;">
       Academic Discussion 2024 — Beijing, China
     </figcaption>
