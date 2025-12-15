@@ -100,3 +100,28 @@
 .badge-underreview {
   background-color: #9e9e9e; /* gray */
 }
+
+
+.blog-hero {
+  margin: 2.5em 0 3em 0;
+  padding: 1.5em 1.75em;
+
+ 
+  background-color: var(--global-bg-color-secondary);
+  color: var(--global-text-color);
+  border: 1px solid var(--global-border-color);
+  border-left: 4px solid var(--global-link-color);
+
+  border-radius: 6px;
+}
+
+.blog-hero strong {
+  display: block;
+  font-size: 1.15em;
+  margin-bottom: 0.5em;
+}
+
+.blog-hero p {
+  margin: 0;
+  line-height: 1.6;
+}

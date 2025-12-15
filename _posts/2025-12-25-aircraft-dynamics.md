@@ -1,6 +1,6 @@
 ---
 title: 'Aircraft Dynamics and Simulation From Scratch'
-date: 2025-12-15
+date: 2025-12-25
 permalink: /posts/2025/12/aircraft-dynamics/
 tags:
   - aircraft-dynamics
