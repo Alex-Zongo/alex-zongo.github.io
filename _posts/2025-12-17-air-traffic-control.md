@@ -148,7 +148,7 @@ As aviation enters an era of higher density and greater autonomy, understanding 
 If you wish to cite this article in academic work, please use the following format:
 
 **APA**
->Zongo, A. (2025). *Aircraft Traffic Control: Managing Order in a Crowded Sky.* Retrieved from https://alex-zongo.github.io/posts/2025/12/aircraft-traffic-control/
+>Zongo, A. (2025). *Aircraft Traffic Control: Managing Order in a Crowded Sky.* Retrieved from https://alex-zongo.github.io/posts/2025/12/aircraft-traffic-control/. Archived on Zenodo: https://doi.org/10.5281/zenodo.17970035
 
 
 **BibTex**
@@ -157,6 +157,7 @@ If you wish to cite this article in academic work, please use the following form
   title={Aircraft Traffic Control: Managing Order in a Crowded Sky},
   author={Zongo, Alex},
   year={2025},
+  doi={10.5281/zenodo.17970035},
   url={https://alex-zongo.github.io/posts/2025/12/aircraft-traffic-control/},
   note={Accessed: YYYY-MM-DD}
 }
