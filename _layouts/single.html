@@ -53,6 +53,8 @@ layout: default
               📰 <span class="pub-type">Journal</span>
             {% elsif page.type == "preprint" %}
               🧾 <span class="pub-type">Preprint</span>
+            {% elsif page.type == "research-essay" %}
+              📝 <span class="pub-type">Blog Post</span>
             {% elsif page.type == "under-review" or page.type == "submitted" %}
               ⏳ <span class="pub-type">Under Review</span>
             {% endif %}

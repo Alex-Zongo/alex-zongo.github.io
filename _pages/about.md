@@ -48,7 +48,7 @@ If you are interested in collaboration or potential internship opportunities, fe
 
 ----
 ## 🚨 Recent News
-
+- **December 2025:** Started a blog post series on Air Traffic Control.
 - **September 2025:** Submitted a paper titled *"Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing"* to the *American Control Conference (ACC 2026)*
 - **January 2025:** Began serving as a Teaching Assistant for MAE 3134 - Linear Systems Dynamics at George Washington University
 - **September 2024:** Hosted and organized the *Safe and Responsible AI workshop* featuring the participation of agencies such as FAA, HASS COE, John Hopkins APL, and MIT Lincoln Labs as well as institutes such as TRAILS, NIST AI, RAIUK

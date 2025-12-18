@@ -39,12 +39,14 @@
         {% if post.type == 'conference' %} badge-conference
         {% elsif post.type == 'journal' %} badge-journal
         {% elsif post.type == 'preprint' %} badge-preprint
+        {% elsif post.type == 'research-essay' %} badge-blog
         {% elsif post.type == 'under-review' or post.type == 'submitted' %} badge-underreview
         {% endif %}
       ">
         {% if post.type == "conference" %}🧠 Conference{% endif %}
         {% if post.type == "journal" %}📰 Journal{% endif %}
         {% if post.type == "preprint" %}🧾 Preprint{% endif %}
+        {% if post.type == "research-essay" %}📝 Blog Post{% endif %}
         {% if post.type == "under-review" or post.type == "submitted" %}⏳ Under Review{% endif %}
       </span>
     {% endif %}
