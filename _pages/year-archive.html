@@ -1,7 +1,7 @@
 ---
 layout: archive
 permalink: /year-archive/
-title: "Blog posts"
+title: "Research Notes & Tutorials"
 author_profile: true
 redirect_from:
   - /wordpress/blog-posts/
@@ -9,22 +9,66 @@ redirect_from:
 
 <div class="blog-hero">
 
-<strong>Air Traffic Control, Autonomy, and the Physics of the Sky</strong>
+<strong> </strong>
 
-<p>Air Traffic Control is one of the most complex control systems ever built; balancing safety, efficiency, uncertainty, and human decision-making at a global scale.  
-This blog explores modern and emerging approaches to airspace management, from classical ATC principles to physics-inspired models, reinforcement learning, multi-modal AI and autonomous conflict resolution for the future of aviation.
+<p>
+  A curated set of technical notes spanning air traffic control, aircraft dynamics and control, decision-making under uncertainty, multi-agent systems, and reinforcement learning; with reproducible experiments and implementation-focus walkthroughs.
 </p>
 
 </div>
 
 
-{% include base_path %}
-{% capture written_year %}'None'{% endcapture %}
-{% for post in site.posts %}
-  {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-  {% if year != written_year %}
-    <h2 id="{{ year | slugify }}" class="archive__subtitle">{{ year }}</h2>
-    {% capture written_year %}{{ year }}{% endcapture %}
-  {% endif %}
-  {% include archive-single.html %}
-{% endfor %}
+
+
+<style>
+.series-nav {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem 0 2.5rem 0;
+  flex-wrap: wrap;
+}
+
+.series-btn {
+  display: inline-block;
+  padding: 0.65rem 1.1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none !important;
+  border: 1.5px solid var(--mm-muted-text-color, #aaa);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.series-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.series-btn--atc {
+  background: rgba(33, 150, 243, 0.08);
+  color: #1e88e5;
+}
+
+.series-btn--dm {
+  background: rgba(110, 176, 39, 0.08);
+  color: #94aa24;
+}
+
+@media (prefers-color-scheme: dark) {
+  .series-btn {
+    border-color: #444;
+  }
+}
+</style>
+
+<p style="margin-top:1.5rem; font-weight:500;">
+  Explore by series:
+</p>
+
+<div class="series-nav">
+  <a class="series-btn series-btn--atc" href="{{ base_path }}/atc-series/">
+    ✈️ Air Traffic Control series
+  </a>
+  <a class="series-btn series-btn--dm" href="{{ base_path }}/decision-making-series/">
+    🤖 Decision-making algorithms series
+  </a>
+</div>

@@ -2,6 +2,7 @@
 title: 'Aircraft Traffic Control: Managing Order in a Crowded Sky'
 date: 2025-12-17
 permalink: /posts/2025/12/aircraft-traffic-control/
+series: atc
 categories:
   - Aviation Systems
   - Air Traffic Control
