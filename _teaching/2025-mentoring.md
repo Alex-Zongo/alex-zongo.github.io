@@ -9,7 +9,7 @@ location: "Washington, DC, USA"
 ---
 
 > **_Student research mentorship_**
-> *Intelligent Aerospace Systems Laboratory (IASL), GWU*
+> *within the Intelligent Aerospace Systems Laboratory (IASL), GWU*
 > *June 2025 - Present, Washington, DC, USA*
 
 
