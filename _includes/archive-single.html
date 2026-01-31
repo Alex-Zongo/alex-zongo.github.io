@@ -41,7 +41,7 @@
         {% elsif post.type == 'preprint' %} badge-preprint
         {% elsif post.type == 'research-essay' %} badge-blog
         {% elsif post.type == 'under-review' or post.type == 'submitted' %} badge-underreview
-        {% elsif post.type == 'under-preparation' %} badge-underpreparation
+        {% elsif post.type == 'in-preparation' %} badge-inpreparation
         {% endif %}
       ">
         {% if post.type == "conference" %}🧠 Conference{% endif %}
@@ -49,7 +49,7 @@
         {% if post.type == "preprint" %}🧾 Preprint{% endif %}
         {% if post.type == "research-essay" %}📝 Blog Post{% endif %}
         {% if post.type == "under-review" or post.type == "submitted" %}⏳ Under Review{% endif %}
-        {% if post.type == "under-preparation" %}🛠️ Under Preparation{% endif %}
+        {% if post.type == "in-preparation" %}🛠️ In Preparation{% endif %}
       </span>
     {% endif %}
     
@@ -66,7 +66,7 @@
         , {{ post.date | date: "%Y" }}
       {% endif %}
     </p>
-  {% elsif post.type == "under-preparation" %}
+  {% elsif post.type == "in-preparation" %}
     <p class="pub-venue">🛠️ <em>In preparation for {{ post.venue }}</em>
     {% if post.date %}
       , {{ post.date | date: "%Y" }}

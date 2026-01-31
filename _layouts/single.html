@@ -39,6 +39,8 @@ layout: default
         {% elsif page.venue and page.date %}
   {% if page.type == "under-review" or page.type == "submitted" %}
     <p>Submitted to <i>{{ page.venue }}</i></p>
+  {% elsif page.type == "in-preparation" %}
+    <p>In preparation for <i>{{ page.venue }}</i></p>
   {% else %}
     <p>Published in <i>{{ page.venue }}</i>, {{ page.date | date: "%Y" }}</p>
   {% endif %}
@@ -57,6 +59,8 @@ layout: default
               📝 <span class="pub-type">Blog Post</span>
             {% elsif page.type == "under-review" or page.type == "submitted" %}
               ⏳ <span class="pub-type">Under Review</span>
+            {% elsif page.type == "under-preparation" %}
+              🛠️ <span class="pub-type">In Preparation</span>
             {% endif %}
           </p>
         {% endif %}    
