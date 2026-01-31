@@ -4,7 +4,7 @@ collection: publications
 permalink: /publication/2026-01-15-eVTOL_energy_consumption
 excerpt: 'This paper addresses pre-flight energy consumption estimation and conflict resolution mechanisms for eVTOL aircraft in high-density airspaces.'
 date: 2026-01-15
-venue: 'the Integrated Communications Navigation, and Surveillance (ICNS) Conference 2026'
+venue: 'the Integrated Communications Navigation, and Surveillance (ICNS) Conference'
 paperurl: #
 slidesurl: #
 bibtexurl: #

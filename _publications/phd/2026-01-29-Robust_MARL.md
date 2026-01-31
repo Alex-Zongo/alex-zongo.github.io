@@ -4,7 +4,7 @@ collection: publications
 permalink: /publication/2026-01-29-Robust_MARL
 excerpt: 'This paper is addresses realtime separation assurance and tactical deconfliction mechanisms of small Unmanned Aerial Systems via Multi-Agent Reinforcement Learning under GNSS degradation and Spoofing.'
 date: 2026-01-29
-venue: 'the Digital Avionics Systems Conference (DASC 2026)'
+venue: 'the Digital Avionics Systems Conference (DASC)'
 paperurl: #
 slidesurl: #
 bibtexurl: #
