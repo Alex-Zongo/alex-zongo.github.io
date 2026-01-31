@@ -1,22 +1,23 @@
 ---
-title: "Teaching Assistant"
+title: "Research Mentor"
 collection: teaching
-type: "Undergraduate course"
-permalink: /teaching/2025-spring-teaching-1
-venue: "GWU, Department of Mechanical and Aerospace Engineering"
-date: 2025-01-01
+type: "Research mentorship"
+permalink: /teaching/2025-research-mentorship
+venue: "Intelligent Aerospace Systems Laboratory (IASL), GWU"
+date: 2025-06-01
 location: "Washington, DC, USA"
 ---
 
-> **_Linear System Dynamics (MAE 3134)_**
-> *George Washington University, Department of Mechanical and Aerospace Engineering*
-> *January 2025 - May 2025, Washington, DC, USA*
+> **_Student research mentorship_**
+> *Intelligent Aerospace Systems Laboratory (IASL), GWU*
+> *June 2025 - Present, Washington, DC, USA*
 
 
 ### 📘 Overview
-Serving as a Teaching Assistant for **MAE 3134 – Linear System Dynamics** allowed me to support undergraduate students in mastering control theory and dynamic system analysis. This experience strengthened both my technical and pedagogical skills.
+- Mentored an undergraduate student on introductory air traffic management simulations and research using BlueSky simulator (Summer 2025).
+- Mentoring a M.S. student research on maritime traffic simulation and multi-agent RL for separation assurance and tactical deconfliction (Fall 2025 -- Present). 
 
-### 🧩 Responsibilities
+<!-- ### 🧩 Responsibilities
 - **Graded assignments and exams** with fairness and consistency.  
 - **Led weekly recitation sessions** to clarify lecture material and guide problem-solving.  
 - **Provided one-on-one mentoring** for students seeking additional help.  
@@ -24,7 +25,7 @@ Serving as a Teaching Assistant for **MAE 3134 – Linear System Dynamics** allo
 - **Encouraged collaboration and participation** to build an engaging learning environment.
 
 ### 🌟 Impact
-Through these responsibilities, I helped students bridge theory and practice in system dynamics and gain confidence in applying analytical methods to real-world engineering problems.
+Through these responsibilities, I helped students bridge theory and practice in system dynamics and gain confidence in applying analytical methods to real-world engineering problems. -->
 
 <!-- Heading 1 -->
 <!-- ---- -->
