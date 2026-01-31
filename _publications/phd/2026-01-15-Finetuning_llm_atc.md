@@ -8,7 +8,7 @@ venue: 'the Air Transportation Research & Development (ATRD) Symposium 2026'
 paperurl: #
 slidesurl: #
 bibtexurl: #
-type: "under-preparation"
+type: "in-preparation"
 citation: # 'Your Name, You. (2024). &quot;Paper Title Number 3.&quot; <i>GitHub Journal of Bugs</i>. 1(3).'
 ---
 
