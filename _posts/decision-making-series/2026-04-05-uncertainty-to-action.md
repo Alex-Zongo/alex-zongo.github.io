@@ -1,7 +1,7 @@
 ---
 title: "Algorithms for Decision-Making: From Uncertainty to Action"
-date: 2026-02-22
-permalink: /posts/2026/02/uncertainty-to-action/
+date: 2026-04-05
+permalink: /posts/2026/04/uncertainty-to-action/
 series: decision-making
 categories:
     - Artificial Intelligence

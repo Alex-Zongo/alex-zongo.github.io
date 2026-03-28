@@ -59,7 +59,9 @@ layout: default
               📝 <span class="pub-type">Blog Post</span>
             {% elsif page.type == "under-review" or page.type == "submitted" %}
               ⏳ <span class="pub-type">Under Review</span>
-            {% elsif page.type == "under-preparation" %}
+            {% elsif page.type == "accepted" %}
+              ✅ <span class="pub-type">Accepted</span>
+            {% elsif page.type == "in-preparation" %}
               🛠️ <span class="pub-type">In Preparation</span>
             {% endif %}
           </p>
