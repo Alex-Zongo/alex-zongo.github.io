@@ -68,6 +68,12 @@
         , {{ post.date | date: "%Y" }}
       {% endif %}
     </p>
+  {% elsif post.type == "accepted" %}
+    <p class="pub-venue">✅ <em>To be presented at {{ post.venue }}</em>
+      {% if post.date %}
+        , {{ post.date | date: "%Y" }}
+      {% endif %}
+    </p>
   {% elsif post.type == "in-preparation" %}
     <p class="pub-venue">🛠️ <em>In preparation for {{ post.venue }}</em>
     {% if post.date %}
