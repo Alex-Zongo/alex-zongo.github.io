@@ -8,10 +8,10 @@ venue: 'the Control and Decision Conference (CDC) 2026'
 paperurl: #
 slidesurl: #
 bibtexurl: #
-type: "in-preparation"
+type: "under-review"
 citation: # 'Your Name, You. (2024). &quot;Paper Title Number 3.&quot; <i>GitHub Journal of Bugs</i>. 1(3).'
 ---
 
 This paper introduces a Robust Multi-Agent Reinforcement Learning framework for realtime separation assurance and tactical deconfliction mechanism for small Unmanned Aerial Systems under GPS degradation and Spoofing. 
 
->**_This manuscript is currently in preparation for presentation at CDC 2026._** 
+>**_This manuscript is currently under review for presentation at CDC 2026._** 
