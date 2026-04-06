@@ -1,6 +1,6 @@
 ---
 title: "Algorithms for Decision-Making: From Uncertainty to Action"
-date: 2026-04-05
+date: 2026-04-15
 permalink: /posts/2026/04/uncertainty-to-action/
 series: decision-making
 categories:
