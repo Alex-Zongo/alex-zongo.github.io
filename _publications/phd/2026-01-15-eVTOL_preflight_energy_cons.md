@@ -6,6 +6,7 @@ excerpt: 'This paper characterizes electric Vertical Take-off and Landing (eVTOL
 date: 2026-01-15
 venue: 'the Integrated Communications Navigation, and Surveillance (ICNS) Conference'
 paperurl: #
+preprinturl: 'https://arxiv.org/abs/2604.06093'
 slidesurl: #
 bibtexurl: #
 type: "accepted"

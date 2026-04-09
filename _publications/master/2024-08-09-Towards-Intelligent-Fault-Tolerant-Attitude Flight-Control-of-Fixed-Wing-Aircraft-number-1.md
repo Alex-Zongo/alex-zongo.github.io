@@ -7,6 +7,7 @@ date: 2024-08-09
 venue: 'Lecture Notes in Electrical Engineering, Springer Nature, International Conference in Navigation Guidance and Control (ICGNC)'
 slidesurl: "https://alex-zongo.github.io/files/icgnc24_slides.pdf"
 paperurl:  'https://doi.org/10.1007/978-981-96-2264-1_15' #'http://academicpages.github.io/files/paper1.pdf'
+preprinturl: 'https://alex-zongo.github.io/files/icgnc2024_paper_draft3.pdf'
 type: "conference"
 bibtexurl: 'https://alex-zongo.github.io/files/tsingua_master.bib'
 

@@ -6,6 +6,7 @@ excerpt: 'This paper is addresses realtime separation assurance and tactical dec
 date: 2026-03-20
 venue: 'the Control and Decision Conference (CDC) 2026'
 paperurl: #
+preprinturl: 'https://arxiv.org/abs/2603.28900'
 slidesurl: #
 bibtexurl: #
 type: "under-review"

@@ -48,7 +48,7 @@ If you are interested in collaboration or potential internship opportunities, fe
 
 ----
 ## 🚨 Recent News
-- **May 2026:** Heading to University of California, Berkeley for a research internship in the Artificial Intelligence Research (BAIR) Lab.
+- **May 2026:** Heading to University of California, Berkeley for a research internship in the Berkeley Artificial Intelligence Research (BAIR) Lab.
 <!-- - **April 2026:** Published a blog post titled *"Algorithms for Decision-Making: From Uncertainty to Action"* in the *Decision-Making Series* on this website. -->
 - **December 2025:** Started a blog post series on Air Traffic Control.
 <!-- - **September 2025:** Submitted a paper titled *"Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing"* to the *American Control Conference (ACC 2026)* -->

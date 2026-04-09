@@ -6,6 +6,7 @@ excerpt: 'This paper presents a simulation-to-language data generation pipeline 
 date: 2026-03-20
 venue: 'The 3rd Workshop on Multi-Agent Embodied Intelligent Systems Meet Agentic-AI era: Opportunities, Challenges and Futures (MEIS@CVPR 2026)'
 paperurl: #
+preprinturl: 'https://arxiv.org/abs/2603.28561v1'
 slidesurl: #
 bibtexurl: #
 type: "accepted"
