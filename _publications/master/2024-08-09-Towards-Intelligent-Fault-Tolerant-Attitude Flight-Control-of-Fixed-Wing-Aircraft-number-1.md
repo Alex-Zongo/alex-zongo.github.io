@@ -29,7 +29,7 @@ demonstrate unique traits in terms of trade-offs between trajectory tracking and
   <a href="https://alex-zongo.github.io/files/icgnc2024_paper_draft3.pdf"
      target="_blank" rel="noopener noreferrer"
      style="display:inline-block;padding:0.45rem 0.9rem;margin-right:0.6rem;border-radius:6px;background: #1f6feb;color: #fff;text-decoration:none;font-weight:600">
-    ⇱PDF
+    ⇱Preprint
   </a>
 
   <a href="https://github.com/Alex-Zongo/rl_for_ftc.git"

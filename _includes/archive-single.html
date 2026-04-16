@@ -115,24 +115,25 @@
       <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.slidesurl }}">Slides</a></p>
     {% elsif post.citation and post.bibtexurl %}
       <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.bibtexurl }}">Bibtex</a></p>
-    {% elsif post.citation %}
-      <p>Recommended citation: {{ post.citation }}</p>
     {% elsif post.paperurl and post.bibtexurl %}
       <p><a href=" {{ post.paperurl }} ">DOI</a> | <a href="{{ post.bibtexurl }}">Bibtex</a></p>
-    {% elsif post.paperurl %}
-      <p><a href=" {{ post.paperurl }} ">DOI</a></p>
     {% elsif post.slidesurl and post.bibtexurl %}
       <p><a href="{{ post.slidesurl }}">Slides</a> | <a href="{{ post.bibtexurl }}">Bibtex</a></p>
-    {% elsif post.slidesurl %}
-      <p><a href="{{ post.slidesurl }}">Slides</a></p>
-    {% elsif post.bibtexurl %}
-      <p><a href="{{ post.bibtexurl }}">Bibtex</a></p>
     {% elsif post.preprinturl and post.bibtexurl %}
       <p><a href="{{ post.preprinturl }}">Preprint</a> | <a href="{{ post.bibtexurl }}">Bibtex</a></p>
     {% elsif post.preprinturl and post.slideurl %}
       <p><a href="{{ post.preprinturl }}">Preprint</a> | <a href="{{ post.slidesurl }}">Slides</a></p>
     {% elsif post.preprinturl %}
       <p><a href="{{ post.preprinturl }}">Preprint</a></p>
+    {% elsif post.slidesurl %}
+      <p><a href="{{ post.slidesurl }}">Slides</a></p>
+    {% elsif post.bibtexurl %}
+      <p><a href="{{ post.bibtexurl }}">Bibtex</a></p>
+    {% elsif post.citation %}
+      <p>Recommended citation: {{ post.citation }}</p>
+    {% elsif post.paperurl %}
+      <p><a href=" {{ post.paperurl }} ">DOI</a></p>
+    
     {% endif %}
 
   </article>
