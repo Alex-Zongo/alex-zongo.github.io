@@ -105,6 +105,8 @@
       <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}">DOI</a> | <a href="{{ post.preprinturl }}">Preprint</a> | <a href="{{ post.bibtexurl }}">Bibtex</a></p>
     {% elsif post.citation and post.paperurl and post.bibtexurl %}
       <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}">DOI</a> | <a href="{{ post.bibtexurl }}">Bibtex</a></p>
+    {% elsif post.preprinturl and post.slidesurl %and post.bibtexurl %}
+      <p><a href="{{ post.preprinturl }}">Preprint</a> | <a href="{{ post.slidesurl }}">Slides</a></p>
     {% elsif post.citation and post.paperurl %}
       <p>Recommended citation: {{ post.citation }}<br /><a href="{{ post.paperurl }}">DOI</a></p>
     {% elsif post.citation and post.slidesurl and post.bibtexurl %}
