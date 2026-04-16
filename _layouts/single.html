@@ -74,7 +74,7 @@ layout: default
 
         {% if page.citation and page.paperurl and page.preprinturl and page.slidesurl and page.bibtexurl %}
           <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">DOI</a> | <a href="{{ page.preprinturl }}">Preprint</a> | <a href="{{ page.slidesurl }}">Slides</a> | <a href="{{ page.bibtexurl }}">Bibtex</a></p>
-        {% elsif page.preprinturl and page.slideurl %}
+        {% elsif page.preprinturl and page.slidesurl %}
           <p style="font-size: smaller"><a href="{{ page.preprinturl }}">Preprint</a> | <a href="{{ page.slidesurl }}">Slides</a></p>
         {% elsif page.citation and page.paperurl and page.preprinturl and page.slidesurl %}
           <p style="font-size: smaller">Recommended citation: {{ page.citation }}<br /><a href="{{ page.paperurl }}">DOI</a> | <a href="{{ page.preprinturl }}">Preprint</a> | <a href="{{ page.slidesurl }}">Slides</a></p>
