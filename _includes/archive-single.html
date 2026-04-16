@@ -129,6 +129,8 @@
       <p><a href="{{ post.bibtexurl }}">Bibtex</a></p>
     {% elsif post.preprinturl and post.bibtexurl %}
       <p><a href="{{ post.preprinturl }}">Preprint</a> | <a href="{{ post.bibtexurl }}">Bibtex</a></p>
+    {% elsif page.preprinturl and page.slideurl %}
+      <p><a href="{{ post.preprinturl }}">Preprint</a> | <a href="{{ post.slidesurl }}">Slides</a></p>
     {% elsif post.preprinturl %}
       <p><a href="{{ post.preprinturl }}">Preprint</a></p>
     {% endif %}
