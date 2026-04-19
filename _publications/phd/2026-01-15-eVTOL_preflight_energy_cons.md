@@ -15,4 +15,4 @@ citation: # 'Your Name, You. (2024). &quot;Paper Title Number 3.&quot; <i>GitHub
 
 This paper characterizes electric Vertical Take-off and Landing (eVTOL) aircraft energy consumption under an autonomous tactical conflict resolution framework (the Modified Voltage Potential or MVP) in an unstructured high-density airspace. It shows that the conflict resolution maneuvers in general do not significantly increase the energy consumption of eVTOLs, and that the energy overhead is more pronounced in scenarios with higher traffic density and more complex conflict situations. The findings suggest that the MVP framework can be an effective tool for managing air traffic while minimizing energy consumption, which is crucial for the sustainability of urban air mobility.
 
->**_This manuscript was accepted for presentation at ICNS 2026._** 
+>**_This manuscript was presented at ICNS 2026 (Best in-session paper award)._** 
