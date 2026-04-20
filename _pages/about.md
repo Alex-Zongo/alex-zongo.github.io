@@ -32,8 +32,10 @@ For a comprehensive overview of my education, experience, and skills, visit my [
 ----
 # Opportunites
 
-I am **actively seeking research internship opportunities** for summer-2026 related to **AI**, **autonomous systems**, **reinforcement learning** and/or **flight control** in academia, research labs or industry.
-If you are interested in collaboration or potential internship opportunities, feel free to reach out by [email](a.zongo@gwu.edu).
+<!-- I am **actively seeking research internship opportunities** for summer-2026 related to **AI**, **autonomous systems**, **reinforcement learning** and/or **flight control** in academia, research labs or industry. -->
+I am heading to **University of California, Berkeley** for a research internship in the [**Berkeley Artificial Intelligence Research (BAIR) Lab**](https://bair.berkeley.edu/people/faculty) for summer-2026.
+
+If you are interested to collaborate on some exciting projects, feel free to reach out by [email](a.zongo@gwu.edu).
 
 ----
 # 📚 Research Interests
