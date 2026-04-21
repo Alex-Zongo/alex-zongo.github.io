@@ -35,7 +35,7 @@ For a comprehensive overview of my education, experience, and skills, visit my [
 # Opportunites
 
 <!-- I am **actively seeking research internship opportunities** for summer-2026 related to **AI**, **autonomous systems**, **reinforcement learning** and/or **flight control** in academia, research labs or industry. -->
-I am heading to **University of California, Berkeley** for a research internship in the [**Berkeley Artificial Intelligence Research (BAIR) Lab**](https://bair.berkeley.edu/people/faculty) for summer-2026.
+I am heading to **University of California, Berkeley** for a research internship in the [**Center for Information Technology Research in the Interest fo Society (CITRIS)**](https://citris-uc.org/) for summer-2026.
 
 If you are interested to collaborate on some exciting projects, feel free to reach out by [email](a.zongo@gwu.edu).
 
@@ -52,7 +52,7 @@ If you are interested to collaborate on some exciting projects, feel free to rea
 
 ----
 ## 🚨 Recent News
-- **May 2026:** Heading to University of California, Berkeley for a research internship in the Berkeley Artificial Intelligence Research (BAIR) Lab.
+- **May 2026:** Heading to University of California, Berkeley for a research internship at the CITRIS and the BANATAO Institute.
 <!-- - **April 2026:** Published a blog post titled *"Algorithms for Decision-Making: From Uncertainty to Action"* in the *Decision-Making Series* on this website. -->
 - **December 2025:** Started a blog post series on Air Traffic Control.
 <!-- - **September 2025:** Submitted a paper titled *"Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing"* to the *American Control Conference (ACC 2026)* -->
