@@ -29,13 +29,13 @@ I hold a strong academic background in control science, engineering, and aircraf
 
 Beyond my academic pursuits, I am committed to leadership development and community service, and I have a strong interest in music. 
 
-For a comprehensive overview of my education, experience, and skills, visit my [CV page](/files/cv_updated.pdf).
+For a comprehensive overview of my education, experience, and skills, visit my [CV page](/files/cv.pdf).
 
 ----
 # Opportunites
 
 <!-- I am **actively seeking research internship opportunities** for summer-2026 related to **AI**, **autonomous systems**, **reinforcement learning** and/or **flight control** in academia, research labs or industry. -->
-I am heading to **University of California, Berkeley** for a research internship in the [**Center for Information Technology Research in the Interest fo Society (CITRIS)**](https://citris-uc.org/) for summer-2026.
+I am heading to **University of California, Berkeley** as a visiting researcher  at the [**Center for Information Technology Research in the Interest of Society (CITRIS) and the Banatao Institude**](https://citris-uc.org/) led by Professor [**Alexandre Bayen**](https://bayen.berkeley.edu/alex-bayen) for summer-2026.
 
 If you are interested to collaborate on some exciting projects, feel free to reach out by [email](a.zongo@gwu.edu).
 
@@ -52,7 +52,11 @@ If you are interested to collaborate on some exciting projects, feel free to rea
 
 ----
 ## 🚨 Recent News
-- **May 2026:** Heading to University of California, Berkeley for a research internship at the CITRIS and the BANATAO Institute.
+- **June 2026:** Presenting a poster *"Fine-Tuning Large Language Models for Cooperative Tactical Deconfliction of Small Unmanned Aerial Systems"* at the *Computer Vision and Pattern Recognition (CVPR 2026) Workshop* on Multi-Agent Embodied Intelligent Systems Meet Generative-AI Era (MEIS), Denver, Colorado.
+
+- **May 2026:** Presenting a poster on *"Robust MARL for Small UAS Separation Assurance under GPS Degradation and Spoofing"* at the *American Control Conference (ACC 2026) Workshop* on Autonomy in Transportation: Emerging Challenges in multi-agent planning and control, New Orleans, Louisiana.
+
+- **May 2026:** Heading to University of California, Berkeley as a Visiting Researcher at the CITRIS and the BANATAO Institute.
 <!-- - **April 2026:** Published a blog post titled *"Algorithms for Decision-Making: From Uncertainty to Action"* in the *Decision-Making Series* on this website. -->
 - **December 2025:** Started a blog post series on Air Traffic Control.
 <!-- - **September 2025:** Submitted a paper titled *"Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing"* to the *American Control Conference (ACC 2026)* -->

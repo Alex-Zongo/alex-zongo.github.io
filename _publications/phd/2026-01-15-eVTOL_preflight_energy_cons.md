@@ -9,7 +9,7 @@ paperurl: #
 preprinturl: 'https://arxiv.org/abs/2604.06093'
 slidesurl: 'https://alex-zongo.github.io/files/icns2026_presentation.pdf'
 bibtexurl: #
-type: "accepted"
+type: "conference"
 citation: # 'Your Name, You. (2024). &quot;Paper Title Number 3.&quot; <i>GitHub Journal of Bugs</i>. 1(3).'
 ---
 
