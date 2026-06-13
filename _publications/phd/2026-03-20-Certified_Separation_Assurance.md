@@ -1,6 +1,7 @@
 ---
 title: "Runtime Safety Filtering for Learned sUAS Separation Policies under GNSS Degradation"
 collection: publications
+tags: ["Separation Assurance", "Reinforcement Learning", "Robustness & Safety"]
 permalink: /publication/2026-03-20-Certified_Separation_Assurance
 excerpt: 'This paper is addresses realtime separation assurance and tactical deconfliction mechanisms of small Unmanned Aerial Systems via Multi-Agent Reinforcement Learning under GPS degradation and Spoofing.'
 date: 2026-03-20

@@ -1,0 +1,680 @@
+/* ==========================================================================
+   CUSTOM — TECHNICAL / ENGINEERED LAYER
+   Layered on top of the framework. Uses --global-* theme tokens so it
+   adapts to light / dark automatically. Safe to remove (delete the import
+   in assets/css/main.scss) to revert.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. Base polish
+   -------------------------------------------------------------------------- */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.003em;
+
+  /* Faint blueprint grid behind everything */
+  background-image:
+    linear-gradient(var(--global-grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--global-grid-color) 1px, transparent 1px);
+  background-size: 34px 34px;
+  background-position: -1px -1px;
+}
+
+a {
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.page__content {
+  p, li { letter-spacing: -0.003em; }
+}
+
+/* --------------------------------------------------------------------------
+   1. Mono section labels  —  "// section"
+   -------------------------------------------------------------------------- */
+.mono-label {
+  font-family: $mono-accent;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--global-accent);
+  margin: 0 0 0.4em;
+}
+
+.section-label {
+  margin-top: 2.6em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+/* --------------------------------------------------------------------------
+   2. Hero
+   -------------------------------------------------------------------------- */
+.hero {
+  margin: 0.5em 0 1em;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.75em;
+  align-items: center;
+}
+
+.hero__kicker {
+  margin-bottom: 0.9em;
+}
+
+.hero__name {
+  font-family: $sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.1rem, 5vw, 3rem);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  margin: 0;
+  color: var(--global-text-color);
+}
+
+.hero__status {
+  margin: 0.7em 0 0;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: $mono-accent;
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  padding: 0.32em 0.75em;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 999px;
+  background: var(--global-pill-bg);
+  color: var(--global-text-color);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--global-accent);
+  box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.5);
+  animation: pulse 2.4s infinite;
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.45); }
+  70%  { box-shadow: 0 0 0 6px rgba(37, 99, 235, 0);   }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);     }
+}
+
+.hero__tagline {
+  font-family: $mono-accent;
+  font-size: 1rem;
+  margin: 1em 0 0.6em;
+  color: var(--global-text-color);
+
+  .prompt {
+    color: var(--global-accent);
+    font-weight: 600;
+    margin-right: 0.35em;
+  }
+}
+
+.hero__blurb {
+  max-width: 42ch;
+  color: var(--global-muted-color);
+  margin: 0;
+}
+
+/* Photo frame with crosshair ticks */
+.hero__photo .frame {
+  position: relative;
+  width: 168px;
+  padding: 6px;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 10px;
+  background: var(--global-surface-color);
+}
+
+.hero__photo video {
+  display: block;
+  width: 100%;
+  border-radius: 6px;
+}
+
+.frame__tick {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border: 1.5px solid var(--global-accent);
+}
+.frame__tick--tl { top: -4px;  left: -4px;  border-right: 0; border-bottom: 0; }
+.frame__tick--tr { top: -4px;  right: -4px; border-left: 0;  border-bottom: 0; }
+.frame__tick--bl { bottom: -4px; left: -4px; border-right: 0; border-top: 0; }
+.frame__tick--br { bottom: -4px; right: -4px; border-left: 0;  border-top: 0; }
+
+/* --------------------------------------------------------------------------
+   3. Quick-link cards
+   -------------------------------------------------------------------------- */
+.hero__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85em;
+  margin-top: 2em;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35em;
+  padding: 1em 1.05em;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 8px;
+  background: var(--global-surface-color);
+  color: var(--global-text-color);
+  overflow: hidden;
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: var(--global-accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.18s ease;
+  }
+
+  &:hover {
+    border-color: var(--global-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+    color: var(--global-text-color);
+    &::before { transform: scaleY(1); }
+    .card__arrow { transform: translateX(3px); opacity: 1; }
+  }
+}
+
+.card__label {
+  font-family: $mono-accent;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: var(--global-accent);
+}
+
+.card__value {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.card__arrow {
+  position: absolute;
+  top: 0.9em;
+  right: 1em;
+  font-family: $mono-accent;
+  color: var(--global-accent);
+  opacity: 0.5;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+/* --------------------------------------------------------------------------
+   4. "now" strip
+   -------------------------------------------------------------------------- */
+.now-strip {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8em;
+  margin-top: 1.4em;
+  padding: 0.85em 1.05em;
+  border: 1px solid var(--global-surface-border);
+  border-left: 3px solid var(--global-amber);
+  border-radius: 8px;
+  background: var(--global-surface-color);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.now-strip__tag {
+  flex: none;
+  font-family: $mono-accent;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--global-amber);
+}
+
+.now-strip__body { color: var(--global-text-color); }
+
+/* --------------------------------------------------------------------------
+   5. Chips (research interests)
+   -------------------------------------------------------------------------- */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55em;
+  margin: 0.4em 0 0.6em;
+}
+
+.chip {
+  font-family: $mono-accent;
+  font-size: 0.78rem;
+  letter-spacing: 0.01em;
+  padding: 0.36em 0.72em;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 6px;
+  background: var(--global-surface-color);
+  color: var(--global-text-color);
+  transition: border-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    border-color: var(--global-accent);
+    color: var(--global-accent);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Timeline (news)
+   -------------------------------------------------------------------------- */
+.timeline {
+  position: relative;
+  margin: 0.6em 0 0;
+  padding-left: 1.2em;
+  border-left: 1px solid var(--global-border-color);
+}
+
+.tl {
+  position: relative;
+  display: grid;
+  grid-template-columns: 5.2em 1fr;
+  gap: 0.9em;
+  padding: 0.55em 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: calc(-1.2em - 4.5px);
+    top: 0.95em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--global-bg-color);
+    border: 2px solid var(--global-accent);
+  }
+}
+
+.tl__date {
+  font-family: $mono-accent;
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+  color: var(--global-muted-color);
+  padding-top: 0.15em;
+  white-space: nowrap;
+}
+
+.tl__body {
+  margin: 0;
+  line-height: 1.55;
+  color: var(--global-text-color);
+}
+
+/* --------------------------------------------------------------------------
+   7. Masthead / nav — mono uppercase
+   -------------------------------------------------------------------------- */
+.masthead {
+  border-bottom: 1px solid var(--global-border-color);
+  background: var(--global-bg-color);
+}
+
+.greedy-nav {
+  background: transparent;
+
+  .visible-links a,
+  .hidden-links a {
+    font-family: $mono-accent;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .masthead__menu-item--lg a {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  a:not(.site-title):before {
+    background: var(--global-accent);
+    height: 2px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. Publication type badges — align to mono system
+   -------------------------------------------------------------------------- */
+.pub-type-badge {
+  font-family: $mono-accent;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+
+.pub-type {
+  font-family: $mono-accent;
+  font-size: 0.82em;
+  letter-spacing: 0.04em;
+}
+
+/* --------------------------------------------------------------------------
+   9. Footer
+   -------------------------------------------------------------------------- */
+.page__footer {
+  border-top: 1px solid var(--global-border-color);
+  font-family: $mono-accent;
+  font-size: 0.78rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 700px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+  .hero__photo { order: -1; }
+  .hero__photo .frame { width: 132px; }
+  .hero__cards { grid-template-columns: 1fr; }
+  .now-strip { flex-direction: column; gap: 0.35em; }
+}
+
+/* ==========================================================================
+   PUBLICATIONS INDEX
+   ========================================================================== */
+
+/* Status accent map */
+$pub-status: (
+  conference: #2563eb,
+  journal:    #7c3aed,
+  accepted:   #16a34a,
+  review:     #d97706,
+  preprint:   #9333ea,
+  prep:       #64748b,
+  essay:      #0891b2,
+  other:      #64748b,
+);
+
+.archive .page__title {
+  font-family: $sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  margin-bottom: 0.1em;
+}
+
+.pub-kicker { margin: 0.2em 0 1em; }
+
+.pub-intro {
+  max-width: 62ch;
+  color: var(--global-muted-color);
+  margin: 0 0 1.6em;
+}
+
+/* ---- Stat strip ---- */
+.pub-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.7em;
+  margin: 0 0 1.8em;
+}
+
+.pub-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+  padding: 0.85em 1em;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 8px;
+  background: var(--global-surface-color);
+}
+
+.pub-stat__num {
+  font-family: $mono-accent;
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--global-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.pub-stat__label {
+  font-family: $mono-accent;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--global-muted-color);
+}
+
+/* ---- Filter bar ---- */
+.pub-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.9em 0 1.4em;
+  margin-bottom: 0.4em;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+.pub-filter__label {
+  font-family: $mono-accent;
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  color: var(--global-muted-color);
+  margin-right: 0.2em;
+}
+
+.pub-chip {
+  font-family: $mono-accent;
+  font-size: 0.76rem;
+  letter-spacing: 0.01em;
+  padding: 0.34em 0.74em;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 999px;
+  background: var(--global-surface-color);
+  color: var(--global-text-color);
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  &:hover { border-color: var(--global-accent); color: var(--global-accent); }
+
+  &.is-active {
+    background: var(--global-accent);
+    border-color: var(--global-accent);
+    color: #fff;
+  }
+}
+
+.pub-filter__count {
+  font-family: $mono-accent;
+  font-size: 0.74rem;
+  color: var(--global-muted-color);
+  margin-left: auto;
+}
+
+/* ---- List & sections ---- */
+.pub-list { margin-top: 0.6em; }
+
+.pub-section__head { margin-top: 2em; }
+
+.pub-empty {
+  font-family: $mono-accent;
+  color: var(--global-muted-color);
+  padding: 1.5em 0;
+}
+
+/* ---- Card ---- */
+/* [hidden] must beat the display:flex below (used by the topic filter JS) */
+.pub[hidden],
+.pub-section[hidden] { display: none !important; }
+
+.pub {
+  position: relative;
+  display: flex;
+  gap: 0;
+  margin: 0.9em 0;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 9px;
+  background: var(--global-surface-color);
+  overflow: hidden;
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+
+  &:hover {
+    border-color: var(--global-dark-border-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.pub__rail {
+  flex: none;
+  width: 4px;
+  background: var(--pub-accent, var(--global-accent));
+}
+
+.pub__body { padding: 1.05em 1.25em 1.1em; flex: 1 1 auto; min-width: 0; }
+
+.pub__head {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  margin-bottom: 0.55em;
+}
+
+.pub-badge {
+  font-family: $mono-accent;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 0.28em 0.62em;
+  border-radius: 5px;
+  color: #fff;
+  background: var(--pub-accent, var(--global-accent));
+}
+
+.pub__year {
+  font-family: $mono-accent;
+  font-size: 0.78rem;
+  color: var(--global-muted-color);
+  font-variant-numeric: tabular-nums;
+}
+
+.pub__title {
+  font-family: $sans-serif;
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4em;
+
+  a {
+    color: var(--global-text-color);
+    background-image: linear-gradient(var(--pub-accent, var(--global-accent)), var(--pub-accent, var(--global-accent)));
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.2s ease, color 0.15s ease;
+  }
+  a:hover { color: var(--pub-accent, var(--global-accent)); background-size: 100% 1.5px; }
+}
+
+.pub__venue {
+  font-size: 0.9rem;
+  color: var(--global-muted-color);
+  margin: 0 0 0.55em;
+
+  .pub__venue-mark { color: var(--pub-accent, var(--global-accent)); margin-right: 0.2em; }
+}
+
+.pub__excerpt {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--global-text-color);
+  margin: 0 0 0.7em;
+}
+
+.pub__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin: 0 0 0.85em;
+}
+
+.pub__tags .tag {
+  font-family: $mono-accent;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
+  padding: 0.22em 0.55em;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 5px;
+  color: var(--global-muted-color);
+  background: var(--global-bg-color);
+}
+
+/* ---- Action buttons ---- */
+.pub__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45em;
+}
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  font-family: $mono-accent;
+  font-size: 0.74rem;
+  letter-spacing: 0.02em;
+  padding: 0.36em 0.7em;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 6px;
+  color: var(--global-text-color);
+  background: var(--global-bg-color);
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  i { font-size: 0.85em; color: var(--global-accent); }
+
+  &:hover {
+    border-color: var(--global-accent);
+    color: var(--global-accent);
+    transform: translateY(-1px);
+  }
+
+  &.is-active { border-color: var(--global-accent); color: var(--global-accent); }
+}
+
+.btn-pill--ghost { opacity: 0.9; }
+
+.pub__cite {
+  margin-top: 0.75em;
+  padding: 0.8em 0.95em;
+  border-left: 3px solid var(--pub-accent, var(--global-accent));
+  border-radius: 0 6px 6px 0;
+  background: var(--global-code-background-color);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--global-text-color);
+}
+
+/* ---- Per-status accent (drives --pub-accent) ---- */
+@each $name, $color in $pub-status {
+  .pub--#{$name}       { --pub-accent: #{$color}; }
+  .pub-badge--#{$name} { background: #{$color}; }
+}
+
+@media (max-width: 700px) {
+  .pub-stats { grid-template-columns: repeat(2, 1fr); }
+}

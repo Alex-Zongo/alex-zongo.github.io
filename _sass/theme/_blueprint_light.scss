@@ -1,0 +1,69 @@
+/* ==========================================================================
+   BLUEPRINT THEME — LIGHT
+   Technical / engineered look: ink text, single aerospace-blue accent,
+   faint blueprint grid, monospace metadata.
+   ========================================================================== */
+
+/* Greyscale ramp (kept compatible with framework partials) */
+$gray                       : #5b6470;
+$dark-gray                  : mix(#000, $gray, 35%);
+$darker-gray                : mix(#000, $gray, 55%);
+$light-gray                 : mix(#fff, $gray, 55%);
+$lighter-gray               : mix(#fff, $gray, 88%);
+
+/* Palette */
+$ink                        : #16202c;   // primary text
+$paper                      : #fbfcfd;    // page background
+$surface                    : #ffffff;    // cards / raised surfaces
+$hairline                   : #e3e8ee;    // borders
+$accent                     : #2563eb;    // aerospace blue
+$accent-strong              : #1d4ed8;    // hover / pressed
+$accent-soft                : #eaf0ff;    // tints
+$amber                      : #b45309;    // "now / status" marker
+
+/* Site status colors */
+$danger-color               : #dc2626;
+$info-color                 : $accent;
+$notice-color               : $gray;
+$success-color              : #16a34a;
+$warning-color              : #d97706;
+
+/* Template basics */
+$border-radius              : 6px;
+$box-shadow                 : 0 1px 2px rgba(16, 32, 44, 0.06);
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 70px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 250px;
+$sidebar-screen-min-width   : 1024px;
+
+:root {
+    --global-base-color                 : #{$gray};
+    --global-bg-color                   : #{$paper};
+    --global-footer-bg-color            : #f3f5f8;
+    --global-border-color               : #{$hairline};
+    --global-dark-border-color          : #cdd5df;
+    --global-code-background-color      : #f4f6f9;
+    --global-code-text-color            : #{$darker-gray};
+    --global-fig-caption-color          : #{$gray};
+    --global-link-color                 : #{$accent};
+    --global-link-color-hover           : #{$accent-strong};
+    --global-link-color-visited         : #{$accent};
+    --global-masthead-link-color        : #{$ink};
+    --global-masthead-link-color-hover  : #{$accent};
+    --global-text-color                 : #{$ink};
+    --global-text-color-light           : #{$gray};
+    --global-thead-color                : #{$lighter-gray};
+
+    /* Custom (engineered) tokens */
+    --global-accent                     : #{$accent};
+    --global-accent-strong              : #{$accent-strong};
+    --global-accent-soft                : #{$accent-soft};
+    --global-amber                      : #{$amber};
+    --global-surface-color              : #{$surface};
+    --global-surface-border             : #{$hairline};
+    --global-grid-color                 : rgba(37, 99, 235, 0.05);
+    --global-muted-color                : #{$gray};
+    --global-pill-bg                    : #{$accent-soft};
+}

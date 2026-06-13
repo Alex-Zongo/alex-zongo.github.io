@@ -1,6 +1,7 @@
 ---
 title: "Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing"
 collection: publications
+tags: ["Multi-Agent", "Reinforcement Learning", "Separation Assurance", "Robustness & Safety"]
 permalink: /publication/2026-01-29-Robust_MARL
 excerpt: 'This paper is addresses realtime separation assurance and tactical deconfliction mechanisms of small Unmanned Aerial Systems via Multi-Agent Reinforcement Learning under GPS degradation and Spoofing. <br/><img width="500" height="300" src="/images/frame_000133.jpg">'
 # excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"

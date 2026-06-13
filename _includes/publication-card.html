@@ -1,0 +1,62 @@
+{% include base_path %}
+{%- comment -%} Status → label / modifier class {%- endcomment -%}
+{% case post.type %}
+  {% when 'journal' %}{% assign st = 'journal' %}{% assign st_label = 'Journal' %}
+  {% when 'conference' %}{% assign st = 'conference' %}{% assign st_label = 'Conference' %}
+  {% when 'accepted' %}{% assign st = 'accepted' %}{% assign st_label = 'Accepted' %}
+  {% when 'under-review' or 'submitted' %}{% assign st = 'review' %}{% assign st_label = 'Under Review' %}
+  {% when 'preprint' %}{% assign st = 'preprint' %}{% assign st_label = 'Preprint' %}
+  {% when 'in-preparation' %}{% assign st = 'prep' %}{% assign st_label = 'In Preparation' %}
+  {% when 'research-essay' %}{% assign st = 'essay' %}{% assign st_label = 'Essay' %}
+  {% else %}{% assign st = 'other' %}{% assign st_label = post.type %}
+{% endcase %}
+
+{%- capture topicslug -%}{% for t in post.tags %}{{ t | downcase | replace: ' & ', '-and-' | replace: ' ', '-' }} {% endfor %}{%- endcapture -%}
+{% assign clean_excerpt = post.excerpt | split: '<br' | first | strip_html | strip %}
+{% assign clean_venue = post.venue | strip | replace_first: 'the ', '' | replace_first: 'The ', '' %}
+
+<article class="pub pub--{{ st }}" data-status="{{ st }}" data-topics="{{ topicslug | strip }}">
+  <div class="pub__rail" aria-hidden="true"></div>
+  <div class="pub__body">
+    <div class="pub__head">
+      <span class="pub-badge pub-badge--{{ st }}">{{ st_label }}</span>
+      <span class="pub__year">{{ post.date | date: '%Y' }}</span>
+    </div>
+
+    <h3 class="pub__title">
+      <a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a>
+    </h3>
+
+    {% if clean_venue and clean_venue != '' %}
+      <p class="pub__venue"><span class="pub__venue-mark">↳</span> {{ clean_venue }}</p>
+    {% endif %}
+
+    {% if clean_excerpt and clean_excerpt != '' %}
+      <p class="pub__excerpt">{{ clean_excerpt | truncate: 230 }}</p>
+    {% endif %}
+
+    {% if post.tags %}
+      <div class="pub__tags">
+        {% for t in post.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="pub__links">
+      {% if post.paperurl %}<a class="btn-pill" href="{{ post.paperurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-link" aria-hidden="true"></i> DOI</a>{% endif %}
+      {% if post.preprinturl %}
+        {% if post.preprinturl contains 'arxiv' %}
+          <a class="btn-pill" href="{{ post.preprinturl | strip }}" target="_blank" rel="noopener"><i class="ai ai-arxiv" aria-hidden="true"></i> arXiv</a>
+        {% else %}
+          <a class="btn-pill" href="{{ post.preprinturl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Preprint</a>
+        {% endif %}
+      {% endif %}
+      {% if post.slidesurl %}<a class="btn-pill" href="{{ post.slidesurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-display" aria-hidden="true"></i> Slides</a>{% endif %}
+      {% if post.bibtexurl %}<a class="btn-pill" href="{{ post.bibtexurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> BibTeX</a>{% endif %}
+      {% if post.citation %}<button class="btn-pill btn-pill--ghost js-cite-toggle" type="button"><i class="fa-solid fa-quote-left" aria-hidden="true"></i> Cite</button>{% endif %}
+    </div>
+
+    {% if post.citation %}
+      <div class="pub__cite" hidden>{{ post.citation }}</div>
+    {% endif %}
+  </div>
+</article>

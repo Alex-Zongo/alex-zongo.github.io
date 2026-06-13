@@ -1,0 +1,70 @@
+/* ==========================================================================
+   BLUEPRINT THEME — DARK
+   Ink-dark "blueprint" surface, cyan-blue accent, faint grid.
+   Activated via html[data-theme="dark"] (existing toggle).
+   ========================================================================== */
+
+/* Greyscale ramp */
+$gray                       : #8b949e;
+$dark-gray                  : mix(#000, $gray, 35%);
+$darker-gray                : mix(#000, $gray, 55%);
+$light-gray                 : mix(#fff, $gray, 35%);
+
+/* Palette */
+$ink                        : #0d1117;   // page background
+$ink-raised                 : #161c26;   // cards / surfaces
+$ink-footer                 : #0a0e14;
+$text                       : #e6edf3;
+$hairline                   : #222b36;
+$hairline-strong            : #303a47;
+$accent                     : #38bdf8;    // sky / blueprint cyan-blue
+$accent-strong              : #7dd3fc;    // hover (lighter on dark)
+$accent-soft                : rgba(56, 189, 248, 0.12);
+$amber                      : #fbbf24;
+
+/* Site status colors */
+$danger-color               : #f87171;
+$info-color                 : $accent;
+$notice-color               : $gray;
+$success-color              : #4ade80;
+$warning-color              : #fbbf24;
+
+/* Template basics */
+$border-radius              : 6px;
+$box-shadow                 : 0 1px 2px rgba(0, 0, 0, 0.4);
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 70px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 250px;
+$sidebar-screen-min-width   : 1024px;
+
+html[data-theme="dark"] {
+    --global-base-color                 : #{$ink};
+    --global-bg-color                   : #{$ink};
+    --global-footer-bg-color            : #{$ink-footer};
+    --global-border-color               : #{$hairline};
+    --global-dark-border-color          : #{$hairline-strong};
+    --global-code-background-color      : #0b1018;
+    --global-code-text-color            : #{$text};
+    --global-fig-caption-color          : #{$gray};
+    --global-link-color                 : #{$accent};
+    --global-link-color-hover           : #{$accent-strong};
+    --global-link-color-visited         : #{$accent};
+    --global-masthead-link-color        : #{$text};
+    --global-masthead-link-color-hover  : #{$accent};
+    --global-text-color                 : #{$text};
+    --global-text-color-light           : #{$gray};
+    --global-thead-color                : #{$ink-raised};
+
+    /* Custom (engineered) tokens */
+    --global-accent                     : #{$accent};
+    --global-accent-strong              : #{$accent-strong};
+    --global-accent-soft                : #{$accent-soft};
+    --global-amber                      : #{$amber};
+    --global-surface-color              : #{$ink-raised};
+    --global-surface-border             : #{$hairline-strong};
+    --global-grid-color                 : rgba(56, 189, 248, 0.06);
+    --global-muted-color                : #{$gray};
+    --global-pill-bg                    : #{$accent-soft};
+}

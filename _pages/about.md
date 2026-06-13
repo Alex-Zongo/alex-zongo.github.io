@@ -8,16 +8,9 @@ redirect_from:
   - /about.html
 ---
 
-<!-- ![](/images/about_image_br.png){: .align-right width="250px"} -->
+{% include home-hero.html %}
 
-<div style="float: right; margin: 0 0 1em 1em; width: 150px;" >
-    <video autoplay loop muted playsinline style="width: 150px; border-radius:10px;" >
-        <source src="{{ '/images/media.mp4' | relative_url }}" type="video/mp4" >
-    </video>
-</div>
-
-<!-- ![](/images/media.mp4) -->
-📚 Hi!!
+<p class="mono-label section-label">// about</p>
 
 I am a PhD student in the [**Department of Mechanical and Aerospace Engineering**](https://mae.engineering.gwu.edu/) at  [**The George Washington University**](https://www.gwu.edu/), working under the supervision of Prof. [**Wei Peng**](https://web.seas.gwu.edu/pwei/) in the **Intelligent Aerospace Systems Lab (IASL)**. 
 
@@ -31,40 +24,73 @@ Beyond my academic pursuits, I am committed to leadership development and commun
 
 For a comprehensive overview of my education, experience, and skills, visit my [CV page](/files/cv.pdf).
 
-----
-# Opportunites
+<p class="mono-label section-label">// opportunities</p>
 
-<!-- I am **actively seeking research internship opportunities** for summer-2026 related to **AI**, **autonomous systems**, **reinforcement learning** and/or **flight control** in academia, research labs or industry. -->
-I am heading to **University of California, Berkeley** as a visiting researcher  at the [**Center for Information Technology Research in the Interest of Society (CITRIS) and the Banatao Institude**](https://citris-uc.org/) led by Professor [**Alexandre Bayen**](https://bayen.berkeley.edu/alex-bayen) for summer-2026.
+I am heading to **University of California, Berkeley** as a visiting researcher at the [**Center for Information Technology Research in the Interest of Society (CITRIS) and the Banatao Institute**](https://citris-uc.org/) led by Professor [**Alexandre Bayen**](https://bayen.berkeley.edu/alex-bayen) for summer-2026.
 
-If you are interested to collaborate on some exciting projects, feel free to reach out by [email](a.zongo@gwu.edu).
+If you are interested to collaborate on some exciting projects, feel free to reach out by [email](mailto:a.zongo@gwu.edu).
 
-----
-# 📚 Research Interests
+<p class="mono-label section-label">// research interests</p>
 
- - Multi-Agent Systems
- - Reinforcement Learning
- - Airspace Management and Control
- - Advanced Air Mobility
- - Flight Control, Guidance and Navigation
- - Safe Generative AI for critical systems
- - Aircraft Design and Simulation
+<div class="chips">
+  <span class="chip">Multi-Agent Systems</span>
+  <span class="chip">Reinforcement Learning</span>
+  <span class="chip">Airspace Management &amp; Control</span>
+  <span class="chip">Advanced Air Mobility</span>
+  <span class="chip">Flight Control, Guidance &amp; Navigation</span>
+  <span class="chip">Safe Generative AI for Critical Systems</span>
+  <span class="chip">Aircraft Design &amp; Simulation</span>
+</div>
 
-----
-## 🚨 Recent News
-- **June 2026:** Presenting a poster *"Fine-Tuning Large Language Models for Cooperative Tactical Deconfliction of Small Unmanned Aerial Systems"* at the *Computer Vision and Pattern Recognition (CVPR 2026) Workshop* on Multi-Agent Embodied Intelligent Systems Meet Generative-AI Era (MEIS), Denver, Colorado.
+<p class="mono-label section-label">// recent news</p>
+<div class="timeline" markdown="1">
 
-- **May 2026:** Presenting a poster on *"Robust MARL for Small UAS Separation Assurance under GPS Degradation and Spoofing"* at the *American Control Conference (ACC 2026) Workshop* on Autonomy in Transportation: Emerging Challenges in multi-agent planning and control, New Orleans, Louisiana.
+<div class="tl" markdown="1">
+<span class="tl__date">Jun 2026</span>
+<div class="tl__body" markdown="span">Presenting a poster *"Fine-Tuning Large Language Models for Cooperative Tactical Deconfliction of Small Unmanned Aerial Systems"* at the *CVPR 2026 Workshop* on Multi-Agent Embodied Intelligent Systems Meet the Generative-AI Era (MEIS), Denver, Colorado.</div>
+</div>
 
-- **May 2026:** Heading to University of California, Berkeley as a Visiting Researcher at the CITRIS and the BANATAO Institute.
-<!-- - **April 2026:** Published a blog post titled *"Algorithms for Decision-Making: From Uncertainty to Action"* in the *Decision-Making Series* on this website. -->
-- **December 2025:** Started a blog post series on Air Traffic Control.
-<!-- - **September 2025:** Submitted a paper titled *"Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing"* to the *American Control Conference (ACC 2026)* -->
-- **January 2025:** Began serving as a Teaching Assistant for MAE 3134 - Linear Systems Dynamics at George Washington University
-- **September 2024:** Hosted and organized the *Safe and Responsible AI workshop* featuring the participation of agencies such as FAA, HASS COE, John Hopkins APL, and MIT Lincoln Labs as well as institutes such as TRAILS, NIST AI, RAIUK
-- **August 2024:** Started my PhD and research assistantship in Mechanical and Aerospace Engineering at George Washington University
-- **August 2024:** Presented my research on *Fault-Tolerant Flight Control* at the *International Conference on Guidance Navigation and Control (ICGN 2024)*
-- **May 2024:** Graduated with a Master's in Control Science and Engineering from [Tsinghua University](https://www.tsinghua.edu.cn/en/) 
+<div class="tl" markdown="1">
+<span class="tl__date">May 2026</span>
+<div class="tl__body" markdown="span">Presenting a poster on *"Robust MARL for Small UAS Separation Assurance under GPS Degradation and Spoofing"* at the *ACC 2026 Workshop* on Autonomy in Transportation, New Orleans, Louisiana.</div>
+</div>
+
+<div class="tl" markdown="1">
+<span class="tl__date">May 2026</span>
+<div class="tl__body" markdown="span">Heading to **University of California, Berkeley** as a Visiting Researcher at the CITRIS &amp; Banatao Institute.</div>
+</div>
+
+<div class="tl" markdown="1">
+<span class="tl__date">Dec 2025</span>
+<div class="tl__body" markdown="span">Started a blog post series on Air Traffic Control.</div>
+</div>
+
+<div class="tl" markdown="1">
+<span class="tl__date">Jan 2025</span>
+<div class="tl__body" markdown="span">Began serving as a Teaching Assistant for *MAE 3134 — Linear Systems Dynamics* at George Washington University.</div>
+</div>
+
+<div class="tl" markdown="1">
+<span class="tl__date">Sep 2024</span>
+<div class="tl__body" markdown="span">Hosted and organized the *Safe and Responsible AI workshop*, featuring the FAA, HASS COE, Johns Hopkins APL, and MIT Lincoln Labs, as well as TRAILS, NIST AI, and RAI UK.</div>
+</div>
+
+<div class="tl" markdown="1">
+<span class="tl__date">Aug 2024</span>
+<div class="tl__body" markdown="span">Started my PhD and research assistantship in Mechanical and Aerospace Engineering at George Washington University.</div>
+</div>
+
+<div class="tl" markdown="1">
+<span class="tl__date">Aug 2024</span>
+<div class="tl__body" markdown="span">Presented my research on *Fault-Tolerant Flight Control* at the *International Conference on Guidance, Navigation and Control (ICGNC 2024)*.</div>
+</div>
+
+<div class="tl" markdown="1">
+<span class="tl__date">May 2024</span>
+<div class="tl__body" markdown="span">Graduated with a Master's in Control Science and Engineering from [Tsinghua University](https://www.tsinghua.edu.cn/en/).</div>
+</div>
+
+</div>
 
 <!-- 📚 Hi, this is Alex. I am a PhD student in Mechanical and Aerospace Engineering at George Washington University.
 

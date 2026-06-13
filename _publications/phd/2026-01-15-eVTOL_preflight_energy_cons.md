@@ -1,6 +1,7 @@
 ---
 title: "eVTOL Aircraft Energy Overhead Estimation under Conflict Resolution in High-Density Airspaces"
 collection: publications
+tags: ["Advanced Air Mobility", "Separation Assurance"]
 permalink: /publication/2026-01-15-eVTOL_energy_consumption
 excerpt: 'This paper characterizes electric Vertical Take-off and Landing (eVTOL) aircraft energy consumption under an autonomous tactical conflict resolution framework (the Modified Voltage Potential or MVP) in an unstructured high-density airspace. <br/><img width="500" height="300" src="/images/icns_overview.png">'
 date: 2026-01-15

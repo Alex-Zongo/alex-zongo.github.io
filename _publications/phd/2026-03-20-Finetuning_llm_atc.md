@@ -1,6 +1,7 @@
 ---
 title: "Fine-Tuning Large Language Models for Cooperative Tactical Deconfliction of Small Unmanned Aerial Systems"
 collection: publications
+tags: ["LLMs", "Air Traffic Control", "Multi-Agent"]
 permalink: /publication/2026-03-20-finetuning_llm_atc
 excerpt: 'This paper presents a simulation-to-language data generation pipeline using BlueSky ATM for fine-tuning Large Language Models on cooperative tactical deconfliction of small UAS, achieving improved decision accuracy and reduced near mid-air collisions through parameter-efficient fine-tuning (LoRA, GRPO). <br/><img width="500" height="300" src="/images/LLM_ATC_BLOCK.png">'
 date: 2026-03-20

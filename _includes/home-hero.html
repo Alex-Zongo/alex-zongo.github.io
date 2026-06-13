@@ -1,0 +1,55 @@
+{% include base_path %}
+<section class="hero" aria-label="Introduction">
+  <div class="hero__grid">
+    <div class="hero__main">
+      <p class="mono-label hero__kicker">// aerospace · autonomy · ai</p>
+      <h1 class="hero__name">Alex&nbsp;B.&nbsp;Zongo</h1>
+      <p class="hero__status">
+        <span class="status-pill"><span class="status-dot"></span>PhD&nbsp;·&nbsp;GWU&nbsp;·&nbsp;IASL</span>
+      </p>
+      <p class="hero__tagline"><span class="prompt">&gt;</span> safe multi-agent RL for aerospace systems</p>
+      <p class="hero__blurb">
+        I build robust machine learning and reinforcement learning algorithms for the airspace of
+        tomorrow, including separation assurance, advanced air mobility, and flight control.
+      </p>
+    </div>
+
+    <div class="hero__photo">
+      <div class="frame">
+        <span class="frame__tick frame__tick--tl"></span>
+        <span class="frame__tick frame__tick--tr"></span>
+        <span class="frame__tick frame__tick--bl"></span>
+        <span class="frame__tick frame__tick--br"></span>
+        <video autoplay loop muted playsinline>
+          <source src="{{ '/images/media_2.MP4' | relative_url }}" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__cards">
+    <a class="card" href="{{ base_path }}/#-research-interests">
+      <span class="card__label">RESEARCH</span>
+      <span class="card__value">Safe MARL · ATC · AAM</span>
+      <span class="card__arrow">→</span>
+    </a>
+    <a class="card" href="{{ base_path }}/publications/">
+      <span class="card__label">PAPERS</span>
+      <span class="card__value">Publications &amp; preprints</span>
+      <span class="card__arrow">→</span>
+    </a>
+    <a class="card" href="{{ base_path }}/talks/">
+      <span class="card__label">TALKS</span>
+      <span class="card__value">CVPR&nbsp;’26 · ACC&nbsp;’26</span>
+      <span class="card__arrow">→</span>
+    </a>
+  </div>
+
+  <div class="now-strip">
+    <span class="now-strip__tag">[ now ]</span>
+    <span class="now-strip__body">
+      Visiting Researcher → <strong>UC Berkeley</strong> (CITRIS &amp; Banatao Institute,
+      Prof. Alexandre Bayen), summer&nbsp;2026.
+    </span>
+  </div>
+</section>

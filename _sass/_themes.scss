@@ -15,8 +15,11 @@ $indent-var                 : 1.3em;
 
 /* System typefaces */
 $serif                      : Georgia, Times, serif;
-$sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
-$monospace                  : Monaco, Consolas, "Lucida Console", monospace;
+$sans-serif                 : "IBM Plex Sans", -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+$monospace                  : "IBM Plex Mono", Monaco, Consolas, "Lucida Console", monospace;
+
+/* Mono accent — section labels, status pills, metadata */
+$mono-accent                : "IBM Plex Mono", Monaco, Consolas, monospace;
 
 /* Sans serif typefaces */
 $sans-serif-narrow          : $sans-serif;
