@@ -6,6 +6,8 @@ permalink: /talks/2024-04-20-academic-discusion
 venue: "The Future of AI | Beijing Universities Artificial Intelligence Academic Forum and Tsinghua University's 739th Ph.D Academic Discussion"
 date: 2024-04-20
 location: "Beijing, China"
+excerpt: "Presented my research on intelligent fault-tolerant control of fixed-wing aircraft at Tsinghua University's 739th Ph.D Academic Discussion."
+link: "https://mp.weixin.qq.com/s/BJ58fpkuwQBFn3CHLJ8CnA"
 ---
 
 [More information](https://mp.weixin.qq.com/s/BJ58fpkuwQBFn3CHLJ8CnA)

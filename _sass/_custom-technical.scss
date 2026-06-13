@@ -678,3 +678,193 @@ $pub-status: (
 @media (max-width: 700px) {
   .pub-stats { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ==========================================================================
+   TALKS & TEACHING — shared entry card (.ecard)
+   ========================================================================== */
+
+$entry-accent: (
+  conference: #2563eb,
+  discussion: #7c3aed,
+  webinar:    #0891b2,
+  invited:    #16a34a,
+  workshop:   #d97706,
+  teaching:   #2563eb,
+  mentoring:  #16a34a,
+  other:      #64748b,
+);
+
+.ecard {
+  position: relative;
+  display: flex;
+  margin: 0.9em 0;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 9px;
+  background: var(--global-surface-color);
+  overflow: hidden;
+  transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+
+  &:hover {
+    border-color: var(--global-dark-border-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.ecard__rail {
+  flex: none;
+  width: 4px;
+  background: var(--ecard-accent, var(--global-accent));
+}
+
+.ecard__body { padding: 1.05em 1.25em 1.1em; flex: 1 1 auto; min-width: 0; }
+
+.ecard__head {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  margin-bottom: 0.55em;
+}
+
+.ecard-badge {
+  font-family: $mono-accent;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  padding: 0.28em 0.62em;
+  border-radius: 5px;
+  color: #fff;
+  background: var(--ecard-accent, var(--global-accent));
+}
+
+.ecard__date {
+  font-family: $mono-accent;
+  font-size: 0.78rem;
+  color: var(--global-muted-color);
+  font-variant-numeric: tabular-nums;
+}
+
+.ecard__title {
+  font-family: $sans-serif;
+  font-size: 1.12rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.35em;
+
+  a {
+    color: var(--global-text-color);
+    background-image: linear-gradient(var(--ecard-accent, var(--global-accent)), var(--ecard-accent, var(--global-accent)));
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.2s ease, color 0.15s ease;
+  }
+  a:hover { color: var(--ecard-accent, var(--global-accent)); background-size: 100% 1.5px; }
+}
+
+.ecard__course {
+  font-family: $mono-accent;
+  font-size: 0.82rem;
+  color: var(--ecard-accent, var(--global-accent));
+  margin: 0 0 0.4em;
+}
+
+.ecard__venue {
+  font-size: 0.9rem;
+  color: var(--global-muted-color);
+  margin: 0 0 0.25em;
+
+  .ecard__mark { color: var(--ecard-accent, var(--global-accent)); margin-right: 0.2em; }
+}
+
+.ecard__meta {
+  font-size: 0.82rem;
+  color: var(--global-muted-color);
+  margin: 0 0 0.55em;
+
+  i { color: var(--ecard-accent, var(--global-accent)); margin-right: 0.35em; font-size: 0.9em; }
+}
+
+.ecard__excerpt {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--global-text-color);
+  margin: 0 0 0.7em;
+}
+
+.ecard__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45em;
+}
+
+@each $name, $color in $entry-accent {
+  .ecard--#{$name}       { --ecard-accent: #{$color}; }
+  .ecard-badge--#{$name} { background: #{$color}; }
+}
+
+/* ==========================================================================
+   MISC — "Beyond Research" panels
+   ========================================================================== */
+
+.misc-panel {
+  margin: 0.4em 0 1.6em;
+
+  blockquote {
+    margin: 0.6em 0 1.2em;
+    padding: 0.9em 1.2em;
+    border: 1px solid var(--global-surface-border);
+    border-left: 3px solid var(--global-accent);
+    border-radius: 0 8px 8px 0;
+    background: var(--global-surface-color);
+    color: var(--global-text-color);
+    font-style: normal;
+
+    p { margin: 0.3em 0; }
+    strong em, em strong { color: var(--global-text-color); }
+  }
+}
+
+.misc-frame {
+  position: relative;
+  padding: 6px;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 10px;
+  background: var(--global-surface-color);
+
+  img, iframe { display: block; width: 100%; border-radius: 6px; }
+}
+
+.misc-frame--video {
+  max-width: 620px;
+
+  iframe { aspect-ratio: 16 / 9; height: auto; }
+}
+
+.misc-caption {
+  font-family: $mono-accent;
+  font-size: 0.76rem;
+  color: var(--global-muted-color);
+  margin: 0.6em 0 0;
+}
+
+.misc-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.1em;
+  margin-top: 0.8em;
+}
+
+.misc-shot {
+  margin: 0;
+
+  figcaption {
+    font-family: $mono-accent;
+    font-size: 0.74rem;
+    color: var(--global-muted-color);
+    text-align: center;
+    margin-top: 0.6em;
+  }
+}

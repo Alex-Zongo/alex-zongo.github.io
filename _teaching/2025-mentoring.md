@@ -6,6 +6,8 @@ permalink: /teaching/2025-research-mentorship
 venue: "Intelligent Aerospace Systems Laboratory (IASL), GWU"
 date: 2025-06-01
 location: "Washington, DC, USA"
+period: "Jun 2025 – Present"
+excerpt: "Mentoring undergraduate and M.S. students on air/maritime traffic simulation and multi-agent RL for separation assurance and tactical deconfliction."
 ---
 
 > **_Student research mentorship_**

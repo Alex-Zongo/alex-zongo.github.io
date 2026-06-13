@@ -1,12 +1,37 @@
 ---
 layout: archive
-title: "👨🏾‍🏫 Teaching & Mentoring"
+title: "Teaching & Mentoring"
 permalink: /teaching/
 author_profile: true
 ---
 
 {% include base_path %}
 
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+{% assign items = site.teaching | sort: 'date' | reverse %}
+{% assign n_teach = 0 %}{% assign n_mentor = 0 %}
+{% for p in site.teaching %}{% assign tt = p.type | downcase %}{% if tt contains 'mentor' %}{% assign n_mentor = n_mentor | plus: 1 %}{% else %}{% assign n_teach = n_teach | plus: 1 %}{% endif %}{% endfor %}
+
+<p class="mono-label pub-kicker">// teaching &amp; mentoring</p>
+
+<p class="pub-intro">
+  Helping students bridge theory and practice — from control-systems coursework to
+  hands-on research mentorship in safe autonomy.
+</p>
+
+<div class="pub-list">
+
+{% if n_teach > 0 %}
+<section class="pub-section">
+  <p class="mono-label section-label pub-section__head">// teaching</p>
+  {% for post in items %}{% assign tt = post.type | downcase %}{% unless tt contains 'mentor' %}{% include teaching-card.html %}{% endunless %}{% endfor %}
+</section>
+{% endif %}
+
+{% if n_mentor > 0 %}
+<section class="pub-section">
+  <p class="mono-label section-label pub-section__head">// mentoring</p>
+  {% for post in items %}{% assign tt = post.type | downcase %}{% if tt contains 'mentor' %}{% include teaching-card.html %}{% endif %}{% endfor %}
+</section>
+{% endif %}
+
+</div>

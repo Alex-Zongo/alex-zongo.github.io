@@ -6,6 +6,9 @@ permalink: /teaching/2025-spring-teaching-1
 venue: "GWU, Department of Mechanical and Aerospace Engineering"
 date: 2025-01-01
 location: "Washington, DC, USA"
+period: "Jan 2025 – May 2025"
+course: "MAE 3134 — Linear System Dynamics"
+excerpt: "Teaching Assistant for Linear System Dynamics — led recitations, graded assignments and exams, and mentored undergraduates in control theory."
 ---
 
 > **_Linear System Dynamics (MAE 3134)_**

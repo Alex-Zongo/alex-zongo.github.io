@@ -1,16 +1,26 @@
 ---
 layout: archive
-title: "Talks and presentations"
+title: "Talks & Presentations"
 permalink: /talks/
 author_profile: true
 ---
 
+{% include base_path %}
+
+{% assign talks = site.talks | sort: 'date' | reverse %}
+{% assign n_talks = site.talks | size %}
+
+<p class="mono-label pub-kicker">// invited &amp; conference talks · {{ n_talks }} entries</p>
+
+<p class="pub-intro">
+  Selected talks, conference presentations, and webinars — from technical research
+  to outreach that inspires the next generation of aerospace engineers.
+</p>
+
 {% if site.talkmap_link == true %}
-
-<p style="text-decoration:underline;"><a href="/talkmap.html">See a map of all the places I've given a talk!</a></p>
-
+<p class="pub-intro"><a href="/talkmap.html">🗺️ See a map of all the places I've given a talk →</a></p>
 {% endif %}
 
-{% for post in site.talks reversed %}
-  {% include archive-single-talk.html %}
-{% endfor %}
+<div class="pub-list">
+  {% for post in talks %}{% include talk-card.html %}{% endfor %}
+</div>

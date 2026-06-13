@@ -1,0 +1,33 @@
+{% include base_path %}
+{%- comment -%} Map free-form talk type → modifier / label {%- endcomment -%}
+{% assign t = post.type | downcase %}
+{% if t contains 'conference' or t contains 'proceedings' %}{% assign tk = 'conference' %}{% assign tk_label = 'Conference Talk' %}
+{% elsif t contains 'webinar' %}{% assign tk = 'webinar' %}{% assign tk_label = 'Webinar' %}
+{% elsif t contains 'invited' %}{% assign tk = 'invited' %}{% assign tk_label = 'Invited Talk' %}
+{% elsif t contains 'seminar' or t contains 'workshop' %}{% assign tk = 'workshop' %}{% assign tk_label = post.type %}
+{% elsif t contains 'academic' or t contains 'discussion' %}{% assign tk = 'discussion' %}{% assign tk_label = 'Academic Discussion' %}
+{% else %}{% assign tk = 'other' %}{% assign tk_label = post.type %}
+{% endif %}
+
+<article class="ecard ecard--{{ tk }}">
+  <div class="ecard__rail" aria-hidden="true"></div>
+  <div class="ecard__body">
+    <div class="ecard__head">
+      <span class="ecard-badge ecard-badge--{{ tk }}">{{ tk_label }}</span>
+      <span class="ecard__date">{{ post.date | date: '%b %Y' }}</span>
+    </div>
+
+    <h3 class="ecard__title"><a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a></h3>
+
+    {% if post.venue %}<p class="ecard__venue"><span class="ecard__mark">↳</span> {{ post.venue }}</p>{% endif %}
+    {% if post.location %}<p class="ecard__meta"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ post.location }}</p>{% endif %}
+
+    {% if post.excerpt %}<p class="ecard__excerpt">{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}</p>{% endif %}
+
+    <div class="ecard__links">
+      {% if post.slidesurl %}<a class="btn-pill" href="{{ post.slidesurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-display" aria-hidden="true"></i> Slides</a>{% endif %}
+      {% if post.link %}<a class="btn-pill" href="{{ post.link | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Info</a>{% endif %}
+      <a class="btn-pill btn-pill--ghost" href="{{ base_path }}{{ post.url }}">Details →</a>
+    </div>
+  </div>
+</article>
