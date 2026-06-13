@@ -141,11 +141,36 @@ author_profile: true
   document.querySelectorAll('.js-cite-toggle').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var cite = btn.closest('.pub__links').nextElementSibling;
-      if (cite && cite.classList.contains('pub__cite')) {
-        var open = !cite.hasAttribute('hidden');
-        if (open) { cite.setAttribute('hidden', ''); btn.classList.remove('is-active'); }
-        else { cite.removeAttribute('hidden'); btn.classList.add('is-active'); }
-      }
+      if (!cite || !cite.classList.contains('pub__cite')) return;
+      var open = cite.hasAttribute('hidden');
+      if (open) { cite.removeAttribute('hidden'); btn.classList.add('is-active'); btn.setAttribute('aria-expanded', 'true'); }
+      else { cite.setAttribute('hidden', ''); btn.classList.remove('is-active'); btn.setAttribute('aria-expanded', 'false'); }
+    });
+  });
+
+  // Copy citation to clipboard
+  function copyText(text) {
+    var ok = false;
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+    } catch (e) { ok = false; }
+    if (!ok && navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text);
+    }
+  }
+  document.querySelectorAll('.js-cite-copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var box = btn.closest('.pub__cite');
+      copyText(box ? box.querySelector('.pub__cite-text').textContent.trim() : '');
+      var html = btn.innerHTML;
+      btn.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i> Copied';
+      btn.classList.add('is-copied');
+      setTimeout(function () { btn.innerHTML = html; btn.classList.remove('is-copied'); }, 1600);
     });
   });
 })();

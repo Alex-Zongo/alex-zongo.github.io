@@ -2,6 +2,28 @@
 title: "Towards Intelligent Fault-Tolerant Attitude Flight Control of Fixed-Wing Aircraft"
 collection: publications
 tags: ["Flight Control", "Reinforcement Learning", "Robustness & Safety"]
+authors: "**Alex B. Zongo**, Li Qing"
+abstract: >
+  Submitted as part of the author's master's thesis, this work investigates reinforcement-learning
+  approaches for fault-tolerant attitude flight control of fixed-wing aircraft. The goal is an intelligent
+  controller that adapts to actuator faults and disturbances while maintaining stable attitude tracking,
+  moving toward more resilient flight-control systems for autonomous aircraft.
+tldr:
+  - "Applies **reinforcement learning** to **attitude flight control** of fixed-wing aircraft."
+  - "Targets **fault-tolerant** control that adapts to actuator faults and disturbances."
+figure: "/images/cemtd3_adaptation_diag.png"
+figure_caption: "Adaptation scheme of the proposed intelligent fault-tolerant attitude controller."
+bibtex: |
+  @inproceedings{zongo2025towards,
+    title     = {Towards Intelligent Fault-Tolerant Attitude Control of Fixed-Wing Aircraft},
+    author    = {Zongo, Alex B. and Qing, Li},
+    booktitle = {Advances in Guidance, Navigation and Control (ICGNC 2024)},
+    series    = {Lecture Notes in Electrical Engineering},
+    volume    = {1353},
+    year      = {2025},
+    publisher = {Springer, Singapore},
+    doi       = {10.1007/978-981-96-2264-1_15}
+  }
 permalink: /publication/2024-08-09-Towards-Intelligent-Fault-Tolerant-Attitude Flight-Control-of-Fixed-Wing-Aircraft-number-1
 excerpt: 'This paper was submitted as part of my master thesis. It delves into the use of Reinforcement Learning to enhance fault-tolerance in fixed-wing aircraft attitude flight control. <br/><img width="500" height="300" src="/images/cemtd3_adaptation_diag.png">'
 date: 2024-08-09
@@ -10,7 +32,7 @@ slidesurl: "https://alex-zongo.github.io/files/icgnc24_slides.pdf"
 paperurl:  'https://doi.org/10.1007/978-981-96-2264-1_15' #'http://academicpages.github.io/files/paper1.pdf'
 preprinturl: 'https://alex-zongo.github.io/files/icgnc2024_paper_draft3.pdf'
 type: "conference"
-bibtexurl: 'https://alex-zongo.github.io/files/tsingua_master.bib'
+bibtexurl: '/files/tsinghua_master.bib'
 
 citation: 'Zongo, A.B., Qing, L. (2025). &quot;Towards Intelligent Fault-Tolerant Attitude Control of Fixed-Wing Aircraft.&quot; In: Yan, L., Duan, H., Deng, Y. (eds).<i>Advances in Guidance, Navigation and Control. ICGNC 2024</i>. Lecture Notes in Electrical Engineering, vol 1353. Springer, Singapore.'
 ---

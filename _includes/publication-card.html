@@ -51,12 +51,18 @@
         {% endif %}
       {% endif %}
       {% if post.slidesurl %}<a class="btn-pill" href="{{ post.slidesurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-display" aria-hidden="true"></i> Slides</a>{% endif %}
-      {% if post.bibtexurl %}<a class="btn-pill" href="{{ post.bibtexurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> BibTeX</a>{% endif %}
-      {% if post.citation %}<button class="btn-pill btn-pill--ghost js-cite-toggle" type="button"><i class="fa-solid fa-quote-left" aria-hidden="true"></i> Cite</button>{% endif %}
+      {% if post.bibtexurl %}{% assign bib = post.bibtexurl | strip %}{% unless bib contains '://' %}{% assign bib = bib | prepend: base_path %}{% endunless %}<a class="btn-pill" href="{{ bib }}" download><i class="fa-solid fa-quote-right" aria-hidden="true"></i> BibTeX</a>{% endif %}
+      {% if post.citation %}<button class="btn-pill btn-pill--ghost js-cite-toggle" type="button" aria-expanded="false"><i class="fa-solid fa-quote-left" aria-hidden="true"></i> Cite</button>{% endif %}
     </div>
 
     {% if post.citation %}
-      <div class="pub__cite" hidden>{{ post.citation }}</div>
+      <div class="pub__cite" hidden>
+        <div class="pub__cite-head">
+          <span class="pub__cite-label">Recommended citation</span>
+          <button class="pub__cite-copy js-cite-copy" type="button"><i class="fa-solid fa-copy" aria-hidden="true"></i> Copy</button>
+        </div>
+        <p class="pub__cite-text">{{ post.citation }}</p>
+      </div>
     {% endif %}
   </div>
 </article>

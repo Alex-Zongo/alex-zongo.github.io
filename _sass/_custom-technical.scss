@@ -660,10 +660,51 @@ $pub-status: (
 
 .pub__cite {
   margin-top: 0.75em;
-  padding: 0.8em 0.95em;
+  padding: 0.7em 0.95em 0.85em;
   border-left: 3px solid var(--pub-accent, var(--global-accent));
   border-radius: 0 6px 6px 0;
   background: var(--global-code-background-color);
+}
+
+.pub__cite-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6em;
+  margin-bottom: 0.4em;
+}
+
+.pub__cite-label {
+  font-family: $mono-accent;
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--global-muted-color);
+}
+
+.pub__cite-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-family: $mono-accent;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  padding: 0.26em 0.6em;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 5px;
+  background: var(--global-surface-color);
+  color: var(--global-text-color);
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  i { color: var(--global-accent); }
+
+  &:hover { border-color: var(--global-accent); color: var(--global-accent); }
+  &.is-copied { border-color: var(--global-accent); color: var(--global-accent); }
+}
+
+.pub__cite-text {
+  margin: 0;
   font-size: 0.82rem;
   line-height: 1.55;
   color: var(--global-text-color);
@@ -867,4 +908,216 @@ $entry-accent: (
     text-align: center;
     margin-top: 0.6em;
   }
+}
+
+/* ==========================================================================
+   PAPER DETAIL PAGE
+   ========================================================================== */
+
+.paper {
+  --pub-accent: var(--global-accent);
+  max-width: 50rem;
+}
+
+/* Reuse status accents on the detail page */
+@each $name, $color in $pub-status {
+  .paper--#{$name} { --pub-accent: #{$color}; }
+}
+
+.paper__back {
+  display: inline-block;
+  font-family: $mono-accent;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  color: var(--global-muted-color);
+  margin-bottom: 1.4em;
+
+  &:hover { color: var(--pub-accent); }
+}
+
+.paper__head {
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  margin-bottom: 0.7em;
+}
+
+.paper__year {
+  font-family: $mono-accent;
+  font-size: 0.8rem;
+  color: var(--global-muted-color);
+}
+
+.paper__title {
+  font-family: $sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.5em;
+  color: var(--global-text-color);
+}
+
+.paper__authors {
+  font-size: 1.02rem;
+  line-height: 1.5;
+  margin: 0 0 0.45em;
+  color: var(--global-muted-color);
+
+  strong { color: var(--global-text-color); }
+}
+
+.paper__venue {
+  font-size: 0.92rem;
+  color: var(--global-muted-color);
+  margin: 0 0 0.9em;
+
+  .paper__mark { color: var(--pub-accent); margin-right: 0.2em; }
+}
+
+.paper__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin: 0 0 1.2em;
+
+  .tag {
+    font-family: $mono-accent;
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    padding: 0.24em 0.6em;
+    border: 1px solid var(--global-surface-border);
+    border-radius: 5px;
+    color: var(--global-muted-color);
+    background: var(--global-surface-color);
+  }
+}
+
+.paper__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  padding-bottom: 1.6em;
+  margin-bottom: 0.4em;
+  border-bottom: 1px solid var(--global-border-color);
+}
+
+/* Solid (primary) action buttons — arXiv / DOI / PDF / Read */
+.btn-pill--solid {
+  background: var(--pub-accent);
+  border-color: var(--pub-accent);
+  color: #fff;
+
+  i { color: #fff; }
+
+  &:hover {
+    background: var(--global-accent-strong);
+    border-color: var(--global-accent-strong);
+    color: #fff;
+    i { color: #fff; }
+  }
+}
+
+.paper__figure {
+  margin: 1.8em 0 0.5em;
+
+  .misc-frame { max-width: 100%; }
+  img { max-height: 460px; object-fit: contain; }
+
+  figcaption {
+    font-family: $mono-accent;
+    font-size: 0.74rem;
+    color: var(--global-muted-color);
+    text-align: center;
+    margin-top: 0.7em;
+  }
+}
+
+.paper__section { margin-top: 0.4em; }
+
+.paper__abstract {
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--global-text-color);
+}
+
+.paper__tldr {
+  list-style: none;
+  margin: 0.3em 0 0;
+  padding: 0;
+
+  li {
+    position: relative;
+    padding: 0.3em 0 0.3em 1.5em;
+    line-height: 1.6;
+    color: var(--global-text-color);
+
+    &::before {
+      content: "▸";
+      position: absolute;
+      left: 0;
+      top: 0.3em;
+      color: var(--pub-accent);
+      font-size: 0.9em;
+    }
+
+    strong { color: var(--global-text-color); font-weight: 600; }
+    em { color: var(--pub-accent); font-style: normal; }
+  }
+}
+
+/* BibTeX block */
+.paper__bibtex {
+  position: relative;
+  margin-top: 0.4em;
+
+  pre {
+    margin: 0;
+    padding: 1.1em 1.2em;
+    border: 1px solid var(--global-surface-border);
+    border-left: 3px solid var(--pub-accent);
+    border-radius: 0 8px 8px 0;
+    background: var(--global-code-background-color);
+    overflow-x: auto;
+  }
+
+  code {
+    font-family: $monospace;
+    font-size: 0.8rem;
+    line-height: 1.55;
+    color: var(--global-text-color);
+    background: none;
+    white-space: pre;
+  }
+}
+
+.paper__copy {
+  position: absolute;
+  top: 0.6em;
+  right: 0.6em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  font-family: $mono-accent;
+  font-size: 0.68rem;
+  letter-spacing: 0.03em;
+  padding: 0.26em 0.6em;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 5px;
+  background: var(--global-surface-color);
+  color: var(--global-text-color);
+  cursor: pointer;
+  transition: all 0.15s ease;
+
+  i { color: var(--pub-accent); }
+  &:hover { border-color: var(--pub-accent); color: var(--pub-accent); }
+  &.is-copied { border-color: var(--pub-accent); color: var(--pub-accent); }
+}
+
+.paper__cite { margin-top: 0.4em; }
+
+.paper__foot {
+  margin-top: 2.4em;
+  padding-top: 1.2em;
+  border-top: 1px solid var(--global-border-color);
 }

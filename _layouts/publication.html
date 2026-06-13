@@ -1,0 +1,142 @@
+---
+layout: default
+---
+
+{% include base_path %}
+{% include head/custom.html %}
+
+{%- comment -%} Status → label / modifier class (mirrors publication-card.html) {%- endcomment -%}
+{% case page.type %}
+  {% when 'journal' %}{% assign st = 'journal' %}{% assign st_label = 'Journal' %}
+  {% when 'conference' %}{% assign st = 'conference' %}{% assign st_label = 'Conference' %}
+  {% when 'accepted' %}{% assign st = 'accepted' %}{% assign st_label = 'Accepted' %}
+  {% when 'under-review' or 'submitted' %}{% assign st = 'review' %}{% assign st_label = 'Under Review' %}
+  {% when 'preprint' %}{% assign st = 'preprint' %}{% assign st_label = 'Preprint' %}
+  {% when 'in-preparation' %}{% assign st = 'prep' %}{% assign st_label = 'In Preparation' %}
+  {% when 'research-essay' %}{% assign st = 'essay' %}{% assign st_label = 'Essay' %}
+  {% else %}{% assign st = 'other' %}{% assign st_label = page.type %}
+{% endcase %}
+
+<div id="main" role="main">
+  {% include sidebar.html %}
+
+  <article class="page paper paper--{{ st }}" itemscope itemtype="https://schema.org/ScholarlyArticle">
+    <a class="paper__back" href="{{ base_path }}/publications/">← Publications</a>
+
+    <div class="paper__head">
+      <span class="pub-badge pub-badge--{{ st }}">{{ st_label }}</span>
+      {% if page.date %}<span class="paper__year">{{ page.date | date: '%B %Y' }}</span>{% endif %}
+    </div>
+
+    <h1 class="paper__title" itemprop="headline">{{ page.title }}</h1>
+
+    {% if page.authors %}<p class="paper__authors">{{ page.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>{% endif %}
+    {% if page.venue %}<p class="paper__venue"><span class="paper__mark">↳</span> {{ page.venue }}{% if page.location %} · {{ page.location }}{% endif %}</p>{% endif %}
+
+    {% if page.tags %}
+      <div class="paper__tags">{% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
+    {% endif %}
+
+    <div class="paper__actions">
+      {% if page.paperurl %}<a class="btn-pill btn-pill--solid" href="{{ page.paperurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-link" aria-hidden="true"></i> DOI</a>{% endif %}
+      {% if page.preprinturl %}{% if page.preprinturl contains 'arxiv' %}<a class="btn-pill btn-pill--solid" href="{{ page.preprinturl | strip }}" target="_blank" rel="noopener"><i class="ai ai-arxiv" aria-hidden="true"></i> arXiv</a>{% else %}<a class="btn-pill btn-pill--solid" href="{{ page.preprinturl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> PDF</a>{% endif %}{% endif %}
+      {% if page.slidesurl %}<a class="btn-pill" href="{{ page.slidesurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-display" aria-hidden="true"></i> Slides</a>{% endif %}
+      {% if page.posterurl %}<a class="btn-pill" href="{{ page.posterurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-image" aria-hidden="true"></i> Poster</a>{% endif %}
+      {% if page.videourl %}<a class="btn-pill" href="{{ page.videourl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-play" aria-hidden="true"></i> Video</a>{% endif %}
+      {% if page.codeurl %}<a class="btn-pill" href="{{ page.codeurl | strip }}" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>{% endif %}
+      {% if page.link %}<a class="btn-pill btn-pill--solid" href="{{ page.link | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Read</a>{% endif %}
+      {% if page.bibtexurl %}{% assign bib = page.bibtexurl | strip %}{% unless bib contains '://' %}{% assign bib = bib | prepend: base_path %}{% endunless %}<a class="btn-pill" href="{{ bib }}" download><i class="fa-solid fa-quote-right" aria-hidden="true"></i> .bib</a>{% endif %}
+    </div>
+
+    {% if page.figure %}
+      <figure class="paper__figure">
+        <div class="misc-frame">
+          <span class="frame__tick frame__tick--tl"></span><span class="frame__tick frame__tick--tr"></span>
+          <span class="frame__tick frame__tick--bl"></span><span class="frame__tick frame__tick--br"></span>
+          <img src="{{ page.figure | prepend: base_path }}" alt="{{ page.title | escape }}">
+        </div>
+        {% if page.figure_caption %}<figcaption>{{ page.figure_caption }}</figcaption>{% endif %}
+      </figure>
+    {% endif %}
+
+    {% if page.abstract %}
+      <section class="paper__section">
+        <p class="mono-label section-label">// abstract</p>
+        <p class="paper__abstract">{{ page.abstract }}</p>
+      </section>
+    {% endif %}
+
+    {% if page.tldr %}
+      <section class="paper__section">
+        <p class="mono-label section-label">// highlights</p>
+        <ul class="paper__tldr">
+          {% for point in page.tldr %}<li>{{ point | markdownify | remove: '<p>' | remove: '</p>' }}</li>{% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    {% assign body = content | strip %}
+    {% if body != '' %}
+      <section class="paper__section paper__body page__content">
+        <p class="mono-label section-label">// notes</p>
+        {{ content }}
+      </section>
+    {% endif %}
+
+    {% if page.bibtex %}
+      <section class="paper__section">
+        <p class="mono-label section-label">// bibtex</p>
+        <div class="paper__bibtex">
+          <button class="paper__copy js-copy" type="button" data-copy="bibtex-{{ page.url | slugify }}"><i class="fa-solid fa-copy" aria-hidden="true"></i> Copy</button>
+          <pre id="bibtex-{{ page.url | slugify }}"><code>{{ page.bibtex | strip }}</code></pre>
+        </div>
+      </section>
+    {% endif %}
+
+    {% if page.citation %}
+      <section class="paper__section">
+        <p class="mono-label section-label">// cite</p>
+        <div class="pub__cite paper__cite">
+          <div class="pub__cite-head">
+            <span class="pub__cite-label">Recommended citation</span>
+            <button class="pub__cite-copy js-copy" type="button" data-copy="cite-{{ page.url | slugify }}"><i class="fa-solid fa-copy" aria-hidden="true"></i> Copy</button>
+          </div>
+          <p class="pub__cite-text" id="cite-{{ page.url | slugify }}">{{ page.citation }}</p>
+        </div>
+      </section>
+    {% endif %}
+
+    <div class="paper__foot">
+      <a class="btn-pill btn-pill--ghost" href="{{ base_path }}/publications/">← All publications</a>
+    </div>
+  </article>
+</div>
+
+<script>
+(function () {
+  function copyText(text) {
+    var ok = false;
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.top = '-1000px'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+    } catch (e) { ok = false; }
+    if (!ok && navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text);
+    }
+  }
+  document.querySelectorAll('.js-copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      copyText(el ? el.textContent.trim() : '');
+      var html = btn.innerHTML;
+      btn.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i> Copied';
+      btn.classList.add('is-copied');
+      setTimeout(function () { btn.innerHTML = html; btn.classList.remove('is-copied'); }, 1600);
+    });
+  });
+})();
+</script>
