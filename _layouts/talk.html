@@ -4,75 +4,55 @@ layout: default
 
 {% include base_path %}
 {% include head/custom.html %}
-{% if page.header.overlay_color or page.header.overlay_image or page.header.image %}
-  {% include page__hero.html %}
-{% endif %}
 
-{% if page.url != "/" and site.breadcrumbs %}
-  {% unless paginator %}
-    {% include breadcrumbs.html %}
-  {% endunless %}
+{%- comment -%} Map free-form talk type → modifier / label (mirrors talk-card.html) {%- endcomment -%}
+{% assign t = page.type | downcase %}
+{% if t contains 'poster' %}{% assign tk = 'poster' %}{% assign tk_label = 'Poster' %}
+{% elsif t contains 'conference' or t contains 'proceedings' %}{% assign tk = 'conference' %}{% assign tk_label = 'Conference Talk' %}
+{% elsif t contains 'webinar' %}{% assign tk = 'webinar' %}{% assign tk_label = 'Webinar' %}
+{% elsif t contains 'invited' %}{% assign tk = 'invited' %}{% assign tk_label = 'Invited Talk' %}
+{% elsif t contains 'seminar' or t contains 'workshop' %}{% assign tk = 'workshop' %}{% assign tk_label = page.type %}
+{% elsif t contains 'academic' or t contains 'discussion' %}{% assign tk = 'discussion' %}{% assign tk_label = 'Academic Discussion' %}
+{% else %}{% assign tk = 'other' %}{% assign tk_label = page.type %}
 {% endif %}
 
 <div id="main" role="main">
   {% include sidebar.html %}
 
-  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
-    {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
-    {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
-    {% if page.modified %}<meta itemprop="dateModified" content="{{ page.modified | date: "%B %d, %Y" }}">{% endif %}
+  <article class="page paper talkpage talkpage--{{ tk }}" itemscope itemtype="https://schema.org/Event">
+    <a class="paper__back" href="{{ base_path }}/talks/">← Talks</a>
 
-    <div class="page__inner-wrap">
-      {% unless page.header.overlay_color or page.header.overlay_image %}
-        <header>
-          {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
-          {% if page.read_time %}
-            <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
-          {% endif %}
-        {% if page.modified %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Date:</strong> <time datetime="{{ page.modified | date: "%Y-%m-%d" }}">{{ page.modified | date: "%B %d, %Y" }}</time></p>
-        {% elsif page.date %}
-          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Date:</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></p>
-        {% endif %}
-        {% if page.talk_type %}<p>{{page.talk_type}} at {{ page.venue }},  {{page.location}} {% endif %}
+    <div class="paper__head">
+      <span class="ecard-badge ecard-badge--{{ tk }}">{{ tk_label }}</span>
+      {% if page.date %}<span class="paper__year">{{ page.date | date: '%B %-d, %Y' }}</span>{% endif %}
+    </div>
 
-        </header>
-      {% endunless %}
+    <h1 class="paper__title" itemprop="name">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>
 
-      <section class="page__content" itemprop="text">
+    {% if page.venue %}<p class="paper__venue"><span class="paper__mark">↳</span> {{ page.venue }}{% if page.location %} · {{ page.location }}{% endif %}</p>{% endif %}
+
+    {% if page.excerpt %}<p class="paper__lead">{{ page.excerpt | markdownify | remove: "<p>" | remove: "</p>" }}</p>{% endif %}
+
+    <div class="paper__actions">
+      {% if page.posterurl %}<a class="btn-pill btn-pill--solid" href="{{ page.posterurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-image" aria-hidden="true"></i> Poster</a>{% endif %}
+      {% if page.slidesurl %}<a class="btn-pill" href="{{ page.slidesurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-display" aria-hidden="true"></i> Slides</a>{% endif %}
+      {% if page.videourl %}<a class="btn-pill" href="{{ page.videourl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-play" aria-hidden="true"></i> Video</a>{% endif %}
+      {% if page.paper %}<a class="btn-pill" href="{{ base_path }}{{ page.paper }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Paper</a>{% endif %}
+      {% if page.link %}<a class="btn-pill" href="{{ page.link | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Info</a>{% endif %}
+    </div>
+
+    {% assign body = content | strip %}
+    {% if body != '' %}
+      <section class="paper__section paper__body page__content" itemprop="description">
+        <p class="mono-label section-label">// about this talk</p>
         {{ content }}
-        {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
-
-      <footer class="page__meta">
-        {% if site.data.ui-text[site.locale].meta_label %}
-          <h4 class="page__meta-title">{{ site.data.ui-text[site.locale].meta_label }}</h4>
-        {% endif %}
-        {% include page__taxonomy.html %}
-      </footer>
-
-      {% if page.share %}{% include social-share.html %}{% endif %}
-
-      {% include post_pagination.html %}
-    </div>
-
-    {% if site.comments.provider and page.comments %}
-      {% include comments.html %}
     {% endif %}
-  </article>
 
-  {% comment %}<!-- only show related on a post page when not disabled -->{% endcomment %}
-  {% if page.id and page.related and site.related_posts.size > 0 %}
-    <div class="page__related">
-      {% if site.data.ui-text[site.locale].related_label %}
-        <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
-      {% endif %}
-      <div class="grid__wrapper">
-        {% for post in site.related_posts limit:4 %}
-          {% include archive-single.html type="grid" %}
-        {% endfor %}
-      </div>
+    <div class="paper__foot">
+      <a class="btn-pill btn-pill--ghost" href="{{ base_path }}/talks/">← All talks</a>
     </div>
-  {% endif %}
+
+    {% if page.share %}{% include social-share.html %}{% endif %}
+  </article>
 </div>

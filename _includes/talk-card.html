@@ -1,7 +1,8 @@
 {% include base_path %}
 {%- comment -%} Map free-form talk type → modifier / label {%- endcomment -%}
 {% assign t = post.type | downcase %}
-{% if t contains 'conference' or t contains 'proceedings' %}{% assign tk = 'conference' %}{% assign tk_label = 'Conference Talk' %}
+{% if t contains 'poster' %}{% assign tk = 'poster' %}{% assign tk_label = 'Poster' %}
+{% elsif t contains 'conference' or t contains 'proceedings' %}{% assign tk = 'conference' %}{% assign tk_label = 'Conference Talk' %}
 {% elsif t contains 'webinar' %}{% assign tk = 'webinar' %}{% assign tk_label = 'Webinar' %}
 {% elsif t contains 'invited' %}{% assign tk = 'invited' %}{% assign tk_label = 'Invited Talk' %}
 {% elsif t contains 'seminar' or t contains 'workshop' %}{% assign tk = 'workshop' %}{% assign tk_label = post.type %}
@@ -25,7 +26,9 @@
     {% if post.excerpt %}<p class="ecard__excerpt">{{ post.excerpt | markdownify | remove: '<p>' | remove: '</p>' }}</p>{% endif %}
 
     <div class="ecard__links">
+      {% if post.posterurl %}<a class="btn-pill" href="{{ post.posterurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-image" aria-hidden="true"></i> Poster</a>{% endif %}
       {% if post.slidesurl %}<a class="btn-pill" href="{{ post.slidesurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-display" aria-hidden="true"></i> Slides</a>{% endif %}
+      {% if post.paper %}<a class="btn-pill" href="{{ base_path }}{{ post.paper }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Paper</a>{% endif %}
       {% if post.link %}<a class="btn-pill" href="{{ post.link | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Info</a>{% endif %}
       <a class="btn-pill btn-pill--ghost" href="{{ base_path }}{{ post.url }}">Details →</a>
     </div>

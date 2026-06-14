@@ -27,20 +27,29 @@
     </div>
   </div>
 
+  {%- comment -%} Cards auto-update from collections — no manual editing needed {%- endcomment -%}
+  {% assign n_pubs = site.publications | size %}
+  {% assign recent_talks = site.talks | sort: 'date' | reverse %}
+  {%- capture talk_labels -%}
+    {%- for tk in recent_talks limit:2 -%}
+      {{ tk.short | default: tk.venue | truncate: 16 }}{%- unless forloop.last %} · {% endunless -%}
+    {%- endfor -%}
+  {%- endcapture -%}
+
   <div class="hero__cards">
-    <a class="card" href="{{ base_path }}/#-research-interests">
+    <a class="card" href="{{ base_path }}/publications/">
       <span class="card__label">RESEARCH</span>
       <span class="card__value">Safe MARL · ATC · AAM</span>
       <span class="card__arrow">→</span>
     </a>
     <a class="card" href="{{ base_path }}/publications/">
       <span class="card__label">PAPERS</span>
-      <span class="card__value">Publications &amp; preprints</span>
+      <span class="card__value">{{ n_pubs }} papers, preprints &amp; essays</span>
       <span class="card__arrow">→</span>
     </a>
     <a class="card" href="{{ base_path }}/talks/">
       <span class="card__label">TALKS</span>
-      <span class="card__value">CVPR&nbsp;’26 · ACC&nbsp;’26</span>
+      <span class="card__value">{{ talk_labels | strip }}</span>
       <span class="card__arrow">→</span>
     </a>
   </div>

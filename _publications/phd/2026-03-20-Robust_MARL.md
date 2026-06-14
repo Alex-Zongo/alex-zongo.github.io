@@ -45,7 +45,7 @@ slidesurl: #
 bibtexurl: #
 posterurl: 'https://alex-zongo.github.io/files/acc_workshop_2026.pdf'
 type: "under-review"
-citation: # 'Your Name, You. (2024). &quot;Paper Title Number 3.&quot; <i>GitHub Journal of Bugs</i>. 1(3).'
+citation: 'Zongo, A., Fotiadis, F., Topcu, U., &amp; Wei, P. (2026). &quot;Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing.&quot; <i>arXiv preprint</i> arXiv:2603.28900.'
 ---
 
 This paper introduces a Robust Multi-Agent Reinforcement Learning framework for realtime separation assurance and tactical deconfliction mechanism for small Unmanned Aerial Systems under GPS degradation and Spoofing. 

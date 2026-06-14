@@ -1,6 +1,7 @@
 ---
 title: "Intelligent Control and Reinforcement Learning"
 collection: talks
+short: "Tsinghua ’24"
 type: "Academic discussion"
 permalink: /talks/2024-04-20-academic-discusion
 venue: "The Future of AI | Beijing Universities Artificial Intelligence Academic Forum and Tsinghua University's 739th Ph.D Academic Discussion"

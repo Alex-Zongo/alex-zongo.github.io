@@ -46,7 +46,7 @@ paperurl: 'https://openaccess.thecvf.com/content/CVPR2026W/MEIS/html/Sharifi_Fin
 preprinturl: 'https://arxiv.org/abs/2603.28561v1'
 slidesurl: #
 bibtexurl: #
-posterurl: 'https://alex-zongo.github.io/files/meis_cvpr26_poster.pdf'
+posterurl: 'https://alex-zongo.github.io/files/meis_cvpr_poster_2026.pdf'
 type: "conference"
 citation: 'Sharifi, I., Zongo, A., & Wei, P. (2026). &quot; Fine-Tuning Large Language Models for Cooperative Tactical Deconfliction of Small Unmanned Aerial Systems. &quot; <i> In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition </i> (pp. 1067-1076).'
 ---

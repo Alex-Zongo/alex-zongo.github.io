@@ -730,6 +730,7 @@ $entry-accent: (
   webinar:    #0891b2,
   invited:    #16a34a,
   workshop:   #d97706,
+  poster:     #db2777,
   teaching:   #2563eb,
   mentoring:  #16a34a,
   other:      #64748b,
@@ -1120,4 +1121,30 @@ $entry-accent: (
   margin-top: 2.4em;
   padding-top: 1.2em;
   border-top: 1px solid var(--global-border-color);
+}
+
+/* Lead paragraph (talk excerpt) */
+.paper__lead {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--global-text-color);
+  margin: 0 0 1.2em;
+  max-width: 60ch;
+}
+
+/* Talk detail pages reuse .paper__* styling with the talk-type accent */
+@each $name, $color in $entry-accent {
+  .talkpage--#{$name} { --pub-accent: #{$color}; }
+}
+
+/* Body figures inside talk/paper notes — frame images consistently */
+.paper__body figure img,
+.paper__body img {
+  border-radius: 8px;
+  border: 1px solid var(--global-surface-border);
+}
+.paper__body figcaption {
+  font-family: $mono-accent;
+  font-size: 0.74rem;
+  color: var(--global-muted-color);
 }

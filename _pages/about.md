@@ -12,7 +12,7 @@ redirect_from:
 
 <p class="mono-label section-label">// about</p>
 
-I am a PhD student in the [**Department of Mechanical and Aerospace Engineering**](https://mae.engineering.gwu.edu/) at  [**The George Washington University**](https://www.gwu.edu/), working under the supervision of Prof. [**Wei Peng**](https://web.seas.gwu.edu/pwei/) in the **Intelligent Aerospace Systems Lab (IASL)**. 
+I am a PhD candidate in the [**Department of Mechanical and Aerospace Engineering**](https://mae.engineering.gwu.edu/) at  [**The George Washington University**](https://www.gwu.edu/), working under the supervision of Prof. [**Wei Peng**](https://web.seas.gwu.edu/pwei/) in the **Intelligent Aerospace Systems Lab (IASL)**. 
 
 My research interests center around solving complex sequential decision making problems via robust **Machine Learning (ML)**, **Artificial Intelligence (AI)** and **optimization** algorithms, with key applications in the aviation industry such **airspace management and control**, **advanced air mobility**, and **flight control**. Specifically, I focus on advancing safe **multi-agent reinforcement learning (MARL)** for **aerospace systems**. I am also interested in the **design and simulation of aircraft, and the application of AI to aircraft design and control**. **Optimal Transport** and **Mean Field Games** are also among my research interests.
 
