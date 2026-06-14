@@ -17,6 +17,9 @@ redirect_from:
 {% assign dm_all      = site.posts | where: "series", "decision-making" %}
 {% assign dm_pub      = dm_all | where_exp: "p", "p.draft != true" %}
 {% assign dm_soon     = dm_all | where_exp: "p", "p.draft == true" %}
+{% assign gen_all     = site.posts | where: "series", "genai" %}
+{% assign gen_pub     = gen_all | where_exp: "p", "p.draft != true" %}
+{% assign gen_soon    = gen_all | where_exp: "p", "p.draft == true" %}
 
 <p class="mono-label pub-kicker">// research notes &amp; tutorials</p>
 
@@ -43,6 +46,14 @@ redirect_from:
     <span class="series-card__title">Decision-Making Algorithms: From Theory to Practice</span>
     <span class="series-card__desc">Inspired by <em>Algorithms for Decision Making</em> (Kochenderfer) — probabilistic reasoning, MDPs/POMDPs, games, and MARL.</span>
     <span class="series-card__meta">{{ dm_pub | size }} note{% unless dm_pub.size == 1 %}s{% endunless %}{% if dm_soon.size > 0 %} · {{ dm_soon | size }} coming soon{% endif %} <span class="series-card__arrow">→</span></span>
+  </a>
+
+  <a class="series-card notecard--genai" href="{{ base_path }}/genai-series/">
+    <span class="series-card__rail" aria-hidden="true"></span>
+    <span class="series-card__icon">🌀</span>
+    <span class="series-card__title">Generative AI: Diffusion &amp; Flow Models from First Principles</span>
+    <span class="series-card__desc">Diffusion, score matching, and flow matching — derived, coded, and made <em>interactive</em>. The backbone of a Fall 2026 lecture.</span>
+    <span class="series-card__meta">{{ gen_pub | size }} note{% unless gen_pub.size == 1 %}s{% endunless %}{% if gen_soon.size > 0 %} · {{ gen_soon | size }} coming soon{% endif %} <span class="series-card__arrow">→</span></span>
   </a>
 </div>
 

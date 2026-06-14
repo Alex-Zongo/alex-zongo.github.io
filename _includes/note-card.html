@@ -2,6 +2,7 @@
 {%- comment -%} Series → short badge label {%- endcomment -%}
 {% if post.series == 'atc' %}{% assign series_label = 'ATC' %}
 {% elsif post.series == 'decision-making' %}{% assign series_label = 'Decision-Making' %}
+{% elsif post.series == 'genai' %}{% assign series_label = 'Gen-AI' %}
 {% else %}{% assign series_label = 'Note' %}{% endif %}
 
 {% assign words = post.content | strip_html | number_of_words %}

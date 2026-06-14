@@ -1158,6 +1158,8 @@ $entry-accent: (
 .notepage--atc            { --note-accent: #2563eb; --pub-accent: #2563eb; --ecard-accent: #2563eb; }
 .notecard--decision-making,
 .notepage--decision-making { --note-accent: #16a34a; --pub-accent: #16a34a; --ecard-accent: #16a34a; }
+.notecard--genai,
+.notepage--genai          { --note-accent: #7c3aed; --pub-accent: #7c3aed; --ecard-accent: #7c3aed; }
 
 .notes-back {
   display: inline-block;

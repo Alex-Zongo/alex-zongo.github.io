@@ -1,0 +1,173 @@
+<!-- Interactive: forward-diffusion explorable. Vanilla JS + canvas, no deps, theme-aware.
+     Reusable anywhere (series posts, paper // explore slots). Include once per instance. -->
+<div class="xwidget js-diffusion" data-dist="spiral">
+  <div class="xwidget__head">
+    <span class="xwidget__label">interactive · forward diffusion</span>
+    <span class="xwidget__readout js-readout">t = 0.00 · ᾱ = 1.000</span>
+  </div>
+
+  <div class="xwidget__stage">
+    <span class="frame__tick frame__tick--tl"></span><span class="frame__tick frame__tick--tr"></span>
+    <span class="frame__tick frame__tick--bl"></span><span class="frame__tick frame__tick--br"></span>
+    <canvas class="xwidget__canvas"></canvas>
+  </div>
+
+  <div class="xwidget__controls">
+    <label class="xwidget__slider">
+      <span class="xwidget__slider-label">noise&nbsp;time&nbsp;t</span>
+      <input type="range" min="0" max="1000" value="0" step="1" class="js-t" aria-label="diffusion time t">
+    </label>
+    <div class="xwidget__btns">
+      <button type="button" class="xwidget__btn js-dist is-active" data-d="spiral">Spiral</button>
+      <button type="button" class="xwidget__btn js-dist" data-d="moons">Two moons</button>
+      <button type="button" class="xwidget__btn js-dist" data-d="blobs">Blobs</button>
+      <button type="button" class="xwidget__btn js-resample">↻ resample ε</button>
+    </div>
+  </div>
+
+  <p class="xwidget__formula">x<sub>t</sub> = √ᾱ<sub>t</sub>·x<sub>0</sub> + √(1−ᾱ<sub>t</sub>)·ε,&emsp;ε ~ 𝒩(0,&nbsp;I)</p>
+  <p class="xwidget__caption">Drag <em>t</em> to watch structured data dissolve into Gaussian noise along a variance-preserving schedule. Training a diffusion model means learning to <em>reverse</em> this — predicting ε (or the score) so we can walk back from noise to data.</p>
+</div>
+
+<style>
+.xwidget {
+  margin: 1.8em 0;
+  padding: 1.1em 1.2em 1.2em;
+  border: 1px solid var(--global-surface-border, #e3e8ee);
+  border-radius: 10px;
+  background: var(--global-surface-color, #fff);
+}
+.xwidget__head { display: flex; align-items: center; justify-content: space-between; gap: 0.6em; margin-bottom: 0.7em; }
+.xwidget__label {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #7c3aed;
+}
+.xwidget__readout {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.74rem;
+  color: var(--global-muted-color, #64748b); font-variant-numeric: tabular-nums;
+}
+.xwidget__stage {
+  position: relative; border: 1px solid var(--global-border-color, #e3e8ee);
+  border-radius: 8px; background: var(--global-bg-color, #fbfcfd); overflow: hidden;
+}
+.xwidget__canvas { display: block; width: 100%; height: auto; }
+.xwidget__controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9em; margin-top: 0.9em; }
+.xwidget__slider { display: flex; align-items: center; gap: 0.6em; flex: 1 1 240px; min-width: 200px; }
+.xwidget__slider-label {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: 0.04em;
+  color: var(--global-muted-color, #64748b); white-space: nowrap;
+}
+.xwidget__slider input[type=range] { flex: 1; accent-color: #7c3aed; cursor: pointer; }
+.xwidget__btns { display: flex; flex-wrap: wrap; gap: 0.4em; }
+.xwidget__btn {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: 0.02em;
+  padding: 0.32em 0.66em; border: 1px solid var(--global-surface-border, #e3e8ee);
+  border-radius: 6px; background: var(--global-bg-color, #fff);
+  color: var(--global-text-color, #16202c); cursor: pointer; transition: all 0.15s ease;
+}
+.xwidget__btn:hover { border-color: #7c3aed; color: #7c3aed; }
+.xwidget__btn.is-active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
+.xwidget__formula {
+  font-family: "IBM Plex Mono", monospace; font-size: 0.84rem; margin: 1em 0 0.3em;
+  color: var(--global-text-color, #16202c);
+}
+.xwidget__caption { font-size: 0.86rem; line-height: 1.55; color: var(--global-muted-color, #64748b); margin: 0.3em 0 0; }
+.xwidget__caption em { color: #7c3aed; font-style: normal; }
+</style>
+
+<script>
+(function () {
+  var ACCENT = '#7c3aed';
+  function gauss() { var u = 1 - Math.random(), v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+
+  // toy data distributions in world coords (~[-3,3]); returns {x,y,h} with h = hue for structure
+  function makeData(kind, n) {
+    var pts = [], i;
+    if (kind === 'moons') {
+      for (i = 0; i < n; i++) {
+        var top = i < n / 2, th = Math.PI * Math.random();
+        var x = top ? Math.cos(th) : 1 - Math.cos(th);
+        var y = top ? Math.sin(th) : -Math.sin(th) + 0.4;
+        pts.push({ x: (x - 0.5) * 2.0 + gauss() * 0.10, y: (y - 0.2) * 2.0 + gauss() * 0.10, h: top ? 265 : 175 });
+      }
+    } else if (kind === 'blobs') {
+      var C = [[-1.4, 1.4, 280], [1.4, 1.4, 200], [-1.4, -1.4, 330], [1.4, -1.4, 150]];
+      for (i = 0; i < n; i++) { var c = C[i % 4]; pts.push({ x: c[0] + gauss() * 0.32, y: c[1] + gauss() * 0.32, h: c[2] }); }
+    } else { // spiral (two arms)
+      for (i = 0; i < n; i++) {
+        var t = i / n, arm = i % 2, ang = t * 3.3 * Math.PI + arm * Math.PI, r = 0.25 + 2.25 * t;
+        pts.push({ x: r * Math.cos(ang) * 0.92 + gauss() * 0.04, y: r * Math.sin(ang) * 0.92 + gauss() * 0.04, h: 250 + t * 110 });
+      }
+    }
+    return pts;
+  }
+
+  // variance-preserving schedule: alphaBar(t), t in [0,1], beta_min=0.1 beta_max=20
+  function alphaBar(t) { var bmin = 0.1, bmax = 20.0; return Math.exp(-0.5 * t * t * (bmax - bmin) - t * bmin); }
+
+  function cssVar(name, fallback) {
+    var v = getComputedStyle(document.documentElement).getPropertyValue(name);
+    return (v && v.trim()) || fallback;
+  }
+
+  function initOne(root) {
+    if (root.dataset.init) return; root.dataset.init = '1';
+    var N = 720;
+    var canvas = root.querySelector('.xwidget__canvas');
+    var ctx = canvas.getContext('2d');
+    var slider = root.querySelector('.js-t');
+    var readout = root.querySelector('.js-readout');
+    var data = makeData(root.dataset.dist, N);
+    var noise = []; for (var i = 0; i < N; i++) noise.push({ x: gauss(), y: gauss() });
+
+    function draw() {
+      var t = slider.value / 1000;
+      var ab = alphaBar(t), s = Math.sqrt(ab), nz = Math.sqrt(1 - ab);
+      var cssW = root.querySelector('.xwidget__stage').clientWidth;
+      var cssH = Math.max(220, Math.min(420, Math.round(cssW * 0.6)));
+      var dpr = window.devicePixelRatio || 1;
+      canvas.width = cssW * dpr; canvas.height = cssH * dpr;
+      canvas.style.height = cssH + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, cssW, cssH);
+
+      var cx = cssW / 2, cy = cssH / 2, scale = (Math.min(cssW, cssH) / 2 - 14) / 3.0;
+      var textCol = cssVar('--global-text-color-light', '#94a3b8');
+
+      // faint reference: 2σ Gaussian ball (the noise target)
+      ctx.strokeStyle = textCol; ctx.globalAlpha = 0.25; ctx.lineWidth = 1; ctx.setLineDash([4, 4]);
+      ctx.beginPath(); ctx.arc(cx, cy, 2 * scale, 0, 2 * Math.PI); ctx.stroke(); ctx.setLineDash([]); ctx.globalAlpha = 1;
+
+      for (var k = 0; k < N; k++) {
+        var px = s * data[k].x + nz * noise[k].x;
+        var py = s * data[k].y + nz * noise[k].y;
+        var sx = cx + px * scale, sy = cy - py * scale;
+        // structure colour fades toward a neutral noise colour as t grows
+        var light = 55 + t * 12;
+        ctx.fillStyle = 'hsla(' + data[k].h + ',' + (70 - t * 45) + '%,' + light + '%,' + (0.82 - t * 0.18) + ')';
+        ctx.beginPath(); ctx.arc(sx, sy, 2.1, 0, 2 * Math.PI); ctx.fill();
+      }
+      readout.textContent = 't = ' + t.toFixed(2) + ' · ᾱ = ' + ab.toFixed(3);
+    }
+
+    slider.addEventListener('input', draw);
+    root.querySelectorAll('.js-dist').forEach(function (b) {
+      b.addEventListener('click', function () {
+        root.querySelectorAll('.js-dist').forEach(function (x) { x.classList.remove('is-active'); });
+        b.classList.add('is-active');
+        root.dataset.dist = b.dataset.d; data = makeData(b.dataset.d, N); draw();
+      });
+    });
+    root.querySelector('.js-resample').addEventListener('click', function () {
+      noise = []; for (var j = 0; j < N; j++) noise.push({ x: gauss(), y: gauss() }); draw();
+    });
+    window.addEventListener('resize', draw);
+    // redraw on light/dark toggle
+    new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    draw();
+  }
+
+  function boot() { document.querySelectorAll('.js-diffusion').forEach(initOne); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+})();
+</script>

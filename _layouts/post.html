@@ -10,6 +10,8 @@ layout: default
   {% assign series_url = '/atc-series/' %}{% assign series_name = 'Air Traffic Control series' %}{% assign series_label = 'ATC' %}
 {% elsif page.series == 'decision-making' %}
   {% assign series_url = '/decision-making-series/' %}{% assign series_name = 'Decision-Making series' %}{% assign series_label = 'Decision-Making' %}
+{% elsif page.series == 'genai' %}
+  {% assign series_url = '/genai-series/' %}{% assign series_name = 'Generative AI series' %}{% assign series_label = 'Gen-AI' %}
 {% else %}
   {% assign series_url = '/year-archive/' %}{% assign series_name = 'Research Notes' %}{% assign series_label = 'Note' %}
 {% endif %}
