@@ -1,0 +1,40 @@
+{% include base_path %}
+{%- comment -%} Series → short badge label {%- endcomment -%}
+{% if post.series == 'atc' %}{% assign series_label = 'ATC' %}
+{% elsif post.series == 'decision-making' %}{% assign series_label = 'Decision-Making' %}
+{% else %}{% assign series_label = 'Note' %}{% endif %}
+
+{% assign words = post.content | strip_html | number_of_words %}
+{% assign rt = words | divided_by: 200 %}{% if rt < 1 %}{% assign rt = 1 %}{% endif %}
+{% assign blurb = post.excerpt | strip_html | strip | truncate: 220 %}
+
+{% if post.draft %}
+<article class="ecard ecard--note-soon notecard notecard--soon">
+  <div class="ecard__rail" aria-hidden="true"></div>
+  <div class="ecard__body">
+    <div class="ecard__head">
+      <span class="ecard-badge ecard-badge--note-soon"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i> Coming soon</span>
+      {% if post.expected %}<span class="ecard__date">Expected {{ post.expected }}</span>{% endif %}
+    </div>
+    <h3 class="ecard__title notecard__title">{{ post.title }}</h3>
+    {% if blurb != '' %}<p class="ecard__excerpt">{{ blurb }}</p>{% endif %}
+    {% if post.tags %}<div class="pub__tags note__tags">{% for t in post.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
+  </div>
+</article>
+{% else %}
+<article class="ecard notecard notecard--{{ post.series }}">
+  <div class="ecard__rail" aria-hidden="true"></div>
+  <div class="ecard__body">
+    <div class="ecard__head">
+      <span class="ecard-badge ecard-badge--note">{{ series_label }}</span>
+      <span class="ecard__date">{{ post.date | date: '%b %-d, %Y' }} · {{ rt }} min read</span>
+    </div>
+    <h3 class="ecard__title"><a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a></h3>
+    {% if blurb != '' %}<p class="ecard__excerpt">{{ blurb }}</p>{% endif %}
+    {% if post.tags %}<div class="pub__tags note__tags">{% for t in post.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
+    <div class="ecard__links">
+      <a class="btn-pill btn-pill--ghost" href="{{ base_path }}{{ post.url }}">Read →</a>
+    </div>
+  </div>
+</article>
+{% endif %}

@@ -1,29 +1,38 @@
 ---
 layout: archive
-title: "🤖 Decision Making Algorithms: From Theory to Practice"
+title: "Decision-Making Algorithms: From Theory to Practice"
 permalink: /decision-making-series/
 author_profile: true
 ---
 
+{% include base_path %}
 
-<div class="blog-hero">
+{% assign dm_posts = site.posts | where: "series", "decision-making" | sort: 'date' | reverse %}
+{% assign dm_pub = dm_posts | where_exp: "p", "p.draft != true" %}
+{% assign dm_soon = dm_posts | where_exp: "p", "p.draft == true" %}
 
-<strong></strong>
+<a class="notes-back" href="{{ base_path }}/year-archive/">← All research notes</a>
 
-<p>
-  A structured series inspired by <em>Algorithms for Decision Making</em> (Mykel J. Kochenderfer),
-    covering probabilistic reasoning, MDPs/POMDPs, model & state uncertainty, games, and multi-agent RL.
+<p class="mono-label pub-kicker">🤖 // decision-making series · {{ dm_pub | size }} note{% unless dm_pub.size == 1 %}s{% endunless %}</p>
+
+<p class="pub-intro">
+  A structured series inspired by <em>Algorithms for Decision Making</em> (Mykel J. Kochenderfer) —
+  covering probabilistic reasoning, MDPs and POMDPs, model &amp; state uncertainty, games, and
+  multi-agent reinforcement learning, with intuitive plots and reproducible notebooks.
 </p>
-</div>
 
-<!-- 
-Probabilistic reasoning, sequential decisions, state/model uncertainty, multi-agent systems, and MARL — with Julia notebooks and intuitive plots. -->
-
-{% assign dm_posts = site.posts | where:"series","decision-making" | sort: 'date' | reverse %}
-{% if dm_posts and dm_posts.size > 0 %}
-{% for post in dm_posts %}
-  {% include archive-single.html %}
-{% endfor %}
-{% else %}
-  <p><em>No posts yet in this series.</em></p>
+<div class="pub-list">
+{% if dm_pub.size > 0 %}
+  <p class="mono-label section-label">// notes</p>
+  {% for post in dm_pub %}{% include note-card.html %}{% endfor %}
 {% endif %}
+
+{% if dm_soon.size > 0 %}
+  <p class="mono-label section-label">// coming soon</p>
+  {% for post in dm_soon %}{% include note-card.html %}{% endfor %}
+{% endif %}
+
+{% if dm_pub.size == 0 and dm_soon.size == 0 %}
+  <p class="notes-empty">No posts yet in this series — check back soon.</p>
+{% endif %}
+</div>

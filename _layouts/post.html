@@ -1,0 +1,59 @@
+---
+layout: default
+---
+
+{% include base_path %}
+{% include head/custom.html %}
+
+{%- comment -%} Series → back target / label {%- endcomment -%}
+{% if page.series == 'atc' %}
+  {% assign series_url = '/atc-series/' %}{% assign series_name = 'Air Traffic Control series' %}{% assign series_label = 'ATC' %}
+{% elsif page.series == 'decision-making' %}
+  {% assign series_url = '/decision-making-series/' %}{% assign series_name = 'Decision-Making series' %}{% assign series_label = 'Decision-Making' %}
+{% else %}
+  {% assign series_url = '/year-archive/' %}{% assign series_name = 'Research Notes' %}{% assign series_label = 'Note' %}
+{% endif %}
+
+{% assign words = page.content | strip_html | number_of_words %}
+{% assign rt = words | divided_by: 200 %}{% if rt < 1 %}{% assign rt = 1 %}{% endif %}
+
+<div id="main" role="main">
+  {% include sidebar.html %}
+
+  <article class="page paper notepage notepage--{{ page.series }}" itemscope itemtype="https://schema.org/BlogPosting">
+    <a class="paper__back" href="{{ base_path }}{{ series_url }}">← {{ series_name }}</a>
+
+    {% if page.draft %}
+      <div class="paper__head">
+        <span class="ecard-badge ecard-badge--note-soon"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i> Coming soon</span>
+        {% if page.expected %}<span class="paper__year">Expected {{ page.expected }}</span>{% endif %}
+      </div>
+      <h1 class="paper__title" itemprop="headline">{{ page.title }}</h1>
+      {% if page.tags %}<div class="paper__tags">{% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
+      {% if page.excerpt %}<p class="paper__lead">{{ page.excerpt | strip_html }}</p>{% endif %}
+      <div class="note-soon-box">
+        <i class="fa-solid fa-flask" aria-hidden="true"></i>
+        This note is in the works{% if page.expected %} — expected <strong>{{ page.expected }}</strong>{% endif %}.
+        In the meantime, explore the rest of the <a href="{{ base_path }}{{ series_url }}">{{ series_name }}</a>.
+      </div>
+    {% else %}
+      <div class="paper__head">
+        <span class="ecard-badge ecard-badge--note">{{ series_label }}</span>
+        {% if page.date %}<span class="paper__year">{{ page.date | date: '%B %-d, %Y' }} · {{ rt }} min read</span>{% endif %}
+      </div>
+      <h1 class="paper__title" itemprop="headline">{{ page.title }}</h1>
+      {% if page.tags %}<div class="paper__tags">{% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>{% endif %}
+
+      <section class="paper__section paper__body page__content note-content" itemprop="articleBody">
+        {{ content }}
+      </section>
+    {% endif %}
+
+    <div class="paper__foot">
+      <a class="btn-pill btn-pill--ghost" href="{{ base_path }}{{ series_url }}">← {{ series_name }}</a>
+      <a class="btn-pill btn-pill--ghost" href="{{ base_path }}/year-archive/">All research notes</a>
+    </div>
+
+    {% if page.share %}{% include social-share.html %}{% endif %}
+  </article>
+</div>

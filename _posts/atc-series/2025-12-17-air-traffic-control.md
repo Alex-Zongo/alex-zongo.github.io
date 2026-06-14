@@ -3,6 +3,7 @@ title: 'Aircraft Traffic Control: Managing Order in a Crowded Sky'
 date: 2025-12-17
 permalink: /posts/2025/12/aircraft-traffic-control/
 series: atc
+excerpt: "How Air Traffic Control keeps order in a crowded sky — separation, sequencing, and flow management viewed as a predictive, safety-critical control system."
 categories:
   - Aviation Systems
   - Air Traffic Control

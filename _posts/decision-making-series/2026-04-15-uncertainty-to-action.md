@@ -3,6 +3,9 @@ title: "Algorithms for Decision-Making: From Uncertainty to Action"
 date: 2026-04-15
 permalink: /posts/2026/04/uncertainty-to-action/
 series: decision-making
+draft: true
+expected: "Summer 2026"
+excerpt: "An overview of algorithms for decision-making under uncertainty — from probabilistic reasoning to MDPs and POMDPs — bridging theory and practice."
 categories:
     - Artificial Intelligence
     - Decision-Making

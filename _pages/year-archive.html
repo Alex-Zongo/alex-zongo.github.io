@@ -7,68 +7,48 @@ redirect_from:
   - /wordpress/blog-posts/
 ---
 
-<div class="blog-hero">
+{% include base_path %}
 
-<strong> </strong>
+{% assign all_notes   = site.posts | sort: 'date' | reverse %}
+{% assign published   = all_notes | where_exp: "p", "p.draft != true" %}
+{% assign atc_all     = site.posts | where: "series", "atc" %}
+{% assign atc_pub     = atc_all | where_exp: "p", "p.draft != true" %}
+{% assign atc_soon    = atc_all | where_exp: "p", "p.draft == true" %}
+{% assign dm_all      = site.posts | where: "series", "decision-making" %}
+{% assign dm_pub      = dm_all | where_exp: "p", "p.draft != true" %}
+{% assign dm_soon     = dm_all | where_exp: "p", "p.draft == true" %}
 
-<p>
-  A curated set of technical notes spanning air traffic control, aircraft dynamics and control, decision-making under uncertainty, multi-agent systems, and reinforcement learning; with reproducible experiments and implementation-focus walkthroughs.
+<p class="mono-label pub-kicker">// research notes &amp; tutorials</p>
+
+<p class="pub-intro">
+  A curated set of technical notes spanning air traffic control, aircraft dynamics &amp; control,
+  decision-making under uncertainty, multi-agent systems, and reinforcement learning — with
+  reproducible experiments and implementation-focused walkthroughs.
 </p>
 
-</div>
+<p class="mono-label section-label">// series</p>
 
-
-
-
-<style>
-.series-nav {
-  display: flex;
-  gap: 1rem;
-  margin: 2rem 0 2.5rem 0;
-  flex-wrap: wrap;
-}
-
-.series-btn {
-  display: inline-block;
-  padding: 0.65rem 1.1rem;
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none !important;
-  border: 1.5px solid var(--mm-muted-text-color, #aaa);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
-}
-
-.series-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-}
-
-.series-btn--atc {
-  background: rgba(33, 150, 243, 0.08);
-  color: #1e88e5;
-}
-
-.series-btn--dm {
-  background: rgba(110, 176, 39, 0.08);
-  color: #94aa24;
-}
-
-@media (prefers-color-scheme: dark) {
-  .series-btn {
-    border-color: #444;
-  }
-}
-</style>
-
-<p style="margin-top:1.5rem; font-weight:500;">
-  Explore by series:
-</p>
-
-<div class="series-nav">
-  <a class="series-btn series-btn--atc" href="{{ base_path }}/atc-series/">
-    ✈️ Air Traffic Control series
+<div class="series-grid">
+  <a class="series-card notecard--atc" href="{{ base_path }}/atc-series/">
+    <span class="series-card__rail" aria-hidden="true"></span>
+    <span class="series-card__icon">✈️</span>
+    <span class="series-card__title">Air Traffic Control, Autonomy &amp; the Physics of the Sky</span>
+    <span class="series-card__desc">From classical ATC principles to physics-inspired models, reinforcement learning, and autonomous conflict resolution.</span>
+    <span class="series-card__meta">{{ atc_pub | size }} note{% unless atc_pub.size == 1 %}s{% endunless %}{% if atc_soon.size > 0 %} · {{ atc_soon | size }} coming soon{% endif %} <span class="series-card__arrow">→</span></span>
   </a>
-  <a class="series-btn series-btn--dm" href="{{ base_path }}/decision-making-series/">
-    🤖 Decision-making algorithms series
+
+  <a class="series-card notecard--decision-making" href="{{ base_path }}/decision-making-series/">
+    <span class="series-card__rail" aria-hidden="true"></span>
+    <span class="series-card__icon">🤖</span>
+    <span class="series-card__title">Decision-Making Algorithms: From Theory to Practice</span>
+    <span class="series-card__desc">Inspired by <em>Algorithms for Decision Making</em> (Kochenderfer) — probabilistic reasoning, MDPs/POMDPs, games, and MARL.</span>
+    <span class="series-card__meta">{{ dm_pub | size }} note{% unless dm_pub.size == 1 %}s{% endunless %}{% if dm_soon.size > 0 %} · {{ dm_soon | size }} coming soon{% endif %} <span class="series-card__arrow">→</span></span>
   </a>
 </div>
+
+{% if published.size > 0 %}
+<p class="mono-label section-label">// latest notes</p>
+<div class="pub-list">
+  {% for post in published limit: 4 %}{% include note-card.html %}{% endfor %}
+</div>
+{% endif %}
