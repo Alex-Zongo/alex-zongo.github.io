@@ -14,6 +14,7 @@
   <div class="ecard__rail" aria-hidden="true"></div>
   <div class="ecard__body">
     <div class="ecard__head">
+      {% if post.module %}<span class="ecard__module">{{ post.module }}</span>{% endif %}
       <span class="ecard-badge ecard-badge--note-soon"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i> Coming soon</span>
       {% if post.expected %}<span class="ecard__date">Expected {{ post.expected }}</span>{% endif %}
     </div>
@@ -27,6 +28,7 @@
   <div class="ecard__rail" aria-hidden="true"></div>
   <div class="ecard__body">
     <div class="ecard__head">
+      {% if post.module %}<span class="ecard__module">{{ post.module }}</span>{% endif %}
       <span class="ecard-badge ecard-badge--note">{{ series_label }}</span>
       <span class="ecard__date">{{ post.date | date: '%b %-d, %Y' }} · {{ rt }} min read</span>
     </div>

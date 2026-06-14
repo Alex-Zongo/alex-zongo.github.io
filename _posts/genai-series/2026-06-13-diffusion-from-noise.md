@@ -3,6 +3,9 @@ title: "Diffusion from First Principles: From Data to Noise and Back"
 date: 2026-06-13
 permalink: /posts/2026/06/diffusion-from-noise/
 series: genai
+part: 1
+module: "1.1"
+part_title: "The core idea — discrete & concrete"
 excerpt: "The one idea behind every diffusion model — gradually destroy structure with noise, then learn to undo it — with an interactive forward-diffusion explorable to build intuition."
 tags:
   - generative-ai

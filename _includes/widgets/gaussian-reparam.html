@@ -1,0 +1,106 @@
+<!-- Interactive: the reparameterization trick x = μ + Lε. Vanilla JS + canvas, no deps, theme-aware.
+     Uses the shared .xwidget shell (styles live in _custom-technical.scss). -->
+<div class="xwidget js-gaussian">
+  <div class="xwidget__head">
+    <span class="xwidget__label">interactive · the reparameterization trick</span>
+    <span class="xwidget__readout js-readout">μ = (0.0, 0.0) · σ = (1.0, 1.0) · ρ = 0.0</span>
+  </div>
+
+  <div class="xwidget__stage">
+    <span class="frame__tick frame__tick--tl"></span><span class="frame__tick frame__tick--tr"></span>
+    <span class="frame__tick frame__tick--bl"></span><span class="frame__tick frame__tick--br"></span>
+    <canvas class="xwidget__canvas"></canvas>
+  </div>
+
+  <div class="xwidget__controls">
+    <label class="xwidget__slider"><span class="xwidget__slider-label">μₓ</span><input type="range" min="-220" max="220" value="0" class="js-mx" aria-label="mean x"></label>
+    <label class="xwidget__slider"><span class="xwidget__slider-label">μ_y</span><input type="range" min="-220" max="220" value="0" class="js-my" aria-label="mean y"></label>
+    <label class="xwidget__slider"><span class="xwidget__slider-label">σₓ</span><input type="range" min="10" max="160" value="80" class="js-sx" aria-label="sigma x"></label>
+    <label class="xwidget__slider"><span class="xwidget__slider-label">σ_y</span><input type="range" min="10" max="160" value="80" class="js-sy" aria-label="sigma y"></label>
+    <label class="xwidget__slider"><span class="xwidget__slider-label">ρ</span><input type="range" min="-95" max="95" value="0" class="js-rho" aria-label="correlation"></label>
+    <div class="xwidget__btns"><button type="button" class="xwidget__btn js-resample">↻ resample ε</button></div>
+  </div>
+
+  <p class="xwidget__formula">x = μ + L·ε,&emsp;ε ~ 𝒩(0, I),&emsp;L Lᵀ = Σ</p>
+  <p class="xwidget__caption">The <em>same</em> base noise ε (grey, a standard Gaussian) is deterministically reshaped into a sample x (colour). Sliding μ, σ, ρ translates and stretches the cloud — and because the map is differentiable, gradients can flow through it. That's the <em>reparameterization trick</em>: it's what lets us train models that <em>sample</em>.</p>
+</div>
+
+<script>
+(function () {
+  function gauss() { var u = 1 - Math.random(), v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
+  function cssVar(el, name, fb) { var v = getComputedStyle(el).getPropertyValue(name); return (v && v.trim()) || fb; }
+
+  function initOne(root) {
+    if (root.dataset.init) return; root.dataset.init = '1';
+    var N = 600, W = 4.6; // world half-extent
+    var canvas = root.querySelector('.xwidget__canvas'), ctx = canvas.getContext('2d');
+    var readout = root.querySelector('.js-readout');
+    var S = {
+      mx: root.querySelector('.js-mx'), my: root.querySelector('.js-my'),
+      sx: root.querySelector('.js-sx'), sy: root.querySelector('.js-sy'), rho: root.querySelector('.js-rho')
+    };
+    var eps = []; for (var i = 0; i < N; i++) eps.push([gauss(), gauss()]);
+
+    function draw() {
+      var mx = S.mx.value / 100, my = S.my.value / 100;
+      var sx = S.sx.value / 100, sy = S.sy.value / 100, rho = S.rho.value / 100;
+      var lyx = rho * sy, lyy = Math.sqrt(Math.max(0, 1 - rho * rho)) * sy; // Cholesky of Σ
+
+      var cssW = root.querySelector('.xwidget__stage').clientWidth;
+      var cssH = Math.max(240, Math.min(440, Math.round(cssW * 0.66)));
+      var dpr = window.devicePixelRatio || 1;
+      canvas.width = cssW * dpr; canvas.height = cssH * dpr; canvas.style.height = cssH + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, cssW, cssH);
+
+      var cx = cssW / 2, cy = cssH / 2, sc = (Math.min(cssW, cssH) / 2 - 12) / W;
+      function px(x, y) { return [cx + x * sc, cy - y * sc]; }
+      var accent = cssVar(root, '--x-accent', '#7c3aed');
+      var grid = cssVar(document.documentElement, '--global-text-color-light', '#94a3b8');
+
+      // axes
+      ctx.strokeStyle = grid; ctx.globalAlpha = 0.25; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(cssW, cy); ctx.moveTo(cx, 0); ctx.lineTo(cx, cssH); ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      // base noise ε (grey, at origin)
+      ctx.fillStyle = grid;
+      for (var k = 0; k < N; k++) { var p = px(eps[k][0], eps[k][1]); ctx.globalAlpha = 0.35; ctx.beginPath(); ctx.arc(p[0], p[1], 1.7, 0, 6.2832); ctx.fill(); }
+      ctx.globalAlpha = 1;
+
+      // transformed samples x = μ + Lε (colour)
+      ctx.fillStyle = accent;
+      for (var j = 0; j < N; j++) {
+        var ex = eps[j][0], ey = eps[j][1];
+        var x = mx + sx * ex, y = my + lyx * ex + lyy * ey;
+        var q = px(x, y); ctx.globalAlpha = 0.7; ctx.beginPath(); ctx.arc(q[0], q[1], 2.0, 0, 6.2832); ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+
+      // covariance ellipses (1σ, 2σ) of N(μ, Σ)
+      ctx.strokeStyle = accent; ctx.lineWidth = 1.5;
+      [1, 2].forEach(function (kk) {
+        ctx.globalAlpha = kk === 1 ? 0.9 : 0.4;
+        ctx.beginPath();
+        for (var a = 0; a <= 64; a++) {
+          var th = a / 64 * 6.2832, u = kk * Math.cos(th), w = kk * Math.sin(th);
+          var ex2 = mx + sx * u, ey2 = my + lyx * u + lyy * w, pp = px(ex2, ey2);
+          if (a === 0) ctx.moveTo(pp[0], pp[1]); else ctx.lineTo(pp[0], pp[1]);
+        }
+        ctx.stroke();
+      });
+      ctx.globalAlpha = 1;
+
+      readout.textContent = 'μ = (' + mx.toFixed(1) + ', ' + my.toFixed(1) + ') · σ = (' + sx.toFixed(2) + ', ' + sy.toFixed(2) + ') · ρ = ' + rho.toFixed(2);
+    }
+
+    Object.keys(S).forEach(function (k) { S[k].addEventListener('input', draw); });
+    root.querySelector('.js-resample').addEventListener('click', function () { eps = []; for (var n = 0; n < N; n++) eps.push([gauss(), gauss()]); draw(); });
+    window.addEventListener('resize', draw);
+    new MutationObserver(draw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    draw();
+  }
+
+  function boot() { document.querySelectorAll('.js-gaussian').forEach(initOne); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
+})();
+</script>

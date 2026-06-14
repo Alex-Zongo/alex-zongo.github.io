@@ -1277,3 +1277,47 @@ $entry-accent: (
 
   i { color: var(--global-accent); margin-right: 0.4em; }
 }
+
+.ecard__module {
+  font-family: $mono-accent;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--ecard-accent, var(--global-accent));
+  font-variant-numeric: tabular-nums;
+}
+
+/* ==========================================================================
+   REUSABLE INTERACTIVE-WIDGET SHELL
+   Shared chrome for explorables (diffusion, gaussian, …) and paper // explore
+   slots. Accent follows --x-accent → --pub-accent → global accent.
+   ========================================================================== */
+.xwidget {
+  --x-accent: var(--pub-accent, var(--global-accent));
+  margin: 1.8em 0;
+  padding: 1.1em 1.2em 1.2em;
+  border: 1px solid var(--global-surface-border);
+  border-radius: 10px;
+  background: var(--global-surface-color);
+}
+.xwidget__head { display: flex; align-items: center; justify-content: space-between; gap: 0.6em; margin-bottom: 0.7em; }
+.xwidget__label { font-family: $mono-accent; font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--x-accent); }
+.xwidget__readout { font-family: $mono-accent; font-size: 0.74rem; color: var(--global-muted-color); font-variant-numeric: tabular-nums; }
+.xwidget__stage { position: relative; border: 1px solid var(--global-border-color); border-radius: 8px; background: var(--global-bg-color); overflow: hidden; }
+.xwidget__canvas { display: block; width: 100%; height: auto; }
+.xwidget__controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7em 1.2em; margin-top: 0.9em; }
+.xwidget__slider { display: flex; align-items: center; gap: 0.55em; flex: 1 1 190px; min-width: 160px; }
+.xwidget__slider-label { font-family: $mono-accent; font-size: 0.72rem; letter-spacing: 0.03em; color: var(--global-muted-color); white-space: nowrap; }
+.xwidget__slider input[type=range] { flex: 1; accent-color: var(--x-accent); cursor: pointer; min-width: 80px; }
+.xwidget__btns { display: flex; flex-wrap: wrap; gap: 0.4em; }
+.xwidget__btn {
+  font-family: $mono-accent; font-size: 0.72rem; letter-spacing: 0.02em;
+  padding: 0.32em 0.66em; border: 1px solid var(--global-surface-border);
+  border-radius: 6px; background: var(--global-bg-color);
+  color: var(--global-text-color); cursor: pointer; transition: all 0.15s ease;
+}
+.xwidget__btn:hover { border-color: var(--x-accent); color: var(--x-accent); }
+.xwidget__btn.is-active { background: var(--x-accent); border-color: var(--x-accent); color: #fff; }
+.xwidget__formula { font-family: $mono-accent; font-size: 0.84rem; margin: 1em 0 0.3em; color: var(--global-text-color); }
+.xwidget__caption { font-size: 0.86rem; line-height: 1.55; color: var(--global-muted-color); margin: 0.3em 0 0; }
+.xwidget__caption em { color: var(--x-accent); font-style: normal; }

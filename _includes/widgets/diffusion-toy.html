@@ -29,55 +29,9 @@
   <p class="xwidget__caption">Drag <em>t</em> to watch structured data dissolve into Gaussian noise along a variance-preserving schedule. Training a diffusion model means learning to <em>reverse</em> this — predicting ε (or the score) so we can walk back from noise to data.</p>
 </div>
 
-<style>
-.xwidget {
-  margin: 1.8em 0;
-  padding: 1.1em 1.2em 1.2em;
-  border: 1px solid var(--global-surface-border, #e3e8ee);
-  border-radius: 10px;
-  background: var(--global-surface-color, #fff);
-}
-.xwidget__head { display: flex; align-items: center; justify-content: space-between; gap: 0.6em; margin-bottom: 0.7em; }
-.xwidget__label {
-  font-family: "IBM Plex Mono", monospace; font-size: 0.7rem; letter-spacing: 0.12em;
-  text-transform: uppercase; color: #7c3aed;
-}
-.xwidget__readout {
-  font-family: "IBM Plex Mono", monospace; font-size: 0.74rem;
-  color: var(--global-muted-color, #64748b); font-variant-numeric: tabular-nums;
-}
-.xwidget__stage {
-  position: relative; border: 1px solid var(--global-border-color, #e3e8ee);
-  border-radius: 8px; background: var(--global-bg-color, #fbfcfd); overflow: hidden;
-}
-.xwidget__canvas { display: block; width: 100%; height: auto; }
-.xwidget__controls { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9em; margin-top: 0.9em; }
-.xwidget__slider { display: flex; align-items: center; gap: 0.6em; flex: 1 1 240px; min-width: 200px; }
-.xwidget__slider-label {
-  font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: 0.04em;
-  color: var(--global-muted-color, #64748b); white-space: nowrap;
-}
-.xwidget__slider input[type=range] { flex: 1; accent-color: #7c3aed; cursor: pointer; }
-.xwidget__btns { display: flex; flex-wrap: wrap; gap: 0.4em; }
-.xwidget__btn {
-  font-family: "IBM Plex Mono", monospace; font-size: 0.72rem; letter-spacing: 0.02em;
-  padding: 0.32em 0.66em; border: 1px solid var(--global-surface-border, #e3e8ee);
-  border-radius: 6px; background: var(--global-bg-color, #fff);
-  color: var(--global-text-color, #16202c); cursor: pointer; transition: all 0.15s ease;
-}
-.xwidget__btn:hover { border-color: #7c3aed; color: #7c3aed; }
-.xwidget__btn.is-active { background: #7c3aed; border-color: #7c3aed; color: #fff; }
-.xwidget__formula {
-  font-family: "IBM Plex Mono", monospace; font-size: 0.84rem; margin: 1em 0 0.3em;
-  color: var(--global-text-color, #16202c);
-}
-.xwidget__caption { font-size: 0.86rem; line-height: 1.55; color: var(--global-muted-color, #64748b); margin: 0.3em 0 0; }
-.xwidget__caption em { color: #7c3aed; font-style: normal; }
-</style>
 
 <script>
 (function () {
-  var ACCENT = '#7c3aed';
   function gauss() { var u = 1 - Math.random(), v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); }
 
   // toy data distributions in world coords (~[-3,3]); returns {x,y,h} with h = hue for structure
