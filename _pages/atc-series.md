@@ -16,7 +16,7 @@ author_profile: true
 <p class="mono-label pub-kicker">✈️ // air traffic control series · {{ atc_pub | size }} note{% unless atc_pub.size == 1 %}s{% endunless %}</p>
 
 <p class="pub-intro">
-  Air Traffic Control is one of the most complex control systems ever built — balancing safety,
+  Air Traffic Control is one of the most complex control systems ever built,  balancing safety,
   efficiency, uncertainty, and human decision-making at a global scale. These notes explore modern
   and emerging approaches to airspace management, from classical ATC principles to physics-inspired
   models, reinforcement learning, multi-modal AI, and autonomous conflict resolution.

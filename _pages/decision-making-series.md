@@ -16,7 +16,7 @@ author_profile: true
 <p class="mono-label pub-kicker">🤖 // decision-making series · {{ dm_pub | size }} note{% unless dm_pub.size == 1 %}s{% endunless %}</p>
 
 <p class="pub-intro">
-  A structured series inspired by <em>Algorithms for Decision Making</em> (Mykel J. Kochenderfer) —
+  A structured series inspired by <em>Algorithms for Decision Making</em> (Mykel J. Kochenderfer),
   covering probabilistic reasoning, MDPs and POMDPs, model &amp; state uncertainty, games, and
   multi-agent reinforcement learning, with intuitive plots and reproducible notebooks.
 </p>
