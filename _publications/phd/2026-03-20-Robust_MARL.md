@@ -44,10 +44,10 @@ preprinturl: 'https://arxiv.org/abs/2603.28900'
 slidesurl: #
 bibtexurl: #
 posterurl: 'https://alex-zongo.github.io/files/acc_workshop_2026.pdf'
-type: "under-review"
+type: "accepted"
 citation: 'Zongo, A., Fotiadis, F., Topcu, U., &amp; Wei, P. (2026). &quot;Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing.&quot; <i>arXiv preprint</i> arXiv:2603.28900.'
 ---
 
 This paper introduces a Robust Multi-Agent Reinforcement Learning framework for realtime separation assurance and tactical deconfliction mechanism for small Unmanned Aerial Systems under GPS degradation and Spoofing. 
 
->**_This manuscript is currently under review for presentation at CDC 2026. It was also presented at the American Control Conference (ACC 2026) Workshop._** 
+>**_This manuscript has been accepted for presentation at CDC 2026. It was also presented at the American Control Conference (ACC 2026) Workshop._** 
