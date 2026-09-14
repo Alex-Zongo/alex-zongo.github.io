@@ -19,7 +19,7 @@ layout: default
 {% assign words = page.content | strip_html | number_of_words %}
 {% assign rt = words | divided_by: 200 %}{% if rt < 1 %}{% assign rt = 1 %}{% endif %}
 
-<div id="main" role="main">
+<div id="main" role="main" tabindex="-1">
   {% include sidebar.html %}
 
   <article class="page paper notepage notepage--{{ page.series }}" itemscope itemtype="https://schema.org/BlogPosting">

@@ -7,6 +7,7 @@ part: 4
 module: "4.2"
 part_title: "Making it real"
 draft: true
+published: false
 expected: "Fall 2026"
 excerpt: "Time embeddings, U-Nets and Diffusion Transformers, and why moving to a VAE latent space made high-resolution generation practical."
 tags: [architectures, latent-diffusion, vae]

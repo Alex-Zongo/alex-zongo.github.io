@@ -7,6 +7,7 @@ part: 0
 module: "0.1"
 part_title: "Foundations you can see"
 draft: true
+published: false
 expected: "Summer 2026"
 excerpt: "Random variables, densities, and the idea that an expectation is just an average over samples — the Monte-Carlo lens we use everywhere."
 tags: [probability, monte-carlo, foundations]

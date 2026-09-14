@@ -1,7 +1,7 @@
 ---
 title: "Fine-Tuning Large Language Models for Cooperative Tactical Deconfliction of Small Unmanned Aerial Systems"
 collection: publications
-tags: ["LLMs", "Air Traffic Control", "Multi-Agent"]
+tags: ["Large Language Models", "Air Traffic Control", "Multi-Agent"]
 authors: "Iman Sharifi, **Alex Zongo**, Peng Wei"
 abstract: >
   The growing deployment of small Unmanned Aerial Systems (sUASs) in low-altitude airspaces has
@@ -43,12 +43,12 @@ excerpt: 'This paper presents a simulation-to-language data generation pipeline 
 date: 2026-03-20
 venue: 'The 3rd Workshop on Multi-Agent Embodied Intelligent Systems Meet Agentic-AI era: Opportunities, Challenges and Futures (MEIS@CVPR 2026)'
 paperurl: 'https://openaccess.thecvf.com/content/CVPR2026W/MEIS/html/Sharifi_Fine-Tuning_Large_Language_Models_for_Cooperative_Tactical_Deconfliction_of_Small_CVPRW_2026_paper.html'
-preprinturl: 'https://arxiv.org/abs/2603.28561v1'
+preprinturl: 'https://arxiv.org/abs/2603.28561'
 slidesurl: #
 bibtexurl: #
 posterurl: 'https://alex-zongo.github.io/files/meis_cvpr_poster_2026.pdf'
 type: "conference"
-citation: 'Sharifi, I., Zongo, A., & Wei, P. (2026). &quot; Fine-Tuning Large Language Models for Cooperative Tactical Deconfliction of Small Unmanned Aerial Systems. &quot; <i> In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition </i> (pp. 1067-1076).'
+citation: 'Sharifi, I., Zongo, A., & Wei, P. (2026). &quot; Fine-Tuning Large Language Models for Cooperative Tactical Deconfliction of Small Unmanned Aerial Systems. &quot; <i>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (MEIS)</i> (pp. 1067-1076).'
 ---
 
 This paper presents a simulation-to-language data generation pipeline using BlueSky ATM for fine-tuning Large Language Models on cooperative tactical deconfliction of small UAS, achieving improved decision accuracy and reduced near mid-air collisions through parameter-efficient fine-tuning (LoRA, GRPO).

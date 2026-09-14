@@ -1,6 +1,9 @@
 ---
-title: "eVTOL Aircraft Energy Overhead Estimation under Conflict Resolution in High-Density Airspaces"
+title: "eVTOL Aircraft Energy Consumption Estimation with Conflict Resolution in High-Density Airspaces"
+date_label: "June 2026"
 collection: publications
+featured: true
+feature_order: 3
 tags: ["Advanced Air Mobility", "Separation Assurance"]
 authors: "**Alex Zongo**, Peng Wei"
 abstract: >
@@ -42,14 +45,15 @@ permalink: /publication/2026-01-15-eVTOL_energy_consumption
 excerpt: 'This paper characterizes electric Vertical Take-off and Landing (eVTOL) aircraft energy consumption under an autonomous tactical conflict resolution framework (the Modified Voltage Potential or MVP) in an unstructured high-density airspace. <br/><img width="500" height="300" src="/images/icns_overview.png">'
 date: 2026-01-15
 venue: 'the Integrated Communications Navigation, and Surveillance (ICNS) Conference'
-paperurl: #
+paperurl: 'https://ieeexplore.ieee.org/document/11570454'
 preprinturl: 'https://arxiv.org/abs/2604.06093'
 slidesurl: 'https://alex-zongo.github.io/files/icns2026_presentation.pdf'
 bibtexurl: #
 type: "conference"
-citation: 'Zongo, A., &amp; Wei, P. (2026). &quot;eVTOL Aircraft Energy Overhead Estimation under Conflict Resolution in High-Density Airspaces.&quot; <i>arXiv preprint</i> arXiv:2604.06093.'
+citation: 'Zongo, A., &amp; Wei, P. (2026). &quot;eVTOL Aircraft Energy Consumption Estimation with Conflict Resolution in High-Density Airspaces.&quot; 2026 Integrated Communications, Navigation and Surveillance Conference (ICNS).'
 ---
 
 This paper characterizes electric Vertical Take-off and Landing (eVTOL) aircraft energy consumption under an autonomous tactical conflict resolution framework (the Modified Voltage Potential or MVP) in an unstructured high-density airspace. It shows that the conflict resolution maneuvers in general do not significantly increase the energy consumption of eVTOLs, and that the energy overhead is more pronounced in scenarios with higher traffic density and more complex conflict situations. The findings suggest that the MVP framework can be an effective tool for managing air traffic while minimizing energy consumption, which is crucial for the sustainability of urban air mobility.
 
->**_This manuscript was presented at ICNS 2026 (Best in-session paper award)._** 
+>**_This manuscript was presented at ICNS 2026 (Best in-session paper award)._**
+The linked preprint uses the title *eVTOL Aircraft Energy Overhead Estimation under Conflict Resolution in High-Density Airspaces*.

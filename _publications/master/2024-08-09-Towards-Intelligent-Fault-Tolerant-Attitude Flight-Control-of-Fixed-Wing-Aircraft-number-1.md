@@ -2,7 +2,7 @@
 title: "Towards Intelligent Fault-Tolerant Attitude Flight Control of Fixed-Wing Aircraft"
 collection: publications
 tags: ["Flight Control", "Reinforcement Learning", "Robustness & Safety"]
-authors: "**Alex B. Zongo**, Li Qing"
+authors: "**Alex B. Zongo**, Qing Li"
 abstract: >
   Submitted as part of the author's master's thesis, this work investigates reinforcement-learning
   approaches for fault-tolerant attitude flight control of fixed-wing aircraft. The goal is an intelligent
@@ -27,6 +27,8 @@ bibtex: |
 permalink: /publication/2024-08-09-Towards-Intelligent-Fault-Tolerant-Attitude Flight-Control-of-Fixed-Wing-Aircraft-number-1
 excerpt: 'This paper was submitted as part of my master thesis. It delves into the use of Reinforcement Learning to enhance fault-tolerance in fixed-wing aircraft attitude flight control. <br/><img width="500" height="300" src="/images/cemtd3_adaptation_diag.png">'
 date: 2024-08-09
+publication_year: 2025
+date_label: "March 2025"
 venue: 'Lecture Notes in Electrical Engineering, Springer Nature, International Conference in Navigation Guidance and Control (ICGNC)'
 slidesurl: "https://alex-zongo.github.io/files/icgnc24_slides.pdf"
 paperurl:  'https://doi.org/10.1007/978-981-96-2264-1_15' #'http://academicpages.github.io/files/paper1.pdf'
@@ -34,7 +36,7 @@ preprinturl: 'https://alex-zongo.github.io/files/icgnc2024_paper_draft3.pdf'
 type: "conference"
 bibtexurl: '/files/tsinghua_master.bib'
 
-citation: 'Zongo, A.B., Qing, L. (2025). &quot;Towards Intelligent Fault-Tolerant Attitude Control of Fixed-Wing Aircraft.&quot; In: Yan, L., Duan, H., Deng, Y. (eds).<i>Advances in Guidance, Navigation and Control. ICGNC 2024</i>. Lecture Notes in Electrical Engineering, vol 1353. Springer, Singapore.'
+citation: 'Zongo, A.B., Li, Q. (2025). &quot;Towards Intelligent Fault-Tolerant Attitude Control of Fixed-Wing Aircraft.&quot; In: Yan, L., Duan, H., Deng, Y. (eds).<i>Advances in Guidance, Navigation and Control. ICGNC 2024</i>. Lecture Notes in Electrical Engineering, vol 1353. Springer, Singapore.'
 ---
 
 This study advances flight control systems by integrating

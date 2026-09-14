@@ -17,7 +17,7 @@ layout: default
   {% else %}{% assign st = 'other' %}{% assign st_label = page.type %}
 {% endcase %}
 
-<div id="main" role="main">
+<div id="main" role="main" tabindex="-1">
   {% include sidebar.html %}
 
   <article class="page paper paper--{{ st }}" itemscope itemtype="https://schema.org/ScholarlyArticle">
@@ -25,7 +25,7 @@ layout: default
 
     <div class="paper__head">
       <span class="pub-badge pub-badge--{{ st }}">{{ st_label }}</span>
-      {% if page.date %}<span class="paper__year">{{ page.date | date: '%B %Y' }}</span>{% endif %}
+      {% if page.date %}<span class="paper__year">{% if page.date_label %}{{ page.date_label }}{% else %}{{ page.date | date: '%B %Y' }}{% endif %}</span>{% endif %}
     </div>
 
     <h1 class="paper__title" itemprop="headline">{{ page.title }}</h1>
@@ -38,8 +38,8 @@ layout: default
     {% endif %}
 
     <div class="paper__actions">
-      {% if page.paperurl %}<a class="btn-pill btn-pill--solid" href="{{ page.paperurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-link" aria-hidden="true"></i> DOI</a>{% endif %}
-      {% if page.preprinturl %}{% if page.preprinturl contains 'arxiv' %}<a class="btn-pill btn-pill--solid" href="{{ page.preprinturl | strip }}" target="_blank" rel="noopener"><i class="ai ai-arxiv" aria-hidden="true"></i> arXiv</a>{% else %}<a class="btn-pill btn-pill--solid" href="{{ page.preprinturl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> PDF</a>{% endif %}{% endif %}
+      {% if page.paperurl %}<a class="btn-pill btn-pill--solid" href="{{ page.paperurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-link" aria-hidden="true"></i> Paper</a>{% endif %}
+      {% if page.preprinturl %}{% if page.preprinturl contains 'arxiv' %}<a class="btn-pill btn-pill--solid" href="{{ page.preprinturl | strip }}" target="_blank" rel="noopener"><i class="ai ai-arxiv" aria-hidden="true"></i> Preprint</a>{% else %}<a class="btn-pill btn-pill--solid" href="{{ page.preprinturl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> PDF</a>{% endif %}{% endif %}
       {% if page.slidesurl %}<a class="btn-pill" href="{{ page.slidesurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-display" aria-hidden="true"></i> Slides</a>{% endif %}
       {% if page.posterurl %}<a class="btn-pill" href="{{ page.posterurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-image" aria-hidden="true"></i> Poster</a>{% endif %}
       {% if page.videourl %}<a class="btn-pill" href="{{ page.videourl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-play" aria-hidden="true"></i> Video</a>{% endif %}

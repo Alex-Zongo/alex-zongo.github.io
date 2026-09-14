@@ -7,6 +7,7 @@ part: 1
 module: "1.3"
 part_title: "The core idea — discrete & concrete"
 draft: true
+published: false
 expected: "Fall 2026"
 excerpt: "The reverse Gaussian, predicting the noise epsilon, and the simplified training loss — why a denoiser is all you need, from scratch."
 tags: [diffusion, ddpm, training]

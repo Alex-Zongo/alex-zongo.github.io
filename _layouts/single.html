@@ -14,7 +14,7 @@ layout: default
   {% endunless %}
 {% endif %}
 
-<div id="main" role="main">
+<div id="main" role="main" tabindex="-1">
   {% include sidebar.html %}
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
@@ -26,7 +26,7 @@ layout: default
     <div class="page__inner-wrap">
       {% unless page.header.overlay_color or page.header.overlay_image %}
         <header>
-          {% if page.title %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
+          {% if page.title and page.hide_title != true %}<h1 class="page__title" itemprop="headline">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>{% endif %}
           {% if page.read_time %}
             <p class="page__meta"><i class="fa fa-clock" aria-hidden="true"></i> {% include read-time.html %}</p>
           {% endif %}
@@ -39,6 +39,8 @@ layout: default
         {% elsif page.venue and page.date %}
   {% if page.type == "under-review" or page.type == "submitted" %}
     <p>Submitted to <i>{{ page.venue }}</i></p>
+  {% elsif page.type == "accepted" %}
+    <p>Accepted at <i>{{ page.venue }}</i>, {{ page.date | date: "%Y" }}</p>
   {% elsif page.type == "in-preparation" %}
     <p>In preparation for <i>{{ page.venue }}</i></p>
   {% else %}

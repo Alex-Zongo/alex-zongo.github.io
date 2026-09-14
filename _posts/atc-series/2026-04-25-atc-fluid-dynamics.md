@@ -4,6 +4,7 @@ date: 2025-12-25
 permalink: /posts/2025/12/atc-fluid-dynamics/
 series: atc
 draft: true
+published: false
 expected: "Fall 2026"
 excerpt: "A novel take on conflict resolution that borrows from fluid dynamics — treating air traffic as a flow field to reason about separation assurance and deconfliction."
 tags:

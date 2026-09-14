@@ -7,6 +7,7 @@ part: 1
 module: "1.4"
 part_title: "The core idea — discrete & concrete"
 draft: true
+published: false
 expected: "Fall 2026"
 excerpt: "Ancestral sampling from noise to data, your first generated samples on 2-D toys (and MNIST), and what the reverse trajectory looks like."
 tags: [diffusion, sampling, ddpm]

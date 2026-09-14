@@ -32,6 +32,7 @@ redirect_from:
 <p class="mono-label section-label">// series</p>
 
 <div class="series-grid">
+  {% if atc_pub.size > 0 %}
   <a class="series-card notecard--atc" href="{{ base_path }}/atc-series/">
     <span class="series-card__rail" aria-hidden="true"></span>
     <span class="series-card__icon">✈️</span>
@@ -39,7 +40,9 @@ redirect_from:
     <span class="series-card__desc">From classical ATC principles to physics-inspired models, reinforcement learning, and autonomous conflict resolution.</span>
     <span class="series-card__meta">{{ atc_pub | size }} note{% unless atc_pub.size == 1 %}s{% endunless %}{% if atc_soon.size > 0 %} · {{ atc_soon | size }} coming soon{% endif %} <span class="series-card__arrow">→</span></span>
   </a>
+  {% endif %}
 
+  {% if dm_pub.size > 0 %}
   <a class="series-card notecard--decision-making" href="{{ base_path }}/decision-making-series/">
     <span class="series-card__rail" aria-hidden="true"></span>
     <span class="series-card__icon">🤖</span>
@@ -47,14 +50,17 @@ redirect_from:
     <span class="series-card__desc">Inspired by <em>Algorithms for Decision Making</em> (Kochenderfer): probabilistic reasoning, MDPs/POMDPs, games, and MARL.</span>
     <span class="series-card__meta">{{ dm_pub | size }} note{% unless dm_pub.size == 1 %}s{% endunless %}{% if dm_soon.size > 0 %} · {{ dm_soon | size }} coming soon{% endif %} <span class="series-card__arrow">→</span></span>
   </a>
+  {% endif %}
 
+  {% if gen_pub.size > 0 %}
   <a class="series-card notecard--genai" href="{{ base_path }}/genai-series/">
     <span class="series-card__rail" aria-hidden="true"></span>
     <span class="series-card__icon">🌀</span>
     <span class="series-card__title">Generative AI: Diffusion &amp; Flow Models from First Principles</span>
-    <span class="series-card__desc">Diffusion, score matching, and flow matching from the ground-up. The backbone of a Fall 2026 lecture.</span>
+    <span class="series-card__desc">Diffusion, score matching, and flow matching from the ground-up. Interactive explanations from first principles.</span>
     <span class="series-card__meta">{{ gen_pub | size }} note{% unless gen_pub.size == 1 %}s{% endunless %}{% if gen_soon.size > 0 %} · {{ gen_soon | size }} coming soon{% endif %} <span class="series-card__arrow">→</span></span>
   </a>
+  {% endif %}
 </div>
 
 {% if published.size > 0 %}

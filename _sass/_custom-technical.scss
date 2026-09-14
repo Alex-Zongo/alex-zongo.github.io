@@ -1321,3 +1321,77 @@ $entry-accent: (
 .xwidget__formula { font-family: $mono-accent; font-size: 0.84rem; margin: 1em 0 0.3em; color: var(--global-text-color); }
 .xwidget__caption { font-size: 0.86rem; line-height: 1.55; color: var(--global-muted-color); margin: 0.3em 0 0; }
 .xwidget__caption em { color: var(--x-accent); font-style: normal; }
+
+/* Content and accessibility refinements */
+[hidden] { display: none !important; }
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--global-accent);
+  outline-offset: 4px;
+}
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 1rem;
+  z-index: 10000;
+  padding: .7rem 1rem;
+  background: var(--global-surface-color);
+  color: var(--global-text-color);
+  border: 2px solid var(--global-accent);
+}
+.skip-link:focus { top: .5rem; }
+.hero__actions { display: flex; flex-wrap: wrap; gap: .65em; margin: 1.2em 0; }
+.pub__authors { font-size: .85rem; color: var(--global-text-color); margin: .5em 0; line-height: 1.65; }
+.pub__head, .ecard__head { flex-wrap: wrap; }
+.pub__title, .paper__title, .ecard__title, .pub__authors, .paper__authors { overflow-wrap: anywhere; }
+.pub__links, .ecard__links, .paper__actions { flex-wrap: wrap; }
+.btn-pill, .pub-chip, .pub__cite-copy { min-height: 44px; }
+.news-archive summary { cursor: pointer; color: var(--global-link-color); padding: .75em 0; }
+.page__content h2.section-label { font-size: .8rem; }
+.pub-badge, .ecard-badge {
+  background: var(--global-accent-soft);
+  color: var(--global-text-color);
+  border: 1px solid var(--global-border-color);
+}
+html[data-theme="dark"] {
+  .ecard__course, .ecard__module, .paper__mark { color: var(--global-accent); }
+}
+@media (max-width: 600px) {
+  .hero__grid { grid-template-columns: minmax(0, 1fr); gap: 1em; }
+  .hero__photo { order: 0; }
+  .hero__photo .frame { width: 160px; max-width: 100%; }
+  .pub__body, .ecard__body { padding: .9em; }
+  .pub__cite-head { flex-wrap: wrap; gap: .5em; }
+  .pub__title { font-size: 1rem; }
+  .pub__year { font-size: .72rem; }
+  .tl { grid-template-columns: 1fr; gap: .25em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.pub-chip.is-active { color: var(--global-bg-color); }
+h2.pub-section__head { font-size: .8rem; }
+
+/* Quiet links at rest; prose links gain an underline on interaction. */
+.page__content a, .archive a {
+  text-underline-offset: .18em;
+  text-decoration-thickness: 1px;
+}
+.page__content a:focus-visible, .archive a:focus-visible {
+  text-decoration: underline;
+}
+.page__content .pub__title a, .archive .pub__title a,
+.page__content .ecard__title a, .archive .ecard__title a,
+.page__content .btn-pill, .archive .btn-pill,
+.page__content .series-card, .archive .series-card,
+.page__content .card, .archive .card {
+  &, &:hover, &:focus-visible { text-decoration: none; background-image: none; }
+}
+.pub__title a:hover, .ecard__title a:hover {
+  color: var(--global-link-color-hover);
+}

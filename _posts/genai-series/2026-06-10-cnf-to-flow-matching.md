@@ -7,6 +7,7 @@ part: 3
 module: "3.1"
 part_title: "Flow matching — the unifying view"
 draft: true
+published: false
 expected: "Fall 2026"
 excerpt: "Continuous normalizing flows and the likelihood bottleneck, then the flow-matching idea: just regress a velocity field."
 tags: [flow-matching, cnf, generative-ai]

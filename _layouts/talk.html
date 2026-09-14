@@ -16,7 +16,7 @@ layout: default
 {% else %}{% assign tk = 'other' %}{% assign tk_label = page.type %}
 {% endif %}
 
-<div id="main" role="main">
+<div id="main" role="main" tabindex="-1">
   {% include sidebar.html %}
 
   <article class="page paper talkpage talkpage--{{ tk }}" itemscope itemtype="https://schema.org/Event">
@@ -24,7 +24,8 @@ layout: default
 
     <div class="paper__head">
       <span class="ecard-badge ecard-badge--{{ tk }}">{{ tk_label }}</span>
-      {% if page.date %}<span class="paper__year">{{ page.date | date: '%B %-d, %Y' }}</span>{% endif %}
+      {% if page.status %}<span class="ecard__date">{{ page.status }}</span>{% endif %}
+      {% if page.date %}<span class="paper__year">{% if page.date_label %}{{ page.date_label }}{% else %}{{ page.date | date: '%B %-d, %Y' }}{% endif %}</span>{% endif %}
     </div>
 
     <h1 class="paper__title" itemprop="name">{{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}</h1>

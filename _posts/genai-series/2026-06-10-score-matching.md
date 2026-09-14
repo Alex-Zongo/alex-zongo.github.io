@@ -7,6 +7,7 @@ part: 2
 module: "2.1"
 part_title: "The continuous view — score & SDEs"
 draft: true
+published: false
 expected: "Fall 2026"
 excerpt: "Denoising score matching and Tweedie's formula — why predicting noise is the same as estimating the score, with a visual of the learned score field."
 tags: [score-matching, diffusion, sde]

@@ -1,28 +1,30 @@
 ---
-title: "Runtime Safety Filtering for Learned sUAS Separation Policies under GNSS Degradation"
+title: "Runtime Safety Filtering for Learned Small UAS Separation Policies under GNSS Degradation"
 collection: publications
+featured: true
+feature_order: 2
 tags: ["Separation Assurance", "Reinforcement Learning", "Robustness & Safety"]
 authors: "**Alex Zongo**, Peng Wei"
 abstract: >
-  This paper addresses real-time separation assurance and tactical deconfliction of small Unmanned Aerial
-  Systems (sUAS) under GNSS degradation. Building on multi-agent reinforcement learning, we introduce a
-  runtime safety filter that screens and corrects learned separation policies when navigation signals are
-  degraded or spoofed, keeping aircraft within safe separation while preserving the efficiency of the
-  learned policy.
+  This study compares action filtering and observation filtering for learned small-UAS
+  separation policies under adversarial GNSS degradation. Both approaches estimate a
+  worst-case traffic state. In the reported experiments, observation filtering reduces
+  near mid-air collisions by 90%, while action filtering provides negligible safety improvement.
 tldr:
-  - "Adds a **runtime safety filter** on top of **learned** sUAS separation policies."
-  - "Maintains safe separation under **GNSS degradation and spoofing** while preserving learned-policy efficiency."
+  - "Compares **action filtering** and **observation filtering** under GNSS degradation."
+  - "Observation filtering reduces near mid-air collisions by **90% in the reported experiments**."
 permalink: /publication/2026-03-20-Certified_Separation_Assurance
-excerpt: 'This paper is addresses realtime separation assurance and tactical deconfliction mechanisms of small Unmanned Aerial Systems via Multi-Agent Reinforcement Learning under GPS degradation and Spoofing.'
+excerpt: "Compares action and observation filtering for learned separation policies under GNSS degradation; observation filtering improves safety in the reported experiments."
 date: 2026-03-20
 venue: 'the Digital Avionics Systems Conference (DASC) 2026'
 paperurl: #
+preprinturl: 'https://arxiv.org/abs/2607.10014'
 slidesurl: #
 bibtexurl: #
 type: "accepted"
-citation: # 'Your Name, You. (2024). &quot;Paper Title Number 3.&quot; <i>GitHub Journal of Bugs</i>. 1(3).'
+citation: 'Zongo, A., &amp; Wei, P. (2026). &quot;Runtime Safety Filtering for Learned Small UAS Separation Policies under GNSS Degradation.&quot; arXiv:2607.10014. Accepted at DASC 2026.'
 ---
 
-This paper tries to answer the question: how do we certify safety at for autonomous separation assurance data-driven algorithms at runtime despite GPS degradation and spoofing?
+This paper compares filtering a learned policy's actions with filtering its observations under GNSS degradation.
 
->**_This manuscript has been accepted for presentation at DASC 2026._** 
+**Accepted at DASC 2026.** I will present this work at the conference in Orlando. [Presentation details]({{ '/talks/dasc-2026-runtime-safety-filtering' | relative_url }}).

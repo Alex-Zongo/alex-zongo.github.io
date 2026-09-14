@@ -13,14 +13,14 @@ author_profile: true
 
 <a class="notes-back" href="{{ base_path }}/year-archive/">← All research notes</a>
 
-<p class="mono-label pub-kicker">🌀 // generative ai series · {{ gen_pub | size }} of {{ gen | size }} modules live</p>
+<p class="mono-label pub-kicker">🌀 // generative ai series · {{ gen_pub | size }} published modules</p>
 
 <p class="pub-intro">
   A build-from-scratch journey through modern generative modeling which includes diffusion, score matching, and flow
   matching, derived from first principles, implemented in code, and made <strong>interactive</strong> so
   intuition sticks. This is a deliberately <em>learner-first</em> reordering: we build the probability you
   need first, go DDPM-first before any SDEs, live in 1-D/2-D where you can <em>see</em> the math, and arrive
-  at flow matching as the payoff. It doubles as the backbone of a lecture I'm giving in Fall&nbsp;2026.
+  at flow matching as the payoff. Related teaching: my <a href="{{ '/teaching/2026-diffusion-flow-matching' | relative_url }}">Fall 2026 guest lecture on diffusion models and flow matching</a> for MAE 6291 at GWU.
 </p>
 
 <div class="pub-list">

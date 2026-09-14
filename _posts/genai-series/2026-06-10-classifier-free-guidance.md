@@ -7,6 +7,7 @@ part: 4
 module: "4.1"
 part_title: "Making it real"
 draft: true
+published: false
 expected: "Fall 2026"
 excerpt: "Conditioning on prompts and labels and the classifier-free guidance trick — plus the quality-vs-diversity trade-off you can dial."
 tags: [guidance, conditioning, diffusion]

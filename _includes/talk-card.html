@@ -15,6 +15,7 @@
   <div class="ecard__body">
     <div class="ecard__head">
       <span class="ecard-badge ecard-badge--{{ tk }}">{{ tk_label }}</span>
+      {% if post.status %}<span class="ecard__date">{{ post.status }}</span>{% endif %}
       <span class="ecard__date">{{ post.date | date: '%b %Y' }}</span>
     </div>
 

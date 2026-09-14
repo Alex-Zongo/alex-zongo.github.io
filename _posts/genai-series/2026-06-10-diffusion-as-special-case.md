@@ -7,6 +7,7 @@ part: 3
 module: "3.3"
 part_title: "Flow matching — the unifying view"
 draft: true
+published: false
 expected: "Fall 2026"
 excerpt: "Recovering diffusion from the flow-matching lens, and straightening paths (rectified flow / OT) for faster, cleaner sampling."
 tags: [flow-matching, rectified-flow, optimal-transport]

@@ -7,6 +7,7 @@ part: 4
 module: "4.4"
 part_title: "Making it real"
 draft: true
+published: false
 expected: "Fall 2026"
 excerpt: "Diffusion beyond pixels: continuous-time Markov chains for language, and diffusion for molecules and protein structure."
 tags: [discrete-diffusion, language, science]

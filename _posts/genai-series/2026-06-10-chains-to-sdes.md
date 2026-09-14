@@ -7,6 +7,7 @@ part: 2
 module: "2.2"
 part_title: "The continuous view — score & SDEs"
 draft: true
+published: false
 expected: "Fall 2026"
 excerpt: "The forward VP/VE SDE, Anderson's reverse-time SDE, and how DDPM is just a discretization of a continuous process."
 tags: [sde, diffusion, fokker-planck]

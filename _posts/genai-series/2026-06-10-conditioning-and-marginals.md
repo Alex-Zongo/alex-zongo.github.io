@@ -7,6 +7,7 @@ part: 0
 module: "0.3"
 part_title: "Foundations you can see"
 draft: true
+published: false
 expected: "Summer 2026"
 excerpt: "How distributions combine and decompose: joint densities, conditioning (slicing) and marginalizing (averaging) — the grammar of probabilistic models."
 tags: [probability, bayes, foundations]

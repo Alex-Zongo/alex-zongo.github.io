@@ -12,7 +12,7 @@ title                    : "Alex B. Zongo"
 title_separator          : "-"
 name                     : &name "Alex Baowend Soom M. A. Zongo"
 description              : &description "Alex B. Zongo — Aerospace Engineer, Researcher, and AI Enthusiast. Showcasing research, publications, projects, and teaching at George Washington University."
-url                      : https://alex-zongo.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://alexzongo.com # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  :  # the subpath of your site, e.g. "/blog"
 repository               : "Alex-Zongo/alex-zongo.github.io"
 
@@ -27,7 +27,7 @@ author:
   bio              : "Aerospace Engineer and PhD candidate @ GWU"
   location         : "Washington, DC, USA"
   employer         : "GWU"
-  uri              : "https://alex-zongo.github.io"
+  uri              : "https://alexzongo.com"
   email            : "a.zongo@gwu.edu"
 
   # Academic websites
@@ -166,6 +166,14 @@ include:
   - _pages
   - files
 exclude:
+  - _portfolio
+  - _pages/portfolio.html
+  - _pages/markdown.md
+  - _pages/archive-layout-with-content.md
+  - _pages/non-menu-page.md
+  - _pages/page-archive.html
+  - _pages/collection-archive.html
+  - _pages/terms.md
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache

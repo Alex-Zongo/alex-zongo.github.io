@@ -7,6 +7,7 @@ part: 0
 module: "0.5"
 part_title: "Foundations you can see"
 draft: true
+published: false
 expected: "Summer 2026"
 excerpt: "Transforming densities (the Jacobian and pushforwards) and a first, geometric look at the score gradient of log-density — the compass diffusion follows."
 tags: [probability, score, change-of-variables]

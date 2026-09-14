@@ -1,26 +1,13 @@
-# main links links
 main:
-  - title: "CV"
-    url: /files/cv.pdf
-
-  # - title: "Portfolio"
-  #   url: /portfolio/
-
   - title: "Publications"
     url: /publications/
-
-  - title: "Research Notes & Tutorials"
-    url: /year-archive/
-  
-
   - title: "Talks"
     url: /talks/
-
-  - title: "Teaching & Mentoring"
+  - title: "Teaching"
     url: /teaching/
-  
-  - title: "Misc"
+  - title: "Writing"
+    url: /year-archive/
+  - title: "Beyond Research"
     url: /miscellaneous/
-
-  # - title: "Guide"
-  #   url: /markdown/
+  - title: "CV"
+    url: /files/cv.pdf

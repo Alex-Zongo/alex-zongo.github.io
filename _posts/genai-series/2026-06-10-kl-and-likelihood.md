@@ -7,6 +7,7 @@ part: 0
 module: "0.4"
 part_title: "Foundations you can see"
 draft: true
+published: false
 expected: "Summer 2026"
 excerpt: "Likelihood, cross-entropy, and KL divergence — why fitting a distribution means minimizing KL, and what that buys us."
 tags: [probability, kl-divergence, information-theory]
