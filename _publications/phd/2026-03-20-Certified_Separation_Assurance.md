@@ -19,12 +19,12 @@ date: 2026-03-20
 venue: 'the Digital Avionics Systems Conference (DASC) 2026'
 paperurl: #
 preprinturl: 'https://arxiv.org/abs/2607.10014'
-slidesurl: #
+slidesurl: 'https://alex-zongo.github.io/files/dasc_final_presentation.pdf'
 bibtexurl: #
 type: "accepted"
 citation: 'Zongo, A., &amp; Wei, P. (2026). &quot;Runtime Safety Filtering for Learned Small UAS Separation Policies under GNSS Degradation.&quot; arXiv:2607.10014. Accepted at DASC 2026.'
 ---
 
-This paper compares filtering a learned policy's actions with filtering its observations under GNSS degradation.
+This paper compares filtering a learned policy's actions with filtering its observations under GNSS degradation. Humbled and honored to have this work as **Best of the UAM/UAS Traffic Management and Separation Assurance session**, **Best of the Air traffic Management Track** and **3rd Best of Conference** paper awards at DASC 2026.
 
-**Accepted at DASC 2026.** I will present this work at the conference in Orlando. [Presentation details]({{ '/talks/dasc-2026-runtime-safety-filtering' | relative_url }}).
+**Presented at DASC 2026.** [Presentation details]({{ '/talks/dasc-2026-runtime-safety-filtering' | relative_url }}).
