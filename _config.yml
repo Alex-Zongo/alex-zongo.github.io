@@ -21,7 +21,7 @@ repository               : "Alex-Zongo/alex-zongo.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "visa_photo.JPG"
+  avatar           : "profile_new.png" #"visa_photo.JPG"
   name             : "Alex B. Zongo"
   pronouns         : # example: "she/her"
   bio              : "Aerospace Engineer and PhD candidate @ GWU"
