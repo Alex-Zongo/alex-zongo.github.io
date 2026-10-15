@@ -61,7 +61,7 @@ layout: default
 
     {% if page.abstract %}
       <section class="paper__section">
-        <p class="mono-label section-label">// abstract</p>
+        <p class="mono-label section-label">// {{ page.abstract_label | default: 'abstract' | escape }}</p>
         <p class="paper__abstract">{{ page.abstract }}</p>
       </section>
     {% endif %}

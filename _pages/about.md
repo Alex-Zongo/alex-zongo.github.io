@@ -47,12 +47,17 @@ For research collaborations in safe autonomy and aerospace systems, reach out by
 
 <ul>
   <li><a href="{{ '/publication/2026-01-29-Robust_MARL' | relative_url }}">Robust MARL under GPS degradation and spoofing</a> — accepted at CDC 2026; preprint and ACC workshop poster available.</li>
-  <li><a href="{{ '/publication/2026-03-20-Certified_Separation_Assurance' | relative_url }}">Runtime safety filtering under GNSS degradation</a> — accepted at DASC 2026.</li>
+  <li><a href="{{ '/publication/2026-03-20-Certified_Separation_Assurance' | relative_url }}">Runtime safety filtering under GNSS degradation</a> — presented at DASC 2026; <a href="{{ '/files/DASC.pdf' | relative_url }}">slides available</a>.</li>
   <li><a href="{{ '/publication/2026-03-20-finetuning_llm_atc' | relative_url }}">LLMs for cooperative tactical deconfliction</a> — published at the MEIS workshop at CVPR 2026.</li>
 </ul>
 
 <p class="mono-label section-label">// recent news</p>
 <div class="timeline" markdown="1">
+
+<div class="tl" markdown="1">
+<span class="tl__date">Sep 2026</span>
+<div class="tl__body" markdown="span">Presented [*Runtime Safety Filtering for Learned Small UAS Separation Policies under GNSS Degradation*]({{ '/talks/dasc-2026-runtime-safety-filtering' | relative_url }}) at **DASC 2026** in Orlando, Florida. The paper received best-in-session, best-in-track, and **3rd Best of Conference** paper awards. [Presentation slides]({{ '/files/DASC.pdf' | relative_url }}).</div>
+</div>
 
 <div class="tl" markdown="1">
 <span class="tl__date">Jun 2026</span>

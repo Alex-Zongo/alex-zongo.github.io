@@ -2,6 +2,7 @@
 {%- comment -%} Map free-form talk type → modifier / label {%- endcomment -%}
 {% assign t = post.type | downcase %}
 {% if t contains 'poster' %}{% assign tk = 'poster' %}{% assign tk_label = 'Poster' %}
+{% elsif t contains 'panel' %}{% assign tk = 'discussion' %}{% assign tk_label = 'Panel Discussion' %}
 {% elsif t contains 'conference' or t contains 'proceedings' %}{% assign tk = 'conference' %}{% assign tk_label = 'Conference Talk' %}
 {% elsif t contains 'webinar' %}{% assign tk = 'webinar' %}{% assign tk_label = 'Webinar' %}
 {% elsif t contains 'invited' %}{% assign tk = 'invited' %}{% assign tk_label = 'Invited Talk' %}
