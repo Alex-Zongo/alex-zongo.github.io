@@ -1,0 +1,15 @@
+<section class="research-institutions" aria-labelledby="institutions-title">
+  <h2 id="institutions-title" class="mono-label section-label">// affiliations &amp; research support</h2>
+  <ul class="research-institutions__list">
+    {% for institution in site.data.profile.institutions %}
+    <li>
+      <p class="research-institutions__role">{{ institution.role }}</p>
+      <a href="{{ institution.url }}" class="research-institutions__logo research-institutions__logo--{{ institution.key }}" aria-label="{{ institution.name }}">
+        <img src="{{ institution.logo | relative_url }}" alt="{{ institution.name }}" loading="lazy">
+      </a>
+      <strong>{{ institution.name }}</strong>
+      <p class="research-institutions__detail">{{ institution.detail }}</p>
+    </li>
+    {% endfor %}
+  </ul>
+</section>

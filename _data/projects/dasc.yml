@@ -1,0 +1,100 @@
+venue: "DASC 2026 @ Orlando, Florida"
+affiliation: "Department of Mechanical and Aerospace Engineering · The George Washington University"
+subtitle: "Action filtering vs. observation filtering"
+takeaway: "Where should a safety filter intervene?"
+lead: "Correct what the policy sees, or constrain what it does? Two runtime architectures share a worst-case state estimate, but produce very different safety outcomes."
+awards:
+  - "3rd Best of Conference"
+  - "Best of Air Traffic Management Track"
+  - "Best of UAM/UAS Traffic Management and Separation Assurance Session"
+hero:
+  src: "/images/dasc/filter-architectures.png"
+  alt: "A degraded observation produces a shared worst-case state estimate. Action filtering constrains the policy output; observation filtering feeds the estimate back into the policy."
+  caption: "One estimate, two interventions. Both filters operate at runtime without retraining the deployed policy."
+  source_page: 6
+metrics:
+  - value: "90%"
+    label: "fewer near mid-air collisions"
+  - value: "0.24 → 0.02"
+    label: "NMACs per episode"
+  - value: "250 → 375 m"
+    label: "average separation"
+metrics_note: "Reported simulation comparison in the DASC presentation (slide 10); Rmax = 0.7 and α = 5 s. These are experimental results, not a general safety guarantee."
+sections:
+  - id: problem
+    nav: "Problem"
+    eyebrow: "01 / The problem"
+    title: "A safe decision needs a trustworthy observation."
+    text: >
+      A decentralized separation policy uses nearby aircraft positions, velocities, and headings
+      to select a speed change. GNSS multipath, blockage, or interference can distort those
+      observations: an apparently clear path may conceal a closing conflict. The policy acts
+      on the reported state, while safety is measured on the true state.
+    points:
+      - title: "The controller"
+        text: "Three speed actions: slow down, hold speed, or speed up. Heading follows the structured route."
+      - title: "The safety measure"
+        text: "A near mid-air collision (NMAC) occurs when two aircraft pass within the 100 m separation threshold."
+      - title: "The uncertainty"
+        text: "Bounded adversarial observation degradation, with contamination rate R and a design bound Rmax selected before deployment."
+  - id: method
+    nav: "Method"
+    eyebrow: "02 / The comparison"
+    title: "Same estimate. Different decision authority."
+    text: >
+      Both architectures estimate the worst-case traffic state under the assumed uncertainty
+      bound. What changes is how that estimate interacts with the learned policy.
+    points:
+      - title: "Action filtering"
+        text: "Enumerate candidate speed actions, test a discrete-time control barrier function condition, and keep the feasible action closest to the policy's proposal."
+      - title: "Observation filtering"
+        text: "Construct a corrected observation from the worst-case estimate, pass it to the policy, and retain the policy's chosen action."
+    figure:
+      src: "/images/dasc/filter-mechanisms.png"
+      alt: "Action filtering enumerates and tests actions against a barrier condition. Observation filtering corrects the input and preserves the policy output."
+      caption: "The barrier condition can veto an action only in the action-filtering architecture."
+      source_page: 8
+  - id: results
+    nav: "Results"
+    eyebrow: "03 / Experimental evidence"
+    title: "Correcting the input improves separation."
+    text: >
+      In the reported comparison, observation filtering reduces NMACs and increases average
+      separation. Action filtering remains close to the unfiltered baseline. The curves below
+      show how both measures vary as the actual contamination rate increases.
+    figure:
+      src: "/images/dasc/separation-results.png"
+      alt: "NMACs and average separation versus contamination rate. Observation filtering produces fewer NMACs and greater separation than action filtering and the nominal policy."
+      caption: "Nominal policy, action filter, and observation filter at Rmax = 0.7 and α = 5 s. Shaded bands show standard error."
+      source_page: 10
+    details:
+      - title: "How much does the assumed degradation bound matter?"
+        text: "Smaller assumed bounds provide limited benefit. Larger bounds surface more conservative traffic states and improve separation in these experiments. The filter is not given the true contamination rate."
+        figure:
+          src: "/images/dasc/bound-sensitivity.png"
+          alt: "Observation-filter performance for assumed contamination bounds from 0.1 to 1.0. Larger bounds reduce NMACs in the evaluated scenarios."
+          caption: "Sensitivity to the design bound Rmax."
+          source_page: 11
+      - title: "How sensitive are the filters to the barrier parameter?"
+        text: "Increasing α changes the balance between separation distance and closing rate in the barrier function. Action filtering is sensitive to that choice; the observation-filter curves remain comparatively similar."
+        figure:
+          src: "/images/dasc/barrier-sensitivity.png"
+          alt: "Side-by-side parameter sweeps: action filtering degrades as α grows, while observation filtering maintains low NMAC rates. The panels use different vertical scales."
+          caption: "Barrier-parameter sensitivity. Note the different vertical scales for action and observation filtering."
+          source_page: 12
+  - id: discussion
+    nav: "Discussion"
+    eyebrow: "04 / Interpretation & scope"
+    title: "Preserve the policy's learned safety behavior."
+    text: >
+      The presentation offers a possible explanation: the barrier tests a one-step condition,
+      while the trained policy resolves encounters over multiple steps. Supplying a conservative
+      observation lets the policy use that learned behavior. This is an interpretation of the
+      observed results, rather than a universal ranking of safety-filter architectures.
+    points:
+      - title: "A policy-dependent finding"
+        text: "The benefit depends on how the deployed policy was trained and the safety behavior it learned."
+      - title: "A cost in conservatism"
+        text: "A more cautious observation may trigger earlier or more frequent slowing down. Safety and efficiency must be assessed together."
+      - title: "Simulation scope"
+        text: "These results concern the evaluated learned policy, structured routes, and bounded GNSS-degradation model. They do not establish flight certification or hardware validation."

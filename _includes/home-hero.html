@@ -32,4 +32,14 @@
     <a class="btn-pill" href="{{ '/files/cv.pdf' | relative_url }}">CV (PDF)</a>
     <a class="btn-pill" href="mailto:{{ site.author.email }}">Contact</a>
   </div>
+  {% if site.data.profile.opportunities.active %}
+  <aside class="research-availability" aria-label="Research opportunities">
+    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+    <div>
+      <strong>{{ site.data.profile.opportunities.title }}</strong>
+      <p>{{ site.data.profile.opportunities.description }}</p>
+      <a href="mailto:{{ site.author.email }}?subject=Research%20internship%202026-27">Let's connect <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </aside>
+  {% endif %}
 </section>

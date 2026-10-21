@@ -25,11 +25,13 @@ Beyond my academic pursuits, I am committed to leadership development and commun
 
 For a comprehensive overview of my education, experience, and skills, visit my [CV page](/files/cv.pdf).
 
-<p class="mono-label section-label">// opportunities</p>
+<p class="mono-label section-label">// visiting research</p>
 
 Summer 2026: Visiting Researcher at **UC Berkeley**, [**CITRIS and the Banatao Institute**](https://citris-uc.org/), with Professor [**Alexandre Bayen**](https://bayen.berkeley.edu/alex-bayen).
 
 For research collaborations in safe autonomy and aerospace systems, reach out by [email](mailto:a.zongo@gwu.edu).
+
+{% include home-affiliations.html %}
 
 <p class="mono-label section-label">// research interests</p>
 

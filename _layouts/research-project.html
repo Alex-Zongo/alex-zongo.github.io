@@ -1,0 +1,88 @@
+---
+layout: default
+---
+{% assign project = site.data.projects[page.project] %}
+<main id="main" class="research-project" tabindex="-1">
+  <article itemscope itemtype="https://schema.org/ScholarlyArticle">
+    <header class="research-project__header">
+      <a class="research-project__back" href="{{ '/publications/' | relative_url }}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All publications</a>
+      <p class="research-project__eyebrow">{{ project.venue }}</p>
+      <h1 itemprop="headline">{{ page.title }}</h1>
+      <p class="research-project__subtitle">{{ project.subtitle }}</p>
+      <div class="research-project__authors">{{ page.authors | markdownify }}</div>
+      <p class="research-project__affiliation">{{ project.affiliation }}</p>
+      <div class="research-project__resources">
+        {% if page.paperurl %}<a href="{{ page.paperurl | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Paper</a>{% endif %}
+        {% if page.preprinturl %}<a href="{{ page.preprinturl | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Preprint</a>{% endif %}
+        {% if page.slidesurl %}<a href="{{ page.slidesurl | relative_url }}"><i class="fa-solid fa-display" aria-hidden="true"></i> Slides</a>{% endif %}
+        {% if page.codeurl %}<a href="{{ page.codeurl | relative_url }}"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>{% endif %}
+        {% if page.videourl %}<a href="{{ page.videourl | relative_url }}"><i class="fa-solid fa-play" aria-hidden="true"></i> Video</a>{% endif %}
+        {% if page.bibtex or page.citation %}<a href="#citation"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> Cite</a>{% endif %}
+      </div>
+      {% if project.awards %}<ul class="research-project__awards" aria-label="Paper awards">{% for award in project.awards %}<li><i class="fa-solid fa-award" aria-hidden="true"></i> {{ award }}</li>{% endfor %}</ul>{% endif %}
+    </header>
+
+    <section class="research-project__overview" aria-labelledby="overview-title">
+      <h2 id="overview-title">{{ project.takeaway }}</h2>
+      <p class="research-project__lead">{{ project.lead }}</p>
+      {% if project.hero %}{% include project-figure.html figure=project.hero eager=true %}{% endif %}
+      {% if project.metrics %}
+      <dl class="research-project__metrics">{% for metric in project.metrics %}<div><dt>{{ metric.label }}</dt><dd>{{ metric.value }}</dd></div>{% endfor %}</dl>
+      <p class="research-project__metric-note">{{ project.metrics_note }}</p>
+      {% endif %}
+    </section>
+
+    <nav class="research-project__nav" aria-label="Paper sections">
+      {% for section in project.sections %}<a href="#{{ section.id }}">{{ section.nav }}</a>{% endfor %}
+      {% if page.bibtex or page.citation %}<a href="#citation">Citation</a>{% endif %}
+    </nav>
+
+    {% for section in project.sections %}
+    <section class="research-project__section" id="{{ section.id }}" aria-labelledby="{{ section.id }}-title">
+      <p class="research-project__eyebrow">{{ section.eyebrow }}</p>
+      <h2 id="{{ section.id }}-title">{{ section.title }}</h2>
+      <div class="research-project__prose">{{ section.text | markdownify }}</div>
+      {% if section.points %}<div class="research-project__points">{% for point in section.points %}<div><h3>{{ point.title }}</h3><p>{{ point.text }}</p></div>{% endfor %}</div>{% endif %}
+      {% if section.figure %}{% include project-figure.html figure=section.figure %}{% endif %}
+      {% if section.table %}
+      <div class="research-project__table" role="region" aria-label="{{ section.table.caption | escape }}" tabindex="0">
+        <table>
+          <caption>{{ section.table.caption }}</caption>
+          <thead><tr>{% for heading in section.table.headers %}<th scope="col">{{ heading }}</th>{% endfor %}</tr></thead>
+          <tbody>{% for row in section.table.rows %}<tr>{% for cell in row %}{% if forloop.first %}<th scope="row">{{ cell }}</th>{% else %}<td>{{ cell }}</td>{% endif %}{% endfor %}</tr>{% endfor %}</tbody>
+        </table>
+      </div>
+      {% if section.table.note %}<p class="research-project__metric-note">{{ section.table.note }}</p>{% endif %}
+      {% endif %}
+      {% for detail in section.details %}
+      <details class="research-project__detail">
+        <summary>{{ detail.title }}</summary>
+        <p>{{ detail.text }}</p>
+        {% if detail.figure %}{% include project-figure.html figure=detail.figure %}{% endif %}
+      </details>
+      {% endfor %}
+    </section>
+    {% endfor %}
+
+    {% if page.bibtex or page.citation %}
+    <section id="citation" class="research-project__section" aria-labelledby="citation-title">
+      <p class="research-project__eyebrow">Reference</p>
+      <h2 id="citation-title">Cite this work</h2>
+      {% if page.citation %}<p class="research-project__prose">{{ page.citation }}</p>{% endif %}
+      {% if page.bibtex %}
+      <div class="research-project__citation-toolbar">
+        <span>BibTeX</span>
+        <button type="button" class="research-project__copy" hidden><i class="fa-solid fa-copy" aria-hidden="true"></i> Copy BibTeX</button>
+        <span class="research-project__copy-status" role="status"></span>
+      </div>
+      <pre class="research-project__bibtex"><code>{{ page.bibtex | escape }}</code></pre>
+      {% endif %}
+    </section>
+    {% endif %}
+    <footer class="research-project__footer">
+      {% if page.presentation %}<a href="{{ page.presentation | relative_url }}">Presentation details <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>{% endif %}
+      <p>{% if page.slidesurl %}Figures from the <a href="{{ page.slidesurl | relative_url }}">presentation slides</a>. {% endif %}Project-page presentation inspired by <a href="https://mit-realm.github.io/gcbfplus/">GCBF+</a> and <a href="https://nerfies.github.io/">Nerfies</a>.</p>
+    </footer>
+  </article>
+</main>
+<script src="{{ '/assets/js/research-project.js' | relative_url }}" defer></script>

@@ -1,0 +1,69 @@
+venue: "Accepted · OCEANS 2026 IEEE"
+affiliation: "Mechanical and Aerospace Engineering · Computer Science · The George Washington University"
+subtitle: "COLREGs reasoning meets learned vessel control"
+takeaway: "From navigation rules to maneuver decisions."
+lead: "Language-based maneuver intent guides a learned controller, with supervisory arbitration connecting the two."
+hero:
+  src: "/images/maritime-llm-rl-architecture.png"
+  alt: "CORALL pipeline connecting encounter observations, LLM maneuver intent, an RL policy, and a supervisory action arbiter."
+  caption: "The proposed architecture."
+  source_url: "https://bpb-us-w2.wpmucdn.com/web.seas.gwu.edu/dist/9/15/files/2026/09/Yasmin_LLM_Guided_RL_COLAV_OCEANS_2026.pdf#page=2"
+  source_label: "Figure 1"
+metrics:
+  - value: "Up to 54%"
+    label: "less route-completion time"
+  - value: "Up to 37%"
+    label: "less cumulative risk exposure"
+  - value: "300 / 300"
+    label: "collision-free completed episodes"
+metrics_note: "Time and risk compare the learned and rule-based planners. Episode completion comes from a separate full-pipeline evaluation; neither establishes a general safety guarantee."
+sections:
+  - id: method
+    nav: "Method"
+    eyebrow: "01 / Architecture"
+    title: "Separate intent from execution."
+    points:
+      - title: "Interpret"
+        text: "An LLM supplies COLREGs-based maneuver intent."
+      - title: "Control"
+        text: "PPO proposes heading and speed actions."
+      - title: "Arbitrate"
+        text: "A supervisor combines guidance and control, retaining fallback authority."
+  - id: results
+    nav: "Results"
+    eyebrow: "02 / Planner comparison"
+    title: "Efficiency gains, with tighter separation."
+    text: "The learned planner improves time and risk metrics, but maintains smaller minimum separation than the baseline."
+    figure:
+      src: "/images/maritime/planner-comparison.png"
+      alt: "Four plots compare path length, travel time, minimum separation, and risk exposure across two-, three-, and four-ship encounters."
+      caption: "Planner performance by ship count."
+      source_url: "https://bpb-us-w2.wpmucdn.com/web.seas.gwu.edu/dist/9/15/files/2026/09/Yasmin_LLM_Guided_RL_COLAV_OCEANS_2026.pdf#page=6"
+      source_label: "Figure 4"
+    details:
+      - title: "Inspect all 22 encounter trajectories"
+        text: "Ownship trajectories are compared against scripted target vessels."
+        figure:
+          src: "/images/maritime/trajectories.png"
+          alt: "Trajectories for 22 Imazu cases, showing target ships, the CORALL baseline, and the RL-controlled ownship."
+          caption: "Qualitative trajectory comparison."
+          source_url: "https://bpb-us-w2.wpmucdn.com/web.seas.gwu.edu/dist/9/15/files/2026/09/Yasmin_LLM_Guided_RL_COLAV_OCEANS_2026.pdf#page=5"
+          source_label: "Figure 3"
+  - id: reliability
+    nav: "Reliability"
+    eyebrow: "03 / Full-pipeline evaluation"
+    title: "Fallback control matters."
+    table:
+      caption: "LLM reliability and episode outcomes (Table I)"
+      headers: ["Case", "Usable intent", "Strict accuracy", "Episode success"]
+      rows:
+        - ["1", "64.9%", "100.0%", "100.0%"]
+        - ["6", "79.5%", "91.9%", "100.0%"]
+        - ["18", "73.6%", "96.6%", "100.0%"]
+        - ["Overall", "72.7%", "96.0%", "100.0%"]
+      note: "9,507 LLM calls; strict accuracy uses the high-confidence, single-label subset. Success uses 100 episodes per case."
+  - id: scope
+    nav: "Scope"
+    eyebrow: "04 / Limits"
+    title: "Simulation evidence, not deployment certification."
+    text: "One controlled ownship encounters scripted traffic. Broader geometries, more reliable guidance, and multi-agent control remain future work."

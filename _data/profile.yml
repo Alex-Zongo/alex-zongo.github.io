@@ -1,0 +1,23 @@
+opportunities:
+  active: true
+  title: "Open to 2026–27 research internships"
+  description: "Academia, research labs, and industry. Let's work on safe learning, multi-agent systems, and autonomous decision-making."
+institutions:
+  - name: "George Washington University"
+    role: "Doctoral research"
+    detail: "Mechanical & Aerospace Engineering · IASL"
+    url: "https://www.gwu.edu/"
+    logo: "/images/affiliations/gwu.png"
+    key: gwu
+  - name: "UC Berkeley"
+    role: "Visiting research · Summer 2026"
+    detail: "CITRIS and the Banatao Institute"
+    url: "https://citris-uc.org/"
+    logo: "/images/affiliations/berkeley.svg"
+    key: berkeley
+  - name: "NASA"
+    role: "Research support"
+    detail: "University Leadership Initiative"
+    url: "https://www.nasa.gov/"
+    logo: "/images/affiliations/nasa.svg"
+    key: nasa

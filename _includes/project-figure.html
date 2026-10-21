@@ -1,0 +1,14 @@
+{% assign figure = include.figure %}
+<figure class="research-project__figure">
+  <a class="research-project__image-link" href="{{ figure.src | relative_url }}" target="_blank" rel="noopener" aria-label="Open full-size figure: {{ figure.alt | escape }}">
+    <img src="{{ figure.src | relative_url }}" alt="{{ figure.alt | escape }}" {% unless include.eager %}loading="lazy"{% endunless %} decoding="async">
+  </a>
+  <figcaption>
+    <span>{{ figure.caption }}</span>
+    {% if figure.source_url %}
+    <a href="{{ figure.source_url | relative_url }}">{{ figure.source_label | default: 'Source' }} <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+    {% elsif page.slidesurl and figure.source_page %}
+    <a href="{{ page.slidesurl | relative_url }}#page={{ figure.source_page }}">Slide {{ figure.source_page }} <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+    {% endif %}
+  </figcaption>
+</figure>

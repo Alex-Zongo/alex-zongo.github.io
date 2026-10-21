@@ -1,0 +1,46 @@
+.research-availability {
+  display: flex;
+  gap: 16px;
+  margin-top: 28px;
+  padding: 20px 0 20px 20px;
+  border-left: 3px solid #329678;
+  border-block: 1px solid var(--global-border-color);
+  font-size: 15px;
+  line-height: 1.6;
+  > i { margin-top: 5px; color: #329678; }
+  strong { font-size: 17px; color: var(--global-text-color); }
+  p { margin: 6px 0 10px; color: var(--global-muted-color); }
+  a { font-weight: 600; text-underline-offset: 4px; }
+}
+.research-institutions {
+  margin: 32px 0;
+  padding: 24px 0;
+  border-block: 1px solid var(--global-border-color);
+}
+.page__content .research-institutions h2 { margin: 0 0 22px; font-size: 13px; border: 0; }
+.research-institutions__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li { margin: 0; min-width: 0; }
+  strong { display: block; margin-top: 14px; font-size: 14px; line-height: 1.5; }
+}
+.page__content .research-institutions__role { font-size: 12px; line-height: 1.6; min-height: 40px; color: var(--global-muted-color); margin: 0 0 8px; }
+.research-institutions__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96px;
+  background: #fff;
+  img { display: block; width: 80%; height: 64px; object-fit: contain; }
+}
+.research-institutions__logo--gwu img { width: 100%; height: 96px; }
+.page__content .research-institutions__detail { font-size: 12px; color: var(--global-muted-color); line-height: 1.6; margin: 6px 0 0; }
+@media (max-width: 600px) {
+  .research-institutions__list { grid-template-columns: 1fr; gap: 24px; }
+  .page__content .research-institutions__role { min-height: 0; }
+  .research-institutions__logo { max-width: 240px; }
+}
