@@ -1,9 +1,17 @@
 ---
+layout: research-project
+project: icns
+presentation: /talks/2026-04-15-icns
+venue_short: "ICNS 2026"
+venue_type: "conference"
 title: "eVTOL Aircraft Energy Consumption Estimation with Conflict Resolution in High-Density Airspaces"
 date_label: "June 2026"
 collection: publications
 featured: true
-feature_order: 3
+thumb_figure: "aam-energy"
+awards:
+  - "Best in Session"
+feature_order: 4
 tags: ["Advanced Air Mobility", "Separation Assurance"]
 authors: "**Alex Zongo**, Peng Wei"
 abstract: >

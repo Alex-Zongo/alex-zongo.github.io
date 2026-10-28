@@ -13,7 +13,7 @@ author_profile: true
 
 <a class="notes-back" href="{{ base_path }}/year-archive/">← All research notes</a>
 
-<p class="mono-label pub-kicker">🌀 // generative ai series · {{ gen_pub | size }} published modules</p>
+<p class="mono-label pub-kicker">generative ai series · {{ gen_pub | size }} published modules</p>
 
 <p class="pub-intro">
   A build-from-scratch journey through modern generative modeling which includes diffusion, score matching, and flow
@@ -29,7 +29,7 @@ author_profile: true
   {% assign group = gen | where_exp: "p", "p.part == pnum" %}
   {% if group.size > 0 %}
     {% assign head = group | first %}
-    <p class="mono-label section-label">// part {{ pnum }} · {{ head.part_title }}</p>
+    <p class="mono-label section-label">part {{ pnum }} · {{ head.part_title }}</p>
     {% for post in group %}{% include note-card.html %}{% endfor %}
   {% endif %}
 {% endfor %}

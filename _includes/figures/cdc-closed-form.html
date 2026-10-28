@@ -1,0 +1,55 @@
+<svg class="fig" viewBox="0 0 640 300" role="img" aria-labelledby="fig-cdcc-t fig-cdcc-d">
+  <title id="fig-cdcc-t">The closed-form worst-case observation</title>
+  <desc id="fig-cdcc-d">Left: an iterative adversary needs many updates to find a bad observation. Right: the closed form takes the sign of the value gradient and moves the observation to the opposite corner of the bounded box in one step.</desc>
+  <rect class="fig-panel" x="1" y="1" width="638" height="298" rx="10"/>
+
+  <!-- iterative adversary -->
+  <text class="fig-label fig-strong" x="24" y="30">Iterative adversary</text>
+  <text class="fig-label fig-muted" x="24" y="47">trained or searched: many updates, can be unstable</text>
+  <clipPath id="fig-cdcc-clipL"><rect x="2" y="2" width="317" height="296" rx="9"/></clipPath>
+  <g class="fig-contour" clip-path="url(#fig-cdcc-clipL)">
+    <ellipse cx="92" cy="160" rx="34" ry="22"/><ellipse cx="98" cy="162" rx="72" ry="48"/><ellipse cx="104" cy="166" rx="116" ry="80"/><ellipse cx="110" cy="170" rx="164" ry="114"/>
+  </g>
+  <rect class="fig-kappa fig-kappa--fill" x="146" y="122" width="88" height="88" rx="2"/>
+  <circle class="fig-dot fig-dot--blue" cx="190" cy="166" r="5"/>
+  <polyline class="fig-trail" points="190,166 198,158 186,176 206,170 200,190 218,184 214,200 228,196 226,206 234,210">
+    <animate attributeName="stroke-dashoffset" values="220;0;0" keyTimes="0;0.7;1" dur="7s" repeatCount="indefinite"/>
+  </polyline>
+  <circle class="fig-probe" r="5"><animateMotion dur="7s" repeatCount="indefinite" calcMode="linear" keyPoints="0;1;1" keyTimes="0;0.7;1" path="M190 166 L198 158 L186 176 L206 170 L200 190 L218 184 L214 200 L228 196 L226 206 L234 210"/></circle>
+  <text class="fig-mono fig-muted" x="150" y="248">many training updates</text>
+
+  <line class="fig-divider" x1="320" y1="24" x2="320" y2="276"/>
+
+  <!-- closed form -->
+  <text class="fig-label fig-strong" x="344" y="30">Closed form (ours)</text>
+  <text class="fig-label fig-muted" x="344" y="47">one step, linear time, second-order accurate</text>
+  <clipPath id="fig-cdcc-clipR"><rect x="321" y="2" width="317" height="296" rx="9"/></clipPath>
+  <g class="fig-contour" clip-path="url(#fig-cdcc-clipR)">
+    <ellipse cx="412" cy="160" rx="34" ry="22"/><ellipse cx="418" cy="162" rx="72" ry="48"/><ellipse cx="424" cy="166" rx="116" ry="80"/><ellipse cx="430" cy="170" rx="164" ry="114"/>
+  </g>
+  <rect class="fig-kappa fig-kappa--fill" x="466" y="122" width="88" height="88" rx="2"/>
+  <circle class="fig-dot fig-dot--blue" cx="510" cy="166" r="5"/>
+  <text class="fig-math" x="496" y="160">S</text>
+  <!-- gradient grows -->
+  <line class="fig-grad" x1="510" y1="166" x2="510" y2="166" marker-end="url(#fig-cdcc-head-ink)">
+    <animate attributeName="x2" values="510;472;472;472" keyTimes="0;0.2;0.9;1" dur="7s" repeatCount="indefinite"/>
+    <animate attributeName="y2" values="166;150;150;150" keyTimes="0;0.2;0.9;1" dur="7s" repeatCount="indefinite"/>
+  </line>
+  <text class="fig-math" x="448" y="144"><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.15;0.22;1" dur="7s" repeatCount="indefinite"/>∇V</text>
+  <!-- one step to the opposite corner -->
+  <line class="fig-step" x1="510" y1="166" x2="554" y2="210" marker-end="url(#fig-cdcc-head)">
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.32;0.4;1" dur="7s" repeatCount="indefinite"/>
+  </line>
+  <g><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.42;0.48;1" dur="7s" repeatCount="indefinite"/>
+    <path class="fig-star" d="M554 199 l3.5 7.5 8 1 -6 5.5 1.5 8 -7 -4 -7 4 1.5 -8 -6 -5.5 8 -1z"/>
+    <text class="fig-math fig-coral-text" x="566" y="214">Ξ*</text>
+  </g>
+  <g class="fig-box fig-box--teal"><rect x="384" y="240" width="200" height="36" rx="8"/>
+    <text class="fig-math fig-center" x="484" y="263">Ξ* = S − κ ⊙ sign(∇V(S))</text>
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.5;0.58;1" dur="7s" repeatCount="indefinite"/></g>
+
+  <defs>
+    <marker id="fig-cdcc-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fig-head fig-head--coral" d="M0 0 L10 5 L0 10z"/></marker>
+    <marker id="fig-cdcc-head-ink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fig-head" d="M0 0 L10 5 L0 10z"/></marker>
+  </defs>
+</svg>

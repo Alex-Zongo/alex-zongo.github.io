@@ -1,0 +1,68 @@
+<svg class="fig" viewBox="0 0 480 300" role="img" aria-labelledby="fig-fm-t fig-fm-d">
+  <title id="fig-fm-t">A language model in the decision loop (schematic)</title>
+  <desc id="fig-fm-d">Traffic from a simulator is described in text, a fine-tuned language model proposes an advisory, and an arbiter passes it to the aircraft or falls back to a learned controller when the model's output is unusable.</desc>
+  <rect class="fig-panel" x="1" y="1" width="478" height="298" rx="10"/>
+
+  <!-- traffic scene -->
+  <g class="fig-box fig-box--muted"><rect x="18" y="56" width="132" height="150" rx="8"/></g>
+  <text class="fig-label fig-muted" x="26" y="48">closed-loop simulation</text>
+  <g class="fig-route"><path d="M30 100 H138"/><path d="M84 66 V196"/></g>
+  <g class="fig-ac fig-ac--teal">
+    <animateMotion dur="6s" repeatCount="indefinite" rotate="auto" path="M28 100 H140"/>
+    <circle class="fig-ring" r="12"/><path class="fig-plane" d="M7 0 L-5 -5 L-2 0 L-5 5Z"/>
+  </g>
+  <g class="fig-ac fig-ac--blue">
+    <animateMotion dur="6s" repeatCount="indefinite" rotate="auto" path="M84 198 V64" keyPoints="0;0.45;1" keyTimes="0;0.6;1" calcMode="linear"/>
+    <circle class="fig-ring" r="12"/><path class="fig-plane" d="M7 0 L-5 -5 L-2 0 L-5 5Z"/>
+  </g>
+
+  <!-- sim-to-language -->
+  <path class="fig-arrow" d="M150 92 H176" marker-end="url(#fig-fm-head)"/>
+  <g class="fig-box fig-box--paper"><rect x="180" y="56" width="128" height="74" rx="8"/></g>
+  <text class="fig-label fig-muted" x="186" y="48">simulation → language</text>
+  <g class="fig-mono">
+    <text x="190" y="78">AC1: 0.4 nm, closing
+      <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.05;0.12;1" dur="6s" repeatCount="indefinite"/></text>
+    <text x="190" y="96">AC2: crossing, FL004
+      <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.14;0.21;1" dur="6s" repeatCount="indefinite"/></text>
+    <text x="190" y="114">→ action for AC2?
+      <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.23;0.3;1" dur="6s" repeatCount="indefinite"/></text>
+  </g>
+
+  <!-- LLM -->
+  <path class="fig-arrow" d="M308 92 H334" marker-end="url(#fig-fm-head)"/>
+  <g class="fig-box fig-box--purple"><rect x="338" y="62" width="124" height="60" rx="8"/>
+    <text class="fig-label fig-center fig-strong" x="400" y="88">fine-tuned LLM</text>
+    <text class="fig-label fig-center fig-muted" x="400" y="105">LoRA · GRPO</text></g>
+
+  <!-- arbiter -->
+  <path class="fig-arrow" d="M400 122 V150" marker-end="url(#fig-fm-head)"/>
+  <g class="fig-box fig-box--gold"><path d="M400 154 L432 182 L400 210 L368 182Z"/>
+    <text class="fig-label fig-center" x="400" y="186">arbiter</text></g>
+  <g class="fig-reject">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.62;0.66;0.95;1" dur="12s" repeatCount="indefinite"/>
+    <circle cx="420" cy="136" r="9"/><path d="M415 131 l10 10 M425 131 l-10 10"/>
+    <text class="fig-label" x="433" y="140">unusable</text>
+  </g>
+
+  <!-- fallback controller -->
+  <g class="fig-box fig-box--navy"><rect x="338" y="232" width="124" height="40" rx="8"/>
+    <text class="fig-label fig-center fig-on-dark" x="400" y="256">fallback RL policy</text></g>
+  <g class="fig-lane">
+    <animate attributeName="opacity" values="0.3;0.3;1;1;0.3" keyTimes="0;0.62;0.66;0.95;1" dur="12s" repeatCount="indefinite"/>
+    <path class="fig-arrow" d="M400 232 V214" marker-end="url(#fig-fm-head)"/>
+  </g>
+
+  <!-- advisory back to the aircraft -->
+  <path class="fig-arrow" d="M368 182 H154" marker-end="url(#fig-fm-head)"/>
+  <text class="fig-mono" x="196" y="176">advisory: AC2 slow down</text>
+  <circle class="fig-token fig-token--purple" r="5"><animateMotion dur="4s" repeatCount="indefinite" path="M150 92 H176 M308 92 H334 M400 122 V182 H156"/></circle>
+
+  <text class="fig-label fig-muted" x="18" y="282">Evaluated in closed loop, not on static benchmarks.</text>
+
+  <defs>
+    <marker id="fig-fm-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="fig-head" d="M0 0 L10 5 L0 10z"/>
+    </marker>
+  </defs>
+</svg>

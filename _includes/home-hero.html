@@ -1,36 +1,25 @@
 {% include base_path %}
 <section class="hero" aria-label="Introduction">
-  <div class="hero__grid">
-    <div class="hero__main">
-      <p class="mono-label hero__kicker">// aerospace x autonomy x ai</p>
-      <h1 class="hero__name">Alex&nbsp;B.&nbsp;Zongo</h1>
-      <p class="hero__status">
-        <span class="status-pill"><span class="status-dot"></span>PhD&nbsp;·&nbsp;GWU&nbsp;·&nbsp;IASL</span>
-      </p>
-      <p class="hero__tagline"><span class="prompt">&gt;</span> safe multi-agent RL for aerospace systems</p>
-      <p class="hero__blurb">
-        I build robust machine learning and reinforcement learning algorithms for the airspace of
-        tomorrow, including separation assurance, advanced air mobility, and flight control.
-      </p>
-    </div>
+  <div class="hero__banner" aria-hidden="false">{% include figures/hero-airspace.html %}</div>
+  <!-- <h1 class="hero__name">Alex&nbsp;Zongo</h1> -->
+  <p class="hero__status">
+    <!-- <span class="status-pill"><span class="status-dot"></span>PhD&nbsp;Candidate&nbsp;·&nbsp;GWU&nbsp;·&nbsp;IASL</span> -->
+    <span class="status-pill"><span class="status-dot"></span>PhD&nbsp;Candidate&nbsp;@&nbsp;IASL&nbsp;·&nbsp;GWU</span>
 
-    <div class="hero__photo">
-      <div class="frame">
-        <span class="frame__tick frame__tick--tl"></span>
-        <span class="frame__tick frame__tick--tr"></span>
-        <span class="frame__tick frame__tick--bl"></span>
-        <span class="frame__tick frame__tick--br"></span>
-        <video controls loop muted playsinline preload="metadata" aria-label="Profile video">
-          <source src="{{ '/images/media_2.MP4' | relative_url }}" type="video/mp4">
-        </video>
-      </div>
-    </div>
-  </div>
+  </p>
+  <p class="hero__tagline">
+    I develop safe AI-based control systems for multi-agent aircraft both manned and unmanned, especially when sensing fails.
+  </p>
+  <p class="hero__blurb">
+    My work spans robust multi-agent reinforcement learning, safety filtering in learned control
+    policies, and language models in the control loop. Next: world (action) models for multi-agent planning.
+  </p>
 
   <div class="hero__actions">
-    <a class="btn-pill" href="{{ '/publications/' | relative_url }}">Publications</a>
-    <a class="btn-pill" href="{{ '/files/cv.pdf' | relative_url }}">CV (PDF)</a>
-    <a class="btn-pill" href="mailto:{{ site.author.email }}">Contact</a>
+    <a class="btn-pill btn-pill--solid" href="{{ '/files/cv.pdf' | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> CV (PDF)</a>
+    <a class="btn-pill" href="{{ site.author.googlescholar }}" target="_blank" rel="noopener"><i class="ai ai-google-scholar" aria-hidden="true"></i> Scholar</a>
+    <a class="btn-pill" href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a>
+    <a class="btn-pill" href="mailto:{{ site.author.email }}"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Email</a>
   </div>
   {% if site.data.profile.opportunities.active %}
   <aside class="research-availability" aria-label="Research opportunities">
@@ -38,7 +27,7 @@
     <div>
       <strong>{{ site.data.profile.opportunities.title }}</strong>
       <p>{{ site.data.profile.opportunities.description }}</p>
-      <a href="mailto:{{ site.author.email }}?subject=Research%20internship%202026-27">Let's connect <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      <a href="mailto:{{ site.author.email }}?subject={{ site.data.profile.opportunities.email_subject | uri_escape }}">Let's connect <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
     </div>
   </aside>
   {% endif %}

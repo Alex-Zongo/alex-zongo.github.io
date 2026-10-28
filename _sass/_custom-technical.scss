@@ -31,12 +31,13 @@ a {
 }
 
 /* --------------------------------------------------------------------------
-   1. Mono section labels  —  "// section"
+   1. Section labels (small caps, sans)
    -------------------------------------------------------------------------- */
 .mono-label {
-  font-family: $mono-accent;
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-family: $sans-serif;
+  font-weight: 650;
+  font-size: 0.74rem;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
   color: var(--global-accent);
   margin: 0 0 0.4em;

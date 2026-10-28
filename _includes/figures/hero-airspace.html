@@ -1,0 +1,90 @@
+<svg class="fig fig--banner" data-still="7" viewBox="0 0 1200 220" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="fig-hero-t fig-hero-d">
+  <title id="fig-hero-t">Shared airspace under uncertainty</title>
+  <desc id="fig-hero-d">Aircraft fly with a belief region around them and a fan of predicted futures ahead. One aircraft's sensing degrades, so its belief region and predicted futures widen. The highlighted aircraft predicts the conflict and a safety filter bends its path around the uncertain aircraft before it rejoins its route.</desc>
+  <defs>
+    <pattern id="hero-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="12" cy="12" r="0.9" class="hero-dot"/></pattern>
+    <radialGradient id="hero-belief-teal"><stop offset="0" style="stop-color: var(--fig-teal); stop-opacity: 0.30"/><stop offset="1" style="stop-color: var(--fig-teal); stop-opacity: 0"/></radialGradient>
+    <radialGradient id="hero-belief-blue"><stop offset="0" style="stop-color: var(--fig-blue); stop-opacity: 0.26"/><stop offset="1" style="stop-color: var(--fig-blue); stop-opacity: 0"/></radialGradient>
+    <radialGradient id="hero-belief-muted"><stop offset="0" style="stop-color: var(--fig-muted); stop-opacity: 0.22"/><stop offset="1" style="stop-color: var(--fig-muted); stop-opacity: 0"/></radialGradient>
+    <radialGradient id="hero-belief-coral"><stop offset="0" style="stop-color: var(--fig-coral); stop-opacity: 0.24"/><stop offset="0.75" style="stop-color: var(--fig-coral); stop-opacity: 0.08"/><stop offset="1" style="stop-color: var(--fig-coral); stop-opacity: 0"/></radialGradient>
+    <linearGradient id="hero-fan-teal" gradientUnits="userSpaceOnUse" x1="14" y1="0" x2="136" y2="0"><stop offset="0" style="stop-color: var(--fig-teal); stop-opacity: 0.85"/><stop offset="1" style="stop-color: var(--fig-teal); stop-opacity: 0"/></linearGradient>
+    <linearGradient id="hero-fan-blue" gradientUnits="userSpaceOnUse" x1="14" y1="0" x2="100" y2="0"><stop offset="0" style="stop-color: var(--fig-blue); stop-opacity: 0.7"/><stop offset="1" style="stop-color: var(--fig-blue); stop-opacity: 0"/></linearGradient>
+    <linearGradient id="hero-fan-muted" gradientUnits="userSpaceOnUse" x1="12" y1="0" x2="80" y2="0"><stop offset="0" style="stop-color: var(--fig-muted); stop-opacity: 0.6"/><stop offset="1" style="stop-color: var(--fig-muted); stop-opacity: 0"/></linearGradient>
+    <linearGradient id="hero-fan-coral" gradientUnits="userSpaceOnUse" x1="14" y1="0" x2="136" y2="0"><stop offset="0" style="stop-color: var(--fig-coral); stop-opacity: 0.95"/><stop offset="1" style="stop-color: var(--fig-coral); stop-opacity: 0"/></linearGradient>
+  </defs>
+
+  <rect width="1200" height="220" fill="url(#hero-dots)"/>
+
+  <!-- routes: nominal (dashed) and the path actually flown after filtering (drawn as it is flown) -->
+  <g class="fig-route"><path d="M1240 34 H-40"/><path d="M1240 186 H-40"/><path d="M-40 110 H1240"/></g>
+  <path class="hero-trail" pathLength="100" d="M-40 110 L360 110 C450 110 490 170 600 170 C710 170 750 110 840 110 L1240 110">
+    <animate attributeName="stroke-dashoffset" values="100;0" dur="16s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- background traffic: belief + short predicted futures -->
+  <g class="hero-ac hero-ac--muted">
+    <animateMotion dur="32s" repeatCount="indefinite" rotate="auto" path="M1240 34 H-40"/>
+    <circle r="18" fill="url(#hero-belief-muted)"/>
+    <path class="hero-fan" stroke="url(#hero-fan-muted)" d="M12 0 Q46 -2 78 -7 M12 0 L80 0 M12 0 Q46 2 78 7"/>
+    <path class="hero-plane" d="M10 0 L-6 -6 L-2 0 L-6 6Z"/>
+  </g>
+  <g class="hero-ac hero-ac--muted">
+    <animateMotion dur="32s" begin="-16s" repeatCount="indefinite" rotate="auto" path="M1240 34 H-40"/>
+    <circle r="18" fill="url(#hero-belief-muted)"/>
+    <path class="hero-fan" stroke="url(#hero-fan-muted)" d="M12 0 Q46 -2 78 -7 M12 0 L80 0 M12 0 Q46 2 78 7"/>
+    <path class="hero-plane" d="M10 0 L-6 -6 L-2 0 L-6 6Z"/>
+  </g>
+  <g class="hero-ac hero-ac--muted">
+    <animateMotion dur="32s" repeatCount="indefinite" rotate="auto" path="M1240 186 H-40"/>
+    <circle r="18" fill="url(#hero-belief-muted)"/>
+    <path class="hero-fan" stroke="url(#hero-fan-muted)" d="M12 0 Q46 -2 78 -7 M12 0 L80 0 M12 0 Q46 2 78 7"/>
+    <path class="hero-plane" d="M10 0 L-6 -6 L-2 0 L-6 6Z"/>
+  </g>
+
+  <!-- crossing aircraft whose sensing degrades (4-11 s of the 16 s cycle) -->
+  <g class="hero-ac hero-ac--blue">
+    <animateMotion dur="16s" repeatCount="indefinite" rotate="auto" path="M830 -50 L350 250"/>
+    <circle r="22" fill="url(#hero-belief-blue)"/>
+    <circle r="22" fill="url(#hero-belief-coral)" opacity="0">
+      <animate attributeName="r" values="22;22;44;44;22;22" keyTimes="0;0.25;0.3125;0.625;0.6875;1" dur="16s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.25;0.3125;0.625;0.6875;1" dur="16s" repeatCount="indefinite"/>
+    </circle>
+    <circle class="hero-belief-edge" r="22" opacity="0">
+      <animate attributeName="r" values="22;22;44;44;22;22" keyTimes="0;0.25;0.3125;0.625;0.6875;1" dur="16s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;0;0.8;0.8;0;0" keyTimes="0;0.25;0.3125;0.625;0.6875;1" dur="16s" repeatCount="indefinite"/>
+    </circle>
+    <path class="hero-fan" stroke="url(#hero-fan-blue)" d="M14 0 Q56 -3 98 -9 M14 0 L100 0 M14 0 Q56 3 98 9">
+      <animate attributeName="d" dur="16s" repeatCount="indefinite" keyTimes="0;0.25;0.3125;0.625;0.6875;1"
+        values="M14 0 Q56 -3 98 -9 M14 0 L100 0 M14 0 Q56 3 98 9;M14 0 Q56 -3 98 -9 M14 0 L100 0 M14 0 Q56 3 98 9;M14 0 Q56 -12 92 -34 M14 0 L100 0 M14 0 Q56 12 92 34;M14 0 Q56 -12 92 -34 M14 0 L100 0 M14 0 Q56 12 92 34;M14 0 Q56 -3 98 -9 M14 0 L100 0 M14 0 Q56 3 98 9;M14 0 Q56 -3 98 -9 M14 0 L100 0 M14 0 Q56 3 98 9"/>
+    </path>
+    <path class="hero-plane" d="M10 0 L-6 -6 L-2 0 L-6 6Z"/>
+    <!-- noisy position estimate while degraded -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26;0.3125;0.625;0.67;1" dur="16s" repeatCount="indefinite"/>
+      <circle class="hero-estimate" r="3">
+        <animateTransform attributeName="transform" type="translate" values="0 0;-14 9;10 -16;17 8;-9 -12;0 0" dur="2.4s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+
+  <!-- where the nominal plan would have gone: into the uncertain aircraft's belief region -->
+  <g class="hero-ghost" opacity="0">
+    <animateMotion dur="16s" repeatCount="indefinite" path="M-40 110 H1240"/>
+    <animate attributeName="opacity" values="0;0;0.9;0.9;0;0" keyTimes="0;0.31;0.35;0.46;0.52;1" dur="16s" repeatCount="indefinite"/>
+    <path d="M10 0 L-6 -6 L-2 0 L-6 6Z"/>
+  </g>
+
+  <!-- highlighted aircraft: predicts the conflict, safety filter bends its path -->
+  <g class="hero-ac hero-ac--teal">
+    <animateMotion dur="16s" repeatCount="indefinite" rotate="auto" path="M-40 110 L360 110 C450 110 490 170 600 170 C710 170 750 110 840 110 L1240 110"/>
+    <circle r="22" fill="url(#hero-belief-teal)"/>
+    <path class="hero-fan" stroke="url(#hero-fan-teal)" d="M14 0 Q72 -4 132 -16 M14 0 L136 0 M14 0 Q72 4 132 16"/>
+    <path class="hero-fan hero-fan--alert" stroke="url(#hero-fan-coral)" d="M14 0 L136 0" opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.26;0.29;0.33;0.37;1" dur="16s" repeatCount="indefinite"/>
+    </path>
+    <path class="hero-shield" d="M19 -20 A28 28 0 0 1 19 20" opacity="0">
+      <animate attributeName="opacity" values="0;0;0.95;0.95;0;0" keyTimes="0;0.31;0.34;0.58;0.62;1" dur="16s" repeatCount="indefinite"/>
+    </path>
+    <path class="hero-plane" d="M9 0 L-7 -7 L-3.5 0 L-7 7Z"/>
+  </g>
+</svg>

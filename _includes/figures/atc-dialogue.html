@@ -1,0 +1,44 @@
+<svg class="fig" viewBox="0 0 640 300" role="img" aria-labelledby="fig-atc-t fig-atc-d">
+  <title id="fig-atc-t">Multi-turn evaluation of LLM-generated ATC transmissions (schematic)</title>
+  <desc id="fig-atc-d">The model plays the controller against a fixed pilot transcript. When it conditions on its own earlier replies, errors can accumulate and similarity to the ground truth drifts down; when the correct dialogue history is injected, similarity stays high.</desc>
+  <rect class="fig-panel" x="1" y="1" width="638" height="298" rx="10"/>
+
+  <text class="fig-label fig-strong" x="20" y="28">Radio exchange</text>
+  <text class="fig-label fig-muted" x="20" y="44">fixed pilot transcript · model plays ATC · illustrative wording</text>
+  <g class="fig-turn fig-turn--pilot"><rect x="20" y="56" width="300" height="30" rx="6"/><text class="fig-mono" x="30" y="75">PILOT  …over the Golden Gate, request Bay Tour</text></g>
+  <g class="fig-turn fig-turn--atc"><rect x="40" y="92" width="300" height="30" rx="6"/><text class="fig-mono" x="50" y="111">ATC    …squawk 4521, maintain VFR</text>
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.06;0.1;1" dur="12s" repeatCount="indefinite"/></g>
+  <g class="fig-turn fig-turn--pilot"><rect x="20" y="128" width="300" height="30" rx="6"/><text class="fig-mono" x="30" y="147">PILOT  squawk 4521, VFR</text>
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.14;0.18;1" dur="12s" repeatCount="indefinite"/></g>
+  <g class="fig-turn fig-turn--atc"><rect x="40" y="164" width="300" height="30" rx="6"/><text class="fig-mono" x="50" y="183">ATC    …radar contact, proceed as requested</text>
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.22;0.26;1" dur="12s" repeatCount="indefinite"/></g>
+  <g class="fig-turn fig-turn--pilot"><rect x="20" y="200" width="300" height="30" rx="6"/><text class="fig-mono" x="30" y="219">PILOT  proceeding, Bay Tour</text>
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.3;0.34;1" dur="12s" repeatCount="indefinite"/></g>
+  <g class="fig-turn fig-turn--atc"><rect x="40" y="236" width="300" height="30" rx="6"/><text class="fig-mono" x="50" y="255">ATC    …</text>
+    <animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.38;0.42;1" dur="12s" repeatCount="indefinite"/></g>
+  <!-- error marks while conditioning on own replies -->
+  <g class="fig-err"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.24;0.28;0.5;0.54;1" dur="12s" repeatCount="indefinite"/>
+    <circle cx="350" cy="179" r="7"/><text class="fig-label fig-center" x="350" y="183">!</text></g>
+  <g class="fig-err"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.4;0.44;0.5;0.54;1" dur="12s" repeatCount="indefinite"/>
+    <circle cx="350" cy="251" r="7"/><text class="fig-label fig-center" x="350" y="255">!</text></g>
+
+  <line class="fig-divider" x1="380" y1="20" x2="380" y2="280"/>
+
+  <!-- similarity per turn -->
+  <text class="fig-label fig-strong" x="400" y="28">Similarity to ground truth</text>
+  <g><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.5;0.54;0.96;1" dur="12s" repeatCount="indefinite"/>
+    <text class="fig-label fig-coral-text" x="400" y="46">history: model's own replies</text></g>
+  <g><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.54;0.96;1" dur="12s" repeatCount="indefinite"/>
+    <text class="fig-label" x="400" y="46" style="fill: var(--fig-teal); font-weight: 650">history: correct transcript injected</text></g>
+  <line class="fig-axis" x1="410" y1="240" x2="620" y2="240"/>
+  <line class="fig-axis" x1="410" y1="70" x2="410" y2="240"/>
+  <text class="fig-label fig-muted" x="515" y="260" text-anchor="middle">dialogue turn →</text>
+  <g class="fig-sim">
+    <rect x="426" width="26" y="90" height="150"/>
+    <rect x="466" width="26" y="96" height="144"><animate attributeName="y" values="96;96;96;96" dur="12s" repeatCount="indefinite"/></rect>
+    <rect x="506" width="26"><animate attributeName="y" values="128;128;100;100;128" keyTimes="0;0.5;0.56;0.96;1" dur="12s" repeatCount="indefinite"/><animate attributeName="height" values="112;112;140;140;112" keyTimes="0;0.5;0.56;0.96;1" dur="12s" repeatCount="indefinite"/></rect>
+    <rect x="546" width="26"><animate attributeName="y" values="160;160;98;98;160" keyTimes="0;0.5;0.56;0.96;1" dur="12s" repeatCount="indefinite"/><animate attributeName="height" values="80;80;142;142;80" keyTimes="0;0.5;0.56;0.96;1" dur="12s" repeatCount="indefinite"/></rect>
+    <rect x="586" width="26"><animate attributeName="y" values="190;190;102;102;190" keyTimes="0;0.5;0.56;0.96;1" dur="12s" repeatCount="indefinite"/><animate attributeName="height" values="50;50;138;138;50" keyTimes="0;0.5;0.56;0.96;1" dur="12s" repeatCount="indefinite"/></rect>
+  </g>
+  <text class="fig-label fig-muted" x="400" y="286">Bars are illustrative, not measured values.</text>
+</svg>

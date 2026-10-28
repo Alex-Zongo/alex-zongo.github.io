@@ -13,7 +13,7 @@ author_profile: true
 
 <a class="notes-back" href="{{ base_path }}/year-archive/">← All research notes</a>
 
-<p class="mono-label pub-kicker">🤖 // decision-making series · {{ dm_pub | size }} note{% unless dm_pub.size == 1 %}s{% endunless %}</p>
+<p class="mono-label pub-kicker">decision-making series · {{ dm_pub | size }} note{% unless dm_pub.size == 1 %}s{% endunless %}</p>
 
 <p class="pub-intro">
   A structured series inspired by <em>Algorithms for Decision Making</em> (Mykel J. Kochenderfer),
@@ -23,12 +23,12 @@ author_profile: true
 
 <div class="pub-list">
 {% if dm_pub.size > 0 %}
-  <p class="mono-label section-label">// notes</p>
+  <p class="mono-label section-label">notes</p>
   {% for post in dm_pub %}{% include note-card.html %}{% endfor %}
 {% endif %}
 
 {% if dm_soon.size > 0 %}
-  <p class="mono-label section-label">// coming soon</p>
+  <p class="mono-label section-label">coming soon</p>
   {% for post in dm_soon %}{% include note-card.html %}{% endfor %}
 {% endif %}
 

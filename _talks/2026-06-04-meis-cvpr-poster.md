@@ -1,8 +1,8 @@
 ---
-title: "Poster — Fine-Tuning LLMs for Cooperative Tactical Deconfliction of Small UAS"
+title: "Fine-Tuning LLMs for Cooperative Tactical Deconfliction of Small UAS"
 collection: talks
 short: "CVPR ’26"
-type: "Poster presentation"
+type: "Workshop poster"
 permalink: /talks/2026-06-04-meis-cvpr-poster
 venue: "MEIS @ CVPR 2026 Workshop — Multi-Agent Embodied Intelligent Systems Meet the Generative-AI Era"
 date: 2026-06-04

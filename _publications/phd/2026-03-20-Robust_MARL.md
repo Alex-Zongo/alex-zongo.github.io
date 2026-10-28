@@ -1,7 +1,14 @@
 ---
+venue_short: "CDC 2026"
+venue_type: "conference"
 title: "Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing"
 collection: publications
+layout: research-project
+project: cdc
+presentation: /talks/2026-05-26-acc-workshop-poster
 featured: true
+thumb_figure: "robust-marl"
+codeurl: # add the GitHub repository URL once released
 feature_order: 1
 tags: ["Multi-Agent", "Reinforcement Learning", "Separation Assurance", "Robustness & Safety"]
 authors: "**Alex Zongo**, Filippos Fotiadis, Ufuk Topcu, Peng Wei"
@@ -36,7 +43,9 @@ bibtex: |
     eprint        = {2603.28900},
     archivePrefix = {arXiv}
   }
-permalink: /publication/2026-01-29-Robust_MARL
+permalink: /publication/2026-cdc-robust-marl
+redirect_from:
+  - /publication/2026-01-29-Robust_MARL
 excerpt: 'This paper addresses real-time separation assurance and tactical deconfliction mechanisms of small Unmanned Aerial Systems via Multi-Agent Reinforcement Learning under GPS degradation and Spoofing. <br/><img width="500" height="300" src="/images/frame_000133.jpg">'
 # excerpt: "Short description of portfolio item number 1<br/><img src='/images/500x300.png'>"
 date: 2026-03-20

@@ -1,13 +1,14 @@
 ---
-title: "Guest Lecture — Diffusion Models and Flow Matching"
+title: "Diffusion Models and Flow Matching"
 collection: teaching
-type: "Guest teaching"
+type: "Guest lecture"
 date: 2026-09-09
-period: "September 9, 2026"
+period: "Sep 2026"
 course: "MAE 6291 / CSCI 6907 — Large Language and Vision Models"
 slidesurl: "/files/lecture%20-%20Diffusion%20-%20flow.pdf"
 venue: "George Washington University"
 location: "Washington, DC, USA"
+notesurl: "/genai-series/"
 permalink: /teaching/2026-diffusion-flow-matching
 excerpt: "Guest lecture on diffusion models and flow matching for the Large Language and Vision Models course at GWU."
 ---

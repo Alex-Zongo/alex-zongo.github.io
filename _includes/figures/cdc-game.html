@@ -1,0 +1,49 @@
+<svg class="fig" viewBox="0 0 640 300" role="img" aria-labelledby="fig-cdcg-t fig-cdcg-d">
+  <title id="fig-cdcg-t">Observation corruption as a two-player game</title>
+  <desc id="fig-cdcg-d">Left: the adversary searches a bounded box around the true state and settles on the corner with the lowest value. Right: with probability one minus R the policy sees the clean state; with probability R it sees the adversary's observation.</desc>
+  <rect class="fig-panel" x="1" y="1" width="638" height="298" rx="10"/>
+
+  <!-- value landscape -->
+  <text class="fig-label fig-strong" x="24" y="30">The adversary's move</text>
+  <text class="fig-label fig-muted" x="24" y="47">search a bounded set around the true state</text>
+  <clipPath id="fig-cdcg-clip"><rect x="2" y="2" width="318" height="296" rx="9"/></clipPath>
+  <g class="fig-contour" clip-path="url(#fig-cdcg-clip)">
+    <ellipse cx="96" cy="150" rx="40" ry="26"/><ellipse cx="102" cy="152" rx="82" ry="56"/><ellipse cx="110" cy="156" rx="130" ry="90"/><ellipse cx="118" cy="160" rx="182" ry="128"/>
+  </g>
+  <text class="fig-math fig-muted" x="74" y="154">high V</text>
+  <text class="fig-math fig-muted" x="236" y="270">low V</text>
+  <rect class="fig-kappa fig-kappa--fill" x="150" y="112" width="96" height="96" rx="2"/>
+  <line class="fig-dim" x1="198" y1="216" x2="246" y2="216"/><text class="fig-math" x="216" y="232">κ</text>
+  <circle class="fig-dot fig-dot--blue" cx="198" cy="160" r="6"/>
+  <text class="fig-math" x="186" y="182">S</text>
+  <!-- search: probe visits candidates, settles at the worst corner -->
+  <g>
+    <circle class="fig-probe" r="6">
+      <animateMotion dur="8s" repeatCount="indefinite" calcMode="linear" keyPoints="0;0.2;0.4;0.6;0.8;1;1" keyTimes="0;0.12;0.24;0.36;0.48;0.6;1" path="M198 160 L160 122 L236 122 L160 198 L230 176 L246 208"/>
+    </circle>
+    <g><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.58;0.62;1" dur="8s" repeatCount="indefinite"/>
+      <path class="fig-star" d="M246 196 l3.5 7.5 8 1 -6 5.5 1.5 8 -7 -4 -7 4 1.5 -8 -6 -5.5 8 -1z"/>
+      <text class="fig-math fig-coral-text" x="258" y="200">Ξ*  worst case</text>
+    </g>
+  </g>
+
+  <!-- game tree -->
+  <text class="fig-label fig-strong" x="360" y="30">The agents' move</text>
+  <text class="fig-label fig-muted" x="360" y="47">act well under both observations</text>
+  <g class="fig-box fig-box--blue"><rect x="440" y="62" width="104" height="32" rx="16"/><text class="fig-math fig-center" x="492" y="83">true state S</text></g>
+  <path class="fig-arrow fig-arrow--teal" d="M478 94 L420 140" marker-end="url(#fig-cdcg-head)"/>
+  <path class="fig-arrow fig-arrow--coral" d="M506 94 L566 140" marker-end="url(#fig-cdcg-head)"/>
+  <text class="fig-math" x="420" y="116">1 − R</text>
+  <text class="fig-math" x="548" y="112">R</text>
+  <g class="fig-box fig-box--teal"><rect x="360" y="144" width="104" height="32" rx="16"/><text class="fig-label fig-center" x="412" y="165">clean obs  S</text></g>
+  <g class="fig-box fig-box--coral"><rect x="520" y="144" width="104" height="32" rx="16"/><text class="fig-label fig-center" x="572" y="165">fake obs  Ξ</text></g>
+  <path class="fig-arrow" d="M412 176 L474 214" marker-end="url(#fig-cdcg-head)"/>
+  <path class="fig-arrow" d="M572 176 L510 214" marker-end="url(#fig-cdcg-head)"/>
+  <g class="fig-box fig-box--navy"><rect x="452" y="216" width="80" height="32" rx="16"/><text class="fig-math fig-center fig-on-dark" x="492" y="237">policy π</text></g>
+  <path class="fig-arrow" d="M492 248 V268" marker-end="url(#fig-cdcg-head)"/>
+  <text class="fig-label fig-center" x="492" y="288">speed change u</text>
+  <circle class="fig-token fig-token--teal" r="5"><animateMotion dur="3s" repeatCount="indefinite" path="M478 94 L420 140 M412 176 L474 214"/></circle>
+  <circle class="fig-token fig-token--coral" r="5"><animateMotion dur="3s" begin="1.5s" repeatCount="indefinite" path="M506 94 L566 140 M572 176 L510 214"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.05;0.9;1" dur="3s" begin="1.5s" repeatCount="indefinite"/></circle>
+
+  <defs><marker id="fig-cdcg-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fig-head" d="M0 0 L10 5 L0 10z"/></marker></defs>
+</svg>

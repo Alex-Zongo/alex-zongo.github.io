@@ -5,11 +5,12 @@ permalink: /miscellaneous/
 author_profile: true
 ---
 
-<p class="mono-label pub-kicker">// off the clock</p>
 
 <p class="pub-intro">
   Research is only part of the story. Away from the lab, I'm at the piano, on the
   handball court, or somewhere on a trail with the research group.
+  Music lives on <a href="https://www.youtube.com/@blackeyspiano" target="_blank" rel="noopener">YouTube</a>
+  and <a href="https://www.instagram.com/blackeys_z" target="_blank" rel="noopener">Instagram</a>.
 </p>
 
 <div class="chips">
@@ -21,7 +22,7 @@ author_profile: true
 </div>
 
 <section class="misc-panel" markdown="1">
-<p class="mono-label section-label pub-section__head">// music 🎼</p>
+<p class="mono-label section-label pub-section__head">music</p>
 
 > **_My musical journey is deeply rooted in gospel and R&B genres, which inspire and uplift me daily._**
 > I have a passion for playing the piano and keyboard, exploring melodies that resonate with the soul.
@@ -38,7 +39,7 @@ author_profile: true
 </section>
 
 <section class="misc-panel" markdown="1">
-<p class="mono-label section-label pub-section__head">// sports 🤾🏾</p>
+<p class="mono-label section-label pub-section__head">sports</p>
 
 > **_Engaging in sports keeps both the body and mind sharp._**
 > I have a keen interest in handball, a sport that combines agility and teamwork. As a wing player, I'm also known as the **left-handed magician 😉**.
@@ -46,7 +47,7 @@ author_profile: true
 </section>
 
 <section class="misc-panel" markdown="1">
-<p class="mono-label section-label pub-section__head">// hiking 🥾⛰️</p>
+<p class="mono-label section-label pub-section__head">hiking</p>
 
 > **_Hiking is a cherished tradition within our research group, held every semester._**
 > It's a wonderful opportunity for team bonding, reflection, and reconnecting with nature.

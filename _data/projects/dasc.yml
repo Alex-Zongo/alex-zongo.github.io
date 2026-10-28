@@ -7,6 +7,10 @@ awards:
   - "3rd Best of Conference"
   - "Best of Air Traffic Management Track"
   - "Best of UAM/UAS Traffic Management and Separation Assurance Session"
+demo:
+  type: figure
+  src: runtime-safety
+  caption: "Schematic. One worst-case estimate, two interventions: action filtering corrects the output, observation filtering corrects the input. Neither retrains the deployed policy."
 hero:
   src: "/images/dasc/filter-architectures.png"
   alt: "A degraded observation produces a shared worst-case state estimate. Action filtering constrains the policy output; observation filtering feeds the estimate back into the policy."

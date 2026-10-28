@@ -5,7 +5,7 @@ layout: default
 <main id="main" class="research-project" tabindex="-1">
   <article itemscope itemtype="https://schema.org/ScholarlyArticle">
     <header class="research-project__header">
-      <a class="research-project__back" href="{{ '/publications/' | relative_url }}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> All publications</a>
+      <nav class="research-project__back" aria-label="Breadcrumb"><a href="{{ '/research/' | relative_url }}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Research</a> <span aria-hidden="true">·</span> <a href="{{ '/publications/' | relative_url }}">All publications</a></nav>
       <p class="research-project__eyebrow">{{ project.venue }}</p>
       <h1 itemprop="headline">{{ page.title }}</h1>
       <p class="research-project__subtitle">{{ project.subtitle }}</p>
@@ -15,17 +15,19 @@ layout: default
         {% if page.paperurl %}<a href="{{ page.paperurl | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Paper</a>{% endif %}
         {% if page.preprinturl %}<a href="{{ page.preprinturl | relative_url }}"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Preprint</a>{% endif %}
         {% if page.slidesurl %}<a href="{{ page.slidesurl | relative_url }}"><i class="fa-solid fa-display" aria-hidden="true"></i> Slides</a>{% endif %}
+        {% if page.posterurl %}<a href="{{ page.posterurl | relative_url }}"><i class="fa-solid fa-image" aria-hidden="true"></i> Poster</a>{% endif %}
         {% if page.codeurl %}<a href="{{ page.codeurl | relative_url }}"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>{% endif %}
         {% if page.videourl %}<a href="{{ page.videourl | relative_url }}"><i class="fa-solid fa-play" aria-hidden="true"></i> Video</a>{% endif %}
         {% if page.bibtex or page.citation %}<a href="#citation"><i class="fa-solid fa-quote-right" aria-hidden="true"></i> Cite</a>{% endif %}
       </div>
-      {% if project.awards %}<ul class="research-project__awards" aria-label="Paper awards">{% for award in project.awards %}<li><i class="fa-solid fa-award" aria-hidden="true"></i> {{ award }}</li>{% endfor %}</ul>{% endif %}
+      {% assign awards = project.awards | default: page.awards %}
+      {% if awards %}<ul class="research-project__awards" aria-label="Paper awards">{% for award in awards %}<li><i class="fa-solid fa-award" aria-hidden="true"></i> {{ award }}</li>{% endfor %}</ul>{% endif %}
     </header>
 
     <section class="research-project__overview" aria-labelledby="overview-title">
       <h2 id="overview-title">{{ project.takeaway }}</h2>
       <p class="research-project__lead">{{ project.lead }}</p>
-      {% if project.hero %}{% include project-figure.html figure=project.hero eager=true %}{% endif %}
+      {% if project.demo %}{% include project-media.html media=project.demo %}{% elsif project.hero %}{% include project-figure.html figure=project.hero eager=true %}{% endif %}
       {% if project.metrics %}
       <dl class="research-project__metrics">{% for metric in project.metrics %}<div><dt>{{ metric.label }}</dt><dd>{{ metric.value }}</dd></div>{% endfor %}</dl>
       <p class="research-project__metric-note">{{ project.metrics_note }}</p>
@@ -43,7 +45,10 @@ layout: default
       <h2 id="{{ section.id }}-title">{{ section.title }}</h2>
       <div class="research-project__prose">{{ section.text | markdownify }}</div>
       {% if section.points %}<div class="research-project__points">{% for point in section.points %}<div><h3>{{ point.title }}</h3><p>{{ point.text }}</p></div>{% endfor %}</div>{% endif %}
+      {% if section.equation %}<div class="research-project__equation">$${{ section.equation }}$${% if section.equation_note %}<p>{{ section.equation_note }}</p>{% endif %}</div>{% endif %}
+      {% if section.media %}{% include project-media.html media=section.media %}{% endif %}
       {% if section.figure %}{% include project-figure.html figure=section.figure %}{% endif %}
+      {% if section.figures %}<div class="research-project__figure-pair">{% for f in section.figures %}{% include project-figure.html figure=f %}{% endfor %}</div>{% endif %}
       {% if section.table %}
       <div class="research-project__table" role="region" aria-label="{{ section.table.caption | escape }}" tabindex="0">
         <table>
@@ -79,9 +84,10 @@ layout: default
       {% endif %}
     </section>
     {% endif %}
+    {% if project.acknowledgement %}<p class="research-project__ack"><strong>Acknowledgement.</strong> {{ project.acknowledgement }}</p>{% endif %}
     <footer class="research-project__footer">
       {% if page.presentation %}<a href="{{ page.presentation | relative_url }}">Presentation details <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>{% endif %}
-      <p>{% if page.slidesurl %}Figures from the <a href="{{ page.slidesurl | relative_url }}">presentation slides</a>. {% endif %}Project-page presentation inspired by <a href="https://mit-realm.github.io/gcbfplus/">GCBF+</a> and <a href="https://nerfies.github.io/">Nerfies</a>.</p>
+      <p>{% if project.figures_credit %}{{ project.figures_credit }} {% elsif page.slidesurl %}Figures from the <a href="{{ page.slidesurl | relative_url }}">presentation slides</a>. {% endif %}Project-page presentation inspired by <a href="https://mit-realm.github.io/gcbfplus/">GCBF+</a> and <a href="https://nerfies.github.io/">Nerfies</a>.</p>
     </footer>
   </article>
 </main>

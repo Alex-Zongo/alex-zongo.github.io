@@ -1,0 +1,42 @@
+<svg class="fig" viewBox="0 0 640 300" role="img" aria-labelledby="fig-ftc-t fig-ftc-d">
+  <title id="fig-ftc-t">Fault-tolerant attitude tracking (schematic)</title>
+  <desc id="fig-ftc-d">Left: a rear view of a fixed-wing aircraft rolls to follow a reference. Right: the reference roll angle and the controller's response; after an actuator fault is injected the response deviates briefly and recovers.</desc>
+  <rect class="fig-panel" x="1" y="1" width="638" height="298" rx="10"/>
+
+  <!-- attitude view -->
+  <text class="fig-label fig-strong" x="24" y="30">Rear view</text>
+  <line class="fig-horizon" x1="40" y1="160" x2="300" y2="160"/>
+  <g transform="translate(170 160)">
+    <g>
+      <animateTransform attributeName="transform" type="rotate" dur="9s" repeatCount="indefinite" calcMode="spline"
+        values="0;0;30;30;-4;0;-30;-30;0" keyTimes="0;0.077;0.192;0.423;0.531;0.615;0.723;0.885;1"
+        keySplines="0 0 1 1;0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1;0.4 0 0.2 1;0.4 0 0.2 1;0 0 1 1;0.4 0 0.2 1"/>
+      <path class="fig-wing" d="M-110 0 H110"/>
+      <path class="fig-tailfin" d="M0 -6 L-4 -40 H4 Z"/>
+      <path class="fig-wing fig-wing--h" d="M-34 -6 H34"/>
+      <circle class="fig-fuselage" r="12"/>
+      <rect class="fig-aileron" x="80" y="-2" width="26" height="5"/>
+      <rect class="fig-aileron" x="-106" y="-2" width="26" height="5"/>
+    </g>
+  </g>
+  <g class="fig-fault"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.44;0.47;0.96;1" dur="9s" repeatCount="indefinite"/>
+    <rect x="72" y="236" width="196" height="30" rx="6"/><text class="fig-label fig-center" x="170" y="255">fault injected: actuator degraded</text></g>
+
+  <line class="fig-divider" x1="330" y1="20" x2="330" y2="280"/>
+
+  <!-- tracking plot -->
+  <text class="fig-label fig-strong" x="352" y="30">Roll angle φ</text>
+  <line class="fig-axis" x1="360" y1="150" x2="624" y2="150"/>
+  <line class="fig-axis" x1="360" y1="60" x2="360" y2="240"/>
+  <text class="fig-math fig-muted" x="340" y="114">30°</text><text class="fig-math fig-muted" x="336" y="194">−30°</text>
+  <rect class="fig-fault-band" x="480" y="60" width="144" height="180"/>
+  <path class="fig-ref" d="M360 150 H380 V110 H470 V150 H520 V190 H590 V150 H620"/>
+  <path class="fig-resp" pathLength="100" d="M360 150 L380 150 C392 150 395 110 410 110 L470 110 C482 110 486 156 498 158 C506 160 510 150 520 152 C530 154 532 190 548 192 C556 193 560 188 570 190 L590 190 C600 190 604 150 620 150">
+    <animate attributeName="stroke-dashoffset" values="100;0;0" keyTimes="0;0.98;1" dur="9s" repeatCount="indefinite"/>
+  </path>
+  <g transform="translate(372 262)">
+    <line class="fig-ref" x1="0" y1="0" x2="20" y2="0"/><text class="fig-label" x="26" y="4">reference</text>
+    <line class="fig-resp-legend" x1="104" y1="0" x2="124" y2="0"/><text class="fig-label" x="130" y="4">learned controller</text>
+  </g>
+  <text class="fig-label fig-muted" x="486" y="74">after fault</text>
+</svg>

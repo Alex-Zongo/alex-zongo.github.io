@@ -3,6 +3,10 @@ affiliation: "Mechanical and Aerospace Engineering · Computer Science · The Ge
 subtitle: "COLREGs reasoning meets learned vessel control"
 takeaway: "From navigation rules to maneuver decisions."
 lead: "Language-based maneuver intent guides a learned controller, with supervisory arbitration connecting the two."
+demo:
+  type: figure
+  src: colregs
+  caption: "Schematic. In a crossing encounter with a target to starboard, the language model proposes giving way with a starboard turn; the PPO controller executes it and the arbiter keeps fallback authority."
 hero:
   src: "/images/maritime-llm-rl-architecture.png"
   alt: "CORALL pipeline connecting encounter observations, LLM maneuver intent, an RL policy, and a supervisory action arbiter."

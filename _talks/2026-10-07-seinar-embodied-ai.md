@@ -2,7 +2,7 @@
 title: "Embodied AI: Vision-Language-Action Models"
 collection: talks
 short: "SEINAR '26"
-type: "Panel discussion"
+type: "Invited panel talk"
 date: 2026-10-07
 permalink: /talks/2026-10-07-seinar-embodied-ai
 venue: "SEINAR 2026 · World AI Week"

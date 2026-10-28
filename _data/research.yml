@@ -1,0 +1,108 @@
+intro: >
+  Data-driven controllers, such as reinforcement learning policies and language models, are
+  increasingly asked to act in dense, safety-critical multi-agent systems. My research asks what
+  it takes to trust them there, especially when the information they act on is degraded,
+  delayed, or adversarial. Air traffic is the proving ground with several interacting
+  agents, hard safety constraints, and sensing that can fail.
+loop_caption: "Four thrusts, one loop: decide under imperfect information, guard what is deployed, bring in language-level reasoning, and account for what safety costs in operation."
+thrusts:
+  - id: robust-marl
+    accent: "teal"
+    stage: "Decide"
+    question: "What if the traffic picture is wrong?"
+    animation: "robust-marl"
+    animation_caption: "Aircraft A's robust policy keeps its separation buffer while B's broadcast position is spoofed inside a bounded set."
+    title: "Robust multi-agent RL under degraded sensing"
+    tagline: "Policies that stay safe when the traffic picture is wrong."
+    motivation: >
+      Decentralized separation policies rely on positions that every aircraft broadcasts from GPS.
+      Multipath, jamming, or spoofing corrupts those broadcasts, and a policy trained on clean data
+      can act confidently on a traffic picture that does not exist.
+    approach: >
+      I model observation corruption as a game between the agents and a bounded adversary, derive
+      the worst-case perturbation in closed form, and train policies that are provably close in
+      behavior under clean and corrupted inputs, with no adversarial co-training.
+    figure:
+      src: "/images/cdc/formulation.png"
+      alt: "Two-player formulation: an adversary perturbs the observed traffic state within a bounded set; the policy must act well under both clean and corrupted observations."
+      caption: "Observation corruption as a two-player game."
+    papers:
+      - /publication/2026-cdc-robust-marl
+  - id: runtime-safety
+    accent: "coral"
+    stage: "Guard"
+    question: "Where should a safety filter step in?"
+    animation: "runtime-safety"
+    animation_caption: "Two runtime filters share one worst-case estimate but intervene at different points."
+    title: "Runtime safety for learned policies"
+    tagline: "Correct what the policy sees, or constrain what it does."
+    motivation: >
+      Retraining a deployed policy for every new failure mode is impractical. Safety mechanisms that
+      wrap an existing policy at runtime are attractive, but where they intervene matters.
+    approach: >
+      I compare runtime filters that share a worst-case state estimate but intervene at different
+      points, on the action or on the observation, and study when each preserves the policy's learned
+      multi-step safety behavior.
+    figure:
+      src: "/images/dasc/filter-architectures.png"
+      alt: "A degraded observation produces a worst-case state estimate; action filtering constrains the output, observation filtering corrects the input."
+      caption: "Action filtering vs. observation filtering around a learned policy."
+    papers:
+      - /publication/2026-dasc-runtime-safety-filtering
+  - id: foundation-models
+    accent: "purple"
+    stage: "Advise"
+    question: "When can a language model share the controls?"
+    animation: "foundation-models"
+    animation_caption: "Language guidance with an arbiter that falls back to a learned controller when the model output is unusable."
+    title: "Foundation models in the decision loop"
+    tagline: "Language models as decision-makers, advisors, and communicators."
+    motivation: >
+      Large language models can reason about rules and intent, but they are slow, inconsistent, and
+      not grounded in the dynamics of the systems they advise.
+    approach: >
+      I study how to ground them through simulation-to-language data generation and parameter-efficient
+      fine-tuning (LoRA, GRPO), how to pair them with learned controllers and fallback logic, and how to
+      evaluate them in closed loop rather than on static benchmarks.
+    figure:
+      src: "/images/LLM_ATC_BLOCK.png"
+      alt: "Simulation-to-language pipeline: BlueSky scenarios generate rule-consistent text data used to fine-tune an LLM for tactical deconfliction."
+      caption: "Simulation-to-language fine-tuning for tactical deconfliction."
+    papers:
+      - /publication/2026-03-20-finetuning_llm_atc
+      - /publication/llm-guided-rl-maritime-collision-avoidance
+      - /publication/llm-air-traffic-control-prompting
+  - id: aam-operations
+    accent: "gold"
+    stage: "Operate"
+    question: "What does staying separated cost?"
+    animation: "aam-energy"
+    animation_caption: "A deconfliction maneuver adds a small energy overhead; statistics from the ICNS 2026 study."
+    title: "Energy-aware advanced air mobility"
+    tagline: "What safe separation costs an electric aircraft."
+    motivation: >
+      Tactical conflict resolution keeps eVTOL aircraft separated, but every maneuver draws on a
+      limited battery, and reserve requirements must account for traffic that cannot be known in advance.
+    approach: >
+      I couple physics-based eVTOL power models with high-density traffic simulation to quantify the
+      energy cost of deconfliction, and learn estimators with conservative uncertainty bounds for
+      reserve planning.
+    figure:
+      src: "/images/icns_overview.png"
+      alt: "Energy-overhead estimation framework linking traffic simulation, conflict resolution, and an eVTOL power model."
+      caption: "Energy-overhead estimation under MVP conflict resolution."
+    papers:
+      - /publication/2026-01-15-eVTOL_energy_consumption
+      - /publication/regional-air-mobility-evtol-energy
+outlook:
+  title: "Looking ahead: world models for multi-agent planning"
+  text: >
+    I am extending this agenda toward learned world models of multi-agent traffic: predicting how
+    interacting agents will move, planning through those predictions, and keeping runtime safety
+    mechanisms in the loop when predictions or their inputs are wrong. My Summer 2026 work at
+    UC Berkeley on multi-modal aircraft trajectory prediction from ADS-B and ATC voice data is a first step.
+earlier:
+  title: "Earlier work"
+  text: "Reinforcement learning for fault-tolerant attitude control of fixed-wing aircraft (master's research, Tsinghua University)."
+  papers:
+    - /publication/2024-08-09-Towards-Intelligent-Fault-Tolerant-Attitude Flight-Control-of-Fixed-Wing-Aircraft-number-1

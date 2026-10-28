@@ -1,7 +1,9 @@
 {% include base_path %}
 {% assign tt = post.type | downcase %}
 {% if tt contains 'mentor' %}{% assign tk = 'mentoring' %}{% assign tk_label = 'Mentoring' %}
-{% elsif tt contains 'course' or tt contains 'teaching' or tt contains 'assistant' %}{% assign tk = 'teaching' %}{% assign tk_label = 'Teaching' %}
+{% elsif tt contains 'lecture' %}{% assign tk = 'teaching' %}{% assign tk_label = 'Guest Lecture' %}
+{% elsif tt contains 'assistant' %}{% assign tk = 'teaching' %}{% assign tk_label = 'Teaching Assistant' %}
+{% elsif tt contains 'course' or tt contains 'teaching' %}{% assign tk = 'teaching' %}{% assign tk_label = 'Teaching' %}
 {% else %}{% assign tk = 'other' %}{% assign tk_label = post.type %}
 {% endif %}
 
@@ -23,6 +25,7 @@
 
     <div class="ecard__links">
       {% if post.slidesurl %}<a class="btn-pill" href="{{ post.slidesurl | relative_url }}" target="_blank" rel="noopener"><i class="fa-solid fa-display" aria-hidden="true"></i> Slides</a>{% endif %}
+      {% if post.notesurl %}<a class="btn-pill" href="{{ post.notesurl | relative_url }}"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Interactive notes</a>{% endif %}
       <a class="btn-pill btn-pill--ghost" href="{{ base_path }}{{ post.url }}">Details →</a>
     </div>
   </div>

@@ -10,17 +10,22 @@ author_profile: true
 {% assign talks = site.talks | sort: 'date' | reverse %}
 {% assign n_talks = site.talks | size %}
 
-<p class="mono-label pub-kicker">// invited &amp; conference talks · {{ n_talks }} entries</p>
 
 <p class="pub-intro">
-  Selected talks, conference presentations, and webinars — from technical research
-  to outreach that inspires the next generation of aerospace engineers.
+  Conference talks, workshop posters, and invited presentations on safe multi-agent learning,
+  along with outreach for students interested in aerospace and AI.
 </p>
 
 {% if site.talkmap_link == true %}
 <p class="pub-intro"><a href="/talkmap.html">🗺️ See a map of all the places I've given a talk →</a></p>
 {% endif %}
 
+{% assign by_year = talks | group_by_exp: 'post', "post.date | date: '%Y'" %}
 <div class="pub-list">
-  {% for post in talks %}{% include talk-card.html %}{% endfor %}
+  {% for g in by_year %}
+  <section class="pub-section">
+    <h2 class="section-label pub-section__head pub-year">{{ g.name }}</h2>
+    {% for post in g.items %}{% include talk-card.html %}{% endfor %}
+  </section>
+  {% endfor %}
 </div>

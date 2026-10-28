@@ -7,41 +7,49 @@ author_profile: true
 
 {% include base_path %}
 
-{%- comment -%} ---------- Counts ---------- {%- endcomment -%}
-{% assign n_total  = site.publications | size %}
-{% assign n_conf   = site.publications | where: 'type', 'conference' | size %}
-{% assign n_jour   = site.publications | where: 'type', 'journal' | size %}
-{% assign n_peer   = n_conf | plus: n_jour %}
-{% assign n_acc    = site.publications | where: 'type', 'accepted' | size %}
-{% assign n_rev    = site.publications | where: 'type', 'under-review' | size %}
-{% assign n_sub    = site.publications | where: 'type', 'submitted' | size %}
-{% assign n_review = n_rev | plus: n_sub %}
+{%- comment -%} ---------- Groups ---------- {%- endcomment -%}
+{% assign pubs = site.publications | sort: 'date' | reverse %}
+{% assign peer = '' | split: '' %}{% assign other = '' | split: '' %}{% assign notes = '' | split: '' %}
+{% for p in pubs %}
+  {% if p.type == 'conference' or p.type == 'journal' or p.type == 'workshop' or p.type == 'accepted' %}{% assign peer = peer | push: p %}
+  {% elsif p.type == 'research-essay' %}{% assign notes = notes | push: p %}
+  {% else %}{% assign other = other | push: p %}{% endif %}
+{% endfor %}
 
-{%- comment -%} ---------- Tag vocabulary (union) ---------- {%- endcomment -%}
+{%- comment -%} ---------- Counts ---------- {%- endcomment -%}
+{% assign n_first = 0 %}{% assign n_awards = 0 %}{% assign n_upcoming = 0 %}
+{% for p in peer %}
+  {% assign lead = p.authors | strip | slice: 0, 7 %}
+  {% if lead == '**Alex ' or lead == '**Zongo' %}{% assign n_first = n_first | plus: 1 %}{% endif %}
+  {% if p.awards %}{% assign n_awards = n_awards | plus: p.awards.size %}{% endif %}
+  {% if p.type == 'accepted' and p.status_label == nil %}{% assign n_upcoming = n_upcoming | plus: 1 %}{% endif %}
+{% endfor %}
+
+{%- comment -%} ---------- Years (peer-reviewed) ---------- {%- endcomment -%}
+{% assign yearstr = '' %}
+{% for p in peer %}{% if p.publication_year %}{% assign y = p.publication_year | append: '' %}{% else %}{% assign y = p.date | date: '%Y' %}{% endif %}{% unless yearstr contains y %}{% assign yearstr = yearstr | append: y | append: ',' %}{% endunless %}{% endfor %}
+{% assign years = yearstr | split: ',' | sort | reverse %}
+
+{%- comment -%} ---------- Tag vocabulary ---------- {%- endcomment -%}
 {% assign tagstr = '' %}
 {% for p in site.publications %}{% for t in p.tags %}{% assign tagstr = tagstr | append: t | append: '||' %}{% endfor %}{% endfor %}
 {% assign all_tags = tagstr | split: '||' | uniq | sort %}
 
-{%- comment -%} ---------- Sorted list ---------- {%- endcomment -%}
-{% assign pubs = site.publications | sort: 'date' | reverse %}
-
-<p class="mono-label pub-kicker">// research output · {{ n_total }} entries</p>
-
 <p class="pub-intro">
-  Peer-reviewed papers, preprints, and research essays on safe autonomy for aerospace systems.
-  The full record lives on my
-  <a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener">Google&nbsp;Scholar</a> profile.
+  Peer-reviewed papers on safe multi-agent learning and decision-making for autonomous aircraft, drones,
+  and vessels. Papers marked <em>to appear</em> have been accepted after peer review. The full record is on
+  <a href="{{ site.author.googlescholar }}" target="_blank" rel="noopener">Google&nbsp;Scholar</a>.
 </p>
 
 <div class="pub-stats">
-  <div class="pub-stat"><span class="pub-stat__num">{{ n_total | prepend: '0' | slice: -2, 2 }}</span><span class="pub-stat__label">Total</span></div>
-  <div class="pub-stat"><span class="pub-stat__num">{{ n_peer | prepend: '0' | slice: -2, 2 }}</span><span class="pub-stat__label">Published</span></div>
-  <div class="pub-stat"><span class="pub-stat__num">{{ n_acc | prepend: '0' | slice: -2, 2 }}</span><span class="pub-stat__label">Accepted</span></div>
-  <div class="pub-stat"><span class="pub-stat__num">{{ n_review | prepend: '0' | slice: -2, 2 }}</span><span class="pub-stat__label">Under Review</span></div>
+  <div class="pub-stat"><span class="pub-stat__num">{{ peer.size }}</span><span class="pub-stat__label">Peer-reviewed</span></div>
+  <div class="pub-stat"><span class="pub-stat__num">{{ n_first }}</span><span class="pub-stat__label">First-author</span></div>
+  <div class="pub-stat"><span class="pub-stat__num">{{ n_awards }}</span><span class="pub-stat__label">Paper awards</span></div>
+  <div class="pub-stat"><span class="pub-stat__num">{{ n_upcoming }}</span><span class="pub-stat__label">To appear</span></div>
 </div>
 
 <div class="pub-filter" role="group" aria-label="Filter publications by topic">
-  <span class="pub-filter__label">filter:</span>
+  <span class="pub-filter__label">Topic</span>
   <button class="pub-chip is-active" data-topic="all" type="button" aria-pressed="true">All</button>
   {% for t in all_tags %}{% assign slug = t | downcase | replace: ' & ', '-and-' | replace: ' ', '-' %}
   <button class="pub-chip" data-topic="{{ slug }}" type="button" aria-pressed="false">{{ t }}</button>{% endfor %}
@@ -50,54 +58,25 @@ author_profile: true
 
 <div class="pub-list">
 
-{%- comment -%} ======= Peer-reviewed (journal + conference) ======= {%- endcomment -%}
-{% if n_peer > 0 %}
+<h2 class="pub-group-title">Peer-reviewed papers</h2>
+{% for y in years %}
 <section class="pub-section" data-section>
-  <h2 class="mono-label section-label pub-section__head">// peer-reviewed &amp; published</h2>
-  {% for post in pubs %}{% if post.type == 'conference' or post.type == 'journal' %}{% include publication-card.html %}{% endif %}{% endfor %}
+  <h3 class="section-label pub-section__head">{{ y }}</h3>
+  {% for post in peer %}{% if post.publication_year %}{% assign py = post.publication_year | append: '' %}{% else %}{% assign py = post.date | date: '%Y' %}{% endif %}{% if py == y %}{% include publication-card.html %}{% endif %}{% endfor %}
+</section>
+{% endfor %}
+
+{% if other.size > 0 %}
+<section class="pub-section" data-section>
+  <h2 class="pub-group-title">Preprints and papers under review</h2>
+  {% for post in other %}{% include publication-card.html %}{% endfor %}
 </section>
 {% endif %}
 
-{%- comment -%} ======= Accepted ======= {%- endcomment -%}
-{% if n_acc > 0 %}
+{% if notes.size > 0 %}
 <section class="pub-section" data-section>
-  <h2 class="mono-label section-label pub-section__head">// accepted · to appear</h2>
-  {% for post in pubs %}{% if post.type == 'accepted' %}{% include publication-card.html %}{% endif %}{% endfor %}
-</section>
-{% endif %}
-
-{%- comment -%} ======= Under review / submitted ======= {%- endcomment -%}
-{% if n_review > 0 %}
-<section class="pub-section" data-section>
-  <h2 class="mono-label section-label pub-section__head">// under review</h2>
-  {% for post in pubs %}{% if post.type == 'under-review' or post.type == 'submitted' %}{% include publication-card.html %}{% endif %}{% endfor %}
-</section>
-{% endif %}
-
-{%- comment -%} ======= Preprints ======= {%- endcomment -%}
-{% assign n_pre = site.publications | where: 'type', 'preprint' | size %}
-{% if n_pre > 0 %}
-<section class="pub-section" data-section>
-  <h2 class="mono-label section-label pub-section__head">// preprints</h2>
-  {% for post in pubs %}{% if post.type == 'preprint' %}{% include publication-card.html %}{% endif %}{% endfor %}
-</section>
-{% endif %}
-
-{%- comment -%} ======= In preparation ======= {%- endcomment -%}
-{% assign n_inprep = site.publications | where: 'type', 'in-preparation' | size %}
-{% if n_inprep > 0 %}
-<section class="pub-section" data-section>
-  <h2 class="mono-label section-label pub-section__head">// in preparation</h2>
-  {% for post in pubs %}{% if post.type == 'in-preparation' %}{% include publication-card.html %}{% endif %}{% endfor %}
-</section>
-{% endif %}
-
-{%- comment -%} ======= Research essays ======= {%- endcomment -%}
-{% assign n_essay = site.publications | where: 'type', 'research-essay' | size %}
-{% if n_essay > 0 %}
-<section class="pub-section" data-section>
-  <h2 class="mono-label section-label pub-section__head">// research essays</h2>
-  {% for post in pubs %}{% if post.type == 'research-essay' %}{% include publication-card.html %}{% endif %}{% endfor %}
+  <h2 class="pub-group-title">Research essays</h2>
+  {% for post in notes %}{% include publication-card.html %}{% endfor %}
 </section>
 {% endif %}
 

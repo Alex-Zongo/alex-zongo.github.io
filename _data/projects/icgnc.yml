@@ -1,0 +1,75 @@
+venue: "ICGNC 2024 · Changsha, China"
+affiliation: "Department of Automation · Tsinghua University"
+subtitle: "Deep reinforcement learning for an attitude controller that adapts to unexpected failures"
+takeaway: "Can a learned controller fly through a fault?"
+lead: "Classical fault-tolerant control relies on gain scheduling or hardware redundancy and on prior knowledge of the faults. We train self-learning attitude controllers with deep reinforcement learning that track references smoothly in nominal flight and adapt to unexpected failures."
+demo:
+  type: figure
+  src: ftc-attitude
+  caption: "Schematic. The controller tracks a roll reference; after an actuator fault the response deviates briefly and recovers. Illustrative trajectory, not a recorded result."
+metrics:
+  - value: "6-DoF"
+    label: "high-fidelity Cessna Citation 500 model"
+  - value: "6+"
+    label: "fault scenarios beyond nominal flight"
+  - value: "2"
+    label: "learning approaches: CEM-TD3 and PPO"
+metrics_note: "Simulation study on the TU Delft PH-LAB aircraft model, trimmed at 2,000 m and 90 m/s."
+sections:
+  - id: problem
+    nav: "Problem"
+    eyebrow: "01 / The problem"
+    title: "Faults that were not anticipated."
+    text: >
+      Faults appear as sensor errors, structural or system failures, and unexpected phenomena. Passive
+      and active fault-tolerant control strategies typically depend on knowing the fault in advance, which
+      limits them to known fault types. Deep RL can adapt, but noisy control commands make hardware
+      implementation difficult.
+  - id: approach
+    nav: "Approach"
+    eyebrow: "02 / Formulation"
+    title: "Track the reference, keep the actuators smooth."
+    text: >
+      Attitude control is posed as minimizing tracking error together with a penalty on changes between
+      consecutive control inputs, subject to actuator magnitude and rate limits.
+    equation: 'u^{*} = \arg\min_{u} \int_{0}^{t_f} \Big( L_s(s, u, r) + L_u(u) \Big)\, dt \quad \text{s.t.}\ \ |u| \le u_{\max},\ \ \Big|\tfrac{\Delta u}{\Delta t}\Big| \le \dot u_{\max}'
+    equation_note: "L_s penalizes deviation from the reference; L_u penalizes abrupt changes in control input."
+    points:
+      - title: "CEM-TD3"
+        text: "A neuro-evolutionary method: the Cross-Entropy Method refines a population of TD3 actors."
+      - title: "PPO"
+        text: "Clipped surrogate policy optimization with a learned value function."
+      - title: "Trade-off"
+        text: "The two approaches differ in how they balance tracking accuracy against control smoothness."
+  - id: faults
+    nav: "Faults"
+    eyebrow: "03 / Evaluation"
+    title: "Nominal flight and a battery of faults."
+    table:
+      caption: "Evaluated conditions"
+      headers: ["Condition", "Description"]
+      rows:
+        - ["Nominal", "Trim at 2,000 m and 90 m/s"]
+        - ["Iced wings", "Reduced maximum angle of attack, increased drag"]
+        - ["Aft-shifted CG", "Center of gravity moved aft by 0.25 m"]
+        - ["Saturated aileron", "Deflection clipped at ±1°"]
+        - ["Saturated elevator", "Deflection clipped at ±2.5°"]
+        - ["Partial loss of elevator", "Effectiveness scaled by 0.3"]
+        - ["Jammed rudder", "Rudder stuck at 15°"]
+        - ["High dynamic pressure", "Trim at 2,000 m and 150 m/s"]
+        - ["Wind and sensor noise", "Disturbances on dynamics and measurements"]
+      note: "Condition definitions follow the paper."
+  - id: findings
+    nav: "Findings"
+    eyebrow: "04 / Findings"
+    title: "Stable, smooth, and robust in simulation."
+    text: >
+      The paper reports that the trained agents exceed the state of the art on nominal flight and on more
+      than six fault scenarios, with each algorithm showing a distinct trade-off between tracking and
+      control smoothness, and a stability analysis supports the stability of the neural-network controller.
+  - id: scope
+    nav: "Scope"
+    eyebrow: "05 / Scope"
+    title: "Simulation-based evaluation."
+    text: "All results are from a high-fidelity simulation model; flight testing is outside the scope of the paper."
+figures_credit: "Figure is an animated schematic."

@@ -8,10 +8,10 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Alex B. Zongo"
+title                    : "Alex Zongo"
 title_separator          : "-"
-name                     : &name "Alex Baowend Soom M. A. Zongo"
-description              : &description "Alex B. Zongo — Aerospace Engineer, Researcher, and AI Enthusiast. Showcasing research, publications, projects, and teaching at George Washington University."
+name                     : &name "Alex Zongo"
+description              : &description "Alex Zongo is a PhD candidate in aerospace engineering at George Washington University working on safe multi-agent learning and decision-making for autonomous aircraft and drones: robust reinforcement learning, runtime safety filters, and language models in the control loop."
 url                      : https://alexzongo.com # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  :  # the subpath of your site, e.g. "/blog"
 repository               : "Alex-Zongo/alex-zongo.github.io"
@@ -22,12 +22,12 @@ repository               : "Alex-Zongo/alex-zongo.github.io"
 author:
   # Biographic information
   avatar           : "photo_update.PNG" #"visa_photo.JPG"
-  name             : "Alex B. Zongo"
+  name             : "Alex Zongo"
   pronouns         : # example: "she/her"
-  bio              : "Aerospace Engineer and PhD candidate @ GWU"
+  bio              : "PhD Candidate, Aerospace Engineering @ GWU · Safe autonomy & multi-agent learning"
   location         : "Washington, DC, USA"
   employer         : "GWU"
-  uri              : "https://alexzongo.com"
+  uri              : # own site; omitted from sidebar
   email            : "a.zongo@gwu.edu"
 
   # Academic websites
@@ -36,6 +36,7 @@ author:
   googlescholar    : "https://scholar.google.com/citations?hl=en&user=mqlbZecAAAAJ" # "https://scholar.google.com/citations?user=PS_CX0AAAAAJ"
   impactstory      : # URL
   orcid            : "https://orcid.org/0009-0009-9631-5384"
+  openreview       : "https://openreview.net/profile?id=~Alex_Zongo1"
   semantic         : # URL
   ssrn             : # URL
   pubmed           : # URL
@@ -60,7 +61,7 @@ author:
   goodreads        : # Username
   google_plus      : # Username
   keybase          : # Username
-  instagram        : "blackeys_z" # Username
+  instagram        : # "blackeys_z" — linked from Beyond Research instead
   lastfm           : # Username
   linkedin         : "alex-zongo"
   mastodon         : # URL
@@ -75,7 +76,7 @@ author:
   weibo            : # Username
   wikipedia        : # Username
   xing             : # Username
-  youtube          : "blackeyspiano"
+  youtube          : # "blackeyspiano" — linked from Beyond Research instead
   zhihu            : # URL
 
 
@@ -166,6 +167,7 @@ include:
   - _pages
   - files
 exclude:
+  - cv
   - _portfolio
   - _pages/portfolio.html
   - _pages/markdown.md

@@ -13,7 +13,7 @@ author_profile: true
 
 <a class="notes-back" href="{{ base_path }}/year-archive/">← All research notes</a>
 
-<p class="mono-label pub-kicker">✈️ // air traffic control series · {{ atc_pub | size }} note{% unless atc_pub.size == 1 %}s{% endunless %}</p>
+<p class="mono-label pub-kicker">air traffic control series · {{ atc_pub | size }} note{% unless atc_pub.size == 1 %}s{% endunless %}</p>
 
 <p class="pub-intro">
   Air Traffic Control is one of the most complex control systems ever built,  balancing safety,
@@ -24,12 +24,12 @@ author_profile: true
 
 <div class="pub-list">
 {% if atc_pub.size > 0 %}
-  <p class="mono-label section-label">// notes</p>
+  <p class="mono-label section-label">notes</p>
   {% for post in atc_pub %}{% include note-card.html %}{% endfor %}
 {% endif %}
 
 {% if atc_soon.size > 0 %}
-  <p class="mono-label section-label">// coming soon</p>
+  <p class="mono-label section-label">coming soon</p>
   {% for post in atc_soon %}{% include note-card.html %}{% endfor %}
 {% endif %}
 

@@ -1,0 +1,56 @@
+<svg class="fig" viewBox="0 0 640 300" role="img" aria-labelledby="fig-cdco-t fig-cdco-d">
+  <title id="fig-cdco-t">Local observation model and the effect of a corrupted broadcast</title>
+  <desc id="fig-cdco-d">An ownship observes intruders within its detection radius. Their broadcast states form the policy input. When intruder 2's broadcast is corrupted, its reported position jumps and the policy selects a different speed change.</desc>
+  <rect class="fig-panel" x="1" y="1" width="638" height="298" rx="10"/>
+
+  <!-- detection disk -->
+  <circle class="fig-detect" cx="150" cy="150" r="112"/>
+  <text class="fig-label fig-muted" x="62" y="28">detection radius (500 m)</text>
+
+  <!-- links from ownship to intruders (follow the linear paths) -->
+  <g class="fig-link">
+    <line x1="150" y1="150" x2="44" y2="88"><animate attributeName="x2" values="44;258" dur="8s" repeatCount="indefinite"/><animate attributeName="y2" values="88;124" dur="8s" repeatCount="indefinite"/></line>
+    <line x1="150" y1="150" x2="236" y2="248"><animate attributeName="x2" values="236;92" dur="10s" repeatCount="indefinite"/><animate attributeName="y2" values="248;52" dur="10s" repeatCount="indefinite"/></line>
+    <line x1="150" y1="150" x2="48" y2="214"><animate attributeName="x2" values="48;256" dur="9s" repeatCount="indefinite"/><animate attributeName="y2" values="214;196" dur="9s" repeatCount="indefinite"/></line>
+  </g>
+  <g class="fig-ac fig-ac--blue"><animateMotion dur="8s" repeatCount="indefinite" rotate="auto" path="M44 88 L258 124"/><circle class="fig-ring" r="11"/><path class="fig-plane" d="M7 0 L-5 -5 L-2 0 L-5 5Z"/></g>
+  <g class="fig-ac fig-ac--blue"><animateMotion dur="10s" repeatCount="indefinite" rotate="auto" path="M236 248 L92 52"/><circle class="fig-ring" r="11"/><path class="fig-plane" d="M7 0 L-5 -5 L-2 0 L-5 5Z"/></g>
+  <g class="fig-ac fig-ac--blue"><animateMotion dur="9s" repeatCount="indefinite" rotate="auto" path="M48 214 L256 196"/><circle class="fig-ring" r="11"/><path class="fig-plane" d="M7 0 L-5 -5 L-2 0 L-5 5Z"/></g>
+  <!-- corrupted report for intruder 2 -->
+  <g class="fig-spoof">
+    <animateMotion dur="10s" repeatCount="indefinite" path="M236 248 L92 52"/>
+    <g>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.38;0.42;0.68;0.72;1" dur="10s" repeatCount="indefinite"/>
+      <g transform="translate(-30 22)"><circle class="fig-ring fig-ring--spoof" r="11"/><path class="fig-plane fig-plane--spoof" d="M7 0 L-5 -5 L-2 0 L-5 5Z" transform="rotate(-54)"/></g>
+    </g>
+  </g>
+  <g class="fig-ac fig-ac--teal"><g transform="translate(150 150)"><circle class="fig-ring" r="13"/><path class="fig-plane" d="M8 0 L-6 -6 L-3 0 L-6 6Z"/></g></g>
+  <text class="fig-label fig-tag" x="138" y="182" style="fill: var(--fig-teal)">ownship</text>
+
+  <!-- observation vector -->
+  <path class="fig-arrow" d="M268 150 H296" marker-end="url(#fig-cdco-head)"/>
+  <text class="fig-label fig-muted" x="302" y="52">local observation</text>
+  <g class="fig-box fig-box--teal"><rect x="302" y="62" width="138" height="30" rx="6"/><text class="fig-label" x="312" y="81">own: pos, speed, hdg</text></g>
+  <g class="fig-box fig-box--blue"><rect x="302" y="98" width="138" height="30" rx="6"/><text class="fig-label" x="312" y="117">intruder 1</text></g>
+  <g class="fig-box fig-box--blue fig-row-swap">
+    <rect x="302" y="134" width="138" height="30" rx="6"/><text class="fig-label" x="312" y="153">intruder 2</text>
+    <g class="fig-row-bad"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.38;0.42;0.68;0.72;1" dur="10s" repeatCount="indefinite"/>
+      <rect x="302" y="134" width="138" height="30" rx="6"/><text class="fig-label" x="312" y="153">intruder 2 · corrupted</text></g>
+  </g>
+  <g class="fig-box fig-box--blue"><rect x="302" y="170" width="138" height="30" rx="6"/><text class="fig-label" x="312" y="189">intruder 3</text></g>
+  <g class="fig-box fig-box--muted"><rect x="302" y="206" width="138" height="30" rx="6"/><text class="fig-label fig-muted" x="312" y="225">… up to 5 intruders</text></g>
+
+  <!-- policy and action -->
+  <path class="fig-arrow" d="M440 150 H466" marker-end="url(#fig-cdco-head)"/>
+  <g class="fig-box fig-box--navy"><rect x="470" y="122" width="70" height="56" rx="8"/><text class="fig-math fig-center fig-on-dark" x="505" y="155">π(· | o)</text></g>
+  <path class="fig-arrow" d="M540 150 H566" marker-end="url(#fig-cdco-head)"/>
+  <text class="fig-label fig-muted" x="566" y="70">speed change</text>
+  <g class="fig-choice"><rect x="570" y="82" width="52" height="34" rx="6"/><text class="fig-math fig-center" x="596" y="104">−δv</text>
+    <rect class="fig-choice-on fig-choice-on--coral" x="570" y="82" width="52" height="34" rx="6"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.42;0.46;0.68;0.72;1" dur="10s" repeatCount="indefinite"/></rect></g>
+  <g class="fig-choice"><rect x="570" y="133" width="52" height="34" rx="6"/><text class="fig-math fig-center" x="596" y="155">0</text>
+    <rect class="fig-choice-on fig-choice-on--teal" x="570" y="133" width="52" height="34" rx="6"><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.42;0.46;0.68;0.72;1" dur="10s" repeatCount="indefinite"/></rect></g>
+  <g class="fig-choice"><rect x="570" y="184" width="52" height="34" rx="6"/><text class="fig-math fig-center" x="596" y="206">+δv</text></g>
+  <text class="fig-label fig-coral-text" x="624" y="262" text-anchor="end"><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.42;0.46;0.68;0.72;1" dur="10s" repeatCount="indefinite"/>a corrupted input changes the decision</text>
+
+  <defs><marker id="fig-cdco-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fig-head" d="M0 0 L10 5 L0 10z"/></marker></defs>
+</svg>

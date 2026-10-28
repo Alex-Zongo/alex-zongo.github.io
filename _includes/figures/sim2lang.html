@@ -1,0 +1,50 @@
+<svg class="fig" viewBox="0 0 640 300" role="img" aria-labelledby="fig-s2l-t fig-s2l-d">
+  <title id="fig-s2l-t">Simulation-to-language fine-tuning pipeline</title>
+  <desc id="fig-s2l-d">BlueSky scenarios are labeled by human-aligned rule-based deconfliction, converted into text prompts with target actions, and used to fine-tune a language model with supervised LoRA or GRPO. The fine-tuned model is then evaluated in closed-loop simulation alongside rule-based agents.</desc>
+  <rect class="fig-panel" x="1" y="1" width="638" height="298" rx="10"/>
+
+  <!-- 1. scenarios -->
+  <text class="fig-label fig-muted" x="20" y="30">1 · BlueSky scenarios</text>
+  <g class="fig-box fig-box--muted"><rect x="20" y="40" width="130" height="110" rx="8"/></g>
+  <g class="fig-route"><path d="M28 70 H142"/><path d="M28 118 L142 84"/><path d="M84 46 V144"/></g>
+  <g class="fig-ac fig-ac--teal"><animateMotion dur="6s" repeatCount="indefinite" rotate="auto" path="M28 70 H142"/><circle class="fig-ring" r="8"/><path class="fig-plane" d="M6 0 L-4 -4 L-2 0 L-4 4Z"/></g>
+  <g class="fig-ac fig-ac--blue"><animateMotion dur="7s" repeatCount="indefinite" rotate="auto" path="M28 118 L142 84"/><circle class="fig-ring" r="8"/><path class="fig-plane" d="M6 0 L-4 -4 L-2 0 L-4 4Z"/></g>
+  <g class="fig-ac fig-ac--blue"><animateMotion dur="8s" begin="-3s" repeatCount="indefinite" rotate="auto" path="M84 144 V46"/><circle class="fig-ring" r="8"/><path class="fig-plane" d="M6 0 L-4 -4 L-2 0 L-4 4Z"/></g>
+  <text class="fig-label fig-muted" x="20" y="166">20–30 sUAS · Frisco, TX</text>
+
+  <!-- 2. rule-based labels -->
+  <path class="fig-arrow" d="M150 95 H170" marker-end="url(#fig-s2l-head)"/>
+  <text class="fig-label fig-muted" x="174" y="30">2 · human-aligned labels</text>
+  <g class="fig-box fig-box--gold"><rect x="174" y="58" width="120" height="74" rx="8"/>
+    <text class="fig-label fig-center fig-strong" x="234" y="86">rule-based</text>
+    <text class="fig-label fig-center" x="234" y="102">deconfliction</text>
+    <text class="fig-label fig-center fig-muted" x="234" y="120">~38k samples</text></g>
+
+  <!-- 3. text sample -->
+  <path class="fig-arrow" d="M294 95 H314" marker-end="url(#fig-s2l-head)"/>
+  <text class="fig-label fig-muted" x="318" y="30">3 · prompt and target</text>
+  <g class="fig-box fig-box--paper"><rect x="318" y="44" width="150" height="102" rx="8"/></g>
+  <g class="fig-mono">
+    <text x="328" y="66">ownship: hdg 090, 40 kt<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.05;0.1;1" dur="8s" repeatCount="indefinite"/></text>
+    <text x="328" y="82">intruder: 0.2 nm, right<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.12;0.17;1" dur="8s" repeatCount="indefinite"/></text>
+    <text x="328" y="98">reason step by step…<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.19;0.24;1" dur="8s" repeatCount="indefinite"/></text>
+    <text x="328" y="124" style="fill: var(--fig-gold)">target: slow down<animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.3;0.35;1" dur="8s" repeatCount="indefinite"/></text>
+  </g>
+
+  <!-- 4. fine-tuning -->
+  <path class="fig-arrow" d="M468 95 H488" marker-end="url(#fig-s2l-head)"/>
+  <text class="fig-label fig-muted" x="492" y="30">4 · fine-tune Qwen-Math-7B</text>
+  <g class="fig-box fig-box--purple"><rect x="492" y="44" width="128" height="46" rx="8"/><text class="fig-label fig-center fig-strong" x="556" y="64">SFT</text><text class="fig-label fig-center fig-muted" x="556" y="80">LoRA</text>
+    <animate attributeName="opacity" values="1;1;0.35;0.35;1" keyTimes="0;0.45;0.5;0.95;1" dur="10s" repeatCount="indefinite"/></g>
+  <g class="fig-box fig-box--purple"><rect x="492" y="100" width="128" height="46" rx="8"/><text class="fig-label fig-center fig-strong" x="556" y="120">GRPO</text><text class="fig-label fig-center fig-muted" x="556" y="136">LoRA + preference</text>
+    <animate attributeName="opacity" values="0.35;0.35;1;1;0.35" keyTimes="0;0.45;0.5;0.95;1" dur="10s" repeatCount="indefinite"/></g>
+
+  <!-- 5. closed loop -->
+  <path class="fig-arrow" d="M556 146 V214 H170" marker-end="url(#fig-s2l-head)"/>
+  <text class="fig-label fig-muted" x="320" y="208">5 · closed-loop evaluation</text>
+  <g class="fig-box fig-box--navy"><rect x="20" y="194" width="146" height="44" rx="8"/><text class="fig-label fig-center fig-on-dark" x="93" y="214">LLM + rule-based</text><text class="fig-label fig-center fig-on-dark" x="93" y="229">agents in BlueSky</text></g>
+  <circle class="fig-token fig-token--purple" r="5"><animateMotion dur="5s" repeatCount="indefinite" path="M150 95 H170 M294 95 H314 M468 95 H488 M556 146 V214 H170"/></circle>
+  <text class="fig-label fig-muted" x="20" y="272">Metrics: decision accuracy on held-out data, near mid-air collisions and operation time in simulation.</text>
+
+  <defs><marker id="fig-s2l-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fig-head" d="M0 0 L10 5 L0 10z"/></marker></defs>
+</svg>

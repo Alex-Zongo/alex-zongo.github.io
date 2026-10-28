@@ -1,0 +1,40 @@
+{% include base_path %}
+{% assign featured = site.publications | where: 'featured', true | sort: 'feature_order' %}
+<section class="selected-work" aria-labelledby="selected-work-title">
+  <h2 id="selected-work-title" class="mono-label section-label">selected work</h2>
+  <div class="selected-work__list">
+    {% for post in featured %}
+    {% assign clean_venue = post.venue | strip | replace_first: 'the ', '' | replace_first: 'The ', '' %}
+    <article class="work-card">
+      {% if post.thumb_figure %}
+      <a class="work-card__thumb work-card__thumb--anim" href="{{ base_path }}{{ post.url }}" tabindex="-1" aria-hidden="true">
+        {% include figures/{{ post.thumb_figure }}.html %}
+      </a>
+      {% elsif post.figure %}
+      <a class="work-card__thumb" href="{{ base_path }}{{ post.url }}" tabindex="-1" aria-hidden="true">
+        <img src="{{ post.figure | relative_url }}" alt="" loading="lazy">
+      </a>
+      {% endif %}
+      <div class="work-card__body">
+        <h3 class="work-card__title"><a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a></h3>
+        {% if post.authors %}<p class="work-card__authors">{{ post.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>{% endif %}
+        <p class="work-card__venue">{{ clean_venue }}{% if post.status_label %} · {{ post.status_label | downcase }}{% elsif post.type == 'accepted' %} · to appear{% endif %}</p>
+        {% if post.awards %}
+        <ul class="award-badges" aria-label="Awards">
+          {% for award in post.awards %}<li class="award-badge"><i class="fa-solid fa-award" aria-hidden="true"></i> {{ award }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+        <p class="work-card__links">
+          {% if post.layout == 'research-project' %}<a href="{{ base_path }}{{ post.url }}">project page</a>{% endif %}
+          {% if post.paperurl %}<a href="{{ post.paperurl | strip }}" target="_blank" rel="noopener">paper</a>{% endif %}
+          {% if post.preprinturl %}<a href="{{ post.preprinturl | strip }}" target="_blank" rel="noopener">{% if post.preprinturl contains 'arxiv' %}arXiv{% else %}preprint{% endif %}</a>{% endif %}
+          {% if post.codeurl %}<a href="{{ post.codeurl | strip }}" target="_blank" rel="noopener">code</a>{% endif %}
+          {% if post.slidesurl %}<a href="{{ post.slidesurl | strip | relative_url }}" target="_blank" rel="noopener">slides</a>{% endif %}
+          {% if post.posterurl %}<a href="{{ post.posterurl | strip | relative_url }}" target="_blank" rel="noopener">poster</a>{% endif %}
+        </p>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  <p class="selected-work__more"><a href="{{ '/publications/' | relative_url }}">All publications <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a></p>
+</section>

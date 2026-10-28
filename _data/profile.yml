@@ -1,7 +1,31 @@
 opportunities:
   active: true
-  title: "Open to 2026–27 research internships"
-  description: "Academia, research labs, and industry. Let's work on safe learning, multi-agent systems, and autonomous decision-making."
+  title: "Seeking Summer 2027 research internships"
+  description: "Planning and control, multi-agent reinforcement learning, and world models for autonomy, in industry research labs or academia."
+  email_subject: "Summer 2027 research internship"
+themes:
+  - title: "Robust multi-agent RL under degraded sensing"
+    text: "Separation policies for dense drone and aircraft traffic that stay safe when GPS/GNSS position reports are noisy, delayed, or spoofed."
+    anchor: "robust-marl"
+    links:
+      - label: "CDC 2026"
+        url: "/publication/2026-cdc-robust-marl"
+  - title: "Runtime safety for learned policies"
+    text: "Filters that sit around a deployed policy, without retraining it, and correct what it sees or what it does when inputs cannot be trusted."
+    anchor: "runtime-safety"
+    links:
+      - label: "DASC 2026"
+        url: "/publication/2026-dasc-runtime-safety-filtering"
+  - title: "Foundation models in the control loop"
+    text: "Language models as decision-makers and advisors for air traffic and maritime collision avoidance, with fine-tuning, fallback control, and closed-loop evaluation."
+    anchor: "foundation-models"
+    links:
+      - label: "CVPR-W 2026"
+        url: "/publication/2026-03-20-finetuning_llm_atc"
+      - label: "OCEANS 2026"
+        url: "/publication/llm-guided-rl-maritime-collision-avoidance"
+      - label: "SciTech 2027"
+        url: "/publication/llm-air-traffic-control-prompting"
 institutions:
   - name: "George Washington University"
     role: "Doctoral research"

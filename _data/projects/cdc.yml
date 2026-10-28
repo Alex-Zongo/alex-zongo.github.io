@@ -1,0 +1,141 @@
+venue: "IEEE CDC 2026 · to appear"
+affiliation: "The George Washington University · The University of Texas at Austin, Oden Institute"
+subtitle: "A closed-form adversary for decentralized separation policies"
+takeaway: "What if the positions a policy sees are wrong?"
+lead: "In cooperative surveillance, every aircraft broadcasts its GPS-derived position. When those broadcasts are corrupted, the whole observed traffic picture becomes unreliable. We train separation policies that stay safe under a worst-case corruption that we can compute in closed form, without adversarial co-training."
+demo:
+  type: figure
+  src: robust-marl
+  caption: "Schematic. Aircraft B's broadcast position is spoofed inside a bounded set (dashed box); aircraft A, running the robust policy, slows and keeps its separation buffer."
+hero:
+  src: "/images/cdc/simulation.png"
+  alt: "BlueSky simulation of small UAS on structured en-route routes; aircraft are triangles with separation buffers drawn as circles."
+  caption: "High-density en-route sUAS traffic in the BlueSky simulator. Aircraft (triangles) follow structured routes; circles show separation buffers. Labels show flight ID, speed, and altitude."
+  source_url: "/files/acc_workshop_2026.pdf"
+  source_label: "ACC 2026 poster"
+metrics:
+  - value: "≈ 0"
+    label: "NMACs up to 35% corruption"
+  - value: "One shot"
+    label: "worst-case observation, no adversary training"
+  - value: "2nd order"
+    label: "accuracy of the closed-form worst case"
+metrics_note: "Simulation results averaged over 100 episodes in BlueSky with Amazon MK30 performance parameters, en-route package-delivery airspace. Not a flight-certified guarantee."
+sections:
+  - id: problem
+    nav: "Problem"
+    eyebrow: "01 / The problem"
+    title: "Separation depends on a broadcast you cannot fully trust."
+    text: >
+      Each aircraft observes itself and up to five nearby intruders (position, speed, heading)
+      within a 500 m detection radius, and a shared decentralized policy selects a speed change:
+      slow down, hold, or speed up. GPS multipath, jamming, or spoofing corrupts those broadcasts,
+      so the policy acts on a traffic picture that may not exist.
+    media:
+      type: figure
+      src: cdc-observation
+      caption: "Each aircraft observes intruders within 500 m. When one broadcast is corrupted (coral), the observation changes and so can the selected speed change."
+      source_label: "Poster, panel 1"
+  - id: formulation
+    nav: "Formulation"
+    eyebrow: "02 / Adversarial formulation"
+    title: "A two-player game over observations."
+    text: >
+      With probability $$R$$, an adversary replaces the true traffic state $$\mathbf{S}$$ with a corrupted
+      observation $$\Xi$$ inside a bounded uncertainty set $$\Omega(\mathbf{S}) = \{\Xi : \lvert\Xi - \mathbf{S}\rvert \le \kappa\}$$,
+      chosen to minimize the agents' value. The policy must perform well under both the clean and the
+      corrupted observation.
+    equation: '\max_{u_t} V^{\pi}_{\mathrm{rob}}(\mathbf{S}_t) = \max_{u_t}\, \mathbb{E}_{\pi}\Big[\, r(\mathbf{S}_{t+1}, u_t) + \gamma\big((1-R)\,V^{\pi}(\mathbf{S}_{t+1}) + R \min_{\Xi \in \Omega(\mathbf{S}_{t+1})} V^{\pi}(\Xi)\big) \,\Big|\, \mathbf{S}_t \Big]'
+    equation_note: "Robust value: the agents maximize return while the adversary corrupts the next observation with probability R."
+    media:
+      type: figure
+      src: cdc-game
+      caption: "The adversary searches a bounded set around the true state for the lowest-value observation; the policy sees the clean state with probability 1 − R and the adversary's observation with probability R."
+      source_label: "Poster, panel 2"
+  - id: closed-form
+    nav: "Closed form"
+    eyebrow: "03 / Closed-form adversary"
+    title: "The worst case, without training an adversary."
+    text: >
+      Instead of learning an adversary through iterative, unstable co-training, we derive the
+      worst-case observation directly. A first-order expansion of the value function moves the
+      corrupted state to the lowest-value corner of the uncertainty box. The expression is one-shot,
+      linear-time in the state dimension, and approximates the true worst case with second-order accuracy.
+    equation: '\Xi^{\star} = \mathbf{S} - \kappa \odot \operatorname{sign}\big(\nabla V(\mathbf{S})\big)'
+    equation_note: "The gradient is taken through a frozen teacher value function."
+    media:
+      type: figure
+      src: cdc-closed-form
+      caption: "An iterative adversary needs many updates; the closed form moves the observation to the box corner opposite the value gradient in one step."
+      source_label: "Poster, panel 3"
+  - id: training
+    nav: "Training"
+    eyebrow: "04 / Robust training"
+    title: "Stay invariant to corruption, stay close to nominal."
+    text: >
+      Two regularizers shape the robust policy. An **invariance** term penalizes
+      $$\mathrm{KL}\big(\pi(\cdot\mid\mathbf{S})\,\Vert\,\pi(\cdot\mid\Xi^{\star})\big)$$, so the decision is the same whether the
+      observation is clean or corrupted. An **anchor** term keeps the robust policy close to a nominal
+      teacher, so robustness is not bought by giving up clean performance. If the invariance gap is
+      bounded by $$B$$, the performance loss under corruption is bounded by $$Q_{\max}\sqrt{2B}$$; a smaller
+      $$B$$ means a tighter guarantee.
+    points:
+      - title: "Phase 1: nominal"
+        text: "Train a teacher policy with no corruption (R = 0)."
+      - title: "Phase 2: robust"
+        text: "Fine-tune with the closed-form adversary and a curriculum on R."
+      - title: "Execution"
+        text: "Centralized training, decentralized execution: each aircraft runs its own copy using only local observations."
+    media:
+      type: figure
+      src: cdc-regularizers
+      caption: "Invariance pulls the corrupted-observation action distribution toward the clean one; the anchor keeps the robust policy near the nominal teacher."
+    details:
+      - title: "Policy architecture"
+        text: "A shared network encodes the ownship state and a stack of up to five neighbor states with multi-head attention and pooling, then decodes a value estimate and a speed-increment action."
+        figure:
+          src: "/images/cdc/architecture.png"
+          alt: "Shared policy network: own state and neighbor states are encoded, combined through multi-head attention and pooling, and decoded into value and action heads."
+          caption: "Shared attention-based policy network; the frozen teacher's value gradient is used to compute the worst-case observation."
+          source_url: "/files/acc_workshop_2026.pdf"
+          source_label: "Poster, panel 5"
+  - id: results
+    nav: "Results"
+    eyebrow: "05 / Results"
+    title: "Graceful degradation as corruption grows."
+    text: >
+      The robust policy keeps near mid-air collisions (NMACs) near zero up to a 35% contamination rate
+      and degrades gracefully beyond it, while the nominal policy deteriorates sharply. Ablations show
+      that both regularizers are needed: invariance alone destabilizes training, and anchoring alone
+      preserves nominal behavior but collapses at high corruption.
+    figures:
+      - src: "/images/cdc/results.png"
+        alt: "NMAC count and minimum separation versus contamination rate R for the full robust policy and the nominal policy."
+        caption: "Robust vs. nominal policy: NMACs (left) and minimum separation (right) as the contamination rate R increases."
+        source_url: "/files/acc_workshop_2026.pdf"
+        source_label: "Poster, panel 6"
+      - src: "/images/cdc/ablation.png"
+        alt: "Ablation: full robust policy, anchor without invariance, and invariance without anchor, showing NMACs and minimum separation versus contamination rate."
+        caption: "Ablation of the invariance and anchor regularizers. Shaded bands show variability across 100 episodes."
+        source_url: "/files/acc_workshop_2026.pdf"
+        source_label: "Poster, panel 6"
+    details:
+      - title: "Simulation environment"
+        text: "BlueSky air traffic simulator with Amazon MK30 performance parameters, en-route package-delivery airspace."
+        figure:
+          src: "/images/cdc/simulation.png"
+          alt: "BlueSky simulation of small UAS on structured en-route routes; aircraft are triangles with separation buffers drawn as circles."
+          caption: "High-density en-route sUAS traffic. Aircraft (triangles) follow structured routes; circles show separation buffers. Labels show flight ID, speed, and altitude."
+          source_url: "/files/acc_workshop_2026.pdf"
+          source_label: "ACC 2026 poster"
+  - id: scope
+    nav: "Scope"
+    eyebrow: "06 / Scope and next steps"
+    title: "Where this applies, and what comes next."
+    text: >
+      The approach applies to any cooperative multi-agent system whose shared observations can be
+      corrupted. The evidence here is simulation-based. Follow-up work places a runtime safety filter
+      around the deployed policy ([DASC 2026](/publication/2026-dasc-runtime-safety-filtering)); code
+      will be released with the redesigned environment.
+acknowledgement: "This work was supported by NASA under grant 80NSSC24M0070 and by ONR under grant N00014-22-1-2703."
+figures_credit: "Method figures are animated schematics; result plots are from the <a href=\"/files/acc_workshop_2026.pdf\">ACC 2026 workshop poster</a>."

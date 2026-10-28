@@ -1,6 +1,14 @@
 ---
+layout: research-project
+project: llm-deconfliction
+presentation: /talks/2026-06-04-meis-cvpr-poster
+venue_short: "CVPR 2026 Workshop"
+venue_type: "workshop"
 title: "Fine-Tuning Large Language Models for Cooperative Tactical Deconfliction of Small Unmanned Aerial Systems"
 collection: publications
+featured: true
+thumb_figure: "sim2lang"
+feature_order: 3
 tags: ["Large Language Models", "Air Traffic Control", "Multi-Agent"]
 authors: "Iman Sharifi, **Alex Zongo**, Peng Wei"
 abstract: >
@@ -47,7 +55,7 @@ preprinturl: 'https://arxiv.org/abs/2603.28561'
 slidesurl: #
 bibtexurl: #
 posterurl: 'https://alex-zongo.github.io/files/meis_cvpr_poster_2026.pdf'
-type: "conference"
+type: "workshop"
 citation: 'Sharifi, I., Zongo, A., & Wei, P. (2026). &quot; Fine-Tuning Large Language Models for Cooperative Tactical Deconfliction of Small Unmanned Aerial Systems. &quot; <i>Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (MEIS)</i> (pp. 1067-1076).'
 ---
 

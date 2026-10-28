@@ -1,0 +1,53 @@
+<svg class="fig" viewBox="0 0 640 300" role="img" aria-labelledby="fig-icnsm-t fig-icnsm-d">
+  <title id="fig-icnsm-t">MVP conflict resolution and the energy-overhead metric</title>
+  <desc id="fig-icnsm-d">Left: two aircraft are predicted to pass inside the protected zone at the closest point of approach. MVP applies a minimal velocity change to each aircraft, moving the closest point of approach to the zone boundary. Right: the flown path deviates from the nominal path, and the energy overhead is the relative difference in energy.</desc>
+  <rect class="fig-panel" x="1" y="1" width="638" height="298" rx="10"/>
+
+  <text class="fig-label fig-strong" x="24" y="30">Modified Voltage Potential (MVP)</text>
+  <text class="fig-label fig-muted" x="24" y="47">look-ahead 90 s · protected zone 0.6 nm · speed 85–185 kt</text>
+  <!-- predicted trajectories to CPA -->
+  <line class="fig-pred fig-pred--teal" x1="44" y1="160" x2="200" y2="160">
+    <animate attributeName="x2" values="200;200;186;186;200" keyTimes="0;0.4;0.55;0.95;1" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="y2" values="160;160;140;140;160" keyTimes="0;0.4;0.55;0.95;1" dur="9s" repeatCount="indefinite"/>
+  </line>
+  <line class="fig-pred fig-pred--blue" x1="150" y1="278" x2="210" y2="170">
+    <animate attributeName="x2" values="210;210;216;216;210" keyTimes="0;0.4;0.55;0.95;1" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="y2" values="170;170;168;168;170" keyTimes="0;0.4;0.55;0.95;1" dur="9s" repeatCount="indefinite"/>
+  </line>
+  <circle class="fig-zone" cx="200" cy="160" r="40">
+    <animate attributeName="cx" values="200;200;186;186;200" keyTimes="0;0.4;0.55;0.95;1" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="160;160;140;140;160" keyTimes="0;0.4;0.55;0.95;1" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="class" values="fig-zone fig-zone--bad;fig-zone fig-zone--bad;fig-zone;fig-zone;fig-zone fig-zone--bad" keyTimes="0;0.4;0.55;0.95;1" dur="9s" calcMode="discrete" repeatCount="indefinite"/>
+  </circle>
+  <circle class="fig-cpa" cx="210" cy="170" r="5">
+    <animate attributeName="cx" values="210;210;216;216;210" keyTimes="0;0.4;0.55;0.95;1" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="170;170;168;168;170" keyTimes="0;0.4;0.55;0.95;1" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  <g class="fig-ac fig-ac--teal"><g transform="translate(44 160)"><circle class="fig-ring" r="11"/><path class="fig-plane" d="M8 0 L-6 -6 L-3 0 L-6 6Z"/></g></g>
+  <g class="fig-ac fig-ac--blue"><g transform="translate(150 278) rotate(-61)"><circle class="fig-ring" r="11"/><path class="fig-plane" d="M8 0 L-6 -6 L-3 0 L-6 6Z"/></g></g>
+  <!-- velocity changes -->
+  <g class="fig-dv"><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.38;0.45;0.95;1" dur="9s" repeatCount="indefinite"/>
+    <line x1="58" y1="160" x2="62" y2="146" marker-end="url(#fig-icnsm-head)"/>
+    <line x1="158" y1="266" x2="172" y2="268" marker-end="url(#fig-icnsm-head)"/>
+    <text class="fig-math fig-coral-text" x="66" y="146">Δv</text>
+  </g>
+  <g><animate attributeName="opacity" values="1;1;0;0;1" keyTimes="0;0.4;0.5;0.95;1" dur="9s" repeatCount="indefinite"/>
+    <text class="fig-label fig-coral-text" x="232" y="120">predicted CPA inside the zone</text></g>
+  <g><animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.5;0.58;0.95;1" dur="9s" repeatCount="indefinite"/>
+    <text class="fig-label" x="232" y="120" style="fill: var(--fig-teal); font-weight: 650">minimal change: CPA on the boundary</text></g>
+
+  <line class="fig-divider" x1="352" y1="24" x2="352" y2="276"/>
+
+  <!-- energy overhead -->
+  <text class="fig-label fig-strong" x="376" y="30">Energy overhead</text>
+  <text class="fig-label fig-muted" x="376" y="47">relative to the conflict-free cruise segment</text>
+  <path class="fig-route" d="M384 150 H616"/>
+  <path class="fig-route fig-route--flown" d="M384 150 L450 150 C474 150 482 118 506 118 C530 118 538 150 562 150 L616 150"/>
+  <text class="fig-math fig-muted" x="560" y="170">e<tspan class="fig-sub" dy="3">b</tspan><tspan dy="-3"> nominal</tspan></text>
+  <text class="fig-math" x="476" y="106" style="fill: var(--fig-teal)">e<tspan class="fig-sub" dy="3">a</tspan><tspan dy="-3"> flown</tspan></text>
+  <g class="fig-ac fig-ac--teal"><animateMotion dur="6s" repeatCount="indefinite" rotate="auto" path="M384 150 L450 150 C474 150 482 118 506 118 C530 118 538 150 562 150 L616 150"/><circle class="fig-ring" r="9"/><path class="fig-plane" d="M7 0 L-5 -5 L-2 0 L-5 5Z"/></g>
+  <g class="fig-box fig-box--gold"><rect x="404" y="204" width="196" height="44" rx="8"/>
+    <text class="fig-math fig-center" x="502" y="231">δE = (e<tspan class="fig-sub" dy="3">a</tspan><tspan dy="-3"> − e</tspan><tspan class="fig-sub" dy="3">b</tspan><tspan dy="-3">) / e</tspan><tspan class="fig-sub" dy="3">b</tspan></text></g>
+
+  <defs><marker id="fig-icnsm-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fig-head fig-head--coral" d="M0 0 L10 5 L0 10z"/></marker></defs>
+</svg>

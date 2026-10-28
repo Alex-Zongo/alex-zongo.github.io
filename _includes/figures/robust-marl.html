@@ -1,0 +1,66 @@
+<svg class="fig" viewBox="0 0 480 300" role="img" aria-labelledby="fig-rmarl-t fig-rmarl-d">
+  <title id="fig-rmarl-t">Robust separation under GPS spoofing (schematic)</title>
+  <desc id="fig-rmarl-d">Two aircraft converge on a merge point. Aircraft B's broadcast position is corrupted inside a bounded box; aircraft A, running the robust policy, slows and keeps its separation buffer.</desc>
+  <rect class="fig-panel" x="1" y="1" width="478" height="298" rx="10"/>
+  <g class="fig-grid">
+    <path d="M0 60H480M0 120H480M0 180H480M0 240H480M80 0V300M160 0V300M240 0V300M320 0V300M400 0V300"/>
+  </g>
+
+  <!-- routes -->
+  <g class="fig-route">
+    <path d="M30 80 L260 160 L450 160"/>
+    <path d="M30 240 L260 160"/>
+    <path d="M450 46 L30 46"/>
+  </g>
+  <g class="fig-waypoint">
+    <path d="M260 152 l7 12 h-14z"/>
+  </g>
+  <text class="fig-label fig-muted" x="268" y="182">merge</text>
+
+  <!-- background traffic -->
+  <g class="fig-ac fig-ac--muted">
+    <animateMotion dur="12s" repeatCount="indefinite" rotate="auto" path="M450 46 L30 46"/>
+    <circle class="fig-ring" r="18"/>
+    <path class="fig-plane" d="M8 0 L-6 -6 L-3 0 L-6 6Z"/>
+  </g>
+
+  <!-- aircraft B: true state, constant speed -->
+  <g class="fig-ac fig-ac--blue">
+    <animateMotion dur="12s" repeatCount="indefinite" rotate="auto" path="M30 240 L260 160 L450 160" keyPoints="0;1" keyTimes="0;1" calcMode="linear"/>
+    <circle class="fig-pulse" r="6"><animate attributeName="r" values="6;30" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.55;0" dur="2s" repeatCount="indefinite"/></circle>
+    <circle class="fig-ring" r="18"/>
+    <path class="fig-plane" d="M8 0 L-6 -6 L-3 0 L-6 6Z"/>
+    <text class="fig-label fig-tag" x="-4" y="30" transform="rotate(0)">B</text>
+  </g>
+
+  <!-- aircraft B: spoofed report inside the kappa box -->
+  <g class="fig-spoof">
+    <animateMotion dur="12s" repeatCount="indefinite" path="M30 240 L260 160 L450 160" keyPoints="0;1" keyTimes="0;1" calcMode="linear"/>
+    <g>
+      <animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.12;0.18;0.5;0.56;1" dur="12s" repeatCount="indefinite"/>
+      <rect class="fig-kappa" x="-22" y="-22" width="44" height="44" rx="2"/>
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="0 0;0 0;-15 -14;12 -15;-14 12;-15 -14;0 0;0 0" keyTimes="0;0.14;0.22;0.3;0.38;0.46;0.54;1" dur="12s" repeatCount="indefinite"/>
+        <circle class="fig-ring fig-ring--spoof" r="18"/>
+        <path class="fig-plane fig-plane--spoof" d="M8 0 L-6 -6 L-3 0 L-6 6Z" transform="rotate(-19)"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- aircraft A: robust policy slows before the merge -->
+  <g class="fig-ac fig-ac--teal">
+    <animateMotion dur="12s" repeatCount="indefinite" rotate="auto" path="M30 80 L260 160 L450 160" keyPoints="0;0.40;0.562;0.86" keyTimes="0;0.45;0.75;1" calcMode="linear"/>
+    <circle class="fig-pulse" r="6"><animate attributeName="r" values="6;30" dur="2s" begin="1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.55;0" dur="2s" begin="1s" repeatCount="indefinite"/></circle>
+    <circle class="fig-ring" r="18"/>
+    <path class="fig-plane" d="M8 0 L-6 -6 L-3 0 L-6 6Z"/>
+    <text class="fig-label fig-tag" x="-4" y="-24">A</text>
+  </g>
+
+  <!-- legend -->
+  <g class="fig-legend" transform="translate(18 268)">
+    <circle class="fig-dot fig-dot--teal" cx="5" cy="0" r="4"/><text class="fig-label" x="14" y="4">robust policy</text>
+    <circle class="fig-dot fig-dot--blue" cx="112" cy="0" r="4"/><text class="fig-label" x="121" y="4">true position</text>
+    <circle class="fig-dot fig-dot--spoof" cx="214" cy="0" r="4"/><text class="fig-label" x="223" y="4">spoofed report</text>
+    <rect class="fig-kappa" x="320" y="-6" width="12" height="12"/><text class="fig-label" x="338" y="4">bound κ</text>
+  </g>
+</svg>

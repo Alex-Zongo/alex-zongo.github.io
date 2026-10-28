@@ -2,7 +2,7 @@
 {%- comment -%} Status → label / modifier class {%- endcomment -%}
 {% case post.type %}
   {% when 'journal' %}{% assign st = 'journal' %}{% assign st_label = 'Journal' %}
-  {% when 'conference' %}{% assign st = 'conference' %}{% assign st_label = 'Conference' %}
+  {% when 'conference' or 'workshop' %}{% assign st = 'conference' %}{% assign st_label = 'Conference' %}
   {% when 'accepted' %}{% assign st = 'accepted' %}{% assign st_label = 'Accepted' %}
   {% when 'under-review' or 'submitted' %}{% assign st = 'review' %}{% assign st_label = 'Under Review' %}
   {% when 'preprint' %}{% assign st = 'preprint' %}{% assign st_label = 'Preprint' %}
@@ -20,13 +20,22 @@
   <div class="pub__rail" aria-hidden="true"></div>
   <div class="pub__body">
     <div class="pub__head">
-      <span class="pub-badge pub-badge--{{ st }}">{{ st_label }}</span>
-      <span class="pub__year">{% if post.type == 'accepted' %}To appear · {% endif %}{% if post.publication_year %}{{ post.publication_year }}{% else %}{{ post.date | date: '%Y' }}{% endif %}</span>
+      <span class="pub-badge pub-badge--{{ st }}">{{ post.venue_short | default: st_label }}</span>
+      {% capture status %}{% if post.status_label %}{{ post.status_label }}{% elsif post.type == 'accepted' %}To appear{% endif %}{% endcapture %}
+      {% capture kind %}{% if post.venue_type == 'workshop' %}Workshop paper{% elsif post.venue_type == 'journal' %}Journal article{% endif %}{% endcapture %}
+      {% assign status = status | strip %}{% assign kind = kind | strip %}
+      {% if status != '' or kind != '' %}<span class="pub__year">{{ kind }}{% if status != '' and kind != '' %} · {% endif %}{{ status }}</span>{% endif %}
     </div>
 
     <h3 class="pub__title">
       <a href="{{ base_path }}{{ post.url }}">{{ post.title }}</a>
     </h3>
+
+    {% if post.awards %}
+      <ul class="award-badges" aria-label="Awards">
+        {% for award in post.awards %}<li class="award-badge"><i class="fa-solid fa-award" aria-hidden="true"></i> {{ award }}</li>{% endfor %}
+      </ul>
+    {% endif %}
 
     {% if post.authors %}<p class="pub__authors">{{ post.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>{% endif %}
 
@@ -53,6 +62,7 @@
           <a class="btn-pill" href="{{ post.preprinturl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-file-lines" aria-hidden="true"></i> Preprint</a>
         {% endif %}
       {% endif %}
+      {% if post.codeurl %}<a class="btn-pill" href="{{ post.codeurl | strip }}" target="_blank" rel="noopener"><i class="fa-brands fa-github" aria-hidden="true"></i> Code</a>{% endif %}
       {% if post.posterurl %}<a class="btn-pill" href="{{ post.posterurl }}" target="_blank" rel="noopener"><i class="fa-solid fa-image" aria-hidden="true"></i> Poster</a>{% endif %}
       {% if post.slidesurl %}<a class="btn-pill" href="{{ post.slidesurl | strip }}" target="_blank" rel="noopener"><i class="fa-solid fa-display" aria-hidden="true"></i> Slides</a>{% endif %}
       {% if post.bibtexurl %}{% assign bib = post.bibtexurl | strip %}{% unless bib contains '://' %}{% assign bib = bib | prepend: base_path %}{% endunless %}<a class="btn-pill" href="{{ bib }}" download><i class="fa-solid fa-quote-right" aria-hidden="true"></i> BibTeX</a>{% endif %}

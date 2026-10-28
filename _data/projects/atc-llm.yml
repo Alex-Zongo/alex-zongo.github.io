@@ -1,0 +1,56 @@
+venue: "AIAA SciTech 2027 · to appear"
+affiliation: "UC Berkeley · The George Washington University"
+subtitle: "Prompt engineering, architecture, and evaluation for realistic controller transmissions"
+takeaway: "Can a language model sound like an air traffic controller?"
+lead: "ATC radio is a safety-critical dialogue that is still almost entirely human. We test whether LLMs can generate realistic controller transmissions in a multi-turn setting, against a hand-transcribed general-aviation flight, and identify what helps and what hurts."
+demo:
+  type: figure
+  src: atc-dialogue
+  caption: "Schematic. The model plays the controller against a fixed pilot transcript. Conditioning on its own replies lets errors accumulate; injecting the correct history repairs the drift. Wording and bars are illustrative."
+metrics:
+  - value: "9"
+    label: "open- and closed-source LLMs"
+  - value: "5"
+    label: "prompt structures of increasing constraint"
+  - value: "1"
+    label: "hand-transcribed ground-truth flight"
+metrics_note: "San Francisco Bay Tour general-aviation flight; a different flight supplies the optional worked example."
+sections:
+  - id: setup
+    nav: "Setup"
+    eyebrow: "01 / Experimental design"
+    title: "A controlled, multi-turn test."
+    points:
+      - title: "Ground truth"
+        text: "A general-aviation flight over the San Francisco Bay Tour route, transcribed by hand."
+      - title: "Prompts"
+        text: "Five prompt structures of increasing constraint, refined with pilot input."
+      - title: "Factors"
+        text: "With or without a worked example from a different flight; the model's own history vs. the correct history."
+  - id: evaluation
+    nav: "Evaluation"
+    eyebrow: "02 / Metrics"
+    title: "Lexical, structural, and semantic similarity, plus a judge."
+    text: >
+      Generated transmissions are compared with the ground truth on lexical, structural, and semantic
+      similarity, and scored by an LLM-as-judge that is validated against human expert annotation.
+  - id: findings
+    nav: "Findings"
+    eyebrow: "03 / What matters"
+    title: "Examples help. Stricter prompts do not."
+    points:
+      - title: "Worked example"
+        text: "Including an example from a different flight improves similarity to the ground truth."
+      - title: "Prompt constraint"
+        text: "The lightest prompts perform best; the most heavily scripted prompt degrades as its own errors accumulate."
+      - title: "Dialogue history"
+        text: "Injecting the correct history repairs that degradation, isolating error accumulation as the cause."
+  - id: scope
+    nav: "Scope"
+    eyebrow: "04 / Scope"
+    title: "Realism is a first step, not operational safety."
+    text: >
+      The study uses one route and flight as ground truth, and similarity to a human transcript is not the
+      same as operational correctness. It complements work on LLMs as decision-makers in the loop
+      ([CVPR-W 2026](/publication/2026-03-20-finetuning_llm_atc)).
+figures_credit: "Figure is an animated schematic based on the paper's <a href=\"https://arxiv.org/abs/2608.19299\">preprint</a>."

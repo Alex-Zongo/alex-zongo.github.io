@@ -1,0 +1,42 @@
+<svg class="fig" viewBox="0 0 640 300" role="img" aria-labelledby="fig-cdcr-t fig-cdcr-d">
+  <title id="fig-cdcr-t">Invariance and anchor regularizers</title>
+  <desc id="fig-cdcr-d">Left: during robust training, the action distribution under the corrupted observation is pulled toward the distribution under the clean observation. Right: a KL spring keeps the robust policy close to the nominal teacher. Bottom: the resulting performance bound.</desc>
+  <rect class="fig-panel" x="1" y="1" width="638" height="298" rx="10"/>
+
+  <!-- invariance -->
+  <text class="fig-label fig-strong" x="24" y="30">Invariance regularizer</text>
+  <text class="fig-label fig-muted" x="24" y="47">same decision, clean or corrupted observation</text>
+  <line class="fig-axis" x1="40" y1="200" x2="290" y2="200"/>
+  <!-- clean distribution (fixed) -->
+  <g class="fig-bars--teal">
+    <rect x="58" y="176" width="22" height="24"/><rect x="138" y="96" width="22" height="104"/><rect x="218" y="168" width="22" height="32"/>
+  </g>
+  <!-- corrupted distribution (pulled toward clean) -->
+  <g class="fig-bars--coral">
+    <rect x="84" width="22" y="110" height="90"><animate attributeName="y" values="110;176;176;110" keyTimes="0;0.6;0.9;1" dur="8s" repeatCount="indefinite"/><animate attributeName="height" values="90;24;24;90" keyTimes="0;0.6;0.9;1" dur="8s" repeatCount="indefinite"/></rect>
+    <rect x="164" width="22" y="168" height="32"><animate attributeName="y" values="168;98;98;168" keyTimes="0;0.6;0.9;1" dur="8s" repeatCount="indefinite"/><animate attributeName="height" values="32;102;102;32" keyTimes="0;0.6;0.9;1" dur="8s" repeatCount="indefinite"/></rect>
+    <rect x="244" width="22" y="164" height="36"><animate attributeName="y" values="164;168;168;164" keyTimes="0;0.6;0.9;1" dur="8s" repeatCount="indefinite"/><animate attributeName="height" values="36;32;32;36" keyTimes="0;0.6;0.9;1" dur="8s" repeatCount="indefinite"/></rect>
+  </g>
+  <text class="fig-math fig-center" x="82" y="218">−δv</text><text class="fig-math fig-center" x="162" y="218">0</text><text class="fig-math fig-center" x="242" y="218">+δv</text>
+  <rect class="fig-swatch--teal" x="40" y="236" width="10" height="10"/><text class="fig-math" x="56" y="245">π(· | S)</text>
+  <rect class="fig-swatch--coral" x="140" y="236" width="10" height="10"/><text class="fig-math" x="156" y="245">π(· | Ξ*)</text>
+
+  <line class="fig-divider" x1="320" y1="24" x2="320" y2="250"/>
+
+  <!-- anchor -->
+  <text class="fig-label fig-strong" x="344" y="30">Anchor regularizer</text>
+  <text class="fig-label fig-muted" x="344" y="47">stay close to the nominal teacher policy</text>
+  <g class="fig-box fig-box--navy"><rect x="356" y="110" width="84" height="44" rx="8"/><text class="fig-math fig-center fig-on-dark" x="398" y="137">robust π</text></g>
+  <g class="fig-box fig-box--purple"><rect x="528" y="110" width="84" height="44" rx="8"/><text class="fig-math fig-center" x="570" y="137">teacher π̄</text></g>
+  <polyline class="fig-spring" points="440,132 452,132 458,120 470,144 482,120 494,144 506,120 512,132 528,132">
+    <animate attributeName="points" dur="2.4s" repeatCount="indefinite"
+      values="440,132 452,132 458,120 470,144 482,120 494,144 506,120 512,132 528,132;440,132 452,132 460,124 472,140 484,124 496,140 508,124 514,132 528,132;440,132 452,132 458,120 470,144 482,120 494,144 506,120 512,132 528,132"/>
+  </polyline>
+  <text class="fig-label fig-center" x="484" y="104">KL divergence</text>
+  <text class="fig-label fig-muted" x="356" y="190">1. keeps the robust policy near nominal behavior</text>
+  <text class="fig-label fig-muted" x="356" y="208">2. avoids sacrificing clean performance</text>
+
+  <!-- bound -->
+  <g class="fig-box fig-box--gold"><rect x="120" y="258" width="400" height="30" rx="8"/>
+    <text class="fig-math fig-center" x="320" y="278">KL(π(· | S) ‖ π(· | Ξ*)) ≤ B  ⇒  performance loss ≤ Q<tspan class="fig-sub" dy="3">max</tspan><tspan dy="-3">·√(2B)</tspan></text></g>
+</svg>

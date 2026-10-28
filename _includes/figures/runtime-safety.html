@@ -1,0 +1,57 @@
+<svg class="fig" viewBox="0 0 480 300" role="img" aria-labelledby="fig-rs-t fig-rs-d">
+  <title id="fig-rs-t">Action filtering vs. observation filtering (schematic)</title>
+  <desc id="fig-rs-d">A degraded observation feeds a worst-case state estimate. In action filtering, the policy acts on the degraded observation and a barrier check corrects its action. In observation filtering, the estimate is fed to the policy as a corrected input.</desc>
+  <rect class="fig-panel" x="1" y="1" width="478" height="298" rx="10"/>
+
+  <!-- shared: degraded observation and worst-case estimate -->
+  <g class="fig-box fig-box--muted">
+    <rect x="18" y="128" width="92" height="44" rx="8"/>
+    <text class="fig-label fig-center" x="64" y="146">observation</text>
+    <text class="fig-math fig-center" x="64" y="163">õ (degraded)</text>
+  </g>
+  <!-- jitter on the observation -->
+  <g class="fig-noise">
+    <path d="M30 186 l6 -6 l6 8 l6 -10 l6 9 l6 -7 l6 6 l6 -5 l6 7 l6 -4">
+      <animate attributeName="d" dur="0.9s" repeatCount="indefinite"
+        values="M30 186 l6 -6 l6 8 l6 -10 l6 9 l6 -7 l6 6 l6 -5 l6 7 l6 -4;M30 186 l6 5 l6 -9 l6 7 l6 -6 l6 10 l6 -8 l6 4 l6 -6 l6 5;M30 186 l6 -6 l6 8 l6 -10 l6 9 l6 -7 l6 6 l6 -5 l6 7 l6 -4"/>
+    </path>
+  </g>
+  <g class="fig-box fig-box--gold">
+    <rect x="146" y="128" width="104" height="44" rx="8"/>
+    <text class="fig-label fig-center" x="198" y="146">worst-case</text>
+    <text class="fig-math fig-center" x="198" y="163">estimate ŝ*</text>
+  </g>
+  <path class="fig-arrow" d="M110 150 H142" marker-end="url(#fig-rs-head)"/>
+
+  <!-- lane 1: action filtering -->
+  <g class="fig-lane fig-lane--coral">
+    <animate attributeName="opacity" values="1;1;0.25;0.25;1" keyTimes="0;0.45;0.5;0.95;1" dur="10s" repeatCount="indefinite"/>
+    <text class="fig-label fig-lane-title" x="146" y="28">Action filtering · constrain what it does</text>
+    <path class="fig-arrow" d="M64 128 V58 H142" marker-end="url(#fig-rs-head)"/>
+    <g class="fig-box fig-box--navy"><rect x="146" y="38" width="64" height="40" rx="8"/><text class="fig-math fig-center fig-on-dark" x="178" y="63">π(õ)</text></g>
+    <path class="fig-arrow" d="M210 58 H262" marker-end="url(#fig-rs-head)"/>
+    <text class="fig-math" x="226" y="52">a</text>
+    <g class="fig-box fig-box--coral"><rect x="266" y="38" width="104" height="40" rx="8"/><text class="fig-label fig-center" x="318" y="55">barrier check</text><text class="fig-math fig-center" x="318" y="70">h(ŝ*, a) <tspan font-style="normal">≥ 0 ?</tspan></text></g>
+    <path class="fig-arrow fig-arrow--dash" d="M240 128 V96 H318 V82" marker-end="url(#fig-rs-head)"/>
+    <path class="fig-arrow" d="M370 58 H448" marker-end="url(#fig-rs-head)"/>
+    <text class="fig-math" x="396" y="50">a<tspan class="fig-sub" dy="3">safe</tspan></text>
+    <circle class="fig-token fig-token--coral" r="5"><animateMotion dur="2.5s" repeatCount="indefinite" path="M64 128 V58 H262 M266 58 H448"/></circle>
+  </g>
+
+  <!-- lane 2: observation filtering -->
+  <g class="fig-lane fig-lane--teal">
+    <animate attributeName="opacity" values="0.25;0.25;1;1;0.25" keyTimes="0;0.45;0.5;0.95;1" dur="10s" repeatCount="indefinite"/>
+    <text class="fig-label fig-lane-title" x="146" y="284">Observation filtering · correct what it sees</text>
+    <path class="fig-arrow" d="M198 172 V242 H262" marker-end="url(#fig-rs-head)"/>
+    <g class="fig-box fig-box--navy"><rect x="266" y="222" width="104" height="40" rx="8"/><text class="fig-math fig-center fig-on-dark" x="318" y="247">π(ŝ*)</text></g>
+    <path class="fig-arrow" d="M370 242 H448" marker-end="url(#fig-rs-head)"/>
+    <text class="fig-math" x="404" y="234">a</text>
+    <circle class="fig-token fig-token--teal" r="5"><animateMotion dur="2.5s" repeatCount="indefinite" path="M198 172 V242 H448"/></circle>
+  </g>
+
+  <defs>
+    <marker id="fig-rs-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path class="fig-head" d="M0 0 L10 5 L0 10z"/>
+    </marker>
+  </defs>
+</svg>

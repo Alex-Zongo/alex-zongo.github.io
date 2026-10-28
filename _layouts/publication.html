@@ -8,7 +8,7 @@ layout: default
 {%- comment -%} Status → label / modifier class (mirrors publication-card.html) {%- endcomment -%}
 {% case page.type %}
   {% when 'journal' %}{% assign st = 'journal' %}{% assign st_label = 'Journal' %}
-  {% when 'conference' %}{% assign st = 'conference' %}{% assign st_label = 'Conference' %}
+  {% when 'conference' or 'workshop' %}{% assign st = 'conference' %}{% assign st_label = 'Conference' %}
   {% when 'accepted' %}{% assign st = 'accepted' %}{% assign st_label = 'Accepted' %}
   {% when 'under-review' or 'submitted' %}{% assign st = 'review' %}{% assign st_label = 'Under Review' %}
   {% when 'preprint' %}{% assign st = 'preprint' %}{% assign st_label = 'Preprint' %}
@@ -21,17 +21,24 @@ layout: default
   {% include sidebar.html %}
 
   <article class="page paper paper--{{ st }}" itemscope itemtype="https://schema.org/ScholarlyArticle">
-    <a class="paper__back" href="{{ base_path }}/publications/">← Publications</a>
+    <a class="paper__back" href="{{ base_path }}/publications/">← All publications</a>
 
     <div class="paper__head">
-      <span class="pub-badge pub-badge--{{ st }}">{{ st_label }}</span>
-      {% if page.date %}<span class="paper__year">{% if page.date_label %}{{ page.date_label }}{% else %}{{ page.date | date: '%B %Y' }}{% endif %}</span>{% endif %}
+      <span class="pub-badge pub-badge--{{ st }}">{{ page.venue_short | default: st_label }}</span>
+      {% capture status %}{% if page.venue_type == 'workshop' %}Workshop paper{% if page.type == 'accepted' %} · {% endif %}{% endif %}{% if page.status_label %}{{ page.status_label }}{% elsif page.type == 'accepted' %}To appear{% endif %}{% endcapture %}
+      {% assign status = status | strip %}
+      {% if status != '' %}<span class="paper__year">{{ status }}</span>{% endif %}
     </div>
 
     <h1 class="paper__title" itemprop="headline">{{ page.title }}</h1>
 
     {% if page.authors %}<p class="paper__authors">{{ page.authors | markdownify | remove: '<p>' | remove: '</p>' }}</p>{% endif %}
     {% if page.venue %}<p class="paper__venue"><span class="paper__mark">↳</span> {{ page.venue }}{% if page.location %} · {{ page.location }}{% endif %}</p>{% endif %}
+    {% if page.awards %}
+      <ul class="award-badges" aria-label="Awards">
+        {% for award in page.awards %}<li class="award-badge"><i class="fa-solid fa-award" aria-hidden="true"></i> {{ award }}</li>{% endfor %}
+      </ul>
+    {% endif %}
 
     {% if page.tags %}
       <div class="paper__tags">{% for t in page.tags %}<span class="tag">{{ t }}</span>{% endfor %}</div>
@@ -61,14 +68,14 @@ layout: default
 
     {% if page.abstract %}
       <section class="paper__section">
-        <p class="mono-label section-label">// {{ page.abstract_label | default: 'abstract' | escape }}</p>
+        <p class="mono-label section-label">{{ page.abstract_label | default: 'Abstract' | escape }}</p>
         <p class="paper__abstract">{{ page.abstract }}</p>
       </section>
     {% endif %}
 
     {% if page.tldr %}
       <section class="paper__section">
-        <p class="mono-label section-label">// highlights</p>
+        <p class="mono-label section-label">Highlights</p>
         <ul class="paper__tldr">
           {% for point in page.tldr %}<li>{{ point | markdownify | remove: '<p>' | remove: '</p>' }}</li>{% endfor %}
         </ul>
@@ -78,14 +85,14 @@ layout: default
     {% assign body = content | strip %}
     {% if body != '' %}
       <section class="paper__section paper__body page__content">
-        <p class="mono-label section-label">// notes</p>
+        <p class="mono-label section-label">Notes</p>
         {{ content }}
       </section>
     {% endif %}
 
     {% if page.bibtex %}
       <section class="paper__section">
-        <p class="mono-label section-label">// bibtex</p>
+        <p class="mono-label section-label">BibTeX</p>
         <div class="paper__bibtex">
           <button class="paper__copy js-copy" type="button" data-copy="bibtex-{{ page.url | slugify }}"><i class="fa-solid fa-copy" aria-hidden="true"></i> Copy</button>
           <pre id="bibtex-{{ page.url | slugify }}"><code>{{ page.bibtex | strip }}</code></pre>
@@ -95,7 +102,7 @@ layout: default
 
     {% if page.citation %}
       <section class="paper__section">
-        <p class="mono-label section-label">// cite</p>
+        <p class="mono-label section-label">Cite</p>
         <div class="pub__cite paper__cite">
           <div class="pub__cite-head">
             <span class="pub__cite-label">Recommended citation</span>

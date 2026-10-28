@@ -1,4 +1,6 @@
 ---
+venue_short: "AIAA SciTech 2027"
+venue_type: "conference"
 title: "Regional Air Mobility Operational Energy Assessment Using A Full-Envelope eVTOL Power Model"
 collection: publications
 authors: "**Zongo, A.**, Ochoa, S., Sun, L., Nguyen, A., Tran, S., and Wei, P."

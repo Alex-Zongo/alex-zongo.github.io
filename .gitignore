@@ -17,3 +17,21 @@ package-lock.json
 /vendor/
 .vscode
 .DS_Store
+
+# CV sources and LaTeX build outputs stay local; only files/cv.pdf is published
+cv/
+*.tex
+*.cls
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+!files/cv.pdf

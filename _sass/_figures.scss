@@ -1,0 +1,177 @@
+/* Animated schematic figures (_includes/figures/*.html).
+   One visual language: thin ink strokes, pastel fills, rounded boxes.
+   Colors follow the site theme through CSS variables. */
+.fig {
+  --fig-ink: var(--global-text-color);
+  --fig-muted: var(--global-muted-color);
+  --fig-line: var(--global-border-color);
+  --fig-panel: var(--global-surface-color);
+  --fig-teal: #23927f;
+  --fig-blue: #3b78c9;
+  --fig-coral: #d9583b;
+  --fig-gold: #c98f1a;
+  --fig-purple: #7559c2;
+  --fig-navy: #2c3e63;
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: $sans-serif;
+  overflow: visible;
+}
+html[data-theme="dark"] .fig {
+  --fig-teal: #3cc3a8;
+  --fig-blue: #6aa3ee;
+  --fig-coral: #f07a5c;
+  --fig-gold: #e6b04a;
+  --fig-purple: #9f87ea;
+  --fig-navy: #3a4f7d;
+}
+.fig-panel { fill: var(--fig-panel); stroke: var(--fig-line); }
+.fig-grid path { stroke: var(--fig-line); stroke-width: 0.6; opacity: 0.55; fill: none; }
+.fig-route { fill: none; }
+.fig-route path, path.fig-route { stroke: var(--fig-muted); stroke-width: 1.2; stroke-dasharray: 4 5; fill: none; opacity: 0.8; }
+path.fig-route--flown { stroke: var(--fig-teal); stroke-dasharray: none; opacity: 0.55; stroke-width: 1.6; }
+.fig-waypoint path { fill: none; stroke: var(--fig-muted); stroke-width: 1.2; }
+.fig-label { font-size: 11px; fill: var(--fig-ink); }
+.fig-muted { fill: var(--fig-muted); }
+.fig-strong { font-weight: 650; }
+.fig-tag { font-weight: 700; font-size: 11px; }
+.fig-center { text-anchor: middle; }
+.fig-math { font-variant-numeric: lining-nums; font-family: "Times New Roman", "STIX Two Text", "Cambria Math", Times, serif; font-style: italic; font-size: 12.5px; fill: var(--fig-ink); }
+.fig-mono { font-family: $monospace; font-size: 9.5px; fill: var(--fig-ink); }
+.fig-lane-title { font-weight: 650; }
+
+/* aircraft */
+.fig-plane { stroke: none; }
+.fig-ring { fill-opacity: 0.12; stroke-width: 1.2; }
+.fig-pulse { fill: none; stroke-width: 1.2; }
+.fig-ac--teal { .fig-plane, .fig-evtol circle { fill: var(--fig-teal); } .fig-ring { fill: var(--fig-teal); stroke: var(--fig-teal); } .fig-pulse { stroke: var(--fig-teal); } .fig-tag { fill: var(--fig-teal); } }
+.fig-ac--blue { .fig-plane { fill: var(--fig-blue); } .fig-ring { fill: var(--fig-blue); stroke: var(--fig-blue); } .fig-pulse { stroke: var(--fig-blue); } .fig-tag { fill: var(--fig-blue); } }
+.fig-ac--muted { .fig-plane { fill: var(--fig-muted); } .fig-ring { fill: var(--fig-muted); stroke: var(--fig-muted); fill-opacity: 0.06; } }
+.fig-evtol circle { fill-opacity: 0.6; }
+.fig-spoof .fig-ring--spoof { fill: var(--fig-coral); fill-opacity: 0.08; stroke: var(--fig-coral); stroke-dasharray: 3 3; }
+.fig-plane--spoof { fill: none; stroke: var(--fig-coral) !important; stroke-width: 1.3; stroke-dasharray: 2 2; }
+.fig-kappa { fill: none; stroke: var(--fig-coral); stroke-width: 1.1; stroke-dasharray: 5 3; }
+.fig-dot--teal { fill: var(--fig-teal); }
+.fig-dot--blue { fill: var(--fig-blue); }
+.fig-dot--spoof { fill: none; stroke: var(--fig-coral); stroke-dasharray: 2 2; stroke-width: 1.3; }
+
+/* diagram boxes */
+.fig-box rect, .fig-box path { stroke-width: 1.2; }
+.fig-box--muted rect { fill: var(--fig-muted); fill-opacity: 0.08; stroke: var(--fig-line); }
+.fig-box--paper rect { fill: var(--fig-panel); stroke: var(--fig-line); }
+.fig-box--gold rect, .fig-box--gold path { fill: var(--fig-gold); fill-opacity: 0.18; stroke: var(--fig-gold); }
+.fig-box--coral rect { fill: var(--fig-coral); fill-opacity: 0.14; stroke: var(--fig-coral); }
+.fig-box--purple rect { fill: var(--fig-purple); fill-opacity: 0.16; stroke: var(--fig-purple); }
+.fig-box--navy rect { fill: var(--fig-navy); stroke: var(--fig-navy); }
+.fig-on-dark { fill: #fff; }
+.fig-arrow { fill: none; stroke: var(--fig-ink); stroke-width: 1.3; opacity: 0.85; }
+.fig-arrow--dash { stroke-dasharray: 4 3; }
+.fig-head { fill: var(--fig-ink); }
+.fig-lane--coral .fig-lane-title { fill: var(--fig-coral); }
+.fig-lane--teal .fig-lane-title { fill: var(--fig-teal); }
+.fig-token--coral { fill: var(--fig-coral); }
+.fig-token--teal { fill: var(--fig-teal); }
+.fig-token--purple { fill: var(--fig-purple); }
+.fig-noise path { fill: none; stroke: var(--fig-coral); stroke-width: 1.2; }
+.fig-reject circle { fill: var(--fig-coral); fill-opacity: 0.15; stroke: var(--fig-coral); }
+.fig-reject path { stroke: var(--fig-coral); stroke-width: 1.6; }
+.fig-reject text { fill: var(--fig-coral); }
+.fig-pad circle { fill: var(--fig-panel); stroke: var(--fig-ink); stroke-width: 1.2; }
+.fig-bar--muted { fill: var(--fig-muted); fill-opacity: 0.45; }
+.fig-bar--teal { fill: var(--fig-teal); }
+.fig-bar--gold { fill: var(--fig-gold); }
+
+/* thumbnails: hide small text, keep the motion */
+.work-card__thumb .fig .fig-label,
+.work-card__thumb .fig .fig-math,
+.work-card__thumb .fig .fig-mono,
+.work-card__thumb .fig .fig-legend { display: none; }
+.work-card__thumb .fig-panel { stroke: none; }
+.fig-sub { font-size: 8.5px; }
+
+/* Homepage hero banner */
+.hero__banner {
+  margin: 0 0 1.4em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--global-surface-color);
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%);
+}
+.fig--banner { height: 150px; width: 100%; }
+.fig--banner .fig-route path { opacity: 0.35; stroke-width: 1; }
+.hero-dot { fill: var(--fig-muted); opacity: 0.28; }
+.hero-trail { fill: none; stroke: var(--fig-teal); stroke-width: 1.6; opacity: 0.5; stroke-dasharray: 100 100; }
+.hero-fan { fill: none; stroke-width: 1.2; stroke-linecap: round; }
+.hero-fan--alert { stroke-width: 1.8; }
+.hero-shield { fill: none; stroke: var(--fig-teal); stroke-width: 1.6; stroke-linecap: round; }
+.hero-ghost path { fill: none; stroke: var(--fig-teal); stroke-width: 1.1; stroke-dasharray: 2 2; }
+.hero-belief-edge { fill: none; stroke: var(--fig-coral); stroke-width: 1; stroke-dasharray: 3 4; }
+.hero-estimate { fill: none; stroke: var(--fig-coral); stroke-width: 1.4; }
+.hero-ac--teal .hero-plane { fill: var(--fig-teal); }
+.hero-ac--blue .hero-plane { fill: var(--fig-blue); }
+.hero-ac--muted .hero-plane { fill: var(--fig-muted); opacity: 0.8; }
+@media (max-width: 600px) { .fig--banner { height: 110px; } }
+
+/* Method-figure vocabulary */
+.fig-detect { fill: var(--fig-teal); fill-opacity: 0.05; stroke: var(--fig-teal); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.fig-link line { stroke: var(--fig-muted); stroke-width: 0.9; stroke-dasharray: 2 3; }
+.fig-box--teal rect { fill: var(--fig-teal); fill-opacity: 0.14; stroke: var(--fig-teal); }
+.fig-box--blue rect { fill: var(--fig-blue); fill-opacity: 0.12; stroke: var(--fig-blue); }
+.fig-row-bad rect { fill: var(--fig-coral); fill-opacity: 0.9; stroke: var(--fig-coral); }
+.fig-row-bad text { fill: #fff; font-weight: 650; }
+.fig-choice rect { fill: var(--fig-panel); stroke: var(--fig-line); stroke-width: 1.2; }
+.fig-choice rect.fig-choice-on { fill-opacity: 0.25; stroke-width: 2; }
+.fig-choice-on--teal { fill: var(--fig-teal) !important; stroke: var(--fig-teal) !important; }
+.fig-choice-on--coral { fill: var(--fig-coral) !important; stroke: var(--fig-coral) !important; }
+.fig-coral-text { fill: var(--fig-coral); font-weight: 650; }
+.fig-contour ellipse { fill: var(--fig-teal); fill-opacity: 0.06; stroke: var(--fig-teal); stroke-opacity: 0.45; stroke-width: 1; }
+.fig-kappa--fill { fill: var(--fig-gold); fill-opacity: 0.08; stroke: var(--fig-gold); }
+.fig-dim { stroke: var(--fig-ink); stroke-width: 1; }
+.fig-probe { fill: var(--fig-coral); fill-opacity: 0.85; }
+.fig-star { fill: var(--fig-coral); }
+.fig-arrow--teal { stroke: var(--fig-teal); }
+.fig-arrow--coral { stroke: var(--fig-coral); }
+.fig-trail { fill: none; stroke: var(--fig-coral); stroke-width: 1.3; stroke-dasharray: 220; stroke-dashoffset: 220; opacity: 0.8; }
+.fig-divider { stroke: var(--fig-line); stroke-width: 1; }
+.fig-grad { stroke: var(--fig-ink); stroke-width: 1.6; }
+.fig-step { stroke: var(--fig-coral); stroke-width: 1.8; stroke-dasharray: 5 3; }
+.fig-head--coral { fill: var(--fig-coral); }
+.fig-axis { stroke: var(--fig-ink); stroke-width: 1.2; }
+.fig-bars--teal rect, .fig-swatch--teal { fill: var(--fig-teal); fill-opacity: 0.85; }
+.fig-bars--coral rect, .fig-swatch--coral { fill: var(--fig-coral); fill-opacity: 0.75; }
+.fig-spring { fill: none; stroke: var(--fig-purple); stroke-width: 1.8; }
+.fig-tick { stroke: var(--fig-ink); stroke-width: 1; }
+.fig-dist path { stroke-width: 1.4; }
+.fig-dist--teal path { fill: var(--fig-teal); fill-opacity: 0.18; stroke: var(--fig-teal); }
+.fig-dist--coral path { fill: var(--fig-coral); fill-opacity: 0.16; stroke: var(--fig-coral); }
+.fig-bound { stroke: var(--fig-gold); stroke-width: 2; stroke-dasharray: 5 3; }
+.fig-pred { stroke-width: 1.4; stroke-dasharray: 5 4; }
+.fig-pred--teal { stroke: var(--fig-teal); }
+.fig-pred--blue { stroke: var(--fig-blue); }
+.fig-zone { fill: var(--fig-teal); fill-opacity: 0.08; stroke: var(--fig-teal); stroke-width: 1.3; }
+.fig-zone--bad { fill: var(--fig-coral); stroke: var(--fig-coral); }
+.fig-cpa { fill: var(--fig-blue); }
+.fig-dv line { stroke: var(--fig-coral); stroke-width: 2; }
+.fig-ship--teal path { fill: var(--fig-teal); } .fig-ship--teal .fig-ring { fill: var(--fig-teal); stroke: var(--fig-teal); }
+.fig-ship--blue path { fill: var(--fig-blue); } .fig-ship--blue .fig-ring { fill: var(--fig-blue); stroke: var(--fig-blue); }
+.fig-turn rect { stroke-width: 1; }
+.fig-turn--pilot rect { fill: var(--fig-muted); fill-opacity: 0.1; stroke: var(--fig-line); }
+.fig-turn--atc rect { fill: var(--fig-purple); fill-opacity: 0.14; stroke: var(--fig-purple); }
+.fig-err circle { fill: var(--fig-coral); }
+.fig-err text { fill: #fff; font-weight: 700; }
+.fig-sim rect { fill: var(--fig-purple); fill-opacity: 0.7; }
+.fig-horizon { stroke: var(--fig-muted); stroke-width: 1; stroke-dasharray: 4 4; }
+.fig-wing { stroke: var(--fig-ink); stroke-width: 4; stroke-linecap: round; }
+.fig-wing--h { stroke-width: 3; }
+.fig-tailfin { fill: var(--fig-ink); }
+.fig-fuselage { fill: var(--fig-panel); stroke: var(--fig-ink); stroke-width: 3; }
+.fig-aileron { fill: var(--fig-teal); }
+.fig-fault rect { fill: var(--fig-coral); fill-opacity: 0.15; stroke: var(--fig-coral); }
+.fig-fault text { fill: var(--fig-coral); font-weight: 650; }
+.fig-fault-band { fill: var(--fig-coral); fill-opacity: 0.06; }
+.fig-ref { fill: none; stroke: var(--fig-muted); stroke-width: 1.4; stroke-dasharray: 5 4; }
+.fig-resp { fill: none; stroke: var(--fig-teal); stroke-width: 2.2; stroke-dasharray: 100; stroke-dashoffset: 100; }
+.fig-resp-legend { stroke: var(--fig-teal); stroke-width: 2.2; }

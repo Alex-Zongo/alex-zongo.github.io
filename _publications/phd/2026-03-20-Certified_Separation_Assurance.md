@@ -1,10 +1,20 @@
 ---
+venue_short: "DASC 2026"
+venue_type: "conference"
 title: "Runtime Safety Filtering for Learned Small UAS Separation Policies under GNSS Degradation"
 collection: publications
 layout: research-project
 project: dasc
 presentation: /talks/dasc-2026-runtime-safety-filtering
 featured: true
+thumb_figure: "runtime-safety"
+figure: "/images/dasc/filter-architectures.png"
+figure_caption: "Action filtering vs. observation filtering around a learned separation policy."
+awards:
+  - "3rd Best of Conference"
+  - "Best in Track"
+  - "Best in Session"
+codeurl: # add the GitHub repository URL once released
 feature_order: 2
 tags: ["Separation Assurance", "Reinforcement Learning", "Robustness & Safety"]
 authors: "**Alex Zongo**, Peng Wei"
@@ -16,7 +26,9 @@ abstract: >
 tldr:
   - "Compares **action filtering** and **observation filtering** under GNSS degradation."
   - "Observation filtering reduces near mid-air collisions by **90% in the reported experiments**."
-permalink: /publication/2026-03-20-Certified_Separation_Assurance
+permalink: /publication/2026-dasc-runtime-safety-filtering
+redirect_from:
+  - /publication/2026-03-20-Certified_Separation_Assurance
 excerpt: "Compares action and observation filtering for learned separation policies under GNSS degradation; observation filtering improves safety in the reported experiments."
 date: 2026-03-20
 venue: 'the Digital Avionics Systems Conference (DASC) 2026'
@@ -25,6 +37,7 @@ preprinturl: 'https://arxiv.org/abs/2607.10014'
 slidesurl: '/files/DASC.pdf'
 bibtexurl: #
 type: "accepted"
+status_label: "Presented · proceedings forthcoming"
 citation: 'Zongo, A., &amp; Wei, P. (2026). &quot;Runtime Safety Filtering for Learned Small UAS Separation Policies under GNSS Degradation.&quot; arXiv:2607.10014. Accepted at DASC 2026.'
 bibtex: |
   @misc{zongo2026runtime,

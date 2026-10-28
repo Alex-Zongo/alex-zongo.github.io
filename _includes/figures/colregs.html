@@ -1,0 +1,38 @@
+<svg class="fig" viewBox="0 0 640 300" role="img" aria-labelledby="fig-col-t fig-col-d">
+  <title id="fig-col-t">COLREGs-guided collision avoidance in a crossing encounter (schematic)</title>
+  <desc id="fig-col-d">A target vessel crosses from the ownship's starboard side. The language model reads the encounter and proposes giving way with a starboard turn; the PPO controller executes heading and speed changes, and an arbiter keeps fallback authority. The ownship passes astern of the target and resumes its route.</desc>
+  <rect class="fig-panel fig-panel--sea" x="1" y="1" width="638" height="298" rx="10"/>
+  <g class="fig-grid"><path d="M0 60H400M0 120H400M0 180H400M0 240H400M80 0V300M160 0V300M240 0V300M320 0V300"/></g>
+
+  <path class="fig-route" d="M200 290 V10"/>
+  <path class="fig-route fig-route--flown" d="M200 290 L200 210 C200 186 236 176 270 164 C306 151 320 128 320 80 L320 10"/>
+  <path class="fig-route" d="M420 120 H-10"/>
+
+  <!-- target vessel (stand-on), moving west -->
+  <g class="fig-ship fig-ship--blue"><animateMotion dur="12s" repeatCount="indefinite" rotate="auto" path="M420 120 H-20"/>
+    <circle class="fig-ring" r="20"/><path d="M14 0 L6 -6 H-12 V6 H6Z"/></g>
+  <!-- ownship (give-way), turns to starboard and passes astern -->
+  <g class="fig-ship fig-ship--teal"><animateMotion dur="12s" repeatCount="indefinite" rotate="auto" path="M200 300 L200 210 C200 186 236 176 270 164 C306 151 320 128 320 80 L320 -10"/>
+    <circle class="fig-ring" r="20"/><path d="M14 0 L6 -6 H-12 V6 H6Z"/></g>
+
+  <!-- LLM intent bubble -->
+  <g><animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.08;0.12;0.55;0.6;1" dur="12s" repeatCount="indefinite"/>
+    <g class="fig-box fig-box--purple"><rect x="18" y="200" width="168" height="54" rx="8"/></g>
+    <text class="fig-label fig-strong" x="28" y="220">LLM intent</text>
+    <text class="fig-label" x="28" y="238">crossing, target to starboard:</text>
+    <text class="fig-label" x="28" y="252" style="font-weight:650">give way, turn to starboard</text>
+  </g>
+
+  <line class="fig-divider" x1="400" y1="20" x2="400" y2="280"/>
+  <!-- control stack -->
+  <g class="fig-box fig-box--purple"><rect x="424" y="34" width="192" height="44" rx="8"/><text class="fig-label fig-center fig-strong" x="520" y="54">LLM: COLREGs reasoning</text><text class="fig-label fig-center fig-muted" x="520" y="70">maneuver intent</text></g>
+  <path class="fig-arrow" d="M520 78 V100" marker-end="url(#fig-col-head)"/>
+  <g class="fig-box fig-box--navy"><rect x="424" y="104" width="192" height="44" rx="8"/><text class="fig-label fig-center fig-on-dark" x="520" y="124">PPO policy</text><text class="fig-label fig-center fig-on-dark" x="520" y="140">heading and speed</text></g>
+  <path class="fig-arrow" d="M520 148 V170" marker-end="url(#fig-col-head)"/>
+  <g class="fig-box fig-box--gold"><path d="M520 174 L566 202 L520 230 L474 202Z"/><text class="fig-label fig-center" x="520" y="206">arbiter</text></g>
+  <path class="fig-arrow" d="M520 230 V256" marker-end="url(#fig-col-head)"/>
+  <text class="fig-label fig-center" x="520" y="274">ownship command</text>
+  <circle class="fig-token fig-token--purple" r="5"><animateMotion dur="3s" repeatCount="indefinite" path="M520 78 V100 M520 148 V170 M520 230 V256"/></circle>
+
+  <defs><marker id="fig-col-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="fig-head" d="M0 0 L10 5 L0 10z"/></marker></defs>
+</svg>

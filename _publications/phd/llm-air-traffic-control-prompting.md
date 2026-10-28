@@ -1,4 +1,9 @@
 ---
+layout: research-project
+project: atc-llm
+thumb_figure: "atc-dialogue"
+venue_short: "AIAA SciTech 2027"
+venue_type: "conference"
 title: "Air Traffic Control Using Large Language Models: Prompt Engineering, Architecture, and Evaluation"
 collection: publications
 authors: "Ghazanfari, M., Casanova, M., Kam, J., **Zongo, A.**, Wei, P., Darrell, T., and Bayen, A."

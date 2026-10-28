@@ -1,8 +1,15 @@
 ---
+layout: research-project
+project: icgnc
+presentation: /talks/2024-08-09-icgnc
+thumb_figure: "ftc-attitude"
+codeurl: "https://github.com/Alex-Zongo/rl_for_ftc"
+venue_short: "ICGNC 2024"
+venue_type: "conference"
 title: "Towards Intelligent Fault-Tolerant Attitude Flight Control of Fixed-Wing Aircraft"
 collection: publications
 tags: ["Flight Control", "Reinforcement Learning", "Robustness & Safety"]
-authors: "**Alex B. Zongo**, Qing Li"
+authors: "**Alex Zongo**, Qing Li"
 abstract: >
   Submitted as part of the author's master's thesis, this work investigates reinforcement-learning
   approaches for fault-tolerant attitude flight control of fixed-wing aircraft. The goal is an intelligent

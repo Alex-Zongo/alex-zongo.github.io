@@ -1,7 +1,10 @@
 ---
+venue_short: "IEEE OCEANS 2026"
+venue_type: "conference"
 title: "Large Language Model Guided Reinforcement Learning for Maritime Ship Collision Avoidance"
 collection: publications
 layout: research-project
+thumb_figure: "colregs"
 project: maritime
 authors: "Yasmin Pang, Arsyi Aziz, **Alex Zongo**, Peng Wei, Kyle Crandall"
 type: "accepted"

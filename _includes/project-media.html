@@ -1,0 +1,36 @@
+{% comment %}
+  Demo / media block for research-project pages.
+  media.type: video   → local MP4/WebM (src, optional poster); loops muted like a GIF unless controls: true
+              youtube → YouTube video id (src)
+              iframe  → interactive demo page, e.g. /demos/<name>/index.html (src, optional height)
+              figure  → an animated schematic under _includes/figures/ (src: name without .html)
+              widget  → an include under _includes/widgets/ (src: file name)
+  Always give a caption that states what is shown and under which conditions.
+{% endcomment %}
+{% assign media = include.media %}
+<figure class="research-project__figure research-project__media research-project__media--{{ media.type }}">
+  {% case media.type %}
+  {% when 'video' %}
+    <video {% if media.controls %}controls{% else %}autoplay loop muted{% endif %} playsinline preload="metadata"{% if media.poster %} poster="{{ media.poster | relative_url }}"{% endif %} aria-label="{{ media.alt | default: media.caption | escape }}">
+      <source src="{{ media.src | relative_url }}" type="video/{% if media.src contains '.webm' %}webm{% else %}mp4{% endif %}">
+    </video>
+  {% when 'youtube' %}
+    <div class="research-project__embed">
+      <iframe src="https://www.youtube-nocookie.com/embed/{{ media.src }}" title="{{ media.alt | default: media.caption | escape }}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  {% when 'iframe' %}
+    <div class="research-project__embed research-project__embed--interactive" style="--embed-height: {{ media.height | default: 520 }}px">
+      <iframe src="{{ media.src | relative_url }}" title="{{ media.alt | default: media.caption | escape }}" loading="lazy"></iframe>
+    </div>
+  {% when 'figure' %}
+    <div class="research-project__anim">{% include figures/{{ media.src }}.html %}</div>
+  {% when 'widget' %}
+    <div class="research-project__widget">{% include widgets/{{ media.src }} %}</div>
+  {% endcase %}
+  {% if media.caption %}
+  <figcaption>
+    <span>{% if media.label %}<strong>{{ media.label }}.</strong> {% endif %}{{ media.caption }}</span>
+    {% if media.type == 'iframe' %}<a href="{{ media.src | relative_url }}" target="_blank" rel="noopener">Open full screen <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>{% endif %}
+  </figcaption>
+  {% endif %}
+</figure>

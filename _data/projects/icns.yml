@@ -1,0 +1,96 @@
+venue: "ICNS 2026 · Herndon, Virginia"
+affiliation: "Intelligent Aerospace Systems Lab · The George Washington University"
+subtitle: "What tactical deconfliction costs an electric aircraft, and how much reserve to plan for"
+takeaway: "How much energy does staying separated cost?"
+lead: "Every deviation from a nominal path draws on a limited battery. We couple an eVTOL power model with MVP conflict resolution in high-density traffic simulation, measure the energy overhead across about 72,000 en-route transits, and learn per-flight reserve bounds before the flight starts."
+demo:
+  type: figure
+  src: aam-energy
+  caption: "Schematic. A deconfliction maneuver adds a small energy overhead to the nominal energy of the cruise segment; statistics from the study."
+metrics:
+  - value: "< 1.5%"
+    label: "median energy overhead, all densities"
+  - value: "3.8–5.3%"
+    label: "95th-percentile overhead"
+  - value: "0"
+    label: "near mid-air collisions in ~70k simulated flights"
+metrics_note: "BlueSky simulation of a 10 nm sector at 2,000 ft with 10–60 aircraft and a Joby S4-class tilt-rotor power model. The power model uses published parameters and is not validated against flight-test data."
+sections:
+  - id: problem
+    nav: "Problem"
+    eyebrow: "01 / The question"
+    title: "Flight plans assume nominal paths. Traffic does not."
+    text: >
+      Advanced air mobility will put dozens of electric aircraft in the same airspace, so tactical
+      deconfliction is unavoidable. Energy density leaves little margin: too small a reserve is a safety
+      risk, too large a reserve slows operations. Energy models and conflict resolution have advanced
+      separately, but their intersection, the energy cost of resolving conflicts, had not been quantified.
+    media:
+      type: figure
+      src: icns-mvp
+      caption: "MVP resolves a predicted conflict with the minimal velocity change that moves the closest point of approach to the protected-zone boundary. The energy overhead compares the flown and nominal cruise segments."
+  - id: setup
+    nav: "Setup"
+    eyebrow: "02 / Framework"
+    title: "Power model, deconfliction, and traffic in one loop."
+    points:
+      - title: "eVTOL power model"
+        text: "Joby S4-class tilt-rotor: induced, profile, and parasite power plus hotel loads, over the cruise envelope (≥ 85 kt)."
+      - title: "MVP deconfliction"
+        text: "Decentralized, deterministic, and auditable. Conflicts detected 90 s ahead against a 0.6 nm protected zone."
+      - title: "Traffic simulation"
+        text: "BlueSky, 10 nm sector at 2,000 ft, 10 to 60 simultaneous aircraft, about 71,767 transits."
+  - id: findings
+    nav: "Findings"
+    eyebrow: "03 / Empirical characterization"
+    title: "Cheap on average, heavy in the tail."
+    text: >
+      MVP-based deconfliction is energy-efficient: the median overhead stays below 1.5% at every density,
+      and most transits pay a negligible penalty. The distribution is strongly right-skewed, however, with
+      tail cases reaching 44% at the highest densities. Around 40 aircraft, most flights begin cruise
+      already in conflict, and overlapping conflicts cascade. A 4–5% reserve covers about 95% of tactical
+      scenarios.
+    table:
+      caption: "Summary statistics of energy overhead"
+      headers: ["Statistic", "Value"]
+      rows:
+        - ["Median overhead (all densities)", "< 1.5%"]
+        - ["95th percentile (by density)", "3.8% to 5.3%"]
+        - ["Largest observed overhead", "≈ 44% (highest densities)"]
+        - ["Conflict-free at cruise start, N < 40", "55% to 87% of flights"]
+      note: "From the paper and the ICNS 2026 presentation."
+  - id: prediction
+    nav: "Prediction"
+    eyebrow: "04 / Uncertainty-aware prediction"
+    title: "From one blanket margin to per-flight reserves."
+    text: >
+      At mission start the traffic state is known, but how conflicts will evolve is not, so a point
+      prediction is unreliable. The model instead predicts the parameters of a log-normal distribution of
+      overhead from pre-flight features (speed deviation, position, route distance, conflict severity,
+      initial MVP resolution, and sector congestion) and reads reserve margins from its upper quantiles.
+      The bounds are conservative: actual outcomes fall inside them more often than the stated confidence
+      level, which is the desirable direction for safety-critical planning.
+    media:
+      type: figure
+      src: icns-bounds
+      caption: "Two flights in different traffic conditions receive different 90% reserve bounds (about 3% and 7% in the presented examples)."
+    table:
+      caption: "Prediction performance"
+      headers: ["Metric", "Value"]
+      rows:
+        - ["Mean absolute error", "1.0%"]
+        - ["Root mean squared error", "1.8%"]
+        - ["80% interval width", "5.3%"]
+        - ["90% interval width", "6.8%"]
+      note: "From the ICNS 2026 presentation."
+  - id: scope
+    nav: "Scope"
+    eyebrow: "05 / Limits and next steps"
+    title: "Cruise-only, MVP-specific, simulation-based."
+    text: >
+      Results cover cruise at constant altitude and the MVP algorithm; transitions near vertiports and
+      other resolution methods may behave differently. Follow-up work extends the power model to the full
+      flight envelope ([SciTech 2027](/publication/regional-air-mobility-evtol-energy)) and moves from
+      pre-flight to in-flight prediction.
+acknowledgement: "This work was supported by NASA under grant 80NSSC23M0059."
+figures_credit: "Figures are animated schematics based on the paper and <a href=\"/files/icns2026_presentation.pdf\">presentation slides</a>."

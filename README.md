@@ -1,4 +1,4 @@
-# Alex B. Zongo — academic website
+# Alex Zongo — academic website
 
 Jekyll / Academic Pages site. Canonical domain: https://alexzongo.com (connection pending). GitHub Pages repository: Alex-Zongo/alex-zongo.github.io.
 

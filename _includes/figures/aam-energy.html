@@ -1,0 +1,41 @@
+<svg class="fig" viewBox="0 0 480 300" role="img" aria-labelledby="fig-aam-t fig-aam-d">
+  <title id="fig-aam-t">Energy cost of tactical deconfliction for an eVTOL (schematic)</title>
+  <desc id="fig-aam-d">An eVTOL flying between two vertiports deviates around crossing traffic. A bar chart accumulates energy: the deconfliction maneuver adds a small overhead to the nominal energy.</desc>
+  <rect class="fig-panel" x="1" y="1" width="478" height="298" rx="10"/>
+  <g class="fig-grid"><path d="M0 60H480M0 120H480M0 180H480M0 240H480M80 0V300M160 0V300M240 0V300M320 0V300M400 0V300"/></g>
+
+  <!-- vertiports and routes -->
+  <g class="fig-pad"><circle cx="36" cy="160" r="12"/><text class="fig-label fig-center" x="36" y="164">V</text></g>
+  <g class="fig-pad"><circle cx="444" cy="160" r="12"/><text class="fig-label fig-center" x="444" y="164">V</text></g>
+  <path class="fig-route" d="M48 160 H432"/>
+  <path class="fig-route fig-route--flown" d="M48 160 L190 160 C220 160 232 198 262 198 C292 198 304 160 334 160 L432 160"/>
+  <path class="fig-route" d="M262 52 V226"/>
+
+  <!-- crossing traffic -->
+  <g class="fig-ac fig-ac--blue">
+    <animateMotion dur="9s" repeatCount="indefinite" rotate="auto" path="M262 22 V236" keyPoints="0;0.645;1" keyTimes="0;0.85;1" calcMode="linear"/>
+    <circle class="fig-ring" r="16"/><path class="fig-plane" d="M8 0 L-6 -6 L-3 0 L-6 6Z"/>
+  </g>
+  <!-- ownship eVTOL -->
+  <g class="fig-ac fig-ac--teal">
+    <animateMotion dur="9s" repeatCount="indefinite" rotate="auto" path="M48 160 L190 160 C220 160 232 198 262 198 C292 198 304 160 334 160 L432 160"/>
+    <circle class="fig-ring" r="16"/>
+    <g class="fig-evtol"><path class="fig-plane" d="M9 0 L-6 -4 L-6 4Z"/><circle cx="-2" cy="-8" r="3.2"/><circle cx="-2" cy="8" r="3.2"/></g>
+  </g>
+  <text class="fig-label fig-muted" x="300" y="222">deconfliction maneuver</text>
+
+  <!-- energy bars -->
+  <g transform="translate(40 252)">
+    <text class="fig-label" x="0" y="0">energy used</text>
+    <text class="fig-label fig-muted" x="86" y="0">nominal</text>
+    <rect class="fig-bar fig-bar--muted" x="140" y="-9" height="10" width="0"><animate attributeName="width" values="0;240;240" keyTimes="0;0.92;1" dur="9s" repeatCount="indefinite"/></rect>
+    <text class="fig-label fig-muted" x="86" y="22">flown</text>
+    <rect class="fig-bar fig-bar--teal" x="140" y="13" height="10" width="0"><animate attributeName="width" values="0;240;240" keyTimes="0;0.92;1" dur="9s" repeatCount="indefinite"/></rect>
+    <rect class="fig-bar fig-bar--gold" y="13" height="10" width="0">
+      <animate attributeName="x" values="140;380;380" keyTimes="0;0.92;1" dur="9s" repeatCount="indefinite"/>
+      <animate attributeName="width" values="0;0;14;14;0" keyTimes="0;0.4;0.66;0.97;1" dur="9s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <text class="fig-label" x="18" y="28">Median overhead &lt; 1.5% · 95th percentile 3.8–5.3%</text>
+  <text class="fig-label fig-muted" x="18" y="44">~72k en-route sections, 10–60 aircraft (ICNS 2026)</text>
+</svg>

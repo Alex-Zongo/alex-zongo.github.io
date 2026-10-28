@@ -1,0 +1,86 @@
+venue: "CVPR 2026 Workshop (MEIS) · Denver, Colorado"
+affiliation: "Intelligent Aerospace Systems Lab · The George Washington University"
+subtitle: "Simulation-to-language data and parameter-efficient fine-tuning for multi-agent drone traffic"
+takeaway: "Can a language model act as a deconfliction policy?"
+lead: "Pre-trained LLMs reason well but are not grounded in airspace rules, and they answer inconsistently. We generate rule-consistent training data from simulation, fine-tune a 7B model with supervised LoRA and with GRPO, and test the result in closed-loop multi-agent simulation."
+demo:
+  type: figure
+  src: sim2lang
+  caption: "Schematic of the simulation-to-language pipeline: labeled BlueSky scenarios become prompt and target pairs, which fine-tune the model before closed-loop evaluation."
+metrics:
+  - value: "27% → 88%"
+    label: "decision accuracy, base → SFT"
+  - value: "3.5 → 1.0"
+    label: "NMACs in scenario A, base → SFT"
+  - value: "~38k"
+    label: "rule-consistent training samples"
+metrics_note: "Held-out test set and BlueSky closed-loop simulations reported in the workshop poster. Simulation results, not a safety guarantee."
+sections:
+  - id: question
+    nav: "Questions"
+    eyebrow: "01 / Research questions"
+    title: "Zero-shot is not enough for safety-critical airspace."
+    text: >
+      Dense low-altitude drone traffic needs short-horizon, cooperative decisions under partial
+      observability and heterogeneous vehicles. We ask three questions: can pre-trained LLMs handle
+      cooperative tactical deconfliction, do they need fine-tuning and how can they be fine-tuned without
+      real-world data, and how do they handle multiple agents in a centralized manner?
+    points:
+      - title: "Base model behavior"
+        text: "The pre-trained model acts conservatively, congests the airspace, and occasionally proposes unsafe actions."
+      - title: "Latency"
+        text: "At least 3 s per agent for variable-length answers; forcing short answers makes them unreasonable."
+      - title: "Our approach"
+        text: "Fine-tune on rule-consistent data that encodes human tactical reasoning, instead of prompting zero-shot."
+  - id: pipeline
+    nav: "Pipeline"
+    eyebrow: "02 / Simulation-to-language"
+    title: "Turn simulated encounters into supervised reasoning data."
+    points:
+      - title: "Scenarios"
+        text: "BlueSky multi-agent simulation of 15–25 minute delivery operations over Frisco, Texas, with 20–30 sUAS per scenario."
+      - title: "Vehicles"
+        text: "Heterogeneous drone configurations inspired by Google Wing and Amazon Prime Air aircraft."
+      - title: "Labels"
+        text: "Human-aligned rule-based deconfliction provides about 38k labeled samples, with prompts that ask for structured reasoning."
+  - id: finetuning
+    nav: "Fine-tuning"
+    eyebrow: "03 / Two strategies"
+    title: "Supervised LoRA vs. preference-based GRPO."
+    text: >
+      A pre-trained Qwen-Math-7B model is fine-tuned with supervised fine-tuning using low-rank adaptation
+      (LoRA), and with LoRA combined with Group-Relative Policy Optimization (GRPO).
+    table:
+      caption: "Decision quality on the held-out test set (%)"
+      headers: ["Model", "Accuracy", "Precision", "Recall", "F1"]
+      rows:
+        - ["Base", "27", "75", "20", "31"]
+        - ["SFT (LoRA)", "88", "75", "66", "69"]
+        - ["GRPO", "53", "75", "40", "50"]
+      note: "From the MEIS@CVPR 2026 poster."
+  - id: results
+    nav: "Closed loop"
+    eyebrow: "04 / Closed-loop simulation"
+    title: "Fewer near mid-air collisions with supervised fine-tuning."
+    text: >
+      In BlueSky with mixed LLM and rule-based agents, supervised LoRA fine-tuning substantially reduces
+      near mid-air collisions compared with the base model. GRPO adds coordination benefits but is less
+      robust when interacting with heterogeneous agent policies.
+    table:
+      caption: "Near mid-air collisions, all interactions (mean ± std)"
+      headers: ["Scenario", "Base", "SFT", "GRPO"]
+      rows:
+        - ["A", "3.5 ± 1.1", "1.0 ± 0.8", "1.7 ± 0.5"]
+        - ["B", "3.4 ± 1.1", "1.9 ± 1.2", "3.0 ± 0.7"]
+        - ["C", "4.0 ± 0.9", "1.9 ± 0.7", "2.3 ± 0.8"]
+      note: "Ten LLM agents with rule-based agents; per-interaction breakdowns and operation times are in the paper."
+  - id: scope
+    nav: "Scope"
+    eyebrow: "05 / Limits and next steps"
+    title: "Promising, not yet deployable."
+    text: >
+      Inference latency in centralized multi-agent settings, the compute and memory cost of GRPO, and the
+      absence of safety guarantees remain open. Next steps include data augmentation with real-world
+      traffic, a safety module around the model, and comparisons with rule-based and reinforcement learning
+      methods. Related: [LLM-guided RL with fallback control](/publication/llm-guided-rl-maritime-collision-avoidance).
+figures_credit: "Pipeline figure is an animated schematic; numbers are from the <a href=\"/files/meis_cvpr_poster_2026.pdf\">workshop poster</a>."
