@@ -317,3 +317,23 @@ html[data-theme="dark"] {
 .work-card__thumb--anim { background: transparent; }
 .work-card__thumb--anim .fig { height: 112px; width: 100%; }
 .thrust__figure--anim .fig { border-radius: 8px; }
+
+/* CV page */
+.cv-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6em; margin: 1.2em 0 0.8em; }
+.archive .cv-actions a { text-decoration: none; }
+.cv-updated { margin-left: 0.4em; font-size: 0.82rem; color: var(--global-muted-color); }
+.cv-jump {
+  display: flex; flex-wrap: wrap; gap: 0.4em 1.2em; margin: 0 0 1.2em;
+  font-size: 0.88rem;
+  a { color: var(--global-muted-color); }
+  a:hover { color: var(--global-link-color); }
+}
+.cv-viewer {
+  border: 1px solid var(--global-border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--global-surface-color);
+  object { display: block; width: 100%; height: 82vh; min-height: 560px; }
+}
+.cv-viewer__fallback { padding: 1.2em; margin: 0; }
+@media (max-width: 640px) { .cv-viewer object { height: 70vh; min-height: 420px; } }

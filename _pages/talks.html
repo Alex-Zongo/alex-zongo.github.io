@@ -16,10 +16,6 @@ author_profile: true
   along with outreach for students interested in aerospace and AI.
 </p>
 
-{% if site.talkmap_link == true %}
-<p class="pub-intro"><a href="/talkmap.html">🗺️ See a map of all the places I've given a talk →</a></p>
-{% endif %}
-
 {% assign by_year = talks | group_by_exp: 'post', "post.date | date: '%Y'" %}
 <div class="pub-list">
   {% for g in by_year %}
