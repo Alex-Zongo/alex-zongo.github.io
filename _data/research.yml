@@ -1,9 +1,5 @@
 intro: >
-  Data-driven controllers, such as reinforcement learning policies and language models, are
-  increasingly asked to act in dense, safety-critical multi-agent systems. My research asks what
-  it takes to trust them there, especially when the information they act on is degraded,
-  delayed, or adversarial. Air traffic is the proving ground with several interacting
-  agents, hard safety constraints, and sensing that can fail.
+  AI-based controllers, such as reinforcement learning policies and language models, are increasingly asked to act in safety-critical multi-agent systems. My research asks what it takes to trust them there, especially when the information they act on is degraded, delayed, or adversarial. Air traffic is the proving ground with multiple interacting agents, hard safety constraints, and imperfect sensing/observation.
 loop_caption: "Four thrusts, one loop: decide under imperfect information, guard what is deployed, bring in language-level reasoning, and account for what safety costs in operation."
 thrusts:
   - id: robust-marl

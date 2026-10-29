@@ -24,9 +24,9 @@ author:
   avatar           : "photo_update.PNG" #"visa_photo.JPG"
   name             : "Alex Zongo"
   pronouns         : # example: "she/her"
-  bio              : "PhD Candidate, Aerospace Engineering @ GWU · Safe autonomy & multi-agent learning"
+  bio              : "PhD Candidate, Aerospace Engineering @ GWU · Safe AI and autonomy for aviation systems and areal robots"
   location         : "Washington, DC, USA"
-  employer         : "GWU"
+  employer         : "The George Washington University"
   uri              : # own site; omitted from sidebar
   email            : "a.zongo@gwu.edu"
 
