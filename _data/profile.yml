@@ -39,6 +39,12 @@ institutions:
     url: "https://citris-uc.org/"
     logo: "/images/affiliations/berkeley.svg"
     key: berkeley
+  - name: "Tsinghua University"
+    role: "Master's research"
+    detail: "Department of Automation"
+    url: "https://www.tsinghua.edu.cn/en/"
+    logo: "/images/affiliations/tsinghua.png"
+    key: tsinghua
   - name: "NASA"
     role: "Research support"
     detail: "University Leadership Initiative"
