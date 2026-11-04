@@ -37,6 +37,11 @@ Before GWU, I earned a master's in Control Science and Engineering at [**Tsinghu
 <div class="timeline" markdown="1">
 
 <div class="tl" markdown="1">
+<span class="tl__date">Nov 2026</span>
+<div class="tl__body" markdown="span">Released the [project page]({{ '/publication/atc-trajectory-prediction' | relative_url }}), [code](https://github.com/Alex-Zongo/atc-trajectory-prediction), and an interactive demo for *Aircraft Trajectory Prediction under ATC Instruction Uncertainty*, from my visiting research at **UC Berkeley**. The model predicts an aircraft's next minute of flight from ADS-B and an imperfectly transcribed controller instruction. Manuscript in preparation.</div>
+</div>
+
+<div class="tl" markdown="1">
 <span class="tl__date">Oct 2026</span>
 <div class="tl__body" markdown="span">Gave a talk on [*vision-language-action models*]({{ '/talks/2026-10-07-seinar-embodied-ai' | relative_url }}) on the Embodied AI panel at **SEINAR 2026** (World AI Week).</div>
 </div>
@@ -61,16 +66,15 @@ Before GWU, I earned a master's in Control Science and Engineering at [**Tsinghu
 <div class="tl__body" markdown="span">[*Robust Multi-Agent Reinforcement Learning for Small UAS Separation Assurance under GPS Degradation and Spoofing*]({{ '/publication/2026-cdc-robust-marl' | relative_url }}) accepted at **IEEE CDC 2026**.</div>
 </div>
 
-<div class="tl" markdown="1">
-<span class="tl__date">Jun 2026</span>
-<div class="tl__body" markdown="span">Presented a poster *"Fine-Tuning Large Language Models for Cooperative Tactical Deconfliction of Small Unmanned Aerial Systems"* at the *CVPR 2026 Workshop* on Multi-Agent Embodied Intelligent Systems Meet the Generative-AI Era (MEIS), Denver, Colorado.</div>
-</div>
-
-
 </div>
 
 <details class="news-archive" markdown="1">
 <summary>Earlier news</summary>
+
+<div class="tl" markdown="1">
+<span class="tl__date">Jun 2026</span>
+<div class="tl__body" markdown="span">Presented a poster *"Fine-Tuning Large Language Models for Cooperative Tactical Deconfliction of Small Unmanned Aerial Systems"* at the *CVPR 2026 Workshop* on Multi-Agent Embodied Intelligent Systems Meet the Generative-AI Era (MEIS), Denver, Colorado.</div>
+</div>
 <div class="timeline" markdown="1">
 
 <div class="tl" markdown="1">

@@ -96,7 +96,8 @@ outlook:
     I am extending this agenda toward learned world models of multi-agent traffic: predicting how
     interacting agents will move, planning through those predictions, and keeping runtime safety
     mechanisms in the loop when predictions or their inputs are wrong. My Summer 2026 work at
-    UC Berkeley on multi-modal aircraft trajectory prediction from ADS-B and ATC voice data is a first step.
+    UC Berkeley on <a href="/publication/atc-trajectory-prediction">aircraft trajectory prediction under ATC
+    instruction uncertainty</a>, from ADS-B and imperfectly transcribed controller speech, is a first step.
 earlier:
   title: "Earlier work"
   text: "Reinforcement learning for fault-tolerant attitude control of fixed-wing aircraft (master's research, Tsinghua University)."

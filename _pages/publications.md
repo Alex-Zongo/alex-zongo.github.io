@@ -68,7 +68,7 @@ author_profile: true
 
 {% if other.size > 0 %}
 <section class="pub-section" data-section>
-  <h2 class="pub-group-title">Preprints and papers under review</h2>
+  <h2 class="pub-group-title">Preprints and work in progress</h2>
   {% for post in other %}{% include publication-card.html %}{% endfor %}
 </section>
 {% endif %}
