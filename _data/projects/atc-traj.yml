@@ -66,9 +66,61 @@ sections:
           caption: "Accuracy against calibration; the dashed line marks nominal 90% coverage. (a) Own-aircraft maneuver instructions. (b) All transmissions. Means over three training runs."
       - title: "Which aircraft is the transmission addressed to?"
         text: "Each aircraft's belief includes the probability that the transmission addresses it. A transmission addresses at most one aircraft, so the evidence is normalized across the aircraft nearby. In constructed scenes of eight aircraft the addressed aircraft is ranked first for 87% of transmissions. For the aircraft that are not addressed, the prediction only beats ADS-B-only prediction when samples without motion content are routed to the ADS-B-only predictor."
+  - id: sbm
+    nav: "Semantic model"
+    eyebrow: "03 / Inside the semantic belief model"
+    title: "Reading the transcript against the aircraft's own callsign and flight path."
+    text: >
+      The text encoder reads the aircraft's own callsign from ADS-B, a separator, and the
+      transcript, so the model can compare the callsign it hears with the one it expects. Each
+      transcript word carries its recognizer confidence and two callsign-match features. A
+      history encoder turns the last 30 s of ADS-B into six 5 s patches plus tokens for the
+      current state and the aircraft type. Four queries, one per field (whether the transmission
+      addresses this aircraft, lateral, vertical, speed), read both encodings through attention
+      and exchange information with each other. In use, the fields are sampled one after another,
+      each conditioned on the ones already chosen, so the sampled instructions stay coherent: once
+      "another aircraft" is drawn, no turn or climb follows. In training, a random subset of the
+      fields is revealed and the model predicts the rest, which teaches it every order at once.
+      Field temperatures fitted on validation data calibrate the probabilities. About 2.0 million
+      parameters.
+    figure:
+      src: "/images/atc-traj/fig_sbm.svg"
+      alt: "Semantic belief model: a text encoder over the own callsign and the transcript with confidences, a history encoder over six 5 s patches, and a field decoder whose four queries use cross-attention to the text and the history and self-attention among the fields, producing categorical distributions over status, lateral, vertical and speed."
+      caption: "Semantic belief model. Training reveals a random subset of fields and predicts the others; prediction samples the fields in a fixed order (status, lateral, vertical, speed), K times, and beam search finds the most probable instruction."
+  - id: ctp
+    nav: "Trajectory model"
+    eyebrow: "04 / Inside the conditional trajectory predictor"
+    title: "A flow over trajectory shapes, conditioned on history and instruction."
+    text: >
+      The trajectory predictor encodes the same 30 s of history with its own encoder, and turns a
+      sampled instruction into four tokens. The motion tokens also carry features relative to the
+      aircraft's present state, such as the turn or altitude change the instruction requires, so
+      "descend to 5,000 ft" means a long descent from 8,000 ft and a short one from 6,000 ft.
+      Together these twelve tokens form the memory that a flow decoder reads through
+      cross-attention. Trained with flow matching, the decoder moves Gaussian noise to the 18
+      coefficients of a trajectory shape in 12 Euler steps. The coefficients are decoded into
+      velocities and integrated into positions. About 2.2 million parameters; one composed
+      prediction of 72 trajectories takes about 0.18 s on a laptop CPU.
+    figure:
+      src: "/images/atc-traj/fig_ctp.svg"
+      alt: "Conditional trajectory predictor: an instruction encoder and a history encoder form a twelve-token memory; a flow decoder with self-attention among 18 coefficient tokens and cross-attention to the memory, modulated by flow time, integrates noise into coefficients that are decoded into future trajectories."
+      caption: "Conditional trajectory predictor. The memory is computed once per sampled instruction and reused across its trajectories and the integration steps."
+    details:
+      - title: "Why predict 18 shape coefficients instead of the position at every second?"
+        text: "A 60 s future has 180 numbers per trajectory (a velocity on three axes at each second), but they move together: a turn is one smooth change in heading, not 60 independent ones. We describe each future by how it departs from flying straight at constant speed, scale that departure per second, and take the principal components of the training futures on each axis. Six along-track, four cross-track and eight vertical shapes keep 99.6%, 99.2% and 99.0% of the variation, so 18 coefficients replace 180 values. This has three effects. Every sample is a smooth, physically plausible shape, because it is built from shapes seen in real flights. The flow models the joint distribution of a few strongly informative numbers instead of 180 correlated ones, which is easier to learn and cheaper to sample. And the comparison favours it: a flow on the 180 per-second velocities raises the energy score by 1.0% on own-aircraft maneuver instructions and by 5.1% over all transmissions, although its coverage is slightly closer to nominal (0.88 against 0.86). Fixed sine shapes with the same count match the accuracy on maneuvers but lose 1.3% over all transmissions and are more overconfident (coverage 0.83), so the learned shapes matter, not only their number. The price is a small reconstruction error, about 1% of the variance, and shapes that reflect the training traffic: aircraft dynamics and instruction compliance are not enforced."
+        figure:
+          src: "/images/atc-traj/fig_basis.svg"
+          alt: "Trajectory basis: (a) share of variance per principal component for the along-track, cross-track and vertical axes; (b) a recorded turn's cross-track residual velocity rebuilt from the mean and one, two and four components; (c) the first two vertical components against their nearest sine functions."
+          caption: "Trajectory basis. (a) Variance explained per component on each axis. (b) A recorded turn rebuilt from the mean and the first components. (c) The first two vertical shapes against the nearest sines."
+      - title: "What do the shapes look like?"
+        text: "Each curve is the residual velocity that a one-standard-deviation coefficient adds over the 60 s horizon. The first along-track shape is a steady speed change; the first cross-track shape is a turn that builds up and settles; the vertical shapes include climbs and descents that start, level off or reverse. Any predicted future is the mean (dashed) plus a weighted sum of these shapes."
+        figure:
+          src: "/images/atc-traj/fig_basis_components.svg"
+          alt: "Principal-component shapes of the residual velocity for the along-track (six), cross-track (four) and vertical (eight) axes, in metres per second per standard deviation, over 60 s; dashed: the mean."
+          caption: "The 18 retained shapes, each drawn for a one-standard-deviation coefficient; dashed: the mean residual."
   - id: results
     nav: "Results"
-    eyebrow: "03 / Synthetic test set"
+    eyebrow: "05 / Synthetic test set"
     title: "Keeping the alternatives beats committing to one."
     text: >
       On 5,000 held-out trajectory segments with simulated recognition errors, the composed
@@ -95,7 +147,7 @@ sections:
         caption: "Constructed multi-aircraft scenes: recipient identification across the aircraft against judging each aircraft alone, with and without ADS-B-only routing."
   - id: real
     nav: "Recorded speech"
-    eyebrow: "04 / Recorded controller speech"
+    eyebrow: "06 / Recorded controller speech"
     title: "The interface transfers to real radio."
     text: >
       We evaluated the models, with no training, tuning or selection on these data, on 4,863
@@ -119,7 +171,7 @@ sections:
       caption: "Recorded controller speech: reduction of the energy score (a) against ADS-B-only prediction and (b) against the most probable instruction, by instruction type, position and airport. Means over three training runs."
   - id: limits
     nav: "Scope"
-    eyebrow: "05 / Scope"
+    eyebrow: "07 / Scope"
     title: "What this does not do."
     points:
       - title: "Instructions"
