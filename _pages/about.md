@@ -38,7 +38,7 @@ Before GWU, I earned a master's in Control Science and Engineering at [**Tsinghu
 
 <div class="tl" markdown="1">
 <span class="tl__date">Nov 2026</span>
-<div class="tl__body" markdown="span">Released the [project page]({{ '/publication/atc-trajectory-prediction' | relative_url }}), [code](https://github.com/Alex-Zongo/atc-trajectory-prediction), and an interactive demo for *Aircraft Trajectory Prediction under ATC Instruction Uncertainty*, from my visiting research at **UC Berkeley**. The model predicts an aircraft's next minute of flight from ADS-B and an imperfectly transcribed controller instruction. Manuscript in preparation.</div>
+<div class="tl__body" markdown="span">Released the [project page]({{ '/publication/atc-trajectory-prediction' | relative_url }}), [code](https://github.com/Alex-Zongo/atc-trajectory-prediction), and an interactive demo for *Aircraft Trajectory Prediction from ADS-B and Imperfect ATC Transcripts*, from my visiting research at **UC Berkeley**. The model predicts an aircraft's next minute of flight from ADS-B and an imperfectly transcribed controller instruction. Manuscript in preparation.</div>
 </div>
 
 <div class="tl" markdown="1">

@@ -2,19 +2,21 @@ venue: "Manuscript in preparation · 2026"
 affiliation: "UC Berkeley (CITRIS) · The George Washington University"
 subtitle: "Predicting aircraft motion from ADS-B and imperfectly recognized controller speech"
 takeaway: "Where will the aircraft go, given what the controller said?"
-lead: "A controller instruction changes an aircraft's next minute of flight before any sensor sees it. Speech recognizers mishear callsigns, numbers and turn directions, so we treat each controller transmission as uncertain evidence: infer what it could mean, then predict the trajectory under each interpretation."
+lead: "A controller instruction changes an aircraft's next minute of flight before any sensor sees it. Speech recognizers mishear callsigns, numbers and turn directions, so we treat each transcribed transmission as uncertain evidence: estimate which structured instructions it supports, including whether it addresses this aircraft at all, then predict the trajectory under each."
 demo:
-  type: widget
-  src: atc-traj-demo.html
-  caption: "Interactive. Pick a transmission to see what the speech recognizer heard, how the model interprets it, and the predicted trajectories against the flown one. Hover an interpretation to highlight its trajectories. Transmissions are selected to illustrate distinct behaviors, including one failure, and are not representative of average accuracy."
+  type: iframe
+  src: /demos/atc-traj/index.html
+  height: 980
+  label: "Interactive demo"
+  caption: "Static version: every prediction was computed in advance on held-out recorded flights with synthetic transmissions, using the paper's models (first training run). Live sector: transmissions arrive on a shared frequency, the addressed aircraft is identified across the aircraft, and its 50% and 90% regions are drawn at +20, +40 and +60 s. Try a transmission and Compare models: switch semantic models and trajectory predictors. Scroll on a plot to zoom. To type your own transmissions, run the demo locally from the repository."
 metrics:
-  - value: "47%"
-    label: "lower energy score than history-only prediction on maneuver instructions to the aircraft"
-  - value: "126 m"
-    label: "from the oracle that is given the ground-truth interpretation"
-  - value: "98%"
-    label: "of recorded transmissions: addressed aircraft ranked first among about 12"
-metrics_note: "Synthetic test set: 5,000 trajectory segments, means over three training runs; energy score over 60 s, in metres. Recorded speech: 338 controller transmissions from a public radio feed matched to ADS-B, a private evaluation set."
+  - value: "92%"
+    label: "of the improvement that the true instruction gives over ADS-B-only prediction, kept from an imperfect transcript (synthetic test set)"
+  - value: "22%"
+    label: "lower energy score than ADS-B-only prediction on 4,863 recorded controller transmissions, with no model trained on them"
+  - value: "93%"
+    label: "of those recorded transmissions: the addressed aircraft ranked first among nearby aircraft"
+metrics_note: "Energy score of 60 s horizontal trajectories, in metres, lower is better; means over three training runs. Synthetic test set: 5,000 held-out trajectory segments with simulated recognition errors. Recorded speech: San Francisco and Boston, July 2026, a group-internal evaluation set that is not released."
 sections:
   - id: problem
     nav: "Problem"
@@ -29,7 +31,7 @@ sections:
       are addressed to someone else.
     points:
       - title: "What is uncertain"
-        text: "Whether the transmission is addressed to this aircraft, and which heading, altitude or speed it instructs. A misheard callsign, a lost “left” or “right”, or a wrong digit each changes the trajectory."
+        text: "Whether the transmission addresses this aircraft, and which heading, altitude or speed it instructs. A misheard callsign, a lost “left” or “right”, or a wrong digit each changes the trajectory."
       - title: "What is available"
         text: "The ASR transcript with each word's confidence, the aircraft's own callsign and its last 30 s of ADS-B."
       - title: "What is predicted"
@@ -37,85 +39,94 @@ sections:
   - id: method
     nav: "Method"
     eyebrow: "02 / The approach"
-    title: "Interpret first, then predict under each interpretation."
+    title: "Estimate the instruction, then predict under each candidate."
     text: >
-      An interpretation Z is a structured reading of a transmission: whether it is addressed to this
-      aircraft, and which lateral, vertical and speed instruction it contains. A semantic belief model reads
-      the transcript, the word confidences, the aircraft's callsign and its history, and returns
-      a distribution over interpretations. A conditional trajectory predictor, a rectified flow
-      on 18 trajectory-shape coefficients, generates future trajectories under a given
-      interpretation. The composed prediction mixes the two: 12 interpretations drawn from the
-      belief, 6 trajectories under each.
+      A structured instruction representation Z records whether a transmission addresses this
+      aircraft and its lateral, vertical and speed instruction. A semantic belief model (SBM)
+      reads the transcript, the word confidences, the aircraft's callsign and its history, and
+      returns a probability distribution over these representations. A conditional trajectory
+      predictor (CTP), trained with flow matching on 18 trajectory-shape coefficients, samples
+      future trajectories under a given representation. The composed prediction samples 12
+      representations from the belief and 6 trajectories under each, so the uncertainty about
+      the instruction reaches the predicted trajectories.
     equation: "p(Y \\mid O, X) \\;\\approx\\; \\sum_{Z} q_\\phi(Z \\mid O, X)\\, p_\\theta(Y \\mid X, Z)"
-    equation_note: "Y: future trajectory. O: received transcript with word confidences. X: surveillance history and callsign. Z: interpretation of the transmission."
+    equation_note: "Y: future trajectory. O: transcript with word confidences. X: surveillance history, aircraft state and callsign. Z: structured instruction representation."
     figure:
       src: "/images/atc-traj/method_overview.svg"
-      alt: "The semantic belief model reads the transcript, word confidences, own callsign and history, and outputs a distribution over interpretations. Sampled interpretations condition a trajectory predictor whose samples form the composed prediction."
-      caption: "Overview. The interpretation is the interface between the two models, so each can be trained, inspected and replaced on its own."
+      alt: "The SBM encodes the transcript, confidences and surveillance input and samples K structured instruction representations. The CTP combines each with the trajectory history and samples S coefficient vectors, decoded into K × S future trajectories."
+      caption: "Overview. Semantic uncertainty varies the representation that conditions the trajectory predictor; conditional motion uncertainty varies the trajectories under it. The representation is the interface between the two models, so each can be trained, inspected and replaced on its own."
     details:
-      - title: "Why an explicit interpretation instead of conditioning on the text?"
-        text: "A trajectory model conditioned directly on the transcript reaches an energy score of 2,187 m on maneuver instructions to the aircraft, against 1,682 m for composition through interpretations. The interpretation is also readable: a controller or an engineer can check what the model believed the transmission said."
-      - title: "Why a flow on trajectory-shape coefficients?"
-        text: "We compared four designs for the conditional trajectory predictor, trading accuracy (energy score) against calibration (how often the flown trajectory falls inside the central 90% interval). The rectified flow on principal-component coefficients of trajectory shape gives the lowest energy score over all transmissions and is among the most accurate on maneuver instructions. A mixture-density head can reach the nominal coverage, but its accuracy varies widely between configurations, especially over all transmissions. Most designs stay somewhat below 90% coverage, so the predictions are mildly overconfident."
+      - title: "Why an explicit representation instead of conditioning on the text?"
+        text: "A trajectory predictor conditioned directly on the transcript reaches an energy score of 2,187 m on own-aircraft maneuver instructions (2,108 m with its text encoder initialized from the SBM), against 1,682 m for composition through structured representations. The representation is also readable: an engineer or a controller can check which instructions the model considered and with what probability."
+      - title: "How do the sampler and the distribution family trade accuracy against calibration?"
+        text: "The flow with 12 Euler steps gives the lowest energy score over all transmissions, but its central 90% interval contains the flown position only 86% of the time, so it is slightly overconfident. With the same weights, 32 Heun steps bring coverage close to 90% and lower the energy score, at about five times the computation. A mixture-density head on the same coefficients reaches nominal coverage and a similar score on maneuver instructions, but a higher score over all transmissions."
         figure:
           src: "/images/atc-traj/fig_tradeoff.svg"
-          alt: "Energy score against coverage of the central 90% interval for four predictor designs: flow on PCA coefficients, mixture-density head, maneuver-type heads with a flow, and motion primitives with a kinematic rule. Panel (a) maneuver instructions to the aircraft, panel (b) all transmissions."
-          caption: "Accuracy against calibration for four predictor designs; the dashed line marks nominal 90% coverage. (a) Maneuver instructions to the aircraft; (b) all transmissions."
+          alt: "Energy score against coverage of the central 90% interval for the flow with 12 Euler steps, the same flow with 32 Heun steps, and the mixture-density head; panel (a) own-aircraft maneuver instructions, panel (b) all transmissions."
+          caption: "Accuracy against calibration; the dashed line marks nominal 90% coverage. (a) Own-aircraft maneuver instructions. (b) All transmissions. Means over three training runs."
       - title: "Which aircraft is the transmission addressed to?"
-        text: "Each aircraft's belief includes the probability that it is addressed. On a frequency, a transmission addresses at most one aircraft, so we remove the training prior from each aircraft's evidence and normalize across the aircraft present. With eight aircraft in constructed scenes, the addressed aircraft is ranked first for 87% of transmissions."
+        text: "Each aircraft's belief includes the probability that the transmission addresses it. A transmission addresses at most one aircraft, so the evidence is normalized across the aircraft nearby. In constructed scenes of eight aircraft the addressed aircraft is ranked first for 87% of transmissions. For the aircraft that are not addressed, the prediction only beats ADS-B-only prediction when samples without motion content are routed to the ADS-B-only predictor."
   - id: results
     nav: "Results"
     eyebrow: "03 / Synthetic test set"
-    title: "Composing interpretations beats committing to one."
+    title: "Keeping the alternatives beats committing to one."
     text: >
-      On 5,000 test trajectory segments with simulated ASR errors, the composed prediction closes
-      most of the gap between history-only prediction and an oracle given the ground-truth
-      interpretation, the one each synthetic transmission was generated from. It also beats
-      conditioning on the single most probable interpretation in every training run.
+      On 5,000 held-out trajectory segments with simulated recognition errors, the composed
+      prediction keeps 92% of the improvement that the semantic label, the instruction each
+      synthetic transmission was generated from, gives over ADS-B-only prediction. It also beats
+      conditioning on the single most probable instruction in every training run, mostly on the
+      transmissions whose most probable instruction is wrong.
     table:
-      caption: "Energy score (m, lower is better) on maneuver instructions to the aircraft, and over all transmission categories. Means over three training runs where shown with ± sd."
-      headers: ["Prediction", "Maneuver instructions to the aircraft", "All transmissions"]
+      caption: "Energy score (m, lower is better) on own-aircraft maneuver instructions and over all transmission categories. Means over three training runs, ± standard deviation."
+      headers: ["Prediction", "Own-aircraft maneuver instructions", "All transmissions"]
       rows:
-        - ["History only (ignores the radio)", "3,202", "2,988"]
-        - ["Trajectory model conditioned on the transcript", "2,187", "2,751"]
-        - ["Most probable interpretation", "1,727 ± 2", "2,732"]
-        - ["<strong>Composed over interpretations</strong>", "<strong>1,682 ± 5</strong>", "<strong>2,701</strong>"]
-        - ["Oracle: ground-truth interpretation given", "1,556 ± 2", "2,615"]
-      note: "History only remains better on transmissions that instruct no maneuver or address another aircraft (2,988 against 3,152 to 3,296 m), which is where the remaining error is."
+        - ["ADS-B only (ignores the radio)", "3,202", "2,988"]
+        - ["Trajectory predictor conditioned on the transcript", "2,187", "2,751"]
+        - ["Most probable instruction", "1,727 ± 2", "2,732"]
+        - ["<strong>Composed over the belief</strong>", "<strong>1,682 ± 5</strong>", "<strong>2,701</strong>"]
+        - ["Semantic label given (reference, not available in operation)", "1,556 ± 2", "2,615"]
+      note: "ADS-B only remains better on transmissions that contain no motion instruction for the aircraft or address another aircraft (2,988 against 3,152 to 3,296 m). The trajectory predictor given the semantic label scores about the same there, so the gap lies in its prediction without an instruction, not in the semantic belief."
     figures:
       - src: "/images/atc-traj/fig_confidence.svg"
-        alt: "Energy score of the most probable, composed and reference predictions grouped by the belief's confidence; composition helps most when the belief is uncertain."
-        caption: "Composition helps most when the belief is uncertain, and the model's confidence tracks how often its most probable interpretation is right."
+        alt: "Energy score of the most probable instruction, the composed prediction and the semantic label, grouped by the probability of the most probable instruction, with the share of transmissions where it is correct."
+        caption: "Composition helps most when the belief is uncertain, where the most probable instruction is often wrong (final SBM, first training run)."
       - src: "/images/atc-traj/fig_addressee.svg"
-        alt: "Energy score over the scene and share of transmissions whose addressee is ranked first, against the number of aircraft, for independent and joint addressee inference."
-        caption: "Constructed multi-aircraft scenes: joint addressee inference against interpreting each aircraft alone."
+        alt: "Scene energy score and share of transmissions whose recipient is ranked first, against the number of aircraft in constructed scenes."
+        caption: "Constructed multi-aircraft scenes: recipient identification across the aircraft against judging each aircraft alone, with and without ADS-B-only routing."
   - id: real
     nav: "Recorded speech"
     eyebrow: "04 / Recorded controller speech"
     title: "The interface transfers to real radio."
     text: >
-      We transcribed 72.9 h of a public departure-control radio feed over the San Francisco Bay
-      Area with a general-purpose recognizer and matched controller transmissions to ADS-B by
-      callsign. On 338 transmissions with sufficient surveillance coverage, composition improves
-      on history-only prediction by 9%, and the addressed aircraft is ranked first among about
-      12 nearby aircraft for 98% of transmissions. Frequency changes are read as transmissions that
-      instruct no maneuver 87% of the time.
+      We evaluated the models, with no training, tuning or selection on these data, on 4,863
+      controller transmissions recorded at San Francisco and Boston in July 2026, transcribed by
+      ATC-fine-tuned speech recognizers and matched to the ADS-B of the aircraft they name. Boston
+      lies outside the region the trajectory models were trained on. The recordings have no human
+      labels, so predictions are scored against the trajectory each aircraft then flew. Composition
+      lowers the energy score by 22% relative to ADS-B-only prediction (34% on heading, altitude
+      and speed instructions, 28% at Boston, and 23% on audio the recognizers never saw in
+      training), and ranks the addressed aircraft first for 93% of transmissions.
 
 
-      The limits are clear as well. The prediction is overconfident on recorded speech, the
-      vertical score does not beat history alone, and part of the training phrasing was taken
-      from the same radio feed, so this evaluation is not fully independent. The recordings and
-      transcripts are not redistributed.
+      The limits are clear as well. Tower transmissions carry takeoff and landing clearances that
+      the representation does not cover, and there ADS-B-only prediction is better. The vertical
+      score does not improve overall, and the predictions are overconfident: nominal 90% intervals
+      contain 81% of flown positions. The evaluation set belongs to a research collaboration and is
+      not released; only aggregate results are reported.
+    figure:
+      src: "/images/atc-traj/fig_real_gains.svg"
+      alt: "Reduction of the energy score on recorded controller transmissions, by instruction type, controller position and airport, against ADS-B-only prediction and against the most probable instruction."
+      caption: "Recorded controller speech: reduction of the energy score (a) against ADS-B-only prediction and (b) against the most probable instruction, by instruction type, position and airport. Means over three training runs."
   - id: limits
     nav: "Scope"
     eyebrow: "05 / Scope"
     title: "What this does not do."
     points:
-      - title: "Interpretations"
-        text: "Heading, altitude and speed instructions. Route, conditional and procedure clearances are outside the interpretation space."
+      - title: "Instructions"
+        text: "Heading, altitude and speed instructions, one transmission at a time. Route, procedure, conditional, takeoff and landing clearances are outside the representation, and earlier clearances or readbacks are not used."
       - title: "Training data"
-        text: "Synthetic controller transmissions generated on real ADS-B tracks from five days in the Bay Area, passed through a simulated ASR channel. Real phraseology is broader."
+        text: "Synthetic controller transmissions generated on recorded ADS-B from five days over the San Francisco Bay Area, passed through a simulated recognizer. The labels describe the flown motion, not an instruction known to have been issued."
       - title: "Use"
-        text: "A research prototype for prediction under communication uncertainty, not an operational tool."
+        text: "A research prototype for prediction under communication uncertainty, not an operational tool. One prediction takes about 0.18 s on a laptop CPU."
 figures_credit: "Figures and demo generated from the project's evaluation outputs."
-acknowledgement: "This work was carried out within a CITRIS project at UC Berkeley. Aircraft surveillance data comes from the OpenSky Network."
+acknowledgement: "This work was carried out within a CITRIS project at UC Berkeley. Aircraft surveillance data comes from the OpenSky Network; the recorded-speech evaluation set was assembled by Nathan McNaughton."
